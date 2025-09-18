@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 0)
+  (lib (name "edu-ciaa-nxp-rescue")(type "Legacy")(uri "${KIPRJMOD}/edu-ciaa-nxp-rescue.lib")(options "")(descr ""))
+  (lib (name "edu-ciaa-nxp")(type "Legacy")(uri "${KIPRJMOD}/kicadlibrary/edu-ciaa-nxp.lib")(options "")(descr ""))
+)
