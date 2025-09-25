@@ -738,553 +738,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector_Generic:Conn_02x08_Odd_Even"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "ESP32-CAM"
-				(at 4.318 13.716 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_02x08_Odd_Even"
-				(at 5.08 11.43 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Generic connector, double row, 02x08, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-				(at 10.16 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "connector"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Connector*:*_2x??_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Conn_02x08_Odd_Even_1_1"
-				(rectangle
-					(start -1.27 8.89)
-					(end 10.16 -11.43)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(rectangle
-					(start -1.27 7.747)
-					(end 0 7.493)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 5.207)
-					(end 0 4.953)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 2.667)
-					(end 0 2.413)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 0.127)
-					(end 0 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -2.413)
-					(end 0 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -4.953)
-					(end 0 -5.207)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -7.493)
-					(end 0 -7.747)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -10.033)
-					(end 0 -10.287)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 8.89 -2.413)
-					(end 10.16 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 7.747)
-					(end 8.89 7.493)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 5.207)
-					(end 8.89 4.953)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 2.667)
-					(end 8.89 2.413)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 0.127)
-					(end 8.89 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 -4.953)
-					(end 8.89 -5.207)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 -7.493)
-					(end 8.89 -7.747)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 -10.033)
-					(end 8.89 -10.287)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 7.62 0)
-					(length 3.81)
-					(name "5V"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 5.08 0)
-					(length 3.81)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 2.54 0)
-					(length 3.81)
-					(name "IO12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "IO13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "IO15"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -5.08 0)
-					(length 3.81)
-					(name "IO14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "11"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -7.62 0)
-					(length 3.81)
-					(name "IO2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -10.16 0)
-					(length 3.81)
-					(name "IO4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "15"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 13.97 7.62 180)
-					(length 3.81)
-					(name "3V3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 13.97 5.08 180)
-					(length 3.81)
-					(name "IO16"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 13.97 2.54 180)
-					(length 3.81)
-					(name "IO0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 13.97 0 180)
-					(length 3.81)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 13.97 -2.54 180)
-					(length 3.81)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 13.97 -5.08 180)
-					(length 3.81)
-					(name "UOR"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 13.97 -7.62 180)
-					(length 3.81)
-					(name "UOT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 13.97 -10.16 180)
-					(length 3.81)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "16"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Driver_Motor:Pololu_Breakout_DRV8825"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -4665,80 +4118,16 @@
 		)
 	)
 	(no_connect
-		(at 99.06 40.64)
-		(uuid "139627e2-95bf-4a0b-a429-d9c08cc27e82")
-	)
-	(no_connect
-		(at 80.01 45.72)
-		(uuid "151e6a6b-ffba-4ce2-b096-0dfa38173de1")
-	)
-	(no_connect
-		(at 99.06 38.1)
-		(uuid "169f47db-e651-4d40-aea0-e8d964a5582f")
-	)
-	(no_connect
-		(at 99.06 45.72)
-		(uuid "1d2199dd-e98f-408d-9d57-b97415614212")
-	)
-	(no_connect
-		(at 80.01 48.26)
-		(uuid "30e44ec4-6ac1-4700-ab29-8bf4f8bf0ee0")
-	)
-	(no_connect
-		(at 80.01 38.1)
-		(uuid "385cc9e2-a9df-4f12-8a92-10fc7c82e85b")
-	)
-	(no_connect
-		(at 99.06 33.02)
-		(uuid "46b5718e-f62c-4cfa-b133-8f7bfb2b7f46")
-	)
-	(no_connect
-		(at 80.01 43.18)
-		(uuid "48aab014-3ccf-467e-a8a1-cdda12b9132b")
-	)
-	(no_connect
-		(at 80.01 33.02)
-		(uuid "883e23bf-59c4-4100-84b4-a4979569ee67")
-	)
-	(no_connect
 		(at 81.28 77.47)
 		(uuid "a1709f59-ad6f-42bd-bfa4-73f0dede29b2")
-	)
-	(no_connect
-		(at 80.01 35.56)
-		(uuid "a4494f10-74ee-41cd-9301-6ffd5e4a6c16")
-	)
-	(no_connect
-		(at 99.06 43.18)
-		(uuid "a8045183-6475-42c3-b5ab-3eb811808690")
-	)
-	(no_connect
-		(at 99.06 48.26)
-		(uuid "b5cf7f77-c8ff-49f1-9d41-6e0c40a8fd17")
 	)
 	(no_connect
 		(at 81.28 80.01)
 		(uuid "be49ba47-464d-4aaa-a125-13e5317a660a")
 	)
 	(no_connect
-		(at 80.01 40.64)
-		(uuid "c03afa6e-0c63-47a0-a888-a65137235fc0")
-	)
-	(no_connect
-		(at 99.06 50.8)
-		(uuid "d7af9e27-5b89-4179-8cea-26b2bbb5c7b2")
-	)
-	(no_connect
 		(at 81.28 82.55)
 		(uuid "e234b2e5-9126-4265-ad7d-f3f405fcb6f0")
-	)
-	(no_connect
-		(at 99.06 35.56)
-		(uuid "e964e0f6-df63-49f3-ada6-5394dbd8146a")
-	)
-	(no_connect
-		(at 80.01 50.8)
-		(uuid "f259a49b-c1e2-4c92-ac1c-85abf0521844")
 	)
 	(wire
 		(pts
@@ -4769,6 +4158,16 @@
 			(type default)
 		)
 		(uuid "07139854-fa16-410d-a509-5be05edefe71")
+	)
+	(wire
+		(pts
+			(xy 34.29 40.64) (xy 39.37 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ad47643-0fb2-4b96-a88c-a52b0d4e28d8")
 	)
 	(wire
 		(pts
@@ -4842,16 +4241,6 @@
 	)
 	(wire
 		(pts
-			(xy 34.29 45.72) (xy 39.37 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "228cde58-29ac-4eb9-aaa5-0472dbb6cf51")
-	)
-	(wire
-		(pts
 			(xy 34.29 80.01) (xy 39.37 80.01)
 		)
 		(stroke
@@ -4889,16 +4278,6 @@
 			(type default)
 		)
 		(uuid "34331870-8b18-45a9-934f-7706b733c056")
-	)
-	(wire
-		(pts
-			(xy 34.29 43.18) (xy 39.37 43.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3a98c40f-6fc3-4068-af2e-95bf3602e758")
 	)
 	(wire
 		(pts
@@ -5042,16 +4421,6 @@
 	)
 	(wire
 		(pts
-			(xy 34.29 40.64) (xy 39.37 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8998777a-d114-4990-b427-81681d5d2c6e")
-	)
-	(wire
-		(pts
 			(xy 72.39 172.72) (xy 67.31 172.72)
 		)
 		(stroke
@@ -5079,16 +4448,6 @@
 			(type default)
 		)
 		(uuid "8c074ae2-3b5b-4c75-889c-aef441875b67")
-	)
-	(wire
-		(pts
-			(xy 34.29 38.1) (xy 39.37 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8fb5aa80-eb37-4fec-b96f-cba910338ba5")
 	)
 	(wire
 		(pts
@@ -5309,6 +4668,16 @@
 			(type default)
 		)
 		(uuid "ce47a37c-3941-4e99-acf3-35f59252a9c5")
+	)
+	(wire
+		(pts
+			(xy 34.29 43.18) (xy 39.37 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da72e98d-f213-41e1-a723-08f61930c6c9")
 	)
 	(wire
 		(pts
@@ -5564,6 +4933,26 @@
 			)
 		)
 	)
+	(global_label "RS232_TX"
+		(shape output)
+		(at 34.29 43.18 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1114c053-4d68-4220-8aa9-c7185b3bd73d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 34.29 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "GND"
 		(shape input)
 		(at 36.83 129.54 180)
@@ -5656,6 +5045,26 @@
 		(uuid "2cc9b888-aaa0-40d2-a497-427ecd2d4657")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 196.85 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "RS232_RX"
+		(shape input)
+		(at 34.29 40.64 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2e25cbe2-ca89-416e-827d-678d209be9bf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 34.29 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6046,26 +5455,6 @@
 			)
 		)
 	)
-	(global_label "GND"
-		(shape input)
-		(at 34.29 38.1 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "63191d96-c0ad-4d38-bbdd-143e35306b62")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 34.29 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "M02"
 		(shape input)
 		(at 196.85 119.38 180)
@@ -6278,26 +5667,6 @@
 		(uuid "7e8591ba-7812-4940-b53a-1ba4b61e7a4f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 245.11 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "5VR"
-		(shape input)
-		(at 34.29 45.72 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "8ab34a0b-c21a-4265-9a4e-a83771d9d7d0")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 34.29 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6708,7 +6077,7 @@
 			)
 		)
 	)
-	(global_label "TFIL3"
+	(global_label "TFIL0"
 		(shape input)
 		(at 34.29 80.01 180)
 		(effects
@@ -6902,46 +6271,6 @@
 		(uuid "d43400fa-6566-47d2-b067-1f72578e7fe7")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 196.85 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "RS232_RX"
-		(shape output)
-		(at 34.29 43.18 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "e039d056-15ea-4c0c-879d-7428763bf325")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 34.29 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "RS232_TX"
-		(shape input)
-		(at 34.29 40.64 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "e23d4f7b-f6b4-4a01-bfe1-472cca4b175b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 34.29 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7161,115 +6490,6 @@
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
 					(reference "Bornier_Nema17_1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_02x08_Odd_Even")
-		(at 85.09 40.64 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "01387fe1-d3ed-4b14-b58a-b1bb12dda712")
-		(property "Reference" "ESP32-CAM1"
-			(at 89.408 26.924 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Conn_02x08_Odd_Even"
-			(at 90.17 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 85.09 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 85.09 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, double row, 02x08, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 95.25 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "4"
-			(uuid "86e7a5a1-daa5-4d56-bc45-d9cfcc5ac43e")
-		)
-		(pin "15"
-			(uuid "4c171614-8fa3-4006-893a-05d8281f5c42")
-		)
-		(pin "14"
-			(uuid "de32524e-d7e7-4872-be4a-66ab7243e7e1")
-		)
-		(pin "16"
-			(uuid "ba049bda-35ce-4cd1-be80-74be3b8fefee")
-		)
-		(pin "5"
-			(uuid "e8cf3add-0ec1-43b7-9b9f-15c4ce5c4a9d")
-		)
-		(pin "6"
-			(uuid "4aebaaa2-558d-46a6-bab8-1340f35bb2ac")
-		)
-		(pin "12"
-			(uuid "2b57f0b5-b579-4560-a465-393289b46c6e")
-		)
-		(pin "2"
-			(uuid "a35ed24c-f5e9-4494-9e0e-c764d4bf806e")
-		)
-		(pin "9"
-			(uuid "153ed08b-8782-453d-8abf-34b318c790c0")
-		)
-		(pin "11"
-			(uuid "65ac1295-6f75-4897-a436-220a966aa0bd")
-		)
-		(pin "1"
-			(uuid "2da3795e-3d38-453d-9248-1954917491ae")
-		)
-		(pin "10"
-			(uuid "39d49bcf-89f5-43d2-99a7-63691467a0e7")
-		)
-		(pin "7"
-			(uuid "f6268596-21b1-473c-b723-a03b96a435ae")
-		)
-		(pin "3"
-			(uuid "6e7c1456-8d15-45b1-b24a-c69ac323a234")
-		)
-		(pin "13"
-			(uuid "b669e27c-9529-4cea-b851-c4b4b10a89ba")
-		)
-		(pin "8"
-			(uuid "d4a45276-c94e-4634-bfff-75f14093283b")
-		)
-		(instances
-			(project "Diseño esquematico Garra"
-				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "ESP32-CAM1")
 					(unit 1)
 				)
 			)
@@ -7889,82 +7109,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:Screw_Terminal_01x04")
-		(at 44.45 40.64 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "7d57c316-df0e-4a45-ab6f-461ed2928e64")
-		(property "Reference" "Bornier_ESP32"
-			(at 46.99 40.6399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Screw_Terminal_01x04"
-			(at 46.99 43.1799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "ProyectoTdL:TerminalBlock_bornier-4_P5.08mm"
-			(at 44.45 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 44.45 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic screw terminal, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 44.45 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "6084a08b-314b-4a45-8ab3-656d0bac0103")
-		)
-		(pin "1"
-			(uuid "bdb88b6b-7838-462a-a7de-800c1558a2df")
-		)
-		(pin "4"
-			(uuid "93eb53fc-cee0-4a6b-b290-f0f01bdff463")
-		)
-		(pin "3"
-			(uuid "99cea5d8-c823-4bd6-a553-6cf530017f47")
-		)
-		(instances
-			(project "Diseño esquematico Garra"
-				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Bornier_ESP32")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:Screw_Terminal_01x03")
 		(at 44.45 80.01 0)
 		(unit 1)
@@ -8032,6 +7176,76 @@
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
 					(reference "Bornier_Servo1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x02")
+		(at 44.45 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e57998f8-ab5c-4608-9672-faab1e22424f")
+		(property "Reference" "Bornier_EDU-CIAA_to_ESP32"
+			(at 46.99 40.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Screw_Terminal_01x05"
+			(at 46.99 43.1799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "ProyectoTdL:TerminalBlock_bornier-2_P5.08mm"
+			(at 44.45 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 44.45 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 44.45 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "d43b44f5-e260-42dc-b695-003f9b6bda48")
+		)
+		(pin "1"
+			(uuid "f490246e-ae5d-456f-bcc3-0ff37cd07b05")
+		)
+		(instances
+			(project "Diseño esquematico Garra"
+				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
+					(reference "Bornier_EDU-CIAA_to_ESP32")
 					(unit 1)
 				)
 			)
@@ -8361,6 +7575,48 @@
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
 					(reference "Bornier_Nema17_2")
 					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet
+		(at 3.81 -116.84)
+		(size 39.37 36.83)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "dc254582-8718-45aa-925a-e29d982f97f0")
+		(property "Sheetname" "Esp32"
+			(at 3.81 -117.5516 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Esp32 (page2).kicad_sch"
+			(at 3.81 -79.4254 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Diseño esquematico Garra"
+				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
+					(page "2")
 				)
 			)
 		)
