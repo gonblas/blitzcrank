@@ -1,0 +1,47 @@
+# Estilo base y tabs
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+UseTab: Always
+
+# Llaves en la misma línea
+BraceWrapping:
+  AfterClass: false
+  AfterFunction: false
+  AfterControlStatement: false
+  BeforeElse: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+
+# Espacios y alineaciones
+SpacesBeforeTrailingComments: 1
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+
+# Líneas y operadores
+ColumnLimit: 50
+BreakBeforeBinaryOperators: BeforeAdditive
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# Punteros
+PointerAlignment: Left
+DerivePointerAlignment: false
+
+# Switch
+IndentCaseLabels: false
+
+# Comentarios
+ReflowComments: true
+
+# Espacios específicos
+SpaceBeforeParens: Never             # No espacio entre if/for/while y ()
+SpaceBeforeFunctionCallParen: false  # No espacio entre nombre de función y paréntesis
+SpaceAfterCStyleCast: true           # Espacio después de casteo
+
+# If y loops cortos
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+
+# Preprocesador
+IndentPPDirectives: BeforeHash       # Indentar directivas entre sí
+PPIndentWidth: 4
