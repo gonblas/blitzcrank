@@ -4118,6 +4118,18 @@
 		)
 	)
 	(no_connect
+		(at 81.28 97.79)
+		(uuid "0016c2cf-e8fc-48e3-bfc5-5887905bbe4f")
+	)
+	(no_connect
+		(at 81.28 95.25)
+		(uuid "18830424-e8bc-44bb-a442-f071684c835c")
+	)
+	(no_connect
+		(at 81.28 100.33)
+		(uuid "27054b9e-e08b-43c3-aec1-45b7d33fc24a")
+	)
+	(no_connect
 		(at 81.28 77.47)
 		(uuid "a1709f59-ad6f-42bd-bfa4-73f0dede29b2")
 	)
@@ -4331,6 +4343,16 @@
 	)
 	(wire
 		(pts
+			(xy 34.29 100.33) (xy 39.37 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f3ee018-180a-4402-9df9-e54fa3e1efe4")
+	)
+	(wire
+		(pts
 			(xy 72.39 162.56) (xy 67.31 162.56)
 		)
 		(stroke
@@ -4361,6 +4383,16 @@
 	)
 	(wire
 		(pts
+			(xy 34.29 97.79) (xy 39.37 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60b9e2b7-df03-47cc-be60-4ce13831d221")
+	)
+	(wire
+		(pts
 			(xy 140.97 78.74) (xy 140.97 80.01)
 		)
 		(stroke
@@ -4388,6 +4420,16 @@
 			(type default)
 		)
 		(uuid "6b114bb1-79c5-48ef-aa8b-4a3adb142907")
+	)
+	(wire
+		(pts
+			(xy 34.29 95.25) (xy 39.37 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e7b0eb2-67cf-4bea-9312-d8f561791be7")
 	)
 	(wire
 		(pts
@@ -4778,16 +4820,6 @@
 			(type default)
 		)
 		(uuid "fff69f6d-8f2d-4f96-b167-528f37ecfdcf")
-	)
-	(label "1"
-		(at 260.35 185.42 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a9263588-3a59-4cfe-8c28-faf6a0beec92")
 	)
 	(global_label "GND"
 		(shape input)
@@ -5375,7 +5407,7 @@
 			)
 		)
 	)
-	(global_label "5VL"
+	(global_label "5V"
 		(shape input)
 		(at 34.29 82.55 180)
 		(effects
@@ -5555,6 +5587,26 @@
 			)
 		)
 	)
+	(global_label "TFIL3"
+		(shape input)
+		(at 34.29 97.79 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7792ecb0-0896-4113-a5d4-973906eed106")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 34.29 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "STEP2"
 		(shape output)
 		(at 72.39 162.56 0)
@@ -5667,6 +5719,26 @@
 		(uuid "7e8591ba-7812-4940-b53a-1ba4b61e7a4f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 245.11 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "5V"
+		(shape input)
+		(at 34.29 100.33 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "84fec673-2c9a-48ec-af78-814566f42447")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 34.29 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6089,6 +6161,26 @@
 		(uuid "c14f1edc-fe81-4196-970d-b1a8679afb3e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 34.29 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape output)
+		(at 34.29 95.25 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c5810913-3d11-4737-b4ac-26cc82a508f8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 34.29 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7045,8 +7137,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6d8893ec-98a6-400b-8bfa-f03f629fe1d0")
-		(property "Reference" "Motor_Servo1"
-			(at 97.79 78.3065 0)
+		(property "Reference" "Motor_Servo_Z"
+			(at 97.79 78.3068 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7055,7 +7147,7 @@
 			)
 		)
 		(property "Value" "Motor_Servo"
-			(at 97.79 80.8465 0)
+			(at 97.79 80.8468 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7102,7 +7194,153 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Motor_Servo1")
+					(reference "Motor_Servo_Z")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motor:Motor_Servo")
+		(at 88.9 97.79 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "770da9f8-e06d-4096-8b0b-ac33680026bf")
+		(property "Reference" "Motor_Servo_Garra"
+			(at 97.79 96.0868 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Motor_Servo"
+			(at 97.79 98.6268 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 88.9 102.616 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://forums.parallax.com/uploads/attachments/46831/74481.png"
+			(at 88.9 102.616 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Servo Motor (Futaba, HiTec, JR connector)"
+			(at 88.9 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "edecf3bd-3cae-475c-af9c-4dbcab35b725")
+		)
+		(pin "3"
+			(uuid "e03fd8ba-2dd5-4778-9220-2f23244a5366")
+		)
+		(pin "2"
+			(uuid "61ac06d4-a3b2-48c8-9ce7-94fe812789b8")
+		)
+		(instances
+			(project "Diseño esquematico Garra"
+				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
+					(reference "Motor_Servo_Garra")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x03")
+		(at 44.45 97.79 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a17f7c1a-8500-4b40-9bee-5fecc9cd360e")
+		(property "Reference" "Bornier_Servo2"
+			(at 46.99 96.5199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Screw_Terminal_01x03"
+			(at 46.99 99.0599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "ProyectoTdL:TerminalBlock_bornier-3_P5.08mm"
+			(at 44.45 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 44.45 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic screw terminal, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 44.45 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "afdacebb-8b08-43af-9d74-7d98f7782458")
+		)
+		(pin "3"
+			(uuid "84b82028-d292-46ab-921e-2874e0f42229")
+		)
+		(pin "2"
+			(uuid "6e81afe1-bbc8-446d-a089-f3f2780d10aa")
+		)
+		(instances
+			(project "Diseño esquematico Garra"
+				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
+					(reference "Bornier_Servo2")
 					(unit 1)
 				)
 			)
