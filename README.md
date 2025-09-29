@@ -24,32 +24,37 @@ Más allá de su valor como ejercicio técnico, el prototipo puede servir como b
 ```
 Blitzcrank/
 │
-├── build/          # Archivos de compilación
-├── docs/           # Documentación y diagramas del proyecto
-├── firmware/       # Firmware del sistema
-│ ├── debug/        # Compilaciones de depuración
-│ ├── release/      # Compilaciones de lanzamiento
-│ ├── src/          # Código fuente del firmware
-│ │ ├── app/        # Código específico de la aplicación
-│ │ ├── drivers/    # Drivers de hardware
-│ │ ├── lib/        # Librerías externas
-│ │ ├── startup/    # CMSIS, linker y reset handler
-│ │ ├── main.c      # Función principal
-│ │ └── board.h     # Definiciones de la PCB
-│ │
-│ └── test/         # Código de pruebas del firmware
+├── build/                 # Archivos de compilación
+├── docs/                  # Documentación y diagramas del proyecto
+├── firmware/              # Firmware del sistema
+│   ├── debug/             # Compilaciones de depuración
+│   ├── release/           # Compilaciones de lanzamiento
+│   ├── src/               # Código fuente del firmware
+│   │   ├── app/           # Código específico de la aplicación
+│   │   ├── drivers/       # Drivers de hardware
+│   │   ├── lib/           # Librerías externas
+│   │   ├── startup/       # CMSIS, linker y reset handler
+│   │   ├── main.c         # Función principal
+│   │   └── board.h        # Definiciones de la PCB
+│   │
+│   └── test/              # Código de pruebas del firmware
 │
-├── hardware/       # Diseños de PCB
-│ └── Rev0.01/      # Primera revisión de la placa
+├── hardware/              # Diseños de PCB
+│   └── Rev0.01/           # Primera revisión de la placa
 │
-├── datasheets/     # Datasheets de los componentes utilizados
-├── tools/          # Herramientas auxiliares
+├── resources/             # Documentación técnica y de apoyo
+│   ├── datasheets/        # Datasheets de los componentes utilizados
+│   ├── schematics/        # Esquemas de conexión, wiring y diagramas eléctricos
+│   ├── manuals/           # Manuales de módulos, sensores, devkits, etc.
+│   └── notes/             # Apuntes técnicos, application notes, cálculos útiles
 │
-├── .clang-format   # Configuración de estilo de código
-├── .gitignore      # Archivos ignorados por Git
-├── LICENSE         # Licencia del proyecto
-├── Makefile        # Script de construcción
-└── README.md       # Archivo actual
+├── tools/                 # Herramientas auxiliares
+│
+├── .clang-format          # Configuración de estilo de código
+├── .gitignore             # Archivos ignorados por Git
+├── LICENSE                # Licencia del proyecto
+├── Makefile               # Script de construcción
+└── README.md              # Archivo actual
 ```
 
 Para ver las convenciones de nombres y estilo de código, consultar [STYLE_GUIDE.md](./STYLE_GUIDE.md)
