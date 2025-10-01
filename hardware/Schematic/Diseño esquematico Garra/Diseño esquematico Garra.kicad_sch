@@ -6837,6 +6837,16 @@
 	)
 	(wire
 		(pts
+			(xy 185.42 115.57) (xy 187.96 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46cc52b0-91c6-4750-8aa6-75b2ceba8fd5")
+	)
+	(wire
+		(pts
 			(xy 236.22 113.03) (xy 241.3 113.03)
 		)
 		(stroke
@@ -7247,6 +7257,16 @@
 	)
 	(wire
 		(pts
+			(xy 182.88 127) (xy 187.96 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b284c501-0f7a-4f6f-a2df-c3263afcaa29")
+	)
+	(wire
+		(pts
 			(xy 236.22 48.26) (xy 241.3 48.26)
 		)
 		(stroke
@@ -7417,6 +7437,16 @@
 	)
 	(wire
 		(pts
+			(xy 182.88 124.46) (xy 187.96 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d1dd6f35-8dae-4c13-8131-98f107448a75")
+	)
+	(wire
+		(pts
 			(xy 182.88 132.08) (xy 187.96 132.08)
 		)
 		(stroke
@@ -7454,6 +7484,16 @@
 			(type default)
 		)
 		(uuid "de89851d-a838-4a17-9509-6eb755384a55")
+	)
+	(wire
+		(pts
+			(xy 185.42 118.11) (xy 187.96 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e768b13b-9279-4a5c-8bc3-3a50d4404204")
 	)
 	(wire
 		(pts
@@ -7657,7 +7697,7 @@
 			)
 		)
 	)
-	(global_label "VCC_Stick"
+	(global_label "5VR"
 		(shape output)
 		(at 271.78 35.56 0)
 		(fields_autoplaced yes)
@@ -7669,7 +7709,7 @@
 		)
 		(uuid "07c5cd52-8a47-4ef1-9291-53d35c213ded")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 284.0181 35.56 0)
+			(at 278.3333 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8446,6 +8486,28 @@
 			)
 		)
 	)
+	(global_label "FC2"
+		(shape input)
+		(at 185.42 118.11 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5059a35f-3c57-4499-8850-10f9a17dd106")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 178.8667 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "GND"
 		(shape input)
 		(at 271.78 68.58 0)
@@ -8923,6 +8985,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "FC1"
+		(shape input)
+		(at 185.42 115.57 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8b24e36d-b688-414e-9414-f4e4904f7666")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 178.8667 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -9733,6 +9817,26 @@
 			)
 		)
 	)
+	(global_label "VRY"
+		(shape input)
+		(at 182.88 127 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "eb38f75d-b91b-42c9-babe-5c1f6182c242")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 182.88 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "3V3L"
 		(shape output)
 		(at 236.22 100.33 180)
@@ -9888,6 +9992,26 @@
 		(uuid "fd4a9b08-f010-4d8b-a9e9-e0deeae9ab0c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 271.78 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "VRX"
+		(shape input)
+		(at 182.88 124.46 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ffd4224e-378a-46ab-929f-97c68dab906a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 182.88 124.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11144,6 +11268,77 @@
 		)
 	)
 	(symbol
+		(lib_name "Screw_Terminal_01x02_1")
+		(lib_id "Connector:Screw_Terminal_01x02")
+		(at 193.04 124.46 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7295a0f4-f5fe-4e80-b065-a5b81e48cd11")
+		(property "Reference" "Pin_Buttons_2"
+			(at 195.58 124.4599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Pin_Terminal_01x05"
+			(at 195.58 126.9999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "ProyectoTdL:TerminalBlock_bornier-2_P5.08mm"
+			(at 193.294 119.126 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 194.564 129.032 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 193.548 130.048 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "eadcef4c-8d17-4f41-a1a9-089121e0ef02")
+		)
+		(pin "1"
+			(uuid "4273351f-ef47-49c9-91f2-f023b7b6839f")
+		)
+		(instances
+			(project "Diseño esquematico Garra"
+				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
+					(reference "Pin_Buttons_2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Motor:Motor_Servo")
 		(at 82.55 187.96 0)
 		(unit 1)
@@ -11227,7 +11422,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9c180db6-36b0-4ad0-8258-a07a93ca56b5")
-		(property "Reference" "Pin_Buttons_Potentiometer"
+		(property "Reference" "Pin_Buttons_1"
 			(at 195.58 133.3499 0)
 			(effects
 				(font
@@ -11284,7 +11479,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Pin_Buttons_Potentiometer")
+					(reference "Pin_Buttons_1")
 					(unit 1)
 				)
 			)
@@ -11434,6 +11629,76 @@
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
 					(reference "Motor_Stepper")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Screw_Terminal_01x02")
+		(at 193.04 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cd74eeff-71b6-4711-83e1-23a857a3b779")
+		(property "Reference" "Bornier_Fin_carrera"
+			(at 195.58 115.5699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Screw_Terminal_01x02"
+			(at 195.58 118.1099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "ProyectoTdL:TerminalBlock_bornier-2_P5.08mm"
+			(at 193.04 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 193.04 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 193.04 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "603aefa2-ed88-4940-be63-37b35efe9bb5")
+		)
+		(pin "1"
+			(uuid "9321b943-2e30-4b9f-b6a5-4df8904e1fd1")
+		)
+		(instances
+			(project "Diseño esquematico Garra"
+				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
+					(reference "Bornier_Fin_carrera")
 					(unit 1)
 				)
 			)
