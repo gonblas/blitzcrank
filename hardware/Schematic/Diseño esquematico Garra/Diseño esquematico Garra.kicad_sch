@@ -6637,7 +6637,7 @@
 	)
 	(wire
 		(pts
-			(xy 237.49 20.32) (xy 242.57 20.32)
+			(xy 81.28 175.26) (xy 86.36 175.26)
 		)
 		(stroke
 			(width 0)
@@ -6707,7 +6707,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 177.8) (xy 132.08 177.8)
+			(xy 138.43 175.26) (xy 132.08 175.26)
 		)
 		(stroke
 			(width 0)
@@ -6877,7 +6877,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 182.88) (xy 132.08 182.88)
+			(xy 138.43 180.34) (xy 132.08 180.34)
 		)
 		(stroke
 			(width 0)
@@ -7457,7 +7457,7 @@
 	)
 	(wire
 		(pts
-			(xy 237.49 22.86) (xy 242.57 22.86)
+			(xy 81.28 177.8) (xy 86.36 177.8)
 		)
 		(stroke
 			(width 0)
@@ -7635,9 +7635,9 @@
 		)
 		(uuid "fe651902-c253-4ba5-967f-64ad0d4042aa")
 	)
-	(global_label "B1"
+	(global_label "B_UP"
 		(shape output)
-		(at 276.86 146.05 180)
+		(at 279.4 146.05 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7646,7 +7646,7 @@
 		)
 		(uuid "01ac7480-f7e7-4ead-8a3d-602afdd93333")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 276.86 146.05 0)
+			(at 279.4 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7844,7 +7844,7 @@
 	)
 	(global_label "RS232_TX"
 		(shape output)
-		(at 237.49 22.86 180)
+		(at 81.28 177.8 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7853,7 +7853,7 @@
 		)
 		(uuid "1114c053-4d68-4220-8aa9-c7185b3bd73d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 237.49 22.86 0)
+			(at 81.28 177.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7862,9 +7862,9 @@
 			)
 		)
 	)
-	(global_label "B2"
+	(global_label "B_DWN"
 		(shape output)
-		(at 276.86 143.51 180)
+		(at 280.67 143.51 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7873,7 +7873,7 @@
 		)
 		(uuid "119563cf-43f1-4df6-a9ce-c19c16bdc02f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 276.86 143.51 0)
+			(at 280.67 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8085,7 +8085,7 @@
 	)
 	(global_label "RS232_RX"
 		(shape input)
-		(at 237.49 20.32 180)
+		(at 81.28 175.26 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8094,7 +8094,7 @@
 		)
 		(uuid "2e25cbe2-ca89-416e-827d-678d209be9bf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 237.49 20.32 0)
+			(at 81.28 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8448,7 +8448,7 @@
 	)
 	(global_label "GND"
 		(shape input)
-		(at 153.67 119.38 90)
+		(at 153.67 116.84 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8457,7 +8457,7 @@
 		)
 		(uuid "48ace4d1-232b-4245-a9ab-896d584e243f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 153.67 119.38 90)
+			(at 153.67 116.84 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8670,7 +8670,7 @@
 	)
 	(global_label "5V"
 		(shape input)
-		(at 153.67 190.5 270)
+		(at 153.67 187.96 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8679,7 +8679,7 @@
 		)
 		(uuid "69fd745e-1719-4a27-b7e7-7b10b08b64b4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 153.67 190.5 90)
+			(at 153.67 187.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9294,7 +9294,7 @@
 	)
 	(global_label "TXDO{slash}IO1"
 		(shape input)
-		(at 120.65 182.88 0)
+		(at 120.65 180.34 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9303,7 +9303,7 @@
 		)
 		(uuid "a9b64c79-828e-4195-9510-424d1c3546c3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 120.65 182.88 0)
+			(at 120.65 180.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9759,7 +9759,7 @@
 	)
 	(global_label "RXD0{slash}IO3"
 		(shape output)
-		(at 120.65 177.8 0)
+		(at 120.65 175.26 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9768,7 +9768,7 @@
 		)
 		(uuid "dbb89f70-0692-4dcf-8031-aabea4b2472f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 120.65 177.8 0)
+			(at 120.65 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10791,7 +10791,7 @@
 	)
 	(symbol
 		(lib_id "RF_Module:ESP32-WROOM-32")
-		(at 153.67 154.94 180)
+		(at 153.67 152.4 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10799,7 +10799,7 @@
 		(dnp no)
 		(uuid "49f8d56c-cb60-4908-b3ce-68479a88c650")
 		(property "Reference" "U2"
-			(at 173.482 194.056 0)
+			(at 173.482 191.516 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10809,7 +10809,7 @@
 			)
 		)
 		(property "Value" "ESP32-WROOM-32"
-			(at 174.244 190.5 0)
+			(at 174.244 187.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10818,7 +10818,7 @@
 			)
 		)
 		(property "Footprint" "RF_Module:ESP32-WROOM-32"
-			(at 153.67 116.84 0)
+			(at 153.67 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10827,7 +10827,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf"
-			(at 161.29 156.21 0)
+			(at 161.29 153.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10836,7 +10836,7 @@
 			)
 		)
 		(property "Description" "RF Module, ESP32-D0WDQ6 SoC, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, onboard antenna, SMD"
-			(at 153.67 154.94 0)
+			(at 153.67 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11807,7 +11807,7 @@
 	(symbol
 		(lib_name "Screw_Terminal_01x02_1")
 		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 247.65 20.32 0)
+		(at 91.44 175.26 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11816,7 +11816,7 @@
 		(fields_autoplaced yes)
 		(uuid "e57998f8-ab5c-4608-9672-faab1e22424f")
 		(property "Reference" "Pin_EDU-CIAA_to_ESP32"
-			(at 250.19 20.3199 0)
+			(at 93.98 175.2599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11825,7 +11825,7 @@
 			)
 		)
 		(property "Value" "Pin_Terminal_01x05"
-			(at 250.19 22.8599 0)
+			(at 93.98 177.7999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11834,7 +11834,7 @@
 			)
 		)
 		(property "Footprint" "ProyectoTdL:TerminalBlock_bornier-2_P5.08mm"
-			(at 247.904 14.986 0)
+			(at 91.694 169.926 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11843,7 +11843,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 249.174 24.892 0)
+			(at 92.964 179.832 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11852,7 +11852,7 @@
 			)
 		)
 		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 248.158 25.908 0)
+			(at 91.948 180.848 0)
 			(effects
 				(font
 					(size 1.27 1.27)
