@@ -1380,7 +1380,7 @@
       "workbook_filename": ""
     },
     "page_layout_descr_file": "Diseño esquematico Garra",
-    "plot_directory": "/home/manuel/Documents/Facultad/blitzcrank/Archivos/PDFs/",
+    "plot_directory": "/home/manuel/Documents/Facultad/blitzcrank/resources/schematics/",
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
