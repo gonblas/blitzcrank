@@ -1251,998 +1251,11 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Motor:Motor_Servo"
-			(pin_names
-				(offset 0.0254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "M"
-				(at -5.08 4.445 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "Motor_Servo"
-				(at -5.08 -4.064 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 -4.826 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://forums.parallax.com/uploads/attachments/46831/74481.png"
-				(at 0 -4.826 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Servo Motor (Futaba, HiTec, JR connector)"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "Servo Motor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "PinHeader*P2.54mm*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Motor_Servo_0_1"
-				(polyline
-					(pts
-						(xy 2.413 1.778) (xy 1.905 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.413 1.778) (xy 2.286 1.397)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.413 -1.778) (xy 2.032 -1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.413 -1.778) (xy 2.286 -1.397)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 2.413 -1.778)
-					(mid 1.2406 0)
-					(end 2.413 1.778)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 3.175 0)
-					(radius 0.1778)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 3.175 0)
-					(radius 1.4224)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.08 3.556) (xy -5.08 3.556) (xy -5.08 -3.556) (xy 6.35 -3.556) (xy 6.35 1.524)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 5.969 2.794)
-					(radius 0.127)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 6.35 4.445) (xy 2.54 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 6.477 3.302)
-					(radius 0.127)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 6.35 4.445)
-					(mid 7.4487 4.2737)
-					(end 7.62 3.175)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 6.985 3.81)
-					(radius 0.127)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 7.62 3.175) (xy 4.191 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Motor_Servo_1_1"
-				(pin passive line
-					(at -7.62 2.54 0)
-					(length 2.54)
-					(name "PWM"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 0 0)
-					(length 2.54)
-					(name "+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 -2.54 0)
-					(length 2.54)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Motor_Servo_1"
-			(pin_names
-				(offset 0.0254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Motor_DC_Eje_Z"
-				(at 7.62 1.3971 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "Motor_Titan_Dc"
-				(at 7.62 -1.1429 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 -4.826 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://forums.parallax.com/uploads/attachments/46831/74481.png"
-				(at 0 -4.826 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Servo Motor (Futaba, HiTec, JR connector)"
-				(at 2.54 -8.382 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "Servo Motor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "PinHeader*P2.54mm*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Motor_Servo_1_0_1"
-				(polyline
-					(pts
-						(xy 2.413 1.778) (xy 1.905 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.413 1.778) (xy 2.286 1.397)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.413 -1.778) (xy 2.032 -1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.413 -1.778) (xy 2.286 -1.397)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 2.413 -1.778)
-					(mid 1.2406 0)
-					(end 2.413 1.778)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 3.175 0)
-					(radius 0.1778)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 3.175 0)
-					(radius 1.4224)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 6.35 3.81) (xy -5.08 3.81) (xy -5.08 -3.556) (xy 6.35 -3.556) (xy 6.35 3.81)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Motor_Servo_1_1_1"
-				(pin passive line
-					(at -7.62 2.54 0)
-					(length 2.54)
-					(name "+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 -2.54 0)
-					(length 2.54)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Motor_Servo_2"
-			(pin_names
-				(offset 0.0254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Motor_Stepper"
-				(at -5.842 -6.096 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "Motor_Nema17_2"
-				(at -5.842 -8.636 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 -4.826 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://forums.parallax.com/uploads/attachments/46831/74481.png"
-				(at 0 -4.826 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Servo Motor (Futaba, HiTec, JR connector)"
-				(at 0.254 -12.192 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "Servo Motor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "PinHeader*P2.54mm*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Motor_Servo_2_0_1"
-				(bezier
-					(pts
-						(xy -2.54 6.35) (xy -3.81 5.08) (xy 2.54 5.08) (xy 3.81 6.35)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 6.35) (xy -3.048 6.35)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 6.35) (xy -2.667 5.969)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 8.89) (xy -1.27 8.89) (xy -1.27 3.81) (xy 2.54 3.81) (xy 2.54 8.89)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 6.35) (xy 3.429 6.223)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 6.35) (xy 3.81 5.969)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 6.35 3.81) (xy -5.08 3.81) (xy -5.08 -3.556) (xy 6.35 -3.556) (xy 6.35 3.81)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Motor_Servo_2_1_1"
-				(polyline
-					(pts
-						(xy 5.08 11.43) (xy -3.81 11.43) (xy -3.81 8.89) (xy 5.08 8.89) (xy 5.08 11.43)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -7.62 2.54 0)
-					(length 2.54)
-					(name "A1_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 -2.54 0)
-					(length 2.54)
-					(name "A2_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 8.89 2.54 180)
-					(length 2.54)
-					(name "B1_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 8.89 -2.54 180)
-					(length 2.54)
-					(name "B2_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Motor_Servo_3"
-			(pin_names
-				(offset 0.0254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Motor_Stepper"
-				(at -5.842 -6.096 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "Motor_Nema17_1"
-				(at -5.842 -8.636 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 -4.826 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://forums.parallax.com/uploads/attachments/46831/74481.png"
-				(at 0 -4.826 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Servo Motor (Futaba, HiTec, JR connector)"
-				(at 0.254 -12.192 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "Servo Motor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "PinHeader*P2.54mm*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Motor_Servo_3_0_1"
-				(bezier
-					(pts
-						(xy -2.54 6.35) (xy -3.81 5.08) (xy 2.54 5.08) (xy 3.81 6.35)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 6.35) (xy -3.048 6.35)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 6.35) (xy -2.667 5.969)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 8.89) (xy -1.27 8.89) (xy -1.27 3.81) (xy 2.54 3.81) (xy 2.54 8.89)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 6.35) (xy 3.429 6.223)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.81 6.35) (xy 3.81 5.969)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 6.35 3.81) (xy -5.08 3.81) (xy -5.08 -3.556) (xy 6.35 -3.556) (xy 6.35 3.81)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Motor_Servo_3_1_1"
-				(polyline
-					(pts
-						(xy 5.08 11.43) (xy -3.81 11.43) (xy -3.81 8.89) (xy 5.08 8.89) (xy 5.08 11.43)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -7.62 2.54 0)
-					(length 2.54)
-					(name "A1_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -7.62 -2.54 0)
-					(length 2.54)
-					(name "A2_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 8.89 2.54 180)
-					(length 2.54)
-					(name "B1_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 8.89 -2.54 180)
-					(length 2.54)
-					(name "B2_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Pololu_Breakout_DRV8825_1"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "DRV8833"
+			(property "Reference" "DRV?"
 				(at 0 17.78 0)
 				(effects
 					(font
@@ -2250,7 +1263,7 @@
 					)
 				)
 			)
-			(property "Value" "Pololu_Breakout_DRV8833"
+			(property "Value" "Breakout_DRV8833"
 				(at 0 15.24 0)
 				(effects
 					(font
@@ -2364,7 +1377,7 @@
 							)
 						)
 					)
-					(number "7"
+					(number "9"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2382,7 +1395,7 @@
 							)
 						)
 					)
-					(number "8"
+					(number "10"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2400,7 +1413,7 @@
 							)
 						)
 					)
-					(number "7"
+					(number "11"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2418,7 +1431,7 @@
 							)
 						)
 					)
-					(number "8"
+					(number "12"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2508,7 +1521,7 @@
 							)
 						)
 					)
-					(number "7"
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2526,7 +1539,7 @@
 							)
 						)
 					)
-					(number "8"
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5201,796 +4214,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "RF_Module:ESP32-WROOM-32"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at -12.7 34.29 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "ESP32-WROOM-32"
-				(at 1.27 34.29 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "RF_Module:ESP32-WROOM-32"
-				(at 0 -38.1 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf"
-				(at -7.62 1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "RF Module, ESP32-D0WDQ6 SoC, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, onboard antenna, SMD"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "RF Radio BT ESP ESP32 Espressif onboard PCB antenna"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "ESP32?WROOM?32*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "ESP32-WROOM-32_0_1"
-				(rectangle
-					(start -12.7 33.02)
-					(end 12.7 -33.02)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "ESP32-WROOM-32_1_1"
-				(pin input line
-					(at -15.24 30.48 0)
-					(length 2.54)
-					(name "EN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -15.24 25.4 0)
-					(length 2.54)
-					(name "SENSOR_VP"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -15.24 22.86 0)
-					(length 2.54)
-					(name "SENSOR_VN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at -15.24 0 0)
-					(length 2.54)
-					(name "SDO/SD0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "21"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at -15.24 -2.54 0)
-					(length 2.54)
-					(name "SDI/SD1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "22"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at -15.24 -5.08 0)
-					(length 2.54)
-					(name "SHD/SD2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "17"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at -15.24 -7.62 0)
-					(length 2.54)
-					(name "SWP/SD3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "18"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at -15.24 -10.16 0)
-					(length 2.54)
-					(name "SCK/CLK"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "20"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at -15.24 -12.7 0)
-					(length 2.54)
-					(name "SCS/CMD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "19"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at -12.7 -27.94 0)
-					(length 2.54)
-					(hide yes)
-					(name "NC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "32"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 35.56 270)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -35.56 90)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -35.56 90)
-					(length 2.54)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "15"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -35.56 90)
-					(length 2.54)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "38"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -35.56 90)
-					(length 2.54)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "39"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 30.48 180)
-					(length 2.54)
-					(name "IO0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "25"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 27.94 180)
-					(length 2.54)
-					(name "TXD0/IO1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "35"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 25.4 180)
-					(length 2.54)
-					(name "IO2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "24"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 22.86 180)
-					(length 2.54)
-					(name "RXD0/IO3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "34"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 20.32 180)
-					(length 2.54)
-					(name "IO4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "26"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 17.78 180)
-					(length 2.54)
-					(name "IO5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "29"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 15.24 180)
-					(length 2.54)
-					(name "IO12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 12.7 180)
-					(length 2.54)
-					(name "IO13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "16"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 10.16 180)
-					(length 2.54)
-					(name "IO14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 7.62 180)
-					(length 2.54)
-					(name "IO15"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "23"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 5.08 180)
-					(length 2.54)
-					(name "IO16"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "27"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 2.54 180)
-					(length 2.54)
-					(name "IO17"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "28"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 0 180)
-					(length 2.54)
-					(name "IO18"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "30"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -2.54 180)
-					(length 2.54)
-					(name "IO19"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "31"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -5.08 180)
-					(length 2.54)
-					(name "IO21"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "33"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -7.62 180)
-					(length 2.54)
-					(name "IO22"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "36"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -10.16 180)
-					(length 2.54)
-					(name "IO23"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "37"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -12.7 180)
-					(length 2.54)
-					(name "IO25"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -15.24 180)
-					(length 2.54)
-					(name "IO26"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "11"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -17.78 180)
-					(length 2.54)
-					(name "IO27"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -20.32 180)
-					(length 2.54)
-					(name "IO32"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -22.86 180)
-					(length 2.54)
-					(name "IO33"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 15.24 -25.4 180)
-					(length 2.54)
-					(name "IO34"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 15.24 -27.94 180)
-					(length 2.54)
-					(name "IO35"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Screw_Terminal_01x02_1"
 			(pin_names
 				(offset 1.016)
@@ -6308,332 +4531,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "edu-ciaa-nxp:CONN_2"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Alimentacion_EDU-CIAA"
-				(at 0 6.35 0)
-				(effects
-					(font
-						(size 1.016 1.016)
-					)
-				)
-			)
-			(property "Value" "WM4200-ND"
-				(at 0 -6.35 0)
-				(effects
-					(font
-						(size 1.016 1.016)
-					)
-				)
-			)
-			(property "Footprint" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "022232021_sd.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Descripción" "CONN HEADER 2POS .100 VERT TIN"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "Fabricante" "Molex Inc"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "Nro de parte" "0022232021"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "Path datasheet" "..PCB/EDU-NXP/Datasheet"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "Digikey" "WM4200-ND"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "CONN_2_0_1"
-				(rectangle
-					(start -2.54 3.81)
-					(end 2.54 -3.81)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "CONN_2_1_1"
-				(pin passive inverted
-					(at -8.89 2.54 0)
-					(length 6.35)
-					(name "P1"
-						(effects
-							(font
-								(size 1.524 1.524)
-							)
-						)
-					)
-					(number "GND"
-						(effects
-							(font
-								(size 1.524 1.524)
-							)
-						)
-					)
-				)
-				(pin passive inverted
-					(at -8.89 -2.54 0)
-					(length 6.35)
-					(name "PM"
-						(effects
-							(font
-								(size 1.524 1.524)
-							)
-						)
-					)
-					(number "5V"
-						(effects
-							(font
-								(size 1.524 1.524)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "edu-ciaa-nxp:GND"
-			(power)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 0.762 0.762)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "GND"
-				(at 0 -1.778 0)
-				(effects
-					(font
-						(size 0.762 0.762)
-					)
-					(hide yes)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "GND_0_1"
-				(polyline
-					(pts
-						(xy -1.27 0) (xy 0 -1.27) (xy 1.27 0) (xy -1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 0.762 0.762)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.762 0.762)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "edu-ciaa-nxp:PWR_FLAG"
-			(power)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#FLG"
-				(at 0 2.413 0)
-				(effects
-					(font
-						(size 0.762 0.762)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "PWR_FLAG"
-				(at 0 4.572 0)
-				(effects
-					(font
-						(size 0.762 0.762)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "PWR_FLAG_0_0"
-				(pin power_out line
-					(at 0 0 90)
-					(length 0)
-					(name "pwr"
-						(effects
-							(font
-								(size 0.508 0.508)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 0.508 0.508)
-							)
-						)
-					)
-				)
-			)
-			(symbol "PWR_FLAG_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 1.27) (xy -1.905 2.54) (xy 0 3.81) (xy 1.905 2.54) (xy 0 1.27)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:+3.3V"
 			(power)
 			(pin_numbers
@@ -6862,12 +4759,6 @@
 		)
 	)
 	(junction
-		(at 213.36 149.86)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2bb54345-0502-4dea-9ccc-538dc1e239b6")
-	)
-	(junction
 		(at 80.01 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6878,30 +4769,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e0c7c050-7f6e-45fe-8f8f-f7ca4bc83ee5")
-	)
-	(no_connect
-		(at 74.93 187.96)
-		(uuid "0016c2cf-e8fc-48e3-bfc5-5887905bbe4f")
-	)
-	(no_connect
-		(at 74.93 185.42)
-		(uuid "18830424-e8bc-44bb-a442-f071684c835c")
-	)
-	(no_connect
-		(at 185.42 62.23)
-		(uuid "1f77bf24-61c4-44cc-b909-0e43ae06c9b6")
-	)
-	(no_connect
-		(at 74.93 190.5)
-		(uuid "27054b9e-e08b-43c3-aec1-45b7d33fc24a")
-	)
-	(no_connect
-		(at 185.42 64.77)
-		(uuid "adc219ee-19ea-4e87-9aca-8f8bf6a32530")
-	)
-	(no_connect
-		(at 185.42 59.69)
-		(uuid "aeab66e9-d783-4088-8d78-42243c66472b")
 	)
 	(wire
 		(pts
@@ -6965,16 +4832,6 @@
 	)
 	(wire
 		(pts
-			(xy 214.63 149.86) (xy 213.36 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0f80e23b-2511-4ab2-851c-52d29a5e5598")
-	)
-	(wire
-		(pts
 			(xy 236.22 76.2) (xy 241.3 76.2)
 		)
 		(stroke
@@ -7012,16 +4869,6 @@
 			(type default)
 		)
 		(uuid "1b210d57-97c0-4643-80c3-5181c4ed78b8")
-	)
-	(wire
-		(pts
-			(xy 138.43 175.26) (xy 132.08 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1bbdc1d9-a8c4-40a8-939f-58a9ddb2b2d3")
 	)
 	(wire
 		(pts
@@ -7145,26 +4992,6 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 180.34) (xy 132.08 180.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "55a49467-0f70-41f4-a4e8-ec93280fd4f6")
-	)
-	(wire
-		(pts
-			(xy 213.36 156.21) (xy 213.36 161.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "55bf4523-2b82-47ed-a7e7-bcd47c5595b5")
-	)
-	(wire
-		(pts
 			(xy 72.39 67.31) (xy 74.93 67.31)
 		)
 		(stroke
@@ -7212,16 +5039,6 @@
 			(type default)
 		)
 		(uuid "617985ee-dacd-44c6-9d50-063f3240c905")
-	)
-	(wire
-		(pts
-			(xy 213.36 148.59) (xy 213.36 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "67e7ecbb-70c1-4c3c-bea6-34ce8ba9c721")
 	)
 	(wire
 		(pts
@@ -7362,16 +5179,6 @@
 			(type default)
 		)
 		(uuid "8c074ae2-3b5b-4c75-889c-aef441875b67")
-	)
-	(wire
-		(pts
-			(xy 213.36 151.13) (xy 201.93 151.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "915a8228-eafa-47d0-a0fa-db22da54d05f")
 	)
 	(wire
 		(pts
@@ -7572,16 +5379,6 @@
 			(type default)
 		)
 		(uuid "b73f81ee-6a47-4bcf-ba90-382875a29c4c")
-	)
-	(wire
-		(pts
-			(xy 213.36 149.86) (xy 213.36 151.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b885558f-8b8d-4b26-9bb5-1ded79411e06")
 	)
 	(wire
 		(pts
@@ -7842,16 +5639,6 @@
 			(type default)
 		)
 		(uuid "f5db04c0-c25b-49fc-8068-66913447a166")
-	)
-	(wire
-		(pts
-			(xy 201.93 156.21) (xy 213.36 156.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f62f4c66-d086-4c35-914d-549b85d300c1")
 	)
 	(wire
 		(pts
@@ -8673,26 +6460,6 @@
 	)
 	(global_label "GND"
 		(shape input)
-		(at 153.67 116.84 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "48ace4d1-232b-4245-a9ab-896d584e243f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 153.67 116.84 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "GND"
-		(shape input)
 		(at 271.78 73.66 0)
 		(effects
 			(font
@@ -8885,26 +6652,6 @@
 		(uuid "657c0899-cbfd-4903-83a3-8375af192ebb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 271.78 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "5V"
-		(shape input)
-		(at 153.67 187.96 270)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "69fd745e-1719-4a27-b7e7-7b10b08b64b4")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 153.67 187.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9497,26 +7244,6 @@
 			)
 		)
 	)
-	(global_label "TXDO{slash}IO1"
-		(shape input)
-		(at 120.65 180.34 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "a9b64c79-828e-4195-9510-424d1c3546c3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 120.65 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "M22"
 		(shape input)
 		(at 30.48 130.81 180)
@@ -10028,26 +7755,6 @@
 			)
 		)
 	)
-	(global_label "RXD0{slash}IO3"
-		(shape output)
-		(at 120.65 175.26 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "dbb89f70-0692-4dcf-8031-aabea4b2472f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 120.65 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "STEP2"
 		(shape input)
 		(at 30.48 118.11 180)
@@ -10250,242 +7957,6 @@
 		)
 	)
 	(symbol
-		(lib_id "edu-ciaa-nxp:PWR_FLAG")
-		(at 213.36 148.59 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005423c2d7")
-		(property "Reference" "#FLG?"
-			(at 213.36 146.177 0)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 213.36 144.018 0)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 213.36 148.59 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 213.36 148.59 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 213.36 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "f8a56722-d24f-489b-90aa-cd7c6a6944e6")
-		)
-		(instances
-			(project "Diseño esquematico Garra"
-				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "#FLG?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "edu-ciaa-nxp:CONN_2")
-		(at 193.04 153.67 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005423c2e9")
-		(property "Reference" "Alimentacion_EDU-CIAA?"
-			(at 193.04 160.02 0)
-			(effects
-				(font
-					(size 1.016 1.016)
-				)
-			)
-		)
-		(property "Value" "WM4200-ND"
-			(at 193.04 147.32 0)
-			(effects
-				(font
-					(size 1.016 1.016)
-				)
-			)
-		)
-		(property "Footprint" "~"
-			(at 193.04 153.67 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "022232021_sd.pdf"
-			(at 193.04 153.67 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 193.04 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Descripción" "CONN HEADER 2POS .100 VERT TIN"
-			(at 193.04 153.67 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Fabricante" "Molex Inc"
-			(at 193.04 153.67 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Nro de parte" "0022232021"
-			(at 193.04 153.67 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Path datasheet" "..PCB/EDU-NXP/Datasheet"
-			(at 193.04 153.67 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Digikey" "WM4200-ND"
-			(at 193.04 153.67 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(pin "5V"
-			(uuid "cc44fef1-70d6-44b8-b524-6bd0c76a2f3f")
-		)
-		(pin "GND"
-			(uuid "9d6dcdec-0a01-49fd-8401-1f3a30aba96a")
-		)
-		(instances
-			(project "Diseño esquematico Garra"
-				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Alimentacion_EDU-CIAA?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "edu-ciaa-nxp:GND")
-		(at 213.36 161.29 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "00000000-0000-0000-0000-00005423c79b")
-		(property "Reference" "#PWR?"
-			(at 213.36 161.29 0)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 213.36 163.068 0)
-			(effects
-				(font
-					(size 0.762 0.762)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 213.36 161.29 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 213.36 161.29 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 213.36 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "7e4b9ea8-ba22-44c5-81fa-cd96678cf37d")
-		)
-		(instances
-			(project "Diseño esquematico Garra"
-				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:Screw_Terminal_01x04")
 		(at 80.01 46.99 0)
 		(unit 1)
@@ -10562,83 +8033,6 @@
 		)
 	)
 	(symbol
-		(lib_name "Motor_Servo_2")
-		(lib_id "Motor:Motor_Servo")
-		(at 115.57 116.84 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "0227b152-c19f-4eb3-acfb-affc7fcba0e2")
-		(property "Reference" "Motor_Stepper?"
-			(at 109.728 122.936 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Motor_Nema17_2"
-			(at 109.728 125.476 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 115.57 121.666 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://forums.parallax.com/uploads/attachments/46831/74481.png"
-			(at 115.57 121.666 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Servo Motor (Futaba, HiTec, JR connector)"
-			(at 115.824 129.032 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "bc3b6b37-629b-45c8-a15d-37966d5d31da")
-		)
-		(pin "2"
-			(uuid "f9e3c62f-2cb8-4943-8ea7-14e98796fbb3")
-		)
-		(pin "1"
-			(uuid "907ab9d8-0a74-4479-9845-2544d9884881")
-		)
-		(pin "1"
-			(uuid "772ffa06-2dc9-403f-acc1-ce04fd18d1ef")
-		)
-		(instances
-			(project "Diseño esquematico Garra"
-				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Motor_Stepper?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 196.85 86.36 0)
 		(unit 1)
@@ -10648,7 +8042,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "082168ef-2a09-489b-a3c2-3adaf8236db4")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0102"
 			(at 196.85 92.71 0)
 			(effects
 				(font
@@ -10698,7 +8092,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "#PWR?")
+					(reference "#PWR0102")
 					(unit 1)
 				)
 			)
@@ -10713,7 +8107,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "314cfc99-3207-4622-9160-ab7825231816")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0101"
 			(at 189.23 88.9 0)
 			(effects
 				(font
@@ -10764,7 +8158,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "#PWR?")
+					(reference "#PWR0101")
 					(unit 1)
 				)
 			)
@@ -10780,7 +8174,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "40bd3493-79cc-4a04-b3f5-eaaff01f8833")
-		(property "Reference" "CIAA-P?"
+		(property "Reference" "CIAA-P1"
 			(at 254 29.21 0)
 			(effects
 				(font
@@ -10796,7 +8190,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProyectoTdL:Tira_P1_CIAA"
+		(property "Footprint" "Connector_PinHeader_1.00mm:PinHeader_1x20_P1.00mm_Vertical"
 			(at 246.38 58.42 0)
 			(effects
 				(font
@@ -10946,188 +8340,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "CIAA-P?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "RF_Module:ESP32-WROOM-32")
-		(at 153.67 152.4 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "49f8d56c-cb60-4908-b3ce-68479a88c650")
-		(property "Reference" "U?"
-			(at 173.482 191.516 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "ESP32-WROOM-32"
-			(at 174.244 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "RF_Module:ESP32-WROOM-32"
-			(at 153.67 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf"
-			(at 161.29 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RF Module, ESP32-D0WDQ6 SoC, Wi-Fi 802.11b/g/n, Bluetooth, BLE, 32-bit, 2.7-3.6V, onboard antenna, SMD"
-			(at 153.67 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "18"
-			(uuid "9026b86a-81d8-49b4-a37a-f4626a138d91")
-		)
-		(pin "17"
-			(uuid "c5320513-29e1-4960-bd98-bffd7e4ddd99")
-		)
-		(pin "22"
-			(uuid "1d01eaaa-9242-499c-82ff-81922f03fcac")
-		)
-		(pin "21"
-			(uuid "8e703d08-53dc-46c7-8e26-1f88451381fc")
-		)
-		(pin "5"
-			(uuid "a0f46804-25f7-40b3-8355-508eecd37924")
-		)
-		(pin "4"
-			(uuid "50fd4f7b-4bab-4d32-9bbe-3a4e786e1f11")
-		)
-		(pin "3"
-			(uuid "2e3dc493-7963-4b35-add9-6ee0a13cea9c")
-		)
-		(pin "20"
-			(uuid "ca3b7e49-60f7-4410-b952-f892f360e8e1")
-		)
-		(pin "19"
-			(uuid "939f92c1-b225-4998-96bc-6102626864bd")
-		)
-		(pin "32"
-			(uuid "d18e52dc-beac-4c44-9202-6410e75baf60")
-		)
-		(pin "2"
-			(uuid "0b06e72e-0a12-49dd-a547-f4c829dbacf9")
-		)
-		(pin "1"
-			(uuid "ddb7cf27-652e-48cd-8404-a62772973be1")
-		)
-		(pin "15"
-			(uuid "0a9b668c-9856-4ecd-bef7-66aa5a05b71b")
-		)
-		(pin "38"
-			(uuid "ce80a52a-6901-4e6b-a39f-a73a7193e5f4")
-		)
-		(pin "39"
-			(uuid "8fcb4377-1293-4efe-8726-918120ea0104")
-		)
-		(pin "25"
-			(uuid "487d14be-1019-4126-85a4-71630b5d6e4d")
-		)
-		(pin "35"
-			(uuid "0353a488-2e5d-4d50-8d90-c05c23f7560f")
-		)
-		(pin "24"
-			(uuid "aaaf12d8-c590-4a23-a81f-95498d52d5cd")
-		)
-		(pin "34"
-			(uuid "016e43c7-82d5-4737-92ae-443d7a881f9b")
-		)
-		(pin "26"
-			(uuid "39614cf5-c2cb-42c1-9c24-096ed826c705")
-		)
-		(pin "29"
-			(uuid "53da3f36-37e5-4b4d-b6ee-55de556f4176")
-		)
-		(pin "14"
-			(uuid "41e8a8b0-7deb-4e4c-9a9c-8e18157a0310")
-		)
-		(pin "16"
-			(uuid "be5571c4-8bc8-45c5-a22b-869b40441c43")
-		)
-		(pin "13"
-			(uuid "2ee461a8-2ca4-48e8-9d5c-c19b13ba91aa")
-		)
-		(pin "23"
-			(uuid "5f0e5c75-c99b-4b23-913a-b7333580a613")
-		)
-		(pin "27"
-			(uuid "ceb29bc9-8e25-47e5-bd14-80cd9bd357af")
-		)
-		(pin "28"
-			(uuid "78b6591c-8ac4-4e56-a6cd-b75c76073a95")
-		)
-		(pin "30"
-			(uuid "81f4ca11-cbd1-4f80-b3f0-ee3979982143")
-		)
-		(pin "31"
-			(uuid "fa3542c4-8eda-4572-9986-4ca37e77efd8")
-		)
-		(pin "33"
-			(uuid "8eae55f2-be86-47a2-a649-568a6dd6efc9")
-		)
-		(pin "36"
-			(uuid "d250fe21-55c0-47d0-9227-9ccaf9958dff")
-		)
-		(pin "37"
-			(uuid "d80cca0c-3e2b-4fe7-8247-9fdb770009d1")
-		)
-		(pin "10"
-			(uuid "ded1997e-2648-48ed-bf0c-27958015fc9a")
-		)
-		(pin "11"
-			(uuid "69ab5b29-188d-422b-b70a-f6744cacadfb")
-		)
-		(pin "12"
-			(uuid "10a7d422-0d21-4216-a17f-d358a9635087")
-		)
-		(pin "8"
-			(uuid "f33430c2-2c54-4ea1-9548-46d9ab087e8a")
-		)
-		(pin "9"
-			(uuid "d8bdf491-5279-4143-9be2-bfc1e6edcddf")
-		)
-		(pin "6"
-			(uuid "1884abf7-438f-4b7a-8101-ff04d4ec0270")
-		)
-		(pin "7"
-			(uuid "2825fb8a-0070-4d4b-ac46-a6b4d3feaf66")
-		)
-		(instances
-			(project "Diseño esquematico Garra"
-				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "U?")
+					(reference "CIAA-P1")
 					(unit 1)
 				)
 			)
@@ -11143,7 +8356,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5123380a-fc98-463a-aabb-78aa2c83633d")
-		(property "Reference" "DRV8825_?"
+		(property "Reference" "DRV8825_2"
 			(at 47.9141 97.79 0)
 			(effects
 				(font
@@ -11240,7 +8453,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "DRV8825_?")
+					(reference "DRV8825_2")
 					(unit 1)
 				)
 			)
@@ -11256,7 +8469,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5463e3d6-2838-4907-a12b-97309cf682be")
-		(property "Reference" "DRV8825_?"
+		(property "Reference" "DRV8825_1"
 			(at 47.8633 27.94 0)
 			(effects
 				(font
@@ -11353,7 +8566,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "DRV8825_?")
+					(reference "DRV8825_1")
 					(unit 1)
 				)
 			)
@@ -11369,7 +8582,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "692d74f9-447a-4d1f-a85d-d47cdf8f366c")
-		(property "Reference" "Bornier_DRV?"
+		(property "Reference" "Bornier_DRV8833"
 			(at 144.78 61.468 0)
 			(effects
 				(font
@@ -11423,78 +8636,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Bornier_DRV?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "Motor_Servo_1")
-		(lib_id "Motor:Motor_Servo")
-		(at 193.04 62.23 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6d8893ec-98a6-400b-8bfa-f03f629fe1d0")
-		(property "Reference" "Motor_Eje_Z?"
-			(at 200.66 60.8329 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Motor_N20_Dc"
-			(at 200.66 63.3729 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 193.04 67.056 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://forums.parallax.com/uploads/attachments/46831/74481.png"
-			(at 193.04 67.056 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Servo Motor (Futaba, HiTec, JR connector)"
-			(at 195.58 70.612 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2b886f48-db68-4413-8e23-b59e85de137f")
-		)
-		(pin "2"
-			(uuid "766af6d4-8471-456b-b7d6-09b588b1b504")
-		)
-		(instances
-			(project "Diseño esquematico Garra"
-				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Motor_Eje_Z?")
+					(reference "Bornier_DRV8833")
 					(unit 1)
 				)
 			)
@@ -11529,7 +8671,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "ProyectoTdL:TerminalBlock_bornier-2_P5.08mm"
+		(property "Footprint" "Connector_PinSocket_2.00mm:PinSocket_1x02_P2.00mm_Vertical"
 			(at 193.294 119.126 0)
 			(effects
 				(font
@@ -11572,79 +8714,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Motor:Motor_Servo")
-		(at 82.55 187.96 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "770da9f8-e06d-4096-8b0b-ac33680026bf")
-		(property "Reference" "Motor_Servo_Garra?"
-			(at 91.44 186.2568 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Motor_Servo_sg90"
-			(at 91.44 188.7968 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 82.55 192.786 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://forums.parallax.com/uploads/attachments/46831/74481.png"
-			(at 82.55 192.786 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Servo Motor (Futaba, HiTec, JR connector)"
-			(at 82.55 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "edecf3bd-3cae-475c-af9c-4dbcab35b725")
-		)
-		(pin "3"
-			(uuid "e03fd8ba-2dd5-4778-9220-2f23244a5366")
-		)
-		(pin "2"
-			(uuid "61ac06d4-a3b2-48c8-9ce7-94fe812789b8")
-		)
-		(instances
-			(project "Diseño esquematico Garra"
-				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Motor_Servo_Garra?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_name "Screw_Terminal_01x03_1")
 		(lib_id "Connector:Screw_Terminal_01x03")
 		(at 193.04 134.62 0)
@@ -11673,7 +8742,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "ProyectoTdL:TerminalBlock_bornier-3_P5.08mm"
+		(property "Footprint" "Connector_PinSocket_2.00mm:PinSocket_1x03_P2.00mm_Vertical"
 			(at 194.056 143.002 0)
 			(effects
 				(font
@@ -11802,8 +8871,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "afbf3468-6422-4a71-b1d8-362d082de66d")
-		(property "Reference" "XL?"
-			(at 157.734 75.184 0)
+		(property "Reference" "XL4005"
+			(at 157.48 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11811,7 +8880,7 @@
 			)
 		)
 		(property "Value" "Step_Down_Power_Supply"
-			(at 157.988 77.724 0)
+			(at 157.48 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11861,83 +8930,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "XL?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "Motor_Servo_3")
-		(lib_id "Motor:Motor_Servo")
-		(at 115.57 46.99 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "be11b29b-7894-4913-a12c-706fd0615a6e")
-		(property "Reference" "Motor_Stepper?"
-			(at 109.728 53.086 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Motor_Nema17_1"
-			(at 109.728 55.626 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 115.57 51.816 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://forums.parallax.com/uploads/attachments/46831/74481.png"
-			(at 115.57 51.816 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Servo Motor (Futaba, HiTec, JR connector)"
-			(at 115.824 59.182 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5cac11e5-ce38-4b10-add1-59c111bc96c1")
-		)
-		(pin "2"
-			(uuid "7484b76f-d48e-4cec-b817-82d0283a8749")
-		)
-		(pin "1"
-			(uuid "bb079bd7-fc3d-4673-937b-e41ae80ab298")
-		)
-		(pin "1"
-			(uuid "36258b2f-0a39-4434-8a45-2d2df810cd33")
-		)
-		(instances
-			(project "Diseño esquematico Garra"
-				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Motor_Stepper?")
+					(reference "XL4005")
 					(unit 1)
 				)
 			)
@@ -11954,7 +8947,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "df89ca13-78ce-4268-b1eb-fbf8b41e1c8c")
-		(property "Reference" "DRV?"
+		(property "Reference" "DRV8833"
 			(at 160.02 17.78 0)
 			(effects
 				(font
@@ -11989,7 +8982,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Pololu Breakout Board, Stepper Driver DRV8825"
+		(property "Description" "Pololu Breakout Board, Stepper Driver DRV8833"
 			(at 162.814 14.732 0)
 			(effects
 				(font
@@ -12010,34 +9003,34 @@
 		(pin "7"
 			(uuid "09401995-b565-4655-82b4-e704c2c9335a")
 		)
-		(pin "7"
+		(pin "6"
 			(uuid "1033cbae-290d-4c9a-86f6-054f668d4466")
 		)
-		(pin "8"
+		(pin "12"
 			(uuid "fb580d8e-272e-4c2d-80ad-17f98175af0d")
 		)
-		(pin "7"
+		(pin "5"
 			(uuid "7a700feb-da27-4933-b780-4936c87f4d74")
 		)
-		(pin "7"
+		(pin "9"
 			(uuid "1f02c957-7624-4aae-aaca-f2a5c352c3c8")
 		)
 		(pin "1"
 			(uuid "63db7069-fa6c-4a11-9090-288f21947303")
 		)
-		(pin "8"
+		(pin "11"
 			(uuid "1e148d53-3ccb-45ec-933a-a6b56c4a973a")
 		)
 		(pin "3"
 			(uuid "aa9cb103-5ceb-4d75-8b30-b864f21f4951")
 		)
-		(pin "8"
+		(pin "10"
 			(uuid "81880133-aa95-477e-a7cd-0abf46a40092")
 		)
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "DRV?")
+					(reference "DRV8833")
 					(unit 1)
 				)
 			)
@@ -12072,7 +9065,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "ProyectoTdL:TerminalBlock_bornier-2_P5.08mm"
+		(property "Footprint" "Connector_PinSocket_2.00mm:PinSocket_1x02_P2.00mm_Vertical"
 			(at 91.694 169.926 0)
 			(effects
 				(font
@@ -12124,7 +9117,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e7398baa-b2d4-4e82-8422-c1f3f500dddc")
-		(property "Reference" "V?"
+		(property "Reference" "V1"
 			(at 82.55 64.7699 0)
 			(effects
 				(font
@@ -12178,7 +9171,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "V?")
+					(reference "V1")
 					(unit 1)
 				)
 			)
@@ -12194,7 +9187,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f3aa1da4-145a-4893-b2f8-b5978fe9811b")
-		(property "Reference" "CIAA-P?"
+		(property "Reference" "CIAA-P2"
 			(at 254 93.98 0)
 			(effects
 				(font
@@ -12210,7 +9203,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ProyectoTdL:Tira_P2_CIAA"
+		(property "Footprint" "Connector_PinHeader_1.00mm:PinHeader_1x20_P1.00mm_Vertical"
 			(at 246.38 123.19 0)
 			(effects
 				(font
@@ -12360,7 +9353,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "CIAA-P?")
+					(reference "CIAA-P2")
 					(unit 1)
 				)
 			)
@@ -12452,7 +9445,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ff3d8043-3c27-45e6-a179-c898327c86d4")
-		(property "Reference" "C?"
+		(property "Reference" "C1"
 			(at 83.82 76.4539 0)
 			(effects
 				(font
@@ -12506,7 +9499,7 @@
 		(instances
 			(project ""
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "C?")
+					(reference "C1")
 					(unit 1)
 				)
 			)
