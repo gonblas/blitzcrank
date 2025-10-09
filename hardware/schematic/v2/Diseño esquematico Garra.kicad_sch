@@ -7966,7 +7966,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "012eec13-f0fb-456d-a749-b054f74716ab")
-		(property "Reference" "Bornier_Nema17_?"
+		(property "Reference" "Bornier_Nema17_1"
 			(at 82.55 46.9899 0)
 			(effects
 				(font
@@ -8026,7 +8026,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Bornier_Nema17_?")
+					(reference "Bornier_Nema17_1")
 					(unit 1)
 				)
 			)
@@ -8653,7 +8653,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7295a0f4-f5fe-4e80-b065-a5b81e48cd11")
-		(property "Reference" "Pin_Buttons_?"
+		(property "Reference" "Pin_Buttons_1"
 			(at 195.58 124.4599 0)
 			(effects
 				(font
@@ -8707,7 +8707,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Pin_Buttons_?")
+					(reference "Pin_Buttons_1")
 					(unit 1)
 				)
 			)
@@ -8724,7 +8724,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9c180db6-36b0-4ad0-8258-a07a93ca56b5")
-		(property "Reference" "Pin_Buttons_?"
+		(property "Reference" "Pin_Buttons_2"
 			(at 195.58 133.3499 0)
 			(effects
 				(font
@@ -8781,7 +8781,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Pin_Buttons_?")
+					(reference "Pin_Buttons_2")
 					(unit 1)
 				)
 			)
@@ -8797,7 +8797,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a17f7c1a-8500-4b40-9bee-5fecc9cd360e")
-		(property "Reference" "Bornier_Servo?"
+		(property "Reference" "Bornier_Servo1"
 			(at 40.64 186.6899 0)
 			(effects
 				(font
@@ -8854,7 +8854,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Bornier_Servo?")
+					(reference "Bornier_Servo1")
 					(unit 1)
 				)
 			)
@@ -9047,7 +9047,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e57998f8-ab5c-4608-9672-faab1e22424f")
-		(property "Reference" "Pin_EDU-CIAA_to_ESP?"
+		(property "Reference" "Pin_EDU-CIAA_to_ESP1"
 			(at 93.98 175.2599 0)
 			(effects
 				(font
@@ -9101,7 +9101,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Pin_EDU-CIAA_to_ESP?")
+					(reference "Pin_EDU-CIAA_to_ESP1")
 					(unit 1)
 				)
 			)
@@ -9369,7 +9369,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f7cd3fed-5e63-4ab0-8b22-cbb8f1c435fc")
-		(property "Reference" "Bornier_Nema17_?"
+		(property "Reference" "Bornier_Nema17_2"
 			(at 82.55 116.8399 0)
 			(effects
 				(font
@@ -9429,7 +9429,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Bornier_Nema17_?")
+					(reference "Bornier_Nema17_2")
 					(unit 1)
 				)
 			)

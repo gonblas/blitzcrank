@@ -159,7 +159,7 @@
 	(footprint "Connector_PinSocket_2.00mm:PinSocket_1x02_P2.00mm_Vertical"
 		(layer "F.Cu")
 		(uuid "2f537b0e-b0df-411f-a579-5cf90cea9e2f")
-		(at 110.425 88.0825)
+		(at 59.5 101.5)
 		(descr "Through hole straight socket strip, 1x02, 2.00mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x02 2.00mm single row")
 		(property "Reference" "Pin_Buttons_1"
@@ -412,7 +412,7 @@
 	(footprint "Capacitor_THT:C_Radial_D8.0mm_H11.5mm_P3.50mm"
 		(layer "F.Cu")
 		(uuid "34d6eb0e-0948-4625-9fee-1aff19e82de6")
-		(at 101.875 90.8325)
+		(at 27.25 46)
 		(descr "C, Radial series, Radial, pin pitch=3.50mm, diameter=8mm, height=11.5mm, Non-Polar Electrolytic Capacitor")
 		(tags "C Radial series Radial pin pitch 3.50mm diameter 8mm height 11.5mm Non-Polar Electrolytic Capacitor")
 		(property "Reference" "C1"
@@ -543,10 +543,138 @@
 			)
 		)
 	)
+	(footprint "Capacitor_THT:C_Radial_D8.0mm_H11.5mm_P3.50mm"
+		(layer "F.Cu")
+		(uuid "3928c393-4524-44b4-9421-9706be1ab029")
+		(at 37.25 46)
+		(descr "C, Radial series, Radial, pin pitch=3.50mm, diameter=8mm, height=11.5mm, Non-Polar Electrolytic Capacitor")
+		(tags "C Radial series Radial pin pitch 3.50mm diameter 8mm height 11.5mm Non-Polar Electrolytic Capacitor")
+		(property "Reference" "C2"
+			(at 1.75 -5.25 0)
+			(layer "F.SilkS")
+			(uuid "2e89e993-2e93-4a39-ae55-f139dceac780")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "C_100uF"
+			(at 1.75 5.25 0)
+			(layer "F.Fab")
+			(uuid "660cebae-0867-4383-bf87-d6f5060f1f95")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7c383d9c-6512-456a-8551-c28996f28986")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "capacitor, US symbol"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ecf91d70-928f-4079-b56b-b9d80596dc01")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(attr through_hole)
+		(fp_circle
+			(center 1.75 0)
+			(end 5.87 0)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.SilkS")
+			(uuid "9d739751-e914-4a28-b5cb-628fe2b0d316")
+		)
+		(fp_circle
+			(center 1.75 0)
+			(end 6 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "b001ec6a-0226-4d00-a47e-4c0346fe3d32")
+		)
+		(fp_circle
+			(center 1.75 0)
+			(end 5.75 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "f7b6f224-fe0c-43a8-a55a-72083e87574e")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 1.75 0 0)
+			(layer "F.Fab")
+			(uuid "6cc4a1d3-3a21-4257-8737-a250cef34ca9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" thru_hole circle
+			(at 0 0)
+			(size 1.6 1.6)
+			(drill 0.8)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(pintype "passive")
+			(uuid "7bbbbfe7-ee24-458d-9079-e465be44e561")
+		)
+		(pad "2" thru_hole circle
+			(at 3.5 0)
+			(size 1.6 1.6)
+			(drill 0.8)
+			(layers "*.Cu" "*.Mask")
+			(remove_unused_layers no)
+			(pintype "passive")
+			(uuid "e0b1169b-a864-416b-9450-ec5cad35d6bc")
+		)
+		(embedded_fonts no)
+		(model "${KICAD9_3DMODEL_DIR}/Capacitor_THT.3dshapes/C_Radial_D8.0mm_H11.5mm_P3.50mm.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
 	(footprint "Module:Pololu_Breakout-16_15.2x20.3mm"
 		(layer "F.Cu")
 		(uuid "43bf9ff1-816c-442c-abcd-ac1d706ed6ce")
-		(at 58.655 36.9625)
+		(at 32.66 68.11)
 		(descr "Pololu Breakout 16-pin 15.2x20.3mm 0.6x0.8")
 		(tags "Pololu Breakout")
 		(property "Reference" "DRV8833"
@@ -561,7 +689,7 @@
 			)
 		)
 		(property "Value" "Breakout_DRV8833"
-			(at 6.35 20.17 0)
+			(at 4.85 -1.33 0)
 			(layer "F.Fab")
 			(uuid "94716a89-529a-4e58-9ffe-39a2bdaed936")
 			(effects
@@ -983,7 +1111,7 @@
 	(footprint "Connector_PinSocket_2.00mm:PinSocket_1x03_P2.00mm_Vertical"
 		(layer "F.Cu")
 		(uuid "4854650f-79a9-430a-9bb9-04fbdbc8ce54")
-		(at 118.525 88.0825)
+		(at 44 100.5)
 		(descr "Through hole straight socket strip, 1x03, 2.00mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x03 2.00mm single row")
 		(property "Reference" "Pin_Buttons_2"
@@ -1247,7 +1375,7 @@
 	(footprint "Module:Pololu_Breakout-16_15.2x20.3mm"
 		(layer "F.Cu")
 		(uuid "50eb17aa-6060-44df-9481-7360df62daf8")
-		(at 75.445 36.9625)
+		(at 140.727497 59.195163)
 		(descr "Pololu Breakout 16-pin 15.2x20.3mm 0.6x0.8")
 		(tags "Pololu Breakout")
 		(property "Reference" "DRV8825_1"
@@ -1696,7 +1824,7 @@
 	(footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-4-5.08_1x04_P5.08mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "631659e1-523f-4d23-878c-be718ac23532")
-		(at 73.385 80.1725)
+		(at 116.26 103)
 		(descr "Terminal Block Phoenix MKDS-1,5-4-5.08, 4 pins, pitch 5.08mm, size 20.3x9.8mm, drill diameter 1.3mm, pad diameter 2.6mm, http://www.farnell.com/datasheets/100425.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_Phoenix")
 		(tags "THT Terminal Block Phoenix MKDS-1,5-4-5.08 pitch 5.08mm size 20.3x9.8mm drill 1.3mm pad 2.6mm")
 		(property "Reference" "Bornier_Nema17_1"
@@ -2158,7 +2286,7 @@
 	(footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "724fe684-0411-4539-b983-cc268146cb87")
-		(at 102.415 80.1725)
+		(at 72.84 103)
 		(descr "Terminal Block Phoenix MKDS-1,5-3-5.08, 3 pins, pitch 5.08mm, size 15.2x9.8mm, drill diameter 1.3mm, pad diameter 2.6mm, http://www.farnell.com/datasheets/100425.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_Phoenix")
 		(tags "THT Terminal Block Phoenix MKDS-1,5-3-5.08 pitch 5.08mm size 15.2x9.8mm drill 1.3mm pad 2.6mm")
 		(property "Reference" "Bornier_Servo1"
@@ -2173,7 +2301,7 @@
 			)
 		)
 		(property "Value" "Screw_Terminal_01x03"
-			(at 5.08 5.72 0)
+			(at 32.055 -4.3625 0)
 			(layer "F.Fab")
 			(uuid "c2aca2c1-c4c5-45c7-b340-11562a14ba28")
 			(effects
@@ -2578,7 +2706,7 @@
 	(footprint "Connector_PinHeader_1.00mm:PinHeader_1x20_P1.00mm_Vertical"
 		(layer "F.Cu")
 		(uuid "821c435c-4d74-4c0f-8301-b6ba2151250e")
-		(at 97.185 75.4625)
+		(at 102.5 67.5)
 		(descr "Through hole straight pin header, 1x20, 1.00mm pitch, single row")
 		(tags "Through hole pin header THT 1x20 1.00mm single row")
 		(property "Reference" "CIAA-P2"
@@ -3049,7 +3177,7 @@
 	(footprint "Connector_PinHeader_1.00mm:PinHeader_1x20_P1.00mm_Vertical"
 		(layer "F.Cu")
 		(uuid "a759c1b0-9917-4382-8409-c63313bfb525")
-		(at 93.855 75.4625)
+		(at 99.17 67.5)
 		(descr "Through hole straight pin header, 1x20, 1.00mm pitch, single row")
 		(tags "Through hole pin header THT 1x20 1.00mm single row")
 		(property "Reference" "CIAA-P1"
@@ -3520,7 +3648,7 @@
 	(footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "b57c2977-d636-454f-89fb-452f1147d64d")
-		(at 61.165 80.1725)
+		(at 95.42 103)
 		(descr "Terminal Block Phoenix MKDS-1,5-2-5.08, 2 pins, pitch 5.08mm, size 10.2x9.8mm, drill diameter 1.3mm, pad diameter 2.6mm, http://www.farnell.com/datasheets/100425.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_Phoenix")
 		(tags "THT Terminal Block Phoenix MKDS-1,5-2-5.08 pitch 5.08mm size 10.2x9.8mm drill 1.3mm pad 2.6mm")
 		(property "Reference" "Bornier_DRV8833"
@@ -3898,7 +4026,7 @@
 	(footprint "Connector_PinSocket_2.00mm:PinSocket_1x02_P2.00mm_Vertical"
 		(layer "F.Cu")
 		(uuid "c61926dc-7b43-4921-b0b0-868698b58336")
-		(at 114.475 88.0825)
+		(at 156.450126 27.884755)
 		(descr "Through hole straight socket strip, 1x02, 2.00mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x02 2.00mm single row")
 		(property "Reference" "Pin_EDU-CIAA_to_ESP1"
@@ -4151,13 +4279,13 @@
 	(footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "d70f9f9c-adaa-4bd9-a2c2-90c92b43ca5b")
-		(at 61.165 92.2975)
+		(at 30.193293 29.367158 -90)
 		(descr "Terminal Block Phoenix MKDS-1,5-2-5.08, 2 pins, pitch 5.08mm, size 10.2x9.8mm, drill diameter 1.3mm, pad diameter 2.6mm, http://www.farnell.com/datasheets/100425.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_Phoenix")
 		(tags "THT Terminal Block Phoenix MKDS-1,5-2-5.08 pitch 5.08mm size 10.2x9.8mm drill 1.3mm pad 2.6mm")
 		(property "Reference" "V1"
-			(at 2.54 -6.32 0)
+			(at 2.54 -6.32 90)
 			(layer "F.SilkS")
-			(uuid "6f78fcea-b393-4dc6-a3f9-929a458505d4")
+			(uuid "48651b64-9764-41df-a5d8-ecaa4e764b21")
 			(effects
 				(font
 					(size 1 1)
@@ -4166,9 +4294,9 @@
 			)
 		)
 		(property "Value" "Screw_Terminal_01x02"
-			(at 2.54 5.72 0)
+			(at 2.54 5.72 90)
 			(layer "F.Fab")
-			(uuid "da4f9c08-9ace-45c9-8e0c-876f5444dd4e")
+			(uuid "e3a94b96-d856-4af1-b4d8-2b33a2eda296")
 			(effects
 				(font
 					(size 1 1)
@@ -4177,10 +4305,10 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4c908a71-1a49-4dfc-9196-f17dda0bf426")
+			(uuid "07f9e08a-8636-40bd-a9e2-90b1df9a1a54")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4189,10 +4317,10 @@
 			)
 		)
 		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5bbef549-becf-48cd-bde3-af35fe6dd1dd")
+			(uuid "b2b976e9-53a5-48ac-85c4-7cd8af19302d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4205,46 +4333,6 @@
 		(sheetname "/")
 		(sheetfile "Diseño esquematico Garra.kicad_sch")
 		(attr through_hole)
-		(fp_line
-			(start -2.66 -5.32)
-			(end 7.74 -5.32)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "63711c30-be46-4748-9b51-d1167b0e2e12")
-		)
-		(fp_line
-			(start -2.66 -2.3)
-			(end 7.74 -2.3)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "5db9dff9-ecf5-4eac-9702-69a4171d1254")
-		)
-		(fp_line
-			(start -2.66 2.6)
-			(end 7.74 2.6)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "c2e4c502-8dcb-46a5-952a-e23f0f3a3a9a")
-		)
-		(fp_line
-			(start -2.66 4.1)
-			(end 7.74 4.1)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "7320400c-3427-4821-bbcf-5827dad8ab7e")
-		)
 		(fp_line
 			(start -2.66 4.72)
 			(end -2.66 -5.32)
@@ -4266,16 +4354,6 @@
 			(uuid "39278929-9631-4e9b-b564-c36789dff2c7")
 		)
 		(fp_line
-			(start 7.74 -5.32)
-			(end 7.74 4.72)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "9141cc2b-6e18-4df5-bb44-fb2a34e4657f")
-		)
-		(fp_line
 			(start 7.74 4.72)
 			(end 0.3 4.72)
 			(stroke
@@ -4284,6 +4362,56 @@
 			)
 			(layer "F.SilkS")
 			(uuid "57ec2472-33fb-47e9-bd63-a1c768133ef3")
+		)
+		(fp_line
+			(start -2.66 4.1)
+			(end 7.74 4.1)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "7320400c-3427-4821-bbcf-5827dad8ab7e")
+		)
+		(fp_line
+			(start -2.66 2.6)
+			(end 7.74 2.6)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "c2e4c502-8dcb-46a5-952a-e23f0f3a3a9a")
+		)
+		(fp_line
+			(start -2.66 -2.3)
+			(end 7.74 -2.3)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "5db9dff9-ecf5-4eac-9702-69a4171d1254")
+		)
+		(fp_line
+			(start -2.66 -5.32)
+			(end 7.74 -5.32)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "63711c30-be46-4748-9b51-d1167b0e2e12")
+		)
+		(fp_line
+			(start 7.74 -5.32)
+			(end 7.74 4.72)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "9141cc2b-6e18-4df5-bb44-fb2a34e4657f")
 		)
 		(fp_poly
 			(pts
@@ -4298,16 +4426,6 @@
 			(uuid "eb2ee715-96dd-4d67-b0cf-ef83c85c6908")
 		)
 		(fp_line
-			(start -3.04 -5.71)
-			(end -3.04 5.1)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "0cbdaa24-16cd-4cdf-b547-b2b9361346d9")
-		)
-		(fp_line
 			(start -3.04 5.1)
 			(end 8.13 5.1)
 			(stroke
@@ -4316,16 +4434,6 @@
 			)
 			(layer "F.CrtYd")
 			(uuid "4941d069-453a-438a-ba5d-2e7ab1537680")
-		)
-		(fp_line
-			(start 8.13 -5.71)
-			(end -3.04 -5.71)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "88d0cf5c-d258-4b96-905f-8976330ab170")
 		)
 		(fp_line
 			(start 8.13 5.1)
@@ -4338,54 +4446,24 @@
 			(uuid "cd760df2-8a77-46f7-9688-40fbf6b2ccbc")
 		)
 		(fp_line
-			(start -2.54 -5.2)
-			(end 7.62 -5.2)
+			(start -3.04 -5.71)
+			(end -3.04 5.1)
 			(stroke
-				(width 0.1)
+				(width 0.05)
 				(type solid)
 			)
-			(layer "F.Fab")
-			(uuid "6fd05ece-2ef4-4af3-82f8-d4cc72b22921")
+			(layer "F.CrtYd")
+			(uuid "0cbdaa24-16cd-4cdf-b547-b2b9361346d9")
 		)
 		(fp_line
-			(start -2.54 -2.3)
-			(end 7.62 -2.3)
+			(start 8.13 -5.71)
+			(end -3.04 -5.71)
 			(stroke
-				(width 0.1)
+				(width 0.05)
 				(type solid)
 			)
-			(layer "F.Fab")
-			(uuid "61af6cf5-249a-4f69-81d9-3664ed196389")
-		)
-		(fp_line
-			(start -2.54 2.6)
-			(end 7.62 2.6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "bf8bfe4e-9b12-4981-ba75-9ae4b7e3a43c")
-		)
-		(fp_line
-			(start -2.54 4.1)
-			(end -2.54 -5.2)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "b8d66426-3c30-4d96-be29-e2056a348f51")
-		)
-		(fp_line
-			(start -2.54 4.1)
-			(end 7.62 4.1)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "f5319bb1-1db3-45ad-8e5f-2dcc8e5d86ac")
+			(layer "F.CrtYd")
+			(uuid "88d0cf5c-d258-4b96-905f-8976330ab170")
 		)
 		(fp_line
 			(start -2.04 4.6)
@@ -4398,14 +4476,44 @@
 			(uuid "406a3111-6dd3-4ae9-a752-70a239ae74dc")
 		)
 		(fp_line
-			(start 0.955 -1.138)
-			(end -1.138 0.955)
+			(start 7.62 4.6)
+			(end -2.04 4.6)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "F.Fab")
-			(uuid "54eab802-dd4d-45ba-8ab4-6459297ffdd3")
+			(uuid "afe3013a-f4a7-4502-a4d5-5e1d6d486352")
+		)
+		(fp_line
+			(start -2.54 4.1)
+			(end 7.62 4.1)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "f5319bb1-1db3-45ad-8e5f-2dcc8e5d86ac")
+		)
+		(fp_line
+			(start -2.54 4.1)
+			(end -2.54 -5.2)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "b8d66426-3c30-4d96-be29-e2056a348f51")
+		)
+		(fp_line
+			(start -2.54 2.6)
+			(end 7.62 2.6)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "bf8bfe4e-9b12-4981-ba75-9ae4b7e3a43c")
 		)
 		(fp_line
 			(start 1.138 -0.955)
@@ -4418,16 +4526,6 @@
 			(uuid "160f0f5e-aa06-4280-a4ca-879a13cf1705")
 		)
 		(fp_line
-			(start 6.035 -1.138)
-			(end 3.942 0.955)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "d26378a6-61f5-4108-a9fc-8eca4dea8679")
-		)
-		(fp_line
 			(start 6.218 -0.955)
 			(end 4.125 1.138)
 			(stroke
@@ -4438,6 +4536,46 @@
 			(uuid "fdd6d2ff-722b-4060-b77b-1bb18c027c5c")
 		)
 		(fp_line
+			(start 0.955 -1.138)
+			(end -1.138 0.955)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "54eab802-dd4d-45ba-8ab4-6459297ffdd3")
+		)
+		(fp_line
+			(start 6.035 -1.138)
+			(end 3.942 0.955)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "d26378a6-61f5-4108-a9fc-8eca4dea8679")
+		)
+		(fp_line
+			(start -2.54 -2.3)
+			(end 7.62 -2.3)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "61af6cf5-249a-4f69-81d9-3664ed196389")
+		)
+		(fp_line
+			(start -2.54 -5.2)
+			(end 7.62 -5.2)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "F.Fab")
+			(uuid "6fd05ece-2ef4-4af3-82f8-d4cc72b22921")
+		)
+		(fp_line
 			(start 7.62 -5.2)
 			(end 7.62 4.6)
 			(stroke
@@ -4446,16 +4584,6 @@
 			)
 			(layer "F.Fab")
 			(uuid "abf9303c-c097-4ec8-a7a2-90562319a92a")
-		)
-		(fp_line
-			(start 7.62 4.6)
-			(end -2.04 4.6)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.Fab")
-			(uuid "afe3013a-f4a7-4502-a4d5-5e1d6d486352")
 		)
 		(fp_circle
 			(center 0 0)
@@ -4480,7 +4608,7 @@
 			(uuid "a94c0d52-6123-4ac6-8746-38285034feb5")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 2.54 3.2 0)
+			(at 2.54 3.2 90)
 			(layer "F.Fab")
 			(uuid "09084e68-b5dc-45ac-a86c-a945d3e684c6")
 			(effects
@@ -4491,7 +4619,7 @@
 			)
 		)
 		(pad "1" thru_hole roundrect
-			(at 0 0)
+			(at 0 0 270)
 			(size 2.6 2.6)
 			(drill 1.3)
 			(layers "*.Cu" "*.Mask")
@@ -4503,7 +4631,7 @@
 			(uuid "3cd8db94-2629-438d-9b55-5b1a4140410c")
 		)
 		(pad "2" thru_hole circle
-			(at 5.08 0)
+			(at 5.08 0 270)
 			(size 2.6 2.6)
 			(drill 1.3)
 			(layers "*.Cu" "*.Mask")
@@ -4529,7 +4657,7 @@
 	(footprint "Module:Pololu_Breakout-16_15.2x20.3mm"
 		(layer "F.Cu")
 		(uuid "d730bb6c-e016-4044-8a57-19d9b6055a9c")
-		(at 92.235 36.9625)
+		(at 117.3 59.26)
 		(descr "Pololu Breakout 16-pin 15.2x20.3mm 0.6x0.8")
 		(tags "Pololu Breakout")
 		(property "Reference" "DRV8825_2"
@@ -4978,7 +5106,7 @@
 	(footprint "Module:Pololu_Breakout-16_15.2x20.3mm"
 		(layer "F.Cu")
 		(uuid "d736d388-71d8-42c0-9433-d800e7cab2da")
-		(at 109.025 36.9625)
+		(at 91.66 28.11)
 		(descr "Pololu Breakout 16-pin 15.2x20.3mm 0.6x0.8")
 		(tags "Pololu Breakout")
 		(property "Reference" "XL4005"
@@ -5391,7 +5519,7 @@
 	(footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-4-5.08_1x04_P5.08mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "e7cc6ad6-22f8-4b65-a622-eaeeb7d28c25")
-		(at 73.385 92.2975)
+		(at 139.822331 102.911233)
 		(descr "Terminal Block Phoenix MKDS-1,5-4-5.08, 4 pins, pitch 5.08mm, size 20.3x9.8mm, drill diameter 1.3mm, pad diameter 2.6mm, http://www.farnell.com/datasheets/100425.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_Phoenix")
 		(tags "THT Terminal Block Phoenix MKDS-1,5-4-5.08 pitch 5.08mm size 20.3x9.8mm drill 1.3mm pad 2.6mm")
 		(property "Reference" "Bornier_Nema17_2"
