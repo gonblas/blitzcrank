@@ -1,4 +1,4 @@
-26728669642737458
+26793803564813352
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -70580,6 +70580,265 @@ Yellow 5381 Series LED
 0
 2
 2
+Libreria_EDU_CIAA_NXP
+-SOIC8
+SMALL OUTLINE IC
+SMALL OUTLINE IC
+0
+8
+8
+Libreria_EDU_CIAA_NXP
+1pin
+module 1 pin (ou trou mecanique de percage)
+DEV
+0
+1
+1
+Libreria_EDU_CIAA_NXP
+4SOJ
+
+
+0
+4
+4
+Libreria_EDU_CIAA_NXP
+BK-913-ND
+
+
+0
+3
+2
+Libreria_EDU_CIAA_NXP
+Con_2P
+
+
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+DO-214AA(SMB)
+DO-214AA (SMB)  PACKAGE.
+DO-214AA SMB
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+FA238V-XTAL
+
+
+0
+4
+4
+Libreria_EDU_CIAA_NXP
+Fiducial_1mm_BOT
+
+
+0
+1
+1
+Libreria_EDU_CIAA_NXP
+Fiducial_1mm_TOP
+
+
+0
+1
+1
+Libreria_EDU_CIAA_NXP
+GNDpin
+
+
+0
+1
+1
+Libreria_EDU_CIAA_NXP
+GS2
+Pontet Goute de soudure
+
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+L0805
+
+
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+LED-0805
+LED 0805 smd package
+LED 0805 SMD
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+LOGO
+
+
+0
+0
+0
+Libreria_EDU_CIAA_NXP
+LQFP64-M05
+LQFP, 64 pins, 0.5mm pitch, 10mm sq body
+SMD LQFP IC
+0
+64
+64
+Libreria_EDU_CIAA_NXP
+LQFP144-M05
+LQFP, 144 pins, 0.5mm pitch, 20mm sq body
+SMD LQFP IC
+0
+144
+144
+Libreria_EDU_CIAA_NXP
+MF-MSMF
+
+
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+OSHWA
+
+
+0
+0
+0
+Libreria_EDU_CIAA_NXP
+PIN_ARRAY_20X2
+Double rangee de contacts 2 x 12 pins
+CONN
+0
+40
+40
+Libreria_EDU_CIAA_NXP
+PLCC-4
+HYPER TOPLED®
+HYPER TOPLED®
+0
+4
+4
+Libreria_EDU_CIAA_NXP
+PUSH_SWITCH_THT
+
+
+0
+4
+4
+Libreria_EDU_CIAA_NXP
+Pin_Array_5x2_1.27mm_SMD
+
+
+0
+10
+10
+Libreria_EDU_CIAA_NXP
+SM0805
+
+
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+SM1210
+
+CMS SM
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+SOD-123
+
+
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+SOD123F
+SOD123F
+SMD SODF DEV
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+SOIC-8
+SMALL OUTLINE IC
+SMALL OUTLINE IC
+0
+8
+8
+Libreria_EDU_CIAA_NXP
+SOT23GDS
+Module CMS SOT23 Transistore EBC
+CMS SOT
+0
+3
+3
+Libreria_EDU_CIAA_NXP
+SOT223
+module CMS SOT223 4 pins
+CMS SOT
+0
+4
+4
+Libreria_EDU_CIAA_NXP
+SRF2012
+
+
+0
+4
+4
+Libreria_EDU_CIAA_NXP
+USB_microAB_ZX62-AB-5P8
+
+
+0
+13
+9
+Libreria_EDU_CIAA_NXP
+bornier3
+Bornier d'alimentation 3 pins
+DEV
+0
+3
+3
+Libreria_EDU_CIAA_NXP
+c_0805
+SMT capacitor, 0805
+
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+c_1206_tantalio
+SMT capacitor, 1206
+
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+c_1206_tantalio_1
+SMT capacitor, 1206
+
+0
+2
+2
+Libreria_EDU_CIAA_NXP
+sot143B
+SOT143B
+
+0
+4
+4
+Libreria_EDU_CIAA_NXP
+tssop-20
+TSSOP-20
+
+0
+20
+20
 Module
 A20_OLINUXINO_LIME2
 A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet
