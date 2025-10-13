@@ -172,13 +172,13 @@
 	(footprint "Connector_PinSocket_2.00mm:PinSocket_1x04_P2.00mm_Vertical"
 		(layer "F.Cu")
 		(uuid "2f537b0e-b0df-411f-a579-5cf90cea9e2f")
-		(at 51.5 101.5)
+		(at 54.075 128.6725)
 		(descr "Through hole straight socket strip, 1x04, 2.00mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x04 2.00mm single row")
 		(property "Reference" "PinOut_Stick"
 			(at 0 -3 0)
 			(layer "F.SilkS")
-			(uuid "950c0bbb-cdcd-4748-a563-049b57274d14")
+			(uuid "84d942d8-b929-4bce-a62b-cc74ed471367")
 			(effects
 				(font
 					(size 1 1)
@@ -190,7 +190,7 @@
 			(at 0 8.5 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "054e085d-b706-4ae9-b0ea-5173f3c76462")
+			(uuid "81b38079-ecce-4c5a-8bef-4d8aadff7fe7")
 			(effects
 				(font
 					(size 1 1)
@@ -202,7 +202,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "2752290e-e677-45dd-8600-96a813a40df3")
+			(uuid "ce7beecb-db3e-4f45-bd47-85becc169e9e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -214,7 +214,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "fbca5778-2e8f-45e6-bc31-056e99f57fab")
+			(uuid "6e8c4b25-b15f-437d-a527-5a99630078af")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -571,7 +571,7 @@
 	(footprint "Module:Pololu_Breakout-16_15.2x20.3mm"
 		(layer "F.Cu")
 		(uuid "43bf9ff1-816c-442c-abcd-ac1d706ed6ce")
-		(at 91.66 59.11)
+		(at 166.232503 28.294837)
 		(descr "Pololu Breakout 16-pin 15.2x20.3mm 0.6x0.8")
 		(tags "Pololu Breakout")
 		(property "Reference" "DRV833"
@@ -1008,13 +1008,13 @@
 	(footprint "Connector_PinSocket_2.00mm:PinSocket_1x02_P2.00mm_Vertical"
 		(layer "F.Cu")
 		(uuid "4cd38a6a-4c4e-4035-9562-b99765679ca2")
-		(at 42 107 -90)
+		(at 44.575 134.1725 -90)
 		(descr "Through hole straight socket strip, 1x02, 2.00mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x02 2.00mm single row")
 		(property "Reference" "PinOut_B_UP"
 			(at -3 1 0)
 			(layer "F.SilkS")
-			(uuid "1e0598c7-ef99-4537-a492-8ab04f718ae7")
+			(uuid "2d77f24f-6547-4df9-bb95-df7f10c862fc")
 			(effects
 				(font
 					(size 1 1)
@@ -1026,7 +1026,7 @@
 			(at 0 4.5 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "3897f9ac-468f-4fef-8a77-01af997b3d9e")
+			(uuid "2d6c45be-9d34-4747-9b29-38c7308194f2")
 			(effects
 				(font
 					(size 1 1)
@@ -1038,7 +1038,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "444fbf57-22ff-4b9c-93d8-bc7603d2f8f7")
+			(uuid "7c6f309b-4d97-46ef-b1f4-b8da1c2b29cc")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1050,7 +1050,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "93630101-53ca-406d-8956-f0b3e288d9ea")
+			(uuid "61e97fdc-9671-496f-bdd0-ef4e933e1ce4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1251,7 +1251,7 @@
 	(footprint "Module:Pololu_Breakout-16_15.2x20.3mm"
 		(layer "F.Cu")
 		(uuid "50eb17aa-6060-44df-9481-7360df62daf8")
-		(at 140.727497 59.195163)
+		(at 215.3 28.38)
 		(descr "Pololu Breakout 16-pin 15.2x20.3mm 0.6x0.8")
 		(tags "Pololu Breakout")
 		(property "Reference" "DRV8825_1"
@@ -1700,13 +1700,13 @@
 	(footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-4-5.08_1x04_P5.08mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "631659e1-523f-4d23-878c-be718ac23532")
-		(at 116.26 103)
+		(at 118.835 130.1725)
 		(descr "Terminal Block Phoenix MKDS-1,5-4-5.08, 4 pins, pitch 5.08mm, size 20.3x9.8mm, drill diameter 1.3mm, pad diameter 2.6mm, http://www.farnell.com/datasheets/100425.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_Phoenix")
 		(tags "THT Terminal Block Phoenix MKDS-1,5-4-5.08 pitch 5.08mm size 20.3x9.8mm drill 1.3mm pad 2.6mm")
 		(property "Reference" "Bornier_Nema17_1"
 			(at 7.62 -6.32 0)
 			(layer "F.SilkS")
-			(uuid "5124aec1-2356-4ab2-872d-fcbf45f11d4a")
+			(uuid "a1a9c6dc-8f60-440d-aaba-2b47e0165d53")
 			(effects
 				(font
 					(size 1 1)
@@ -1717,7 +1717,7 @@
 		(property "Value" "Screw_Terminal_01x04"
 			(at 7.62 5.72 0)
 			(layer "F.Fab")
-			(uuid "b3ba00cd-1094-4b44-8653-6833aa7258ec")
+			(uuid "67555c30-e51d-4a93-be9a-32fee3410c73")
 			(effects
 				(font
 					(size 1 1)
@@ -1729,7 +1729,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "49f64ab8-89b3-40dc-b42e-83d109653124")
+			(uuid "2862f9b1-c037-43f4-b910-2f1eb63ad74f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1741,7 +1741,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b7a2a49d-65b7-4194-b11f-3c5a1d0f2116")
+			(uuid "19d9f5e9-8914-4f1b-ba3f-b63c6b1aefaa")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2162,13 +2162,13 @@
 	(footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "724fe684-0411-4539-b983-cc268146cb87")
-		(at 72.84 103)
+		(at 75.415 130.1725)
 		(descr "Terminal Block Phoenix MKDS-1,5-3-5.08, 3 pins, pitch 5.08mm, size 15.2x9.8mm, drill diameter 1.3mm, pad diameter 2.6mm, http://www.farnell.com/datasheets/100425.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_Phoenix")
 		(tags "THT Terminal Block Phoenix MKDS-1,5-3-5.08 pitch 5.08mm size 15.2x9.8mm drill 1.3mm pad 2.6mm")
 		(property "Reference" "Bornier_Servo1"
 			(at 5.08 -6.32 0)
 			(layer "F.SilkS")
-			(uuid "6e9cc057-2d31-461e-aec2-958b53ccf171")
+			(uuid "4e1458d8-e64c-4182-9a8f-fe7b30d9c01e")
 			(effects
 				(font
 					(size 1 1)
@@ -2179,7 +2179,7 @@
 		(property "Value" "Screw_Terminal_01x03"
 			(at 32.055 -4.3625 0)
 			(layer "F.Fab")
-			(uuid "c2aca2c1-c4c5-45c7-b340-11562a14ba28")
+			(uuid "724df178-2706-439a-b5d4-5a9bc95fdaa1")
 			(effects
 				(font
 					(size 1 1)
@@ -2191,7 +2191,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "5e73c350-3a87-4ad6-9f2e-ec4c7695cc42")
+			(uuid "64c94ad0-4c55-4027-819d-b18d1ffa75a7")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2203,7 +2203,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e51b3235-2c82-4a44-905c-0481eb98d9d2")
+			(uuid "6ce69bae-816f-4c9d-96cf-09f98b86c0e5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2582,13 +2582,13 @@
 	(footprint "Libreria_EDU_CIAA_NXP:PIN_ARRAY_20X2"
 		(layer "F.Cu")
 		(uuid "821c435c-4d74-4c0f-8301-b6ba2151250e")
-		(at 54.27 75.77 180)
+		(at 73.8 31.4 180)
 		(descr "Double rangee de contacts 2 x 12 pins")
 		(tags "CONN")
 		(property "Reference" "CIAA-P2"
-			(at -26.42 1.9 90)
+			(at -26.7 -0.1 90)
 			(layer "F.SilkS")
-			(uuid "d47ddf36-f2c2-4486-914d-1cb55f6efc9b")
+			(uuid "ee5b9eb8-583b-4ead-b522-7962335d49d8")
 			(effects
 				(font
 					(size 0.8 0.8)
@@ -2599,7 +2599,7 @@
 		(property "Value" "~"
 			(at 0 3.81 0)
 			(layer "F.SilkS")
-			(uuid "669e29bd-648d-4717-8e4d-aa76b103713c")
+			(uuid "76d6c88d-649c-40c2-bcc2-04dd6732ed30")
 			(effects
 				(font
 					(size 1.016 1.016)
@@ -2611,7 +2611,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "09d6f8fe-0c74-46c9-9f35-267485e2b5ce")
+			(uuid "12de6619-3c4a-4196-a0b3-8606dd6c3fa4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2623,7 +2623,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4021d0b5-9862-40ff-a196-91929826f1aa")
+			(uuid "6555adbd-f324-4311-a1ca-ec53afbae9b8")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3132,13 +3132,13 @@
 	(footprint "Connector_PinSocket_2.00mm:PinSocket_1x02_P2.00mm_Vertical"
 		(layer "F.Cu")
 		(uuid "a5d20d46-7c8c-4045-9751-d829894a37f5")
-		(at 30.5 107 -90)
+		(at 33.075 134.1725 -90)
 		(descr "Through hole straight socket strip, 1x02, 2.00mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x02 2.00mm single row")
 		(property "Reference" "PinOut_B_DWN"
 			(at -3 1 0)
 			(layer "F.SilkS")
-			(uuid "358bf717-dbc2-48d2-ad24-a74a8cd634dd")
+			(uuid "17377d06-7f1d-4893-977d-9c68b47db502")
 			(effects
 				(font
 					(size 1 1)
@@ -3150,7 +3150,7 @@
 			(at 0 4.5 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e966507c-0a03-4b13-8704-0efe9d5d3cf8")
+			(uuid "a6293054-6457-48f6-8db8-938e472d61ba")
 			(effects
 				(font
 					(size 1 1)
@@ -3162,7 +3162,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "62127c2c-22fd-4a64-9246-0cbd4dad2a0d")
+			(uuid "27db451a-3da9-41b6-9039-b7a94dba6754")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3174,7 +3174,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d7d261f7-5e5d-43ea-982f-676c32b59ef5")
+			(uuid "19b37bc8-5464-4996-add3-7c5f1a17657f")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3375,11 +3375,11 @@
 	(footprint "Libreria_EDU_CIAA_NXP:PIN_ARRAY_20X2"
 		(layer "F.Cu")
 		(uuid "a759c1b0-9917-4382-8409-c63313bfb525")
-		(at 54.11 61.27 180)
+		(at 73.8 103 180)
 		(descr "Double rangee de contacts 2 x 12 pins")
 		(tags "CONN")
 		(property "Reference" "CIAA-P1"
-			(at -26.42 1.9 90)
+			(at -26.7 0 90)
 			(layer "F.SilkS")
 			(uuid "bf0cbc29-970e-4f75-be3e-6c4e2c8b1094")
 			(effects
@@ -3925,13 +3925,13 @@
 	(footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "b57c2977-d636-454f-89fb-452f1147d64d")
-		(at 95.42 103)
+		(at 97.995 130.1725)
 		(descr "Terminal Block Phoenix MKDS-1,5-2-5.08, 2 pins, pitch 5.08mm, size 10.2x9.8mm, drill diameter 1.3mm, pad diameter 2.6mm, http://www.farnell.com/datasheets/100425.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_Phoenix")
 		(tags "THT Terminal Block Phoenix MKDS-1,5-2-5.08 pitch 5.08mm size 10.2x9.8mm drill 1.3mm pad 2.6mm")
 		(property "Reference" "Bornier_DRV833"
 			(at 2.54 -6.32 0)
 			(layer "F.SilkS")
-			(uuid "2e516374-a869-4e2d-b16b-c19cc1140a1c")
+			(uuid "42fc5554-fca4-4c34-b768-6175941dc700")
 			(effects
 				(font
 					(size 1 1)
@@ -3942,7 +3942,7 @@
 		(property "Value" "Screw_Terminal_01x05"
 			(at 2.54 5.72 0)
 			(layer "F.Fab")
-			(uuid "fe7ac26d-c157-4259-a7b0-86a48ba96daf")
+			(uuid "fb38bcb8-108d-4e28-a8e9-fc162c4d64fd")
 			(effects
 				(font
 					(size 1 1)
@@ -3954,7 +3954,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "c5bd05e3-df62-4cb3-957f-9797cf36247e")
+			(uuid "3b3d809f-146d-4e79-87e8-05f43ad0c120")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3966,7 +3966,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "523dd2a3-9c46-49e6-84f3-cc68abaa0639")
+			(uuid "693f29bf-599f-4b32-b5de-0db73dc1cacb")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5058,7 +5058,7 @@
 	(footprint "Module:Pololu_Breakout-16_15.2x20.3mm"
 		(layer "F.Cu")
 		(uuid "d730bb6c-e016-4044-8a57-19d9b6055a9c")
-		(at 117.3 59.26)
+		(at 191.872503 28.444837)
 		(descr "Pololu Breakout 16-pin 15.2x20.3mm 0.6x0.8")
 		(tags "Pololu Breakout")
 		(property "Reference" "DRV8825_2"
@@ -5507,7 +5507,7 @@
 	(footprint "Module:Pololu_Breakout-16_15.2x20.3mm"
 		(layer "F.Cu")
 		(uuid "d736d388-71d8-42c0-9433-d800e7cab2da")
-		(at 47.258524 26.241022)
+		(at 108.8 50.825)
 		(descr "Pololu Breakout 16-pin 15.2x20.3mm 0.6x0.8")
 		(tags "Pololu Breakout")
 		(property "Reference" "XL4005"
@@ -5639,13 +5639,13 @@
 	(footprint "Connector_PinSocket_2.00mm:PinSocket_1x02_P2.00mm_Vertical"
 		(layer "F.Cu")
 		(uuid "dd21dc8f-df07-4308-9675-7ce3c2b291fd")
-		(at 30.5 100 -90)
+		(at 33.075 127.1725 -90)
 		(descr "Through hole straight socket strip, 1x02, 2.00mm pitch, single row (from Kicad 4.0.7), script generated")
 		(tags "Through hole socket strip THT 1x02 2.00mm single row")
 		(property "Reference" "PinOut_POT"
 			(at -3 0.5 0)
 			(layer "F.SilkS")
-			(uuid "969115fe-4b41-4309-8a5d-1aa999d49d49")
+			(uuid "fb73bb8c-521b-495d-acc8-e84aeff7163a")
 			(effects
 				(font
 					(size 1 1)
@@ -5657,7 +5657,7 @@
 			(at 0 4.5 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "abf742dd-64bd-44e3-aef8-ca04d3c3d618")
+			(uuid "2c976a58-c0af-4e5a-ab00-2d7a3e096e3e")
 			(effects
 				(font
 					(size 1 1)
@@ -5669,7 +5669,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e487e3c5-9175-427e-b435-6963f1054f73")
+			(uuid "e2d9f6a2-7483-41dc-94b5-4f85532d22bb")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5681,7 +5681,7 @@
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ffe02bb5-1ade-4e3b-97f6-b39ad36e554f")
+			(uuid "4f05fb9a-48b7-4d62-b089-023b82312ff3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5882,13 +5882,13 @@
 	(footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-4-5.08_1x04_P5.08mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "e7cc6ad6-22f8-4b65-a622-eaeeb7d28c25")
-		(at 139.822331 102.911233)
+		(at 142.397331 130.083733)
 		(descr "Terminal Block Phoenix MKDS-1,5-4-5.08, 4 pins, pitch 5.08mm, size 20.3x9.8mm, drill diameter 1.3mm, pad diameter 2.6mm, http://www.farnell.com/datasheets/100425.pdf, script-generated using https://gitlab.com/kicad/libraries/kicad-footprint-generator/-/tree/master/scripts/TerminalBlock_Phoenix")
 		(tags "THT Terminal Block Phoenix MKDS-1,5-4-5.08 pitch 5.08mm size 20.3x9.8mm drill 1.3mm pad 2.6mm")
 		(property "Reference" "Bornier_Nema17_2"
 			(at 7.62 -6.32 0)
 			(layer "F.SilkS")
-			(uuid "26fa44fd-9764-466f-ba0b-530f8faa3edf")
+			(uuid "5e7599ee-1f81-4fdb-9518-4515d6ea2c68")
 			(effects
 				(font
 					(size 1 1)
@@ -5899,7 +5899,7 @@
 		(property "Value" "Screw_Terminal_01x04"
 			(at 7.62 5.72 0)
 			(layer "F.Fab")
-			(uuid "f4f93f29-0738-470d-9f10-8383b2dcca67")
+			(uuid "aab17ca2-0f01-4132-9034-85d72534ef3e")
 			(effects
 				(font
 					(size 1 1)
@@ -5911,7 +5911,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b68abb45-447d-4a42-bfaa-2e2a4bb01283")
+			(uuid "f60f7d28-dcba-4300-a3fd-1cfe24c668f6")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5923,7 +5923,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a3c72a4d-870d-4991-84e0-e2660a21073a")
+			(uuid "1b2fffe4-cce4-4bb4-bca4-2f77f0d9b862")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6386,7 +6386,7 @@
 		(uuid "f1443950-4433-4d01-98bf-acc6c069643e")
 	)
 	(gr_text "VRY\n\n"
-		(at 54 105.5 0)
+		(at 56.575 132.6725 0)
 		(layer "F.Cu")
 		(uuid "5b7bdcf3-168f-48d0-9496-af88e8632385")
 		(effects
@@ -6399,7 +6399,7 @@
 		)
 	)
 	(gr_text "GND"
-		(at 54 106 0)
+		(at 56.575 133.1725 0)
 		(layer "F.Cu")
 		(uuid "678fa34d-8502-436a-8f39-2e90443a3c31")
 		(effects
@@ -6412,7 +6412,7 @@
 		)
 	)
 	(gr_text "SW"
-		(at 54 108.5 0)
+		(at 56.575 135.6725 0)
 		(layer "F.Cu")
 		(uuid "dae739d3-b31c-470f-b09c-20b503fe8d0b")
 		(effects
@@ -6425,7 +6425,7 @@
 		)
 	)
 	(gr_text "VRX\n"
-		(at 54 101.5 0)
+		(at 56.575 128.6725 0)
 		(layer "F.Cu")
 		(uuid "ef5be2c5-cc4f-4715-ab86-a2f6a40c3968")
 		(effects

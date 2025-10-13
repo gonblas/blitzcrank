@@ -8357,7 +8357,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "082168ef-2a09-489b-a3c2-3adaf8236db4")
-		(property "Reference" "#PWR0102"
+		(property "Reference" "#PWR02"
 			(at 196.85 92.71 0)
 			(effects
 				(font
@@ -8407,7 +8407,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "#PWR0102")
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -8634,7 +8634,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "314cfc99-3207-4622-9160-ab7825231816")
-		(property "Reference" "#PWR0101"
+		(property "Reference" "#PWR01"
 			(at 189.23 88.9 0)
 			(effects
 				(font
@@ -8685,7 +8685,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "#PWR0101")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -9109,7 +9109,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "692d74f9-447a-4d1f-a85d-d47cdf8f366c")
-		(property "Reference" "Bornier_DRV8833"
+		(property "Reference" "Bornier_DRV1"
 			(at 144.78 61.468 0)
 			(effects
 				(font
@@ -9163,7 +9163,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Bornier_DRV8833")
+					(reference "Bornier_DRV1")
 					(unit 1)
 				)
 			)
@@ -9181,7 +9181,7 @@
 		(fields_autoplaced yes)
 		(uuid "7295a0f4-f5fe-4e80-b065-a5b81e48cd11")
 		(property "Reference" "PinOut_Stick"
-			(at 195.58 133.3499 0)
+			(at 195.58 135.8899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9190,7 +9190,7 @@
 			)
 		)
 		(property "Value" "Pin_Terminal_01x05"
-			(at 195.58 135.8899 0)
+			(at 195.58 138.4299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9477,7 +9477,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "df89ca13-78ce-4268-b1eb-fbf8b41e1c8c")
-		(property "Reference" "DRV8833"
+		(property "Reference" "DRV1"
 			(at 160.02 17.78 0)
 			(effects
 				(font
@@ -9560,7 +9560,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "DRV8833")
+					(reference "DRV1")
 					(unit 1)
 				)
 			)
@@ -9577,7 +9577,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e57998f8-ab5c-4608-9672-faab1e22424f")
-		(property "Reference" "PinOut_UART"
+		(property "Reference" "PinOut_UART1"
 			(at 196.85 49.5299 0)
 			(effects
 				(font
@@ -9631,7 +9631,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "PinOut_UART")
+					(reference "PinOut_UART1")
 					(unit 1)
 				)
 			)
@@ -9647,7 +9647,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e7398baa-b2d4-4e82-8422-c1f3f500dddc")
-		(property "Reference" "V_Input"
+		(property "Reference" "V_Input1"
 			(at 82.55 64.7699 0)
 			(effects
 				(font
@@ -9701,7 +9701,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "V_Input")
+					(reference "V_Input1")
 					(unit 1)
 				)
 			)
