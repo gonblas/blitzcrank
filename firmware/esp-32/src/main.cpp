@@ -37,7 +37,7 @@ void handleJS() {
 
 void setup() {
   Serial.begin(115200);
-  startAccessPoint();  // De wifi_connectivity.h
+  startAccessPoint();
 
   // ---------------- Initialize SPIFFS ----------------
   if(!SPIFFS.begin(true)){

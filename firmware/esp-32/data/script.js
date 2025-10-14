@@ -2,12 +2,38 @@
 const btnUp = document.getElementById('btnUp');
 const btnDown = document.getElementById('btnDown');
 
+let holdInterval = null;
+
 function sendAction(url) {
   fetch(url).catch(err => console.log("Error:", err));
 }
 
-btnUp.addEventListener('mousedown', () => sendAction('/up'));
-btnDown.addEventListener('mousedown', () => sendAction('/down'));
+function startHold(url) {
+  // Enviar inmediatamente al presionar
+  sendAction(url);
+  // Y repetir cada 100ms mientras esté presionado
+  holdInterval = setInterval(() => sendAction(url), 100);
+}
+
+function stopHold() {
+  clearInterval(holdInterval);
+  holdInterval = null;
+}
+
+// UP
+btnUp.addEventListener('mousedown', () => startHold('/up'));
+btnUp.addEventListener('mouseup', stopHold);
+btnUp.addEventListener('mouseleave', stopHold);
+btnUp.addEventListener('touchstart', (e) => { e.preventDefault(); startHold('/up'); });
+btnUp.addEventListener('touchend', stopHold);
+
+// DOWN
+btnDown.addEventListener('mousedown', () => startHold('/down'));
+btnDown.addEventListener('mouseup', stopHold);
+btnDown.addEventListener('mouseleave', stopHold);
+btnDown.addEventListener('touchstart', (e) => { e.preventDefault(); startHold('/down'); });
+btnDown.addEventListener('touchend', stopHold);
+
 
 // ---------------- SLIDER ----------------
 const gripperSlider = document.getElementById('gripperSlider');
