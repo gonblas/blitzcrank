@@ -65,30 +65,27 @@ Blitzcrank/
 │       │   └── script.js
 │       │
 │       ├── include/  
-│       ├── lib/            # Librerías externas (ESPAsyncWebServer, etc.)
-│       ├── platformio.ini  # Configuración de PlatformIO
-│       └── test/           # Pruebas específicas del ESP
+│       ├── lib/                  # Librerías externas (ESPAsyncWebServer, etc.)
+│       ├── platformio.ini        # Configuración de PlatformIO
+│       └── test/                 # Pruebas específicas del ESP
 │
-├── hardware/               # Diseños de PCB, Esquemáticos, Diseños 3D
-│   ├── pcb/                # Diseños de PCB
-│   ├── 3d-design/          # Diseños 3D
-│   └── schematic/          # Circuitos esquemáticos
+├── hardware/                     # Diseños de PCB, Esquemáticos, Diseños 3D
+│   ├── pcb/                      # Diseños de PCB
+│   ├── 3d-design/                # Diseños 3D
+│   └── schematic/                # Circuitos esquemáticos
 │
-├── resources/              # Documentación técnica y de apoyo
-│   ├── 3d-design/          # Imágenes de los diseños 3D
-│   ├── datasheets/         # Datasheets de los componentes utilizados
-│   ├── manuals/            # Manuales de módulos, sensores, devkits, etc.
-│   ├── notes/              # Apuntes técnicos, application notes, cálculos útiles
-│   └── schematics/         # Esquemas de conexión, wiring y diagramas eléctricos
+├── resources/                    # Documentación técnica y de apoyo
+│   ├── 3d-design/                # Imágenes de los diseños 3D
+│   ├── datasheets/               # Datasheets de los componentes utilizados
+│   ├── manuals/                  # Manuales de módulos, sensores, devkits, etc.
+│   ├── notes/                    # Apuntes técnicos, application notes, cálculos útiles
+│   └── schematics/               # Esquemas de conexión, wiring y diagramas eléctricos
 │
-├── tools/                  # Herramientas auxiliares
-│
-├── .clang-format           # Configuración de estilo de código
-├── .gitignore              # Archivos ignorados por Git
-├── LICENSE                 # Licencia del proyecto
-├── Makefile                # Script de construcción
-├── README.md               # Archivo actual
-└── STYLE_GUIDE.md          # Convenciones de estilo del proyecto
+├── .clang-format                 # Configuración de estilo de código
+├── .gitignore                    # Archivos ignorados por Git
+├── LICENSE                       # Licencia del proyecto
+├── README.md                     # Archivo actual
+└── STYLE_GUIDE.md                # Convenciones de estilo del proyecto
 ```
 
 Para ver las convenciones de nombres y estilo de código, consultar [STYLE_GUIDE.md](./STYLE_GUIDE.md)
