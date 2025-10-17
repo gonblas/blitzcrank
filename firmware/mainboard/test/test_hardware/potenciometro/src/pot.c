@@ -1,4 +1,5 @@
 #include "sapi.h"
+#include "board_pins.h" // Definiciones de pines del tablero
 
 int main(void) {
    boardConfig();
@@ -13,7 +14,7 @@ int main(void) {
 
    while(TRUE) {
       // Leo el valor crudo del ADC (0 a 1023)
-      potRaw = adcRead(CH1);
+      potRaw = adcRead(POTENCIOMETER_PIN);
 
       // Escalo a 0–100
       potScaled = (potRaw * 100) / 1023;

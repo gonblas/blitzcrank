@@ -1,4 +1,6 @@
 #include "sapi.h"
+#include "board_pins.h" // Definiciones de pines del tablero
+
 
 int main(void) {
    boardConfig();
@@ -8,16 +10,16 @@ int main(void) {
    uartConfig(UART_USB, 115200);
 
    // Botón del joystick
-   gpioConfig(GPIO0, GPIO_INPUT);
+   gpioConfig(JOYSTICK_BUTTON_PIN, GPIO_INPUT);
 
    uint16_t xValue, yValue;
    bool_t btn;
    static char debugBuff[64];
 
    while(TRUE) {
-      xValue = adcRead(CH3); // Eje X
-      yValue = adcRead(CH2); // Eje Y
-      btn = !gpioRead(GPIO8); // Activo en bajo
+      xValue = adcRead(JOYSTICK_X_PIN); // Eje X
+      yValue = adcRead(JOYSTICK_Y_PIN); // Eje Y
+      btn = !gpioRead(JOYSTICK_BUTTON_PIN); // Activo en bajo
 
       // Zona neutra para los LEDs
       uint16_t centro = 512;

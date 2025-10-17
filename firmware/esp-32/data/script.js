@@ -107,8 +107,9 @@ const joystickStick = document.getElementById("joystickStick");
 const joystickXDisplay = document.getElementById("joystickX");
 const joystickYDisplay = document.getElementById("joystickY");
 
-let dragging = false;
-const maxDistance = 60;
+
+let dragging = false
+const maxDistance = 60
 
 function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
@@ -130,7 +131,7 @@ function updateJoystick(clientX, clientY) {
     dy = Math.sin(angle) * maxDistance;
   }
 
-  joystickStick.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
+  joystickStick.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`
 
   // normalizados en [-1..1], con Y invertida para que arriba sea positivo
   const nx = dx / maxDistance;      // derecha = +1
