@@ -5,6 +5,21 @@ const statusText = document.getElementById("statusText")
 const statusIndicator = document.querySelector(".status-indicator")
 const joystickContainer = document.getElementById("joystickContainer")
 
+window.addEventListener("DOMContentLoaded", () => {
+  webControlEnabled = false
+  modeSwitch.checked = false
+  
+  statusText.textContent = "WEB CONTROL DISABLED"
+  statusText.classList.add("disabled")
+  statusIndicator.classList.add("disabled")
+  joystickContainer.classList.add("disabled")
+
+  // Deshabilitar controles al inicio
+  btnUp.disabled = true
+  btnDown.disabled = true
+  gripperSlider.disabled = true
+})
+
 modeSwitch.addEventListener("change", (e) => {
   webControlEnabled = e.target.checked
 
