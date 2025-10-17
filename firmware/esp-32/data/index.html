@@ -9,11 +9,21 @@
 <body>
   
   <div class="arcade-panel">
+    <!-- Moved mode switch to top right corner -->
+    <div class="mode-switch-container">
+      <span class="mode-label">FÍSICO</span>
+      <label class="switch">
+        <input type="checkbox" id="modeSwitch">
+        <span class="switch-slider"></span>
+      </label>
+      <span class="mode-label">WEB</span>
+    </div>
+
     <div class="header">
       <h1>Blitzcrank Controller</h1>
       <div class="status">
         <span class="status-indicator"></span>
-        <span>SYSTEM READY</span>
+        <span id="statusText">WEB CONTROL DISABLED</span>
       </div>
     </div>
 
@@ -22,11 +32,11 @@
         <div class="vertical-control">
           <div class="buttons">
             <div class="button-wrapper">
-              <button id="btnUp" class="control-button btn-up">UP</button>
+              <button id="btnUp" class="control-button btn-up" disabled>UP</button>
               <span class="hold-indicator">HOLD TO CONTINUE</span>
             </div>
             <div class="button-wrapper">
-              <button id="btnDown" class="control-button btn-down">DOWN</button>
+              <button id="btnDown" class="control-button btn-down" disabled>DOWN</button>
               <span class="hold-indicator">HOLD TO CONTINUE</span>
             </div>
           </div>
@@ -34,7 +44,7 @@
 
         <div class="slider-container">
           <h2>GRIPPER CONTROL</h2>
-          <input type="range" min="0" max="100" value="50" class="slider" id="gripperSlider">
+          <input type="range" min="0" max="100" value="50" class="slider" id="gripperSlider" disabled>
           <div class="slider-labels">
             <span class="closed">CLOSED</span>
             <span id="gripperValue">50%</span>
@@ -48,7 +58,7 @@
           <div class="joystick-stick" id="joystickStick"></div>
         </div>
         <div class="joystick-values">
-          X: <span id="joystickX">0</span> | Y: <span id="joystickY">0</span>
+          X: <span id="joystickX">512</span> | Y: <span id="joystickY">512</span>
         </div>
       </div>
     </div>

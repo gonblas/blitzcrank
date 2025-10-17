@@ -25,8 +25,8 @@ void setupRoutes(WebServer& server) {
   });
 
   server.on("/joystick", [&]() {
-    String x = server.hasArg("x") ? server.arg("x") : "50";
-    String y = server.hasArg("y") ? server.arg("y") : "50";
+    String x = server.hasArg("x") ? server.arg("x") : "512";
+    String y = server.hasArg("y") ? server.arg("y") : "512";
     Serial.println("Joystick X: " + x + " Y: " + y);
     server.send(200, "text/plain", "OK");
   });
