@@ -6,6 +6,7 @@ void setupRoutes(WebServer& server) {
   server.on("/", [&]() { serveFile(server, "/index.html", "text/html"); });
   server.on("/style.css", [&]() { serveFile(server, "/style.css", "text/css"); });
   server.on("/script.js", [&]() { serveFile(server, "/script.js", "application/javascript"); });
+  server.on("/blitzcrank.ico", [&]() { serveFile(server, "/blitzcrank.ico", "image/x-icon"); });
 
   // -------------------- Control routes --------------------
   server.on("/up", [&]() {

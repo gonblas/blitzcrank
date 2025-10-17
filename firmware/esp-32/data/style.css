@@ -236,7 +236,11 @@ body {
   -webkit-user-select: none; /* Para Safari/Chrome */
   -moz-user-select: none; /* Para Firefox */
   -ms-user-select: none; /* Para IE/Edge */
-  transition: opacity 0.3s, filter 0.3s;
+  transition: opacity 0.3s, filter 0.3s, transform 0.1s;
+}
+
+.control-button:active:not(:disabled) {
+  transform: scale(0.95);
 }
 
 .btn-up {
@@ -256,17 +260,70 @@ body {
 
 .hold-indicator {
   position: absolute;
-  bottom: -24px;
+  bottom: -32px;
   left: 50%;
-  transform: translateX(-50%);
-  font-size: 11px;
-  color: #fbbf24;
+  transform: translateX(-50%) scale(0.9);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 12px;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
 }
 
-.control-button:active + .hold-indicator {
+.control-button:active:not(:disabled) + .hold-indicator {
   opacity: 1;
+  transform: translateX(-50%) scale(1);
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+.btn-up:active:not(:disabled) + .hold-indicator {
+  background: linear-gradient(135deg, rgba(18, 99, 199, 0.9), rgba(16, 63, 121, 0.9));
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: pulse-glow-blue 1.5s ease-in-out infinite;
+}
+
+.btn-down:active:not(:disabled) + .hold-indicator {
+  background: linear-gradient(135deg, rgba(243, 178, 41, 0.9), rgba(255, 174, 0, 0.9));
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: pulse-glow-yellow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(251, 191, 36, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes pulse-glow-blue {
+  0%,
+  100% {
+    box-shadow: 0 4px 12px rgba(18, 99, 199, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(18, 99, 199, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes pulse-glow-yellow {
+  0%,
+  100% {
+    box-shadow: 0 4px 12px rgba(243, 178, 41, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(243, 178, 41, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
 }
 
 /* Slider */
