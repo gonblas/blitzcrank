@@ -15,9 +15,10 @@ body {
   background: linear-gradient(145deg, #2a2a3e, #1f1f2e);
   border-radius: 20px;
   padding: 32px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   max-width: 1200px;
   width: 100%;
+  position: relative; /* Added for absolute positioning of switch */
 }
 
 /* Header */
@@ -26,6 +27,21 @@ body {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 16px;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
+}
+
+.control-title {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
 }
 
 .status {
@@ -47,9 +63,117 @@ body {
   animation: pulse 2s infinite;
 }
 
+.status-indicator.disabled {
+  background: #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+}
+
+#statusText {
+  font-weight: bold;
+  color: #22c55e;
+  transition: color 0.3s ease;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
+}
+
+#statusText.disabled {
+  color: #ef4444;
+}
+
 @keyframes pulse {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Redesigned mode switch for top right corner */
+.mode-switch-container {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 12px;
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+.mode-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
+}
+
+.mode-switch-container:has(input:checked) .mode-label:last-child {
+  color: #22c55e;
+}
+
+.mode-switch-container:has(input:not(:checked)) .mode-label:first-child {
+  color: #ef4444;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ef4444;
+  transition: 0.3s;
+  border-radius: 26px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.switch input:checked + .switch-slider {
+  background-color: #22c55e;
+}
+
+.switch input:checked + .switch-slider:before {
+  transform: translateX(22px);
 }
 
 /* Grid */
@@ -63,7 +187,8 @@ body {
 }
 
 /* Controls */
-.controls, .joystick-area {
+.controls,
+.joystick-area {
   flex: 1 1 300px;
 }
 
@@ -101,39 +226,104 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 3px solid rgba(0,0,0,0.3);
+  border: 3px solid rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
   color: white;
   background: #555;
   cursor: pointer;
-  user-select: none;        /* Evita selección de texto */
+  user-select: none; /* Evita selección de texto */
   -webkit-user-select: none; /* Para Safari/Chrome */
-  -moz-user-select: none;    /* Para Firefox */
-  -ms-user-select: none;     /* Para IE/Edge */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
+  transition: opacity 0.3s, filter 0.3s, transform 0.1s;
+}
+
+.control-button:active:not(:disabled) {
+  transform: scale(0.95);
 }
 
 .btn-up {
-  background: radial-gradient(circle at 30% 30%, #4ade80, #22c55e);
+  background: radial-gradient(circle at 30% 30%, #1263c7, #103f79);
 }
 
 .btn-down {
-  background: radial-gradient(circle at 30% 30%, #f87171, #ef4444);
+  background: radial-gradient(circle at 30% 30%, #f3b229, #ffae00);
+}
+
+/* Added disabled state for buttons */
+.control-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
 }
 
 .hold-indicator {
   position: absolute;
-  bottom: -24px;
+  bottom: -32px;
   left: 50%;
-  transform: translateX(-50%);
-  font-size: 11px;
-  color: #fbbf24;
+  transform: translateX(-50%) scale(0.9);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 12px;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
 }
 
-.control-button:active + .hold-indicator {
+.control-button:active:not(:disabled) + .hold-indicator {
   opacity: 1;
+  transform: translateX(-50%) scale(1);
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+.btn-up:active:not(:disabled) + .hold-indicator {
+  background: linear-gradient(135deg, rgba(18, 99, 199, 0.9), rgba(16, 63, 121, 0.9));
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: pulse-glow-blue 1.5s ease-in-out infinite;
+}
+
+.btn-down:active:not(:disabled) + .hold-indicator {
+  background: linear-gradient(135deg, rgba(243, 178, 41, 0.9), rgba(255, 174, 0, 0.9));
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: pulse-glow-yellow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(251, 191, 36, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes pulse-glow-blue {
+  0%,
+  100% {
+    box-shadow: 0 4px 12px rgba(18, 99, 199, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(18, 99, 199, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes pulse-glow-yellow {
+  0%,
+  100% {
+    box-shadow: 0 4px 12px rgba(243, 178, 41, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(243, 178, 41, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
 }
 
 /* Slider */
@@ -154,6 +344,7 @@ body {
   border-radius: 10px;
   background: linear-gradient(to right, #ef4444 0%, #fbbf24 50%, #22c55e 100%);
   outline: none;
+  transition: opacity 0.3s, filter 0.3s;
 }
 
 .slider::-webkit-slider-thumb {
@@ -166,16 +357,35 @@ body {
   cursor: pointer;
 }
 
+/* Added disabled state for slider */
+.slider:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+.slider:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
+}
+
 .slider-labels {
   display: flex;
   justify-content: space-between;
   margin-top: 4px;
   font-weight: bold;
   color: white;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
 }
 
-.slider-labels .closed { color: #ef4444; }
-.slider-labels .open { color: #22c55e; }
+.slider-labels .closed {
+  color: #ef4444;
+}
+.slider-labels .open {
+  color: #22c55e;
+}
 
 /* Joystick */
 .joystick-container {
@@ -186,20 +396,32 @@ body {
   position: relative;
   margin: 0 auto;
   border: 6px solid #2a2a3e;
-  box-shadow: inset 0 8px 20px rgba(0,0,0,0.6), 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.6), 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s, filter 0.3s;
+}
+
+/* Added disabled state for joystick */
+.joystick-container.disabled {
+  opacity: 0.4;
+  filter: grayscale(0.5);
 }
 
 .joystick-stick {
   width: 60px;
   height: 60px;
-  background: radial-gradient(circle at 35% 35%, #ef4444, #b91c1c);
+  background: radial-gradient(circle at 35% 35%, #1263c7, #103f79);
   border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   cursor: grab;
-  border: 3px solid rgba(0,0,0,0.3);
+  border: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+/* Added disabled cursor for joystick */
+.joystick-container.disabled .joystick-stick {
+  cursor: not-allowed;
 }
 
 .joystick-values {
@@ -207,9 +429,14 @@ body {
   color: white;
   font-family: monospace;
   margin-top: 8px;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
 }
 
-.button-wrapper, .button-wrapper * {
+.button-wrapper,
+.button-wrapper * {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
