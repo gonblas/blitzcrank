@@ -26,19 +26,29 @@ Blitzcrank/
 │
 ├── build/                        # Archivos de compilación
 ├── docs/                         # Documentación y diagramas del proyecto
-├── firmware/              
-│   ├── mainboard/                # Firmware del controlador principal
-│   │   ├── debug/                # Compilaciones de depuración
-│   │   ├── release/              # Compilaciones de lanzamiento
-│   │   ├── src/                  # Código fuente del firmware
-│   │   │   ├── app/              # Código específico de la aplicación
-│   │   │   ├── drivers/          # Drivers de hardware
-│   │   │   ├── lib/              # Librerías externas
-│   │   │   ├── startup/          # CMSIS, linker y reset handler
-│   │   │   ├── main.c            # Función principal
-│   │   │   └── board.h           # Definiciones de la PCB
+├── firmware/                     # Directorio principal del firmware
+│   ├── mainboard/                # Firmware del controlador principal (LPC4337)
+│   │   ├── .settings/            # Configuración del entorno de desarrollo
+│   │   ├── app/                  # Aplicación principal del firmware
+│   │   │   ├── drivers/          # Drivers de hardware (UART, SPI, I2C, GPIO, etc.)
+│   │   │   ├── inc/              # Archivos de encabezado propios del proyecto
+│   │   │   ├── out/              # Archivos de salida (build temporal, objetos, etc.)
+│   │   │   └── src/              # Código fuente de la aplicación
+│   │   │       └── main.c        # Punto de entrada del firmware
 │   │   │
-│   │   └── test/                 # Código de pruebas del firmware
+│   │   ├── examples/             # Ejemplos de uso de las distintas librerías
+│   │   ├── libs/                 # Librerías externas o módulos reutilizables
+│   │   ├── scripts/              # Scripts auxiliares para automatizar tareas del proyecto
+│   │   ├── test/                 # Código de pruebas del hardware y validación de módulos
+│   │   ├── .cproject             # Configuración del compilador (Eclipse)
+│   │   ├── .gitignore            # Archivos ignorados por Git
+│   │   ├── .project              # Configuración del proyecto (Eclipse)
+│   │   ├── .travis.yml           # Integración continua (Travis CI)
+│   │   ├── board.mk              # Configuración específica de la placa (paths, flags, etc.)
+│   │   ├── LICENSE               # Licencia del proyecto
+│   │   ├── Makefile              # Archivo principal de construcción del proyecto
+│   │   ├── program.mk            # Reglas de programación/flasheo del firmware
+│   │   ├── README.md             # Documentación general del firmware principal
 │   │
 │   └── esp-32/                   # Firmware del módulo ESP32
 │       ├── src/                  # Código fuente principal (main.cpp)
@@ -54,9 +64,10 @@ Blitzcrank/
 │       │   ├── style.css
 │       │   └── script.js
 │       │
-│       ├── platformio.ini        # Configuración del entorno PlatformIO (placa, librerías, etc.)
-│       │
-│       └── test/                 # Pruebas específicas del firmware (unit tests o integración)
+│       ├── include/  
+│       ├── lib/                  # Librerías externas (ESPAsyncWebServer, etc.)
+│       ├── platformio.ini        # Configuración de PlatformIO
+│       └── test/                 # Pruebas específicas del ESP
 │
 ├── hardware/                     # Diseños de PCB, Esquemáticos, Diseños 3D
 │   ├── pcb/                      # Diseños de PCB
@@ -70,12 +81,9 @@ Blitzcrank/
 │   ├── notes/                    # Apuntes técnicos, application notes, cálculos útiles
 │   └── schematics/               # Esquemas de conexión, wiring y diagramas eléctricos
 │
-├── tools/                        # Herramientas auxiliares
-│
 ├── .clang-format                 # Configuración de estilo de código
 ├── .gitignore                    # Archivos ignorados por Git
 ├── LICENSE                       # Licencia del proyecto
-├── Makefile                      # Script de construcción
 ├── README.md                     # Archivo actual
 └── STYLE_GUIDE.md                # Convenciones de estilo del proyecto
 ```
