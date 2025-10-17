@@ -1,5 +1,6 @@
 #include "sapi.h"
 #include "board_pins.h"
+#include <stdlib.h>
 
 // ==== Variables globales ====
 bool_t upPrevState   = ON;
@@ -7,6 +8,8 @@ bool_t downPrevState = ON;
 bool_t joyBtnPrev    = OFF;
 uint16_t xPrev = 0, yPrev = 0;
 uint8_t potPrev = 0;
+bool_t switchPrevState = ON;
+bool_t ledState = ON;
 
 // ==== Prototipos de funciones ====
 void controlarBotones(void);
@@ -26,6 +29,11 @@ int main(void) {
    // Configuración de botones
    gpioConfig(BUTTON_UP_PIN, GPIO_INPUT_PULLUP);
    gpioConfig(BUTTON_DOWN_PIN, GPIO_INPUT_PULLUP);
+   gpioConfig(BUTTON_SWITCH_PIN, GPIO_INPUT_PULLUP);
+   // Configuración del LED del SWITCH
+   gpioConfig(LED_SWITCH_PIN, GPIO_OUTPUT);
+   gpioWrite(LED_SWITCH_PIN, ledState);
+   // Configuración del joystick
    gpioConfig(JOYSTICK_BUTTON_PIN, GPIO_INPUT);
 
    // Configuración del servo
@@ -37,8 +45,10 @@ int main(void) {
    // Bucle principal
    while(TRUE) {
       controlarBotones();
-      controlarJoystick();
-      controlarPotenciometro();
+      if(ledState){
+         controlarJoystick();
+         controlarPotenciometro();
+      }
 
       delay(50);
    }
@@ -50,24 +60,33 @@ int main(void) {
 //                    FUNCIÓN: CONTROL DE BOTONES
 // ================================================================
 void controlarBotones(void) {
-   bool_t upState   = gpioRead(BUTTON_UP_PIN);
-   bool_t downState = gpioRead(BUTTON_DOWN);
+    bool_t upState     = gpioRead(BUTTON_UP_PIN);
+    bool_t downState   = gpioRead(BUTTON_DOWN_PIN);
+    bool_t switchState = gpioRead(BUTTON_SWITCH_PIN);
 
-   if(!upState && upPrevState) {
-      printf("Boton UP presionado\r\n");
-   } else if(upState && !upPrevState) {
-      printf("Boton UP liberado\r\n");
-   }
+    // Solo procesar UP/DOWN si el LED está encendido
+    if(ledState) {
+        (!upState && upPrevState) ? printf("Boton UP presionado\r\n") :
+        (upState && !upPrevState) ? printf("Boton UP liberado\r\n") : 0;
 
-   if(!downState && downPrevState) {
-      printf("Boton DOWN presionado\r\n");
-   } else if(downState && !downPrevState) {
-      printf("Boton DOWN liberado\r\n");
-   }
+        (!downState && downPrevState) ? printf("Boton DOWN presionado\r\n") :
+        (downState && !downPrevState) ? printf("Boton DOWN liberado\r\n") : 0;
+    }
 
-   upPrevState = upState;
-   downPrevState = downState;
+    // Manejo del SWITCH para alternar LED
+    if(!switchState && switchPrevState) {
+        ledState = !ledState;  // toggle
+        gpioWrite(LED_SWITCH_PIN, ledState);
+        printf("Luz %s\r\n", ledState ? "ENCENDIDA" : "APAGADA");
+    }
+
+    // Actualizo estados anteriores
+    upPrevState     = upState;
+    downPrevState   = downState;
+    switchPrevState = switchState;
 }
+
+
 
 // ================================================================
 //                    FUNCIÓN: CONTROL DEL JOYSTICK

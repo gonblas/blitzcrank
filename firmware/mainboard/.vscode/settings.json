@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "sapi.h": "c",
-    "board_pins.h": "c"
+    "board_pins.h": "c",
+    "math.h": "c"
   }
 }
