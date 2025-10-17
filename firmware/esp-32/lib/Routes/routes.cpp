@@ -1,7 +1,7 @@
 #include "routes.h"
 #include "spiffs_manager.h"
 
-void setupRoutes(WebServer& server) {
+void setupRoutes(WebServer& server, UARTManager& uartManager) {
   // -------------------- Static files --------------------
   server.on("/", [&]() { serveFile(server, "/index.html", "text/html"); });
   server.on("/style.css", [&]() { serveFile(server, "/style.css", "text/css"); });
@@ -11,24 +11,37 @@ void setupRoutes(WebServer& server) {
   // -------------------- Control routes --------------------
   server.on("/up", [&]() {
     Serial.println("Gripper Up");
+    uartManager.sendButtonState("UP", true);
     server.send(200, "text/plain", "OK");
   });
 
   server.on("/down", [&]() {
     Serial.println("Gripper Down");
+    uartManager.sendButtonState("DOWN", true);
     server.send(200, "text/plain", "OK");
   });
 
   server.on("/slider", [&]() {
-    if (server.hasArg("value"))
-      Serial.println("Gripper slider: " + server.arg("value"));
+    if (server.hasArg("value")) {
+      int val = server.arg("value").toInt();
+      Serial.println("Gripper slider: " + String(val));
+      uartManager.sendGripper(val);
+    }
     server.send(200, "text/plain", "OK");
   });
 
   server.on("/joystick", [&]() {
-    String x = server.hasArg("x") ? server.arg("x") : "512";
-    String y = server.hasArg("y") ? server.arg("y") : "512";
-    Serial.println("Joystick X: " + x + " Y: " + y);
+    int x = server.hasArg("x") ? server.arg("x").toInt() : 0;
+    int y = server.hasArg("y") ? server.arg("y").toInt() : 0;
+    Serial.printf("Joystick X: %d Y: %d\n", x, y);
+    uartManager.sendJoystick(x, y);
+    server.send(200, "text/plain", "OK");
+  });
+
+  server.on("/mode", [&]() {
+    bool physical = server.hasArg("state") && server.arg("state") == "PHYSICAL";
+    Serial.println(String("Mode switched to: ") + (physical ? "PHYSICAL" : "WEB"));
+    uartManager.sendMode(physical);
     server.send(200, "text/plain", "OK");
   });
 }
