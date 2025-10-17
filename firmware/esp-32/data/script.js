@@ -103,65 +103,148 @@ gripperSlider.addEventListener("input", (e) => {
 })
 
 // ---------------- JOYSTICK ----------------
-const joystickStick = document.getElementById("joystickStick")
-const joystickXDisplay = document.getElementById("joystickX")
-const joystickYDisplay = document.getElementById("joystickY")
+// const joystickStick = document.getElementById("joystickStick")
+// const joystickXDisplay = document.getElementById("joystickX")
+// const joystickYDisplay = document.getElementById("joystickY")
 
-let dragging = false
-const maxDistance = 60
+// let dragging = false
+// const maxDistance = 60
+
+// function updateJoystick(clientX, clientY) {
+//   if (!webControlEnabled) return
+
+//   const rect = joystickContainer.getBoundingClientRect()
+//   const centerX = rect.left + rect.width / 2
+//   const centerY = rect.top + rect.height / 2
+
+//   let dx = clientX - centerX
+//   let dy = clientY - centerY
+
+//   const dist = Math.sqrt(dx * dx + dy * dy)
+//   if (dist > maxDistance) {
+//     const angle = Math.atan2(dy, dx)
+//     dx = Math.cos(angle) * maxDistance
+//     dy = Math.sin(angle) * maxDistance
+//   }
+
+//   joystickStick.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`
+
+//   const normX = Math.round((dx / maxDistance) * 100)
+//   const normY = Math.round((-dy / maxDistance) * 100)
+
+//   joystickXDisplay.textContent = normX
+//   joystickYDisplay.textContent = normY
+
+//   fetch(`/joystick?x=${normX}&y=${normY}`).catch((err) => console.log(err))
+// }
+
+// function resetJoystick() {
+//   joystickStick.style.transform = "translate(-50%, -50%)"
+//   joystickXDisplay.textContent = "0"
+//   joystickYDisplay.textContent = "0"
+//   if (!webControlEnabled) return
+//   fetch("/joystick?x=0&y=0").catch((err) => console.log(err))
+// }
+
+// joystickStick.addEventListener("mousedown", () => {
+//   if (webControlEnabled) dragging = true
+// })
+// document.addEventListener("mousemove", (e) => dragging && updateJoystick(e.clientX, e.clientY))
+// document.addEventListener("mouseup", () => dragging && ((dragging = false), resetJoystick()))
+
+// joystickStick.addEventListener("touchstart", (e) => {
+//   if (webControlEnabled) {
+//     dragging = true
+//     e.preventDefault()
+//   }
+// })
+// document.addEventListener("touchmove", (e) => {
+//   if (dragging) {
+//     const t = e.touches[0]
+//     updateJoystick(t.clientX, t.clientY)
+//   }
+// })
+// document.addEventListener("touchend", () => dragging && ((dragging = false), resetJoystick()))
+
+
+
+const joystickStick = document.getElementById("joystickStick");
+const joystickXDisplay = document.getElementById("joystickX");
+const joystickYDisplay = document.getElementById("joystickY");
+
+let dragging = false;
+const maxDistance = 60;
+
+function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
 function updateJoystick(clientX, clientY) {
-  if (!webControlEnabled) return
+  if (!webControlEnabled) return;
 
-  const rect = joystickContainer.getBoundingClientRect()
-  const centerX = rect.left + rect.width / 2
-  const centerY = rect.top + rect.height / 2
+  const rect = joystickContainer.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
 
-  let dx = clientX - centerX
-  let dy = clientY - centerY
+  let dx = clientX - centerX;       // + derecha
+  let dy = clientY - centerY;       // + abajo
 
-  const dist = Math.sqrt(dx * dx + dy * dy)
+  // limitar al círculo visual
+  const dist = Math.hypot(dx, dy);
   if (dist > maxDistance) {
-    const angle = Math.atan2(dy, dx)
-    dx = Math.cos(angle) * maxDistance
-    dy = Math.sin(angle) * maxDistance
+    const angle = Math.atan2(dy, dx);
+    dx = Math.cos(angle) * maxDistance;
+    dy = Math.sin(angle) * maxDistance;
   }
 
-  joystickStick.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`
+  joystickStick.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
 
-  const normX = Math.round((dx / maxDistance) * 100)
-  const normY = Math.round((-dy / maxDistance) * 100)
+  // normalizados en [-1..1], con Y invertida para que arriba sea positivo
+  const nx = dx / maxDistance;      // derecha = +1
+  const ny = -dy / maxDistance;     // arriba = +1
 
-  joystickXDisplay.textContent = normX
-  joystickYDisplay.textContent = normY
+  const r = Math.hypot(nx, ny);
+  let sx = 0, sy = 0;
 
-  fetch(`/joystick?x=${normX}&y=${normY}`).catch((err) => console.log(err))
+  if (r > 0) {
+    const m = Math.max(Math.abs(nx), Math.abs(ny));
+    // proyección círculo -> cuadrado (preserva dirección, lleva a borde cuadrado)
+    // para puntos interiores se escala proporcionalmente
+    sx = (m === 0) ? 0 : (nx * r / m);
+    sy = (m === 0) ? 0 : (ny * r / m);
+  }
+
+  // Mapear a ADC 0..1023, con X invertido (derecha -> 0) y Y normal (arriba -> 1023)
+  const adcX = clamp(Math.round(((1 - sx) / 2) * 1023), 0, 1023);
+  const adcY = clamp(Math.round(((sy + 1) / 2) * 1023), 0, 1023);
+
+  joystickXDisplay.textContent = adcX;
+  joystickYDisplay.textContent = adcY;
+
+  fetch(`/joystick?x=${adcX}&y=${adcY}`).catch((err) => console.log(err));
 }
 
 function resetJoystick() {
-  joystickStick.style.transform = "translate(-50%, -50%)"
-  joystickXDisplay.textContent = "0"
-  joystickYDisplay.textContent = "0"
-  if (!webControlEnabled) return
-  fetch("/joystick?x=0&y=0").catch((err) => console.log(err))
+  joystickStick.style.transform = "translate(-50%, -50%)";
+  joystickXDisplay.textContent = "512";
+  joystickYDisplay.textContent = "512";
+  if (!webControlEnabled) return;
+  fetch("/joystick?x=512&y=512").catch((err) => console.log(err));
 }
 
 joystickStick.addEventListener("mousedown", () => {
-  if (webControlEnabled) dragging = true
-})
-document.addEventListener("mousemove", (e) => dragging && updateJoystick(e.clientX, e.clientY))
-document.addEventListener("mouseup", () => dragging && ((dragging = false), resetJoystick()))
-
+  if (webControlEnabled) dragging = true;
+});
+document.addEventListener("mousemove", (e) => dragging && updateJoystick(e.clientX, e.clientY));
+document.addEventListener("mouseup", () => dragging && ((dragging = false), resetJoystick()));
 joystickStick.addEventListener("touchstart", (e) => {
   if (webControlEnabled) {
-    dragging = true
-    e.preventDefault()
+    dragging = true;
+    e.preventDefault();
   }
-})
+});
 document.addEventListener("touchmove", (e) => {
   if (dragging) {
-    const t = e.touches[0]
-    updateJoystick(t.clientX, t.clientY)
+    const t = e.touches[0];
+    updateJoystick(t.clientX, t.clientY);
   }
-})
-document.addEventListener("touchend", () => dragging && ((dragging = false), resetJoystick()))
+});
+document.addEventListener("touchend", () => dragging && ((dragging = false), resetJoystick()));
