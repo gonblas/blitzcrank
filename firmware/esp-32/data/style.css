@@ -27,6 +27,21 @@ body {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 16px;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
+}
+
+.control-title {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
 }
 
 .status {
@@ -57,6 +72,10 @@ body {
   font-weight: bold;
   color: #22c55e;
   transition: color 0.3s ease;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
 }
 
 #statusText.disabled {
@@ -96,6 +115,10 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: color 0.3s ease;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
 }
 
 .mode-switch-container:has(input:checked) .mode-label:last-child {
@@ -217,11 +240,11 @@ body {
 }
 
 .btn-up {
-  background: radial-gradient(circle at 30% 30%, #4ade80, #22c55e);
+  background: radial-gradient(circle at 30% 30%, #1263c7, #103f79);
 }
 
 .btn-down {
-  background: radial-gradient(circle at 30% 30%, #f87171, #ef4444);
+  background: radial-gradient(circle at 30% 30%, #f3b229, #ffae00);
 }
 
 /* Added disabled state for buttons */
@@ -294,6 +317,10 @@ body {
   margin-top: 4px;
   font-weight: bold;
   color: white;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
 }
 
 .slider-labels .closed {
@@ -325,7 +352,7 @@ body {
 .joystick-stick {
   width: 60px;
   height: 60px;
-  background: radial-gradient(circle at 35% 35%, #ef4444, #b91c1c);
+  background: radial-gradient(circle at 35% 35%, #1263c7, #103f79);
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -345,6 +372,10 @@ body {
   color: white;
   font-family: monospace;
   margin-top: 8px;
+  user-select: none; /* Evita selección de texto */
+  -webkit-user-select: none; /* Para Safari/Chrome */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE/Edge */
 }
 
 .button-wrapper,
