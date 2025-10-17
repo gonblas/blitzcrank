@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "LIBRERIA_EDU_CIAA_NXP")(type "KiCad")(uri "/home/manuel/Documents/Facultad/blitzcrank/hardware/footprints/Libreria_EDU_CIAA_NXP.pretty")(options "")(descr ""))
+)
