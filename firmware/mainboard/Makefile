@@ -79,7 +79,8 @@ TARGET_NM=$(basename $(TARGET)).names.csv
 TARGET_ELF=$(basename $(TARGET)).elf
 TARGET_AXF=$(basename $(TARGET)).axf
 
-INCLUDE_FLAGS=$(foreach m, $(MODULES), -I$(m)/inc) -I$(PROGRAM_PATH_AND_NAME)/inc $(INCLUDES)
+INCLUDE_FLAGS=$(foreach m, $(MODULES), -I$(m)/inc) -I$(PROGRAM_PATH_AND_NAME)/inc -Iapp/src/drivers $(addprefix -I, $(wildcard app/src/drivers/*/)) $(INCLUDES)
+INCLUDE_FLAGS=$(foreach m, $(MODULES), -I$(m)/inc) -I$(PROGRAM_PATH_AND_NAME)/inc -Iapp/src/drivers $(addprefix -I, $(wildcard app/src/tasks/*/)) $(INCLUDES)
 DEFINES_FLAGS=$(foreach m, $(DEFINES), -D$(m))
 OPT_FLAGS=-ggdb3 -O$(OPT) -ffunction-sections -fdata-sections
 LIBSDEPS=$(addprefix $(OUT)/, $(addsuffix .a, $(basename $(foreach l, $(LIBS), $(foreach m, $(MODULES), $(wildcard $(m)/lib/lib$(l).hexlib) ) ))))
@@ -249,6 +250,7 @@ OOCD_SCRIPT=scripts/openocd/lpc4337.cfg
 # Download program into flash memory of board
 .download_flash: $(TARGET_BIN)
 	@echo DOWNLOAD to FLASH
+	$(Q)pkill openocd || true
 	$(Q)$(OOCD) -f $(OOCD_SCRIPT) \
 		-c "init" \
 		-c "halt 0" \
@@ -259,6 +261,7 @@ OOCD_SCRIPT=scripts/openocd/lpc4337.cfg
 # Download program into ram memory of board
 .download_ram: $(TARGET_BIN)
 	@echo DOWNLOAD to RAM
+	$(Q)pkill openocd || true
 	$(Q)$(OOCD) -f $(OOCD_SCRIPT) \
 			 -c "init" \
 			 -c "halt 0" \

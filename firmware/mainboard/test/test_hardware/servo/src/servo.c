@@ -1,6 +1,5 @@
 #include "sapi.h"   // <= sAPI header
-
-#define SERVO_N   SERVO2
+#include "board_pins.h" // Definiciones de pines del tablero
 
 /*
    SERVO0 <---> T_FIL1 de EDU-CIAA-NXP

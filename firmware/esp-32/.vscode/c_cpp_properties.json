@@ -8,12 +8,12 @@
         {
             "name": "PlatformIO",
             "includePath": [
-                "/home/gblas/Developer/blitzcrank/firmware/esp-32/include",
                 "/home/gblas/Developer/blitzcrank/firmware/esp-32/src",
                 "/home/gblas/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                 "/home/gblas/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
                 "/home/gblas/.platformio/packages/framework-arduinoespressif32/libraries/FS/src",
                 "/home/gblas/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
+                "/home/gblas/Developer/blitzcrank/firmware/esp-32/lib/UARTManager",
                 "/home/gblas/Developer/blitzcrank/firmware/esp-32/lib/WiFiManager",
                 "/home/gblas/Developer/blitzcrank/firmware/esp-32/lib/SpiffsManager",
                 "/home/gblas/Developer/blitzcrank/firmware/esp-32/lib/Routes",
@@ -247,12 +247,12 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/home/gblas/Developer/blitzcrank/firmware/esp-32/include",
                     "/home/gblas/Developer/blitzcrank/firmware/esp-32/src",
                     "/home/gblas/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                     "/home/gblas/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
                     "/home/gblas/.platformio/packages/framework-arduinoespressif32/libraries/FS/src",
                     "/home/gblas/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
+                    "/home/gblas/Developer/blitzcrank/firmware/esp-32/lib/UARTManager",
                     "/home/gblas/Developer/blitzcrank/firmware/esp-32/lib/WiFiManager",
                     "/home/gblas/Developer/blitzcrank/firmware/esp-32/lib/SpiffsManager",
                     "/home/gblas/Developer/blitzcrank/firmware/esp-32/lib/Routes",
