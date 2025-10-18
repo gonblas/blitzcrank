@@ -23,7 +23,7 @@ int main(void) {
 
    // Configurar Servo
    servoConfig(0, SERVO_ENABLE);
-   servoConfig(SERVO_N, SERVO_ENABLE_OUTPUT);
+   servoConfig(SERVO_PIN, SERVO_ENABLE_OUTPUT);
 
    gpioWrite(LEDB, 1);
 
@@ -34,7 +34,7 @@ int main(void) {
 
       // Mapeo 0–100 → 0–180 grados
       uint8_t angle = mapValue(value, 0, 100, 0, 180);
-      servoWrite(SERVO_N, angle);
+      servoWrite(SERVO_PIN, angle);
 
       delay(20); // velocidad del movimiento (ajustable)
 
