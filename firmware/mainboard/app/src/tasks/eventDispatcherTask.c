@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include "FreeRTOS.h"
-#include "tasks.h"
+#include "task.h"
+#include "queue.h"
 #include "event_system.h"
 
 #define EVENT_QUEUE_LENGTH 10
@@ -13,36 +14,32 @@ void EventDispatcherTask(void *pvParameters);
 // Initialization
 void initEventSystem(void) {
     eventQueue = xQueueCreate(EVENT_QUEUE_LENGTH, sizeof(Event_t));
-    xTaskCreate(EventDispatcherTask, "EventDispatcher", 512, NULL, tskIDLE_PRIORITY + 2, NULL);
+    xTaskCreate(EventDispatcherTask, "Dispatcher", 128, NULL, tskIDLE_PRIORITY + 2, NULL);
 }
 
 // Dispatcher task
 void EventDispatcherTask(void *pvParameters) {
     Event_t ev;
-    static char debugBuff[32];
+
+    printf("[Dispatcher] Iniciado y esperando eventos...\r\n");
 
     for (;;) {
       // Si hace falta se podria implementar una maquina de estado
         if (xQueueReceive(eventQueue, &ev, portMAX_DELAY) == pdTRUE) {
+            printf("[Dispatcher] Evento recibido tipo: %d\r\n", ev.type);
             switch (ev.type) {
                 case EV_BUTTON:
                     break;
 
                 case EV_JOYSTICK:
-                        // SOLO SE PUEDEN ENVIAR HASTA 32BITS EN NOTIFICACIONES, SI ES NECESARIO ENVIAR MÁS INFORMACION
-                        // HAY QUE PASAR PUNTEROS A UNA POOL INTERNA
-                        sprintf(debugBuff,
-                                "[Joystick] X=%4u  Y=%4u  Btn=%d \r\n",
-                                ev.data.joystick.x,
-                                ev.data.joystick.y,
-                                ev.data.joystick.btn
-                        );
-                        uartWriteString(UART_USB, debugBuff);
+                        printf("[Joystick] X=%u Y=%u Btn=%d\r\n",
+                               ev.data.joystick.x,
+                               ev.data.joystick.y,
+                               ev.data.joystick.btn);
                     break;
 
                 case EV_POTENTIOMETER:
-                        sprintf(debugBuff, "[Pote] Valor: %3u / 100\r\n", ev.data.potentiometer.value);
-                        uartWriteString(UART_USB, debugBuff);
+                        printf("[Pote] Valor: %u / 100\r\n", ev.data.potentiometer.value);
                     break;
 
                 default:

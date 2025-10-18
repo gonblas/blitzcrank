@@ -52,6 +52,9 @@ USE_SAPI=y
 
 MODULES=$(sort $(dir $(wildcard libs/*/)))
 SRC+=$(wildcard $(PROGRAM_PATH_AND_NAME)/src/*.c)
+SRC+=$(wildcard $(PROGRAM_PATH_AND_NAME)/src/tasks/*.c)
+SRC+=$(wildcard $(PROGRAM_PATH_AND_NAME)/src/drivers/*.c)
+SRC+=$(wildcard $(PROGRAM_PATH_AND_NAME)/src/drivers/*/*.c)
 SRC+=$(foreach m, $(MODULES), $(wildcard $(m)/src/*.c))
 
 CXXSRC+=$(wildcard $(PROGRAM_PATH_AND_NAME)/src/*.cpp)
@@ -79,8 +82,7 @@ TARGET_NM=$(basename $(TARGET)).names.csv
 TARGET_ELF=$(basename $(TARGET)).elf
 TARGET_AXF=$(basename $(TARGET)).axf
 
-INCLUDE_FLAGS=$(foreach m, $(MODULES), -I$(m)/inc) -I$(PROGRAM_PATH_AND_NAME)/inc -Iapp/src/drivers $(addprefix -I, $(wildcard app/src/drivers/*/)) $(INCLUDES)
-INCLUDE_FLAGS=$(foreach m, $(MODULES), -I$(m)/inc) -I$(PROGRAM_PATH_AND_NAME)/inc -Iapp/src/drivers $(addprefix -I, $(wildcard app/src/tasks/*/)) $(INCLUDES)
+INCLUDE_FLAGS=$(foreach m, $(MODULES), -I$(m)/inc) -I$(PROGRAM_PATH_AND_NAME)/inc -Iapp/src/drivers -Iapp/src/tasks $(addprefix -I, $(wildcard app/src/drivers/*/)) $(addprefix -I, $(wildcard app/src/tasks/*/)) $(INCLUDES)
 DEFINES_FLAGS=$(foreach m, $(DEFINES), -D$(m))
 OPT_FLAGS=-ggdb3 -O$(OPT) -ffunction-sections -fdata-sections
 LIBSDEPS=$(addprefix $(OUT)/, $(addsuffix .a, $(basename $(foreach l, $(LIBS), $(foreach m, $(MODULES), $(wildcard $(m)/lib/lib$(l).hexlib) ) ))))

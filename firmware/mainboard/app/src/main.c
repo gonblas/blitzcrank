@@ -1,7 +1,7 @@
 // Inclusiones
-#include "sapi.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "sapi.h"
 #include "tasks.h"
 #include "event_system.h"
 
@@ -14,13 +14,19 @@ int main(void) {
     uartConfig(UART_USB, 115200);
     adcConfig(ADC_ENABLE);
 
+    printf("=== Sistema Iniciando ===\r\n");
+
     // Crear tareas -----------------------------------------------------------
-    xTaskCreate(controlGripperTask, "GRIPPER TASK", 512, NULL, tskIDLE_PRIORITY + 3, NULL);
-    xTaskCreate(controlXYAxisTask, "XY AXIS TASK", 512, NULL, tskIDLE_PRIORITY + 3, NULL);
-    xTaskCreate(controlZAxisTask, "Z AXIS TASK", 512, NULL, tskIDLE_PRIORITY + 3, NULL);
-    xTaskCreate(switchModeTask, "SWITCH MODE TASK", 256, NULL, tskIDLE_PRIORITY + 3, NULL);
+    printf("Creando tareas...\r\n");
+    xTaskCreate(controlGripperTask, "GRIPPER", 128, NULL, tskIDLE_PRIORITY + 3, NULL);
+    xTaskCreate(controlXYAxisTask, "XY_AXIS", 128, NULL, tskIDLE_PRIORITY + 2, NULL);
+    xTaskCreate(controlZAxisTask, "Z_AXIS", 128, NULL, tskIDLE_PRIORITY + 3, NULL);
+    xTaskCreate(switchModeTask, "SWITCH", 128, NULL, tskIDLE_PRIORITY + 3, NULL);
+    
+    printf("Inicializando sistema de eventos...\r\n");
     initEventSystem();
 
+    printf("Iniciando scheduler...\r\n");
     // Iniciar el planificador de FreeRTOS
     vTaskStartScheduler();
 

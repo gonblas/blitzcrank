@@ -1,3 +1,5 @@
+#include "FreeRTOS.h"
+#include "task.h"
 #include "sapi.h"
 #include "board_pins.h"
 #include "tasks.h"
@@ -25,5 +27,7 @@ void switchModeTask(void *pvParameters) {
             printf("Led  %s\r\n", ledState ? " ON: PHYSICAL MODE" : " OFF: WEB MODE");
         }
         switchPrevState = switchState;
+        
+        vTaskDelay(pdMS_TO_TICKS(50)); // Delay para el debounce
     }
 }

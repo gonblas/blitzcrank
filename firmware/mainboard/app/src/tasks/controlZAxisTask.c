@@ -1,3 +1,5 @@
+#include "FreeRTOS.h"
+#include "task.h"
 #include "sapi.h"
 #include "board_pins.h"
 #include "tasks.h"
@@ -28,5 +30,6 @@ void controlZAxisTask(void* pvParameters) {
         upPrevState     = upState;
         downPrevState   = downState;
 
+        vTaskDelay(pdMS_TO_TICKS(50)); // Delay para el debounce
     }
 }

@@ -1,7 +1,10 @@
+#include "FreeRTOS.h"
+#include "task.h"
 #include "sapi.h"
 #include "board_pins.h"
 #include "task.h"
 #include "event_system.h"
+#include <stdlib.h>
 
 // ================================================================
 //                    TASK: CONTROL XY AXIS
@@ -17,7 +20,6 @@ void controlXYAxisTask(void *pvParameters) {
         uint16_t xValue = adcRead(JOYSTICK_X_PIN);
         uint16_t yValue = adcRead(JOYSTICK_Y_PIN);
         bool_t joyBtn = !gpioRead(JOYSTICK_BUTTON_PIN); // active-low
-        static char debugBuff[64];
 
         uint16_t center = 512;
         uint16_t margin = 100;
@@ -37,11 +39,19 @@ void controlXYAxisTask(void *pvParameters) {
             ev.data.joystick.y = yValue;
             ev.data.joystick.btn = joyBtn;
 
-            xQueueSend(eventQueue, &ev, 0);  // enqueue event (non-blocking)
+            printf("[XY Task] Enviando evento: X=%u Y=%u Btn=%d\r\n", xValue, yValue, joyBtn);
+            // xQueueSend(eventQueue, &ev, 0);  // enqueue event (non-blocking)
 
             xPrev = xValue;
             yPrev = yValue;
             joyBtnPrev = joyBtn;
+        }
+
+        // Debug: imprimir valores cada cierto tiempo
+        static uint32_t debugCounter = 0;
+        if (++debugCounter % 200 == 0) { // cada ~10 segundos (50ms * 200)
+            printf("[XY Task] Debug: X=%u Y=%u Btn=%d (Prev: X=%u Y=%u)\r\n", 
+                   xValue, yValue, joyBtn, xPrev, yPrev);
         }
 
         vTaskDelay(pdMS_TO_TICKS(50)); // debounce / sample interval
