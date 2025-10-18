@@ -3,7 +3,14 @@
 #include "task.h"
 #include "sapi.h"
 #include "tasks.h"
+#include "handlers.h"
 #include "event_system.h"
+
+
+TaskHandle_t xControlXYAxisTaskHandle = NULL;
+TaskHandle_t xControlGripperTaskHandle = NULL;
+TaskHandle_t xControlZAxisTaskHandle = NULL;
+TaskHandle_t xSwitchModeTaskHandle = NULL; 
 
 
 //============================================================================
@@ -18,10 +25,10 @@ int main(void) {
 
     // Crear tareas -----------------------------------------------------------
     printf("Creando tareas...\r\n");
-    xTaskCreate(controlGripperTask, "GRIPPER", 128, NULL, tskIDLE_PRIORITY + 3, NULL);
-    xTaskCreate(controlXYAxisTask, "XY_AXIS", 128, NULL, tskIDLE_PRIORITY + 2, NULL);
-    xTaskCreate(controlZAxisTask, "Z_AXIS", 128, NULL, tskIDLE_PRIORITY + 3, NULL);
-    xTaskCreate(switchModeTask, "SWITCH", 128, NULL, tskIDLE_PRIORITY + 3, NULL);
+    xTaskCreate(controlGripperTask, "GRIPPER", 128, NULL, tskIDLE_PRIORITY + 3, &xControlGripperTaskHandle);
+    xTaskCreate(controlXYAxisTask, "XY_AXIS", 128, NULL, tskIDLE_PRIORITY + 2, &xControlXYAxisTaskHandle);
+    xTaskCreate(controlZAxisTask, "Z_AXIS", 128, NULL, tskIDLE_PRIORITY + 3, &xControlZAxisTaskHandle);
+    xTaskCreate(switchModeTask, "SWITCH", 128, NULL, tskIDLE_PRIORITY + 3, &xSwitchModeTaskHandle);
     
     printf("Inicializando sistema de eventos...\r\n");
     initEventSystem();
