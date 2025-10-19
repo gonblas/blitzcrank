@@ -18,6 +18,9 @@ window.addEventListener("DOMContentLoaded", () => {
   btnUp.disabled = true
   btnDown.disabled = true
   gripperSlider.disabled = true
+
+  gripperSlider.value = 0
+  gripperValue.textContent = "0%"
 })
 
 modeSwitch.addEventListener("change", (e) => {
