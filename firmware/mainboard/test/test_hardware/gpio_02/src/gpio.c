@@ -3,6 +3,7 @@
 
 #include "minut.h" // Tests lib
 #include "sapi.h"  // sAPI lib
+#include "debug.h" // Sistema de debug condicional
 
 #define SCU_BASE                0x40086000
 #define	SFSP2_10                0x128      // Pin P2_10 ==> GPIO0[14] ==> LED1

@@ -5,6 +5,7 @@
 #include "task.h"
 #include "event_system.h"
 #include <stdlib.h>
+#include "debug.h"
 
 // ================================================================
 //                    TASK: CONTROL XY AXIS
@@ -35,7 +36,9 @@ void controlXYAxisTask(void *pvParameters) {
             ev.data.joystick.x = xValue;
             ev.data.joystick.y = yValue;
 
-            printf("[XY Task] Enviando evento: X=%u Y=%u\r\n", xValue, yValue);
+            #if DEBUG
+            LOG_PRINTLN("[XY Task] Enviando evento: X=%u Y=%u", xValue, yValue);
+            #endif
             xQueueSend(eventQueue, &ev, 0);  // enqueue event (non-blocking)
 
             xPrev = xValue;
@@ -45,7 +48,7 @@ void controlXYAxisTask(void *pvParameters) {
         // Debug: imprimir valores cada cierto tiempo
         static uint32_t debugCounter = 0;
         if (++debugCounter % 200 == 0) { // cada ~10 segundos (50ms * 200)
-            printf("[XY Task] Debug: X=%u Y=%u (Prev: X=%u Y=%u)\r\n", 
+            LOG_PRINTLN("[XY Task] Debug: X=%u Y=%u (Prev: X=%u Y=%u)", 
                    xValue, yValue, xPrev, yPrev);
         }
 

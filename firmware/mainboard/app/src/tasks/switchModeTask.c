@@ -5,6 +5,7 @@
 #include "tasks.h"
 #include "button.h"
 #include "handlers.h"
+#include "debug.h"
 // ================================================================
 //                    TASK: SWITCH MODE
 // ================================================================
@@ -19,7 +20,7 @@ void switchModeTask(void *pvParameters) {
     gpioConfig(LED_SWITCH_PIN, GPIO_OUTPUT);
     gpioWrite(LED_SWITCH_PIN, ledState);
     
-    printf("Sistema iniciado en PHYSICAL MODE\r\n");
+    LOG_PRINTLN("Sistema iniciado en PHYSICAL MODE");
     
     for(;;){
         bool_t switchState = gpioRead(BUTTON_SWITCH_PIN);
@@ -36,7 +37,7 @@ void switchModeTask(void *pvParameters) {
                 vTaskSuspend(xControlGripperTaskHandle);
                 vTaskSuspend(xControlZAxisTaskHandle);
             }
-            printf("Led %s\r\n", ledState ? "ON: PHYSICAL MODE" : "OFF: WEB MODE");
+            LOG_PRINTLN("Led %s", ledState ? "ON: PHYSICAL MODE" : "OFF: WEB MODE");
         }
         switchPrevState = switchState;
         

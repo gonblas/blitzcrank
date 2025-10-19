@@ -1,5 +1,6 @@
 #include "sapi.h"   // Librería principal SAPI
 #include "board_pins.h" // Definiciones de pines del tablero
+#include "debug.h"   // Sistema de debug condicional
 
 int main(void) {
    // ----- Inicialización -----
@@ -22,7 +23,7 @@ int main(void) {
    bool_t ledState = OFF;
 
 
-   printf("=== Debug botones UP/DOWN (Pull-up interno) ===\r\n");
+   LOG_PRINTLN("=== Debug botones UP/DOWN (Pull-up interno) ===");
 
    // ----- Bucle principal -----
    while(TRUE) {
@@ -32,18 +33,18 @@ int main(void) {
 
       // Detectar flanco descendente (botón presionado → pasa de 1 a 0)
       if(!upState && upPrevState) {
-         printf("Boton UP presionado\r\n");
+         LOG_PRINTLN("Boton UP presionado");
       }
       if(!downState && downPrevState) {
-         printf("Boton DOWN presionado\r\n");
+         LOG_PRINTLN("Boton DOWN presionado");
       }
 
       // Detectar flanco ascendente (botón liberado → pasa de 0 a 1)
       if(upState && !upPrevState) {
-         printf("Boton UP liberado\r\n");
+         LOG_PRINTLN("Boton UP liberado");
       }
       if(downState && !downPrevState) {
-         printf("Boton DOWN liberado\r\n");
+         LOG_PRINTLN("Boton DOWN liberado");
       }
 
       // Al presionar SWITCH (flanco descendente) alterno el LED
@@ -51,9 +52,9 @@ int main(void) {
          ledState = !ledState;            // toggle
          gpioWrite(LED_SWITCH_PIN, ledState);       // enciende/apaga el LED
          if(ledState) {
-            printf("Luz ENCENDIDA\r\n");
+            LOG_PRINTLN("Luz ENCENDIDA");
          } else {
-            printf("Luz APAGADA\r\n");
+            LOG_PRINTLN("Luz APAGADA");
          }
       }
 

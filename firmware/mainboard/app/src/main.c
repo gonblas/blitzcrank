@@ -7,6 +7,7 @@
 #include "event_system.h"
 #include "priority.h"
 #include "heap.h"
+#include "debug.h"
 
 
 TaskHandle_t xControlXYAxisTaskHandle = NULL;
@@ -25,10 +26,10 @@ int main(void) {
     uartConfig(UART_USB, 115200);
     adcConfig(ADC_ENABLE);
 
-    printf("=== System Starting ===\r\n");
+    LOG_PRINTLN("=== System Starting ===");
 
     // Create tasks -----------------------------------------------------------
-    printf("Generating tasks...\r\n");
+    LOG_PRINTLN("Generating tasks...");
     xTaskCreate(controlGripperTask, "GRIPPER", HEAP_GRIPPER_SIZE, NULL, PRIORITY_CONTROL_GRIPPER, &xControlGripperTaskHandle);
     xTaskCreate(servoTask, "SERVO", HEAP_GRIPPER_SIZE, NULL, PRIORITY_CONTROL_GRIPPER, &xServoTaskHandle);
     xTaskCreate(controlXYAxisTask, "XY_AXIS", HEAP_XY_AXIS_SIZE, NULL, PRIORITY_CONTROL_XY_AXIS, &xControlXYAxisTaskHandle);
@@ -36,14 +37,14 @@ int main(void) {
     xTaskCreate(switchModeTask, "SWITCH", HEAP_SWITCH_MODE_SIZE, NULL, PRIORITY_SWITCH_MODE, &xSwitchModeTaskHandle);
     xTaskCreate(stepperTask, "STEPPER", HEAP_STEPPER_SIZE, NULL, PRIORITY_STEPPER, &xStepperTaskHandle);
 
-    printf("Initializing event system...\r\n");
+    LOG_PRINTLN("Initializing event system...");
     initEventSystem();
 
-    printf("Starting scheduler...\r\n");
+    LOG_PRINTLN("Starting scheduler...");
     // Start the FreeRTOS scheduler
     vTaskStartScheduler();
     while (TRUE) {
-        printf("Error: there is not enough memory to start the scheduler.\r\n");
+        LOG_PRINTLN("Error: there is not enough memory to start the scheduler.");
     }
     return 0;
 }

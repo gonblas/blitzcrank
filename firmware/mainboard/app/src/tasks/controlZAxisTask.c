@@ -4,6 +4,7 @@
 #include "board_pins.h"
 #include "tasks.h"
 #include "button.h"
+#include "debug.h"
 
 
 // ================================================================
@@ -20,11 +21,11 @@ void controlZAxisTask(void* pvParameters) {
         bool_t upState     = gpioRead(BUTTON_UP_PIN);
         bool_t downState   = gpioRead(BUTTON_DOWN_PIN);
         if(ledState) {
-            IS_BUTTON_PRESSED(upState, upPrevState) ? printf("Boton UP: pressed\r\n") :
-            IS_BUTTON_RELEASED(upState, upPrevState) ? printf("Boton UP: released\r\n") : 0;
+            IS_BUTTON_PRESSED(upState, upPrevState) ? LOG_PRINTLN("Boton UP: pressed") :
+            IS_BUTTON_RELEASED(upState, upPrevState) ? LOG_PRINTLN("Boton UP: released") : 0;
 
-            IS_BUTTON_PRESSED(downState, downPrevState) ? printf("Boton DOWN: pressed\r\n") :
-            IS_BUTTON_RELEASED(downState, downPrevState) ? printf("Boton DOWN: released\r\n") : 0;
+            IS_BUTTON_PRESSED(downState, downPrevState) ? LOG_PRINTLN("Boton DOWN: pressed") :
+            IS_BUTTON_RELEASED(downState, downPrevState) ? LOG_PRINTLN("Boton DOWN: released") : 0;
         }
 
         upPrevState     = upState;

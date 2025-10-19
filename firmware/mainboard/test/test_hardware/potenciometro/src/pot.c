@@ -1,5 +1,6 @@
 #include "sapi.h"
 #include "board_pins.h" // Definiciones de pines del tablero
+#include "debug.h"       // Sistema de debug condicional
 
 int main(void) {
    boardConfig();
@@ -19,9 +20,8 @@ int main(void) {
       // Escalo a 0–100
       potScaled = (potRaw * 100) / 1023;
 
-      // Envío por UART
-      sprintf(debugBuff, "Potenciometro: %3u / 100\r\n", potScaled);
-      uartWriteString(UART_USB, debugBuff);
+      // Envío por UART usando sistema de debug
+      LOG_PRINTLN("Potenciometro: %3u / 100", potScaled);
 
       delay(500);
    }

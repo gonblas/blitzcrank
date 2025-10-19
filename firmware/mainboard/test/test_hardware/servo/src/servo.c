@@ -1,5 +1,6 @@
 #include "sapi.h"   // <= sAPI header
 #include "board_pins.h" // Definiciones de pines del tablero
+#include "debug.h"       // Sistema de debug condicional
 
 /*
    SERVO0 <---> T_FIL1 de EDU-CIAA-NXP
@@ -20,12 +21,15 @@ uint8_t mapValue(uint8_t value, uint8_t inMin, uint8_t inMax, uint8_t outMin, ui
 int main(void) {
    // Inicializar placa
    boardConfig();
+   uartConfig(UART_USB, 115200);
 
    // Configurar Servo
    servoConfig(0, SERVO_ENABLE);
    servoConfig(SERVO_PIN, SERVO_ENABLE_OUTPUT);
 
    gpioWrite(LEDB, 1);
+   
+   LOG_PRINTLN("=== Servo Test Started ===");
 
    uint8_t value = 0;       // de 0 a 100
    bool increasing = true;  // dirección del movimiento
@@ -35,6 +39,8 @@ int main(void) {
       // Mapeo 0–100 → 0–180 grados
       uint8_t angle = mapValue(value, 0, 100, 0, 180);
       servoWrite(SERVO_PIN, angle);
+      
+      LOG_PRINT("Servo: value=%d, angle=%d degrees", value, angle);
 
       delay(20); // velocidad del movimiento (ajustable)
 

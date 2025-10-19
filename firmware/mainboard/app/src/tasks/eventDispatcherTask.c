@@ -3,6 +3,7 @@
 #include "task.h"
 #include "queue.h"
 #include "event_system.h"
+#include "debug.h"
 #include "handlers.h"
 
 #define EVENT_QUEUE_LENGTH 10
@@ -22,18 +23,18 @@ void initEventSystem(void) {
 void EventDispatcherTask(void *pvParameters) {
     Event_t ev;
 
-    printf("[Dispatcher] Iniciado y esperando eventos...\r\n");
+    LOG_PRINTLN("[Dispatcher] Iniciado y esperando eventos...");
 
     for (;;) {
       // Si hace falta se podria implementar una maquina de estado
         if (xQueueReceive(eventQueue, &ev, portMAX_DELAY) == pdTRUE) {
-            printf("[Dispatcher] Evento recibido tipo: %d\r\n", ev.type);
+            LOG_PRINTLN("[Dispatcher] Evento recibido tipo: %d", ev.type);
             switch (ev.type) {
                 case EV_BUTTON:
                     break;
 
                 case EV_JOYSTICK:
-                        printf("[Joystick] X=%u Y=%u \r\n",
+                        LOG_PRINTLN("[Joystick] X=%u Y=%u",
                                ev.data.joystick.x,
                                ev.data.joystick.y);
                         
@@ -42,7 +43,7 @@ void EventDispatcherTask(void *pvParameters) {
 
                 case EV_POTENTIOMETER:
                         xTaskNotify(xServoTaskHandle, ev.data.potentiometer.angle, eSetValueWithOverwrite);
-                        printf("[Pote] Angulo: %u / 180\r\n", ev.data.potentiometer.angle);
+                        LOG_PRINTLN("[Pote] Angulo: %u / 180", ev.data.potentiometer.angle);
                     break;
 
                 default:
@@ -51,6 +52,3 @@ void EventDispatcherTask(void *pvParameters) {
         }
     }
 }
-
-
-
