@@ -9,7 +9,7 @@
 #include "utils.h"
 #include "debug.h"
 
-void stepperTask (void *pvParameters) {
+void XYStepperTask (void *pvParameters) {
     JoystickEvent_t command;
     for (;;) {
         if (xTaskNotifyWait(0, 0, (uint32_t *)&command, portMAX_DELAY) == pdTRUE) {

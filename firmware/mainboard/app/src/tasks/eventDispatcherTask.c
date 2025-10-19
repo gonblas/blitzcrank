@@ -31,6 +31,8 @@ void EventDispatcherTask(void *pvParameters) {
             LOG_PRINTLN("[Dispatcher] Evento recibido tipo: %d", ev.type);
             switch (ev.type) {
                 case EV_BUTTON:
+                        LOG_PRINTLN("[Button] Up: %u Down: %u", ev.data.button.up, ev.data.button.down);
+                        xTaskNotify(xZMotorTaskHandle, *(uint32_t *)&ev.data.button, eSetValueWithOverwrite);
                     break;
 
                 case EV_JOYSTICK:
@@ -38,7 +40,7 @@ void EventDispatcherTask(void *pvParameters) {
                                ev.data.joystick.x,
                                ev.data.joystick.y);
                         
-                        xTaskNotify(xStepperTaskHandle, *(uint32_t*)&ev.data.joystick, eSetValueWithOverwrite);
+                        xTaskNotify(xXYStepperTaskHandle, *(uint32_t*)&ev.data.joystick, eSetValueWithOverwrite);
                     break;
 
                 case EV_POTENTIOMETER:

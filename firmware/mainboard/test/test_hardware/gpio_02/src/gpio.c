@@ -18,6 +18,9 @@ int main(void)
 {
    // Test preconditions
    boardInit();
+   uartConfig(UART_USB, 115200);
+   
+   LOG_PRINTLN("=== GPIO Test 02 Started ===");
    // Ok to run tests
    MINUT(true);
    return 0;
@@ -25,29 +28,36 @@ int main(void)
 
 TEST( gpio_input_1 )
 {
+   LOG_PRINTLN("Testing GPIO Input 1 (TEC1)...");
    pinInit( TEC1, GPIO_INPUT );
    bool_t pinValue1 = pinValueGet( TEC1 );
+   LOG_PRINTLN("TEC1 value: %d (expected: %d)", pinValue1, ON);
    ASSERT_EQ( pinValue1, ON );
 }
 
 TEST( gpio_input_2 )
 {
+   LOG_PRINTLN("Testing GPIO Input 2 (TEC2)...");
    pinInit( TEC2, GPIO_INPUT );
    bool_t pinValue2 = pinValueGet( TEC2 );
+   LOG_PRINTLN("TEC2 value: %d (expected: %d)", pinValue2, OFF);
    ASSERT_EQ( pinValue2, OFF );
 }
 
 TEST( gpio_output )
 {
+   LOG_PRINTLN("Testing GPIO Output (LED1)...");
    LPC4337_SFSP2_10_REG = 0x0;
    LPC4337_GPIO_PORT0_DIR_REG = 0x0;
 
    pinInit( LED1, GPIO_OUTPUT );
+   LOG_PRINTLN("LED1 configured as output");
 
    ASSERT_EQ( LPC4337_SFSP2_10_REG,       0xD0  ); // User Manual page 420
    ASSERT_EQ( LPC4337_GPIO_PORT0_DIR_REG, 1<<14 ); // User Manual page 470
 
    pinValueSet( LED1, ON );
+   LOG_PRINTLN("LED1 turned ON");
 }
 
 MINUT_BEG

@@ -15,7 +15,8 @@ TaskHandle_t xControlGripperTaskHandle = NULL;
 TaskHandle_t xControlZAxisTaskHandle = NULL;
 TaskHandle_t xSwitchModeTaskHandle = NULL; 
 TaskHandle_t xServoTaskHandle = NULL;
-TaskHandle_t xStepperTaskHandle = NULL;
+TaskHandle_t xXYStepperTaskHandle = NULL;
+TaskHandle_t xZMotorTaskHandle = NULL;
 
 
 //============================================================================
@@ -35,7 +36,8 @@ int main(void) {
     xTaskCreate(controlXYAxisTask, "XY_AXIS", HEAP_XY_AXIS_SIZE, NULL, PRIORITY_CONTROL_XY_AXIS, &xControlXYAxisTaskHandle);
     xTaskCreate(controlZAxisTask, "Z_AXIS", HEAP_Z_AXIS_SIZE, NULL, PRIORITY_CONTROL_Z_AXIS, &xControlZAxisTaskHandle);
     xTaskCreate(switchModeTask, "SWITCH", HEAP_SWITCH_MODE_SIZE, NULL, PRIORITY_SWITCH_MODE, &xSwitchModeTaskHandle);
-    xTaskCreate(stepperTask, "STEPPER", HEAP_STEPPER_SIZE, NULL, PRIORITY_STEPPER, &xStepperTaskHandle);
+    xTaskCreate(XYStepperTask, "STEPPER", HEAP_XYSTEPPER_SIZE, NULL, PRIORITY_XY_STEPPER, &xXYStepperTaskHandle);
+    xTaskCreate(ZMotorTask, "Z_MOTOR", HEAP_Z_MOTOR_SIZE, NULL, PRIORITY_Z_MOTOR, &xZMotorTaskHandle);
 
     LOG_PRINTLN("Initializing event system...");
     initEventSystem();
