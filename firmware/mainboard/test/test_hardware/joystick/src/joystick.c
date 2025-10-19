@@ -1,5 +1,6 @@
 #include "sapi.h"
 #include "board_pins.h" // Definiciones de pines del tablero
+#include "debug.h"       // Sistema de debug condicional
 
 
 int main(void) {
@@ -36,8 +37,7 @@ int main(void) {
       gpioWrite(LEDR, btn);
 
       // ======== DEBUG UART ========
-      sprintf(debugBuff,
-              "X=%4u  Y=%4u  Btn=%d | Dir: %s%s%s%s\r\n",
+      LOG_PRINT("X=%4u  Y=%4u  Btn=%d | Dir: %s%s%s%s",
               xValue,
               yValue,
               btn,
@@ -46,8 +46,6 @@ int main(void) {
               (yValue > centro + margen) ? "Arr " : "",
               (yValue < centro - margen) ? "Aba " : ""
       );
-
-      uartWriteString(UART_USB, debugBuff);
       // ============================
 
       delay(1000);

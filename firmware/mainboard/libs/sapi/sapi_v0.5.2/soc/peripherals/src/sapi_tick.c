@@ -43,7 +43,7 @@
 
 #ifdef TICK_OVER_RTOS
    #ifdef USE_FREERTOS
-      #include <FreeRTOS.h>
+      #include "FreeRTOS.h"
       #include <timers.h>
    #endif
 #endif

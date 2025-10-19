@@ -1,63 +1,52 @@
-/*============================================================================
- * Autor: ChatGPT adaptado para EDU-CIAA (LPC4337)
- * Licencia: GPL v2 + FreeRTOS exception
- * Fecha: 2025-10-13
- *===========================================================================*/
-
 // Inclusiones
-#include "sapi.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "sapi.h"
+#include "tasks.h"
+#include "handlers.h"
+#include "event_system.h"
+#include "priority.h"
+#include "heap.h"
+#include "debug.h"
 
-// Prototipos de tareas
-void tareaLed1(void *pvParameters);
-void tareaLed2(void *pvParameters);
+
+TaskHandle_t xControlXYAxisTaskHandle = NULL;
+TaskHandle_t xControlGripperTaskHandle = NULL;
+TaskHandle_t xControlZAxisTaskHandle = NULL;
+TaskHandle_t xSwitchModeTaskHandle = NULL; 
+TaskHandle_t xServoTaskHandle = NULL;
+TaskHandle_t xXYStepperTaskHandle = NULL;
+TaskHandle_t xZMotorTaskHandle = NULL;
+
 
 //============================================================================
 // FUNCION PRINCIPAL
 //============================================================================
 int main(void) {
-    // Inicializar la placa
     boardConfig();
-
-    // Inicializar UART para salida por consola
     uartConfig(UART_USB, 115200);
+    adcConfig(ADC_ENABLE);
 
-    // Crear tareas -----------------------------------------------------------
-    xTaskCreate(tareaLed1, "Tarea LED 1",
-                configMINIMAL_STACK_SIZE * 2, NULL, tskIDLE_PRIORITY + 1, NULL);
+    LOG_PRINTLN("=== System Starting ===");
 
-    xTaskCreate(tareaLed2, "Tarea LED 2",
-                configMINIMAL_STACK_SIZE * 2, NULL, tskIDLE_PRIORITY + 1, NULL);
+    // Create tasks -----------------------------------------------------------
+    LOG_PRINTLN("Generating tasks...");
+    xTaskCreate(controlGripperTask, "GRIPPER", HEAP_GRIPPER_SIZE, NULL, PRIORITY_CONTROL_GRIPPER, &xControlGripperTaskHandle);
+    xTaskCreate(servoTask, "SERVO", HEAP_GRIPPER_SIZE, NULL, PRIORITY_CONTROL_GRIPPER, &xServoTaskHandle);
+    xTaskCreate(controlXYAxisTask, "XY_AXIS", HEAP_XY_AXIS_SIZE, NULL, PRIORITY_CONTROL_XY_AXIS, &xControlXYAxisTaskHandle);
+    xTaskCreate(controlZAxisTask, "Z_AXIS", HEAP_Z_AXIS_SIZE, NULL, PRIORITY_CONTROL_Z_AXIS, &xControlZAxisTaskHandle);
+    xTaskCreate(switchModeTask, "SWITCH", HEAP_SWITCH_MODE_SIZE, NULL, PRIORITY_SWITCH_MODE, &xSwitchModeTaskHandle);
+    xTaskCreate(XYStepperTask, "STEPPER", HEAP_XYSTEPPER_SIZE, NULL, PRIORITY_XY_STEPPER, &xXYStepperTaskHandle);
+    xTaskCreate(ZMotorTask, "Z_MOTOR", HEAP_Z_MOTOR_SIZE, NULL, PRIORITY_Z_MOTOR, &xZMotorTaskHandle);
 
-    // Iniciar el planificador de FreeRTOS
+    LOG_PRINTLN("Initializing event system...");
+    initEventSystem();
+
+    LOG_PRINTLN("Starting scheduler...");
+    // Start the FreeRTOS scheduler
     vTaskStartScheduler();
-
-    // Si llega acá, hubo un problema (falta de memoria)
     while (TRUE) {
-        printf("Error: no hay suficiente memoria para iniciar el scheduler.\r\n");
+        LOG_PRINTLN("Error: there is not enough memory to start the scheduler.");
     }
     return 0;
-}
-
-//============================================================================
-// DEFINICIÓN DE TAREAS
-//============================================================================
-
-// Tarea 1: parpadea LED1 cada 500 ms
-void tareaLed1(void *pvParameters) {
-    while (TRUE) {
-        gpioToggle(LED1);
-        printf("Tarea 1: LED1 toggled\r\n");
-        vTaskDelay(pdMS_TO_TICKS(500));
-    }
-}
-
-// Tarea 2: parpadea LED2 cada 1000 ms
-void tareaLed2(void *pvParameters) {
-    while (TRUE) {
-        gpioToggle(LED2);
-        printf("Tarea 2: LED2 toggled\r\n");
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
 }
