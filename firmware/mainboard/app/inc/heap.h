@@ -6,5 +6,6 @@
 #define HEAP_XY_AXIS_SIZE    128
 #define HEAP_Z_AXIS_SIZE     128
 #define HEAP_SWITCH_MODE_SIZE 128
+#define HEAP_STEPPER_SIZE    128
 
 #endif // HEAP_H

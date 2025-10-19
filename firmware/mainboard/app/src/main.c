@@ -14,6 +14,7 @@ TaskHandle_t xControlGripperTaskHandle = NULL;
 TaskHandle_t xControlZAxisTaskHandle = NULL;
 TaskHandle_t xSwitchModeTaskHandle = NULL; 
 TaskHandle_t xServoTaskHandle = NULL;
+TaskHandle_t xStepperTaskHandle = NULL;
 
 
 //============================================================================
@@ -33,6 +34,7 @@ int main(void) {
     xTaskCreate(controlXYAxisTask, "XY_AXIS", HEAP_XY_AXIS_SIZE, NULL, PRIORITY_CONTROL_XY_AXIS, &xControlXYAxisTaskHandle);
     xTaskCreate(controlZAxisTask, "Z_AXIS", HEAP_Z_AXIS_SIZE, NULL, PRIORITY_CONTROL_Z_AXIS, &xControlZAxisTaskHandle);
     xTaskCreate(switchModeTask, "SWITCH", HEAP_SWITCH_MODE_SIZE, NULL, PRIORITY_SWITCH_MODE, &xSwitchModeTaskHandle);
+    xTaskCreate(stepperTask, "STEPPER", HEAP_STEPPER_SIZE, NULL, PRIORITY_STEPPER, &xStepperTaskHandle);
 
     printf("Initializing event system...\r\n");
     initEventSystem();

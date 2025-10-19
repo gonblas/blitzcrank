@@ -15,13 +15,28 @@ typedef enum {
 } EventType_t;
 
 typedef struct {
+    bool_t up;
+    bool_t down;
+} ButtonEvent_t;
+
+typedef struct {
+    uint16_t x;
+    uint16_t y;
+} JoystickEvent_t;
+
+typedef struct {
+    uint8_t angle;
+} PotentiometerEvent_t;
+
+typedef struct {
     EventType_t type;
     union {
-        struct { bool_t up, down, switchState, ledState; } button;
-        struct { uint16_t x, y; bool_t btn; } joystick;
-        struct { uint8_t angle; } potentiometer;
+        ButtonEvent_t button;
+        JoystickEvent_t joystick;
+        PotentiometerEvent_t potentiometer;
     } data;
 } Event_t;
+
 
 // ==== Queue and task handles ====
 

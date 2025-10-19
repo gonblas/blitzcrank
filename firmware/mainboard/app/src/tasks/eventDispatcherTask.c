@@ -33,10 +33,11 @@ void EventDispatcherTask(void *pvParameters) {
                     break;
 
                 case EV_JOYSTICK:
-                        printf("[Joystick] X=%u Y=%u Btn=%d\r\n",
+                        printf("[Joystick] X=%u Y=%u \r\n",
                                ev.data.joystick.x,
-                               ev.data.joystick.y,
-                               ev.data.joystick.btn);
+                               ev.data.joystick.y);
+                        
+                        xTaskNotify(xStepperTaskHandle, *(uint32_t*)&ev.data.joystick, eSetValueWithOverwrite);
                     break;
 
                 case EV_POTENTIOMETER:
