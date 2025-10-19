@@ -6,6 +6,7 @@
     "button.h": "c",
     "freertos.h": "c",
     "event_system.h": "c",
-    "tasks.h": "c"
+    "tasks.h": "c",
+    "stdint.h": "c"
   }
 }

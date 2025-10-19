@@ -9,5 +9,6 @@ extern TaskHandle_t xControlXYAxisTaskHandle;
 extern TaskHandle_t xControlGripperTaskHandle;
 extern TaskHandle_t xControlZAxisTaskHandle;
 extern TaskHandle_t xSwitchModeTaskHandle; 
+extern TaskHandle_t xServoTaskHandle;
 
 #endif /* HANDLERS_H_ */

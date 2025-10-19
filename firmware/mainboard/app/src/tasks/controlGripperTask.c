@@ -6,7 +6,7 @@
 #include "button.h"
 #include "event_system.h"   // contiene Event_t y eventQueue
 #include <stdlib.h>
-#include "servo.h"
+#include "utils.h"
 
 extern QueueHandle_t eventQueue;
 
@@ -15,27 +15,18 @@ extern QueueHandle_t eventQueue;
 //                    TASK: CONTROL GRIPPER
 // ================================================================
 void controlGripperTask(void* pvParameters) {
-   static uint8_t potPrev = 0;
-
-   servoConfig(0, SERVO_ENABLE);
-   servoConfig(SERVO_PIN, SERVO_ENABLE_OUTPUT);
+   static uint8_t prevAngle = 0;
 
    for (;;) {
       uint16_t potRaw = adcRead(POTENCIOMETER_PIN);
-      uint8_t potScaled = (potRaw * 100) / 1023;
-      if (abs(potScaled - potPrev) >= 5) {
+      uint8_t angle = scaleValue(potRaw, (Range_t){0, 1023}, (Range_t){0, 180});
+      if (abs(angle - prevAngle) >= 5) {
          Event_t ev;
          ev.type = EV_POTENTIOMETER;
-         ev.data.potentiometer.value = potScaled;
-         ev.data.potentiometer.angle = mapValue(potScaled, 0, 100, 0, 180);
-
+         ev.data.potentiometer.angle = angle;
          xQueueSend(eventQueue, &ev, 0);
-         potPrev = potScaled;
+         prevAngle = angle;
       }
-
-      // Control del servo según el potenciómetro
-      int angle = mapValue(potScaled, 0, 100, 0, 180);
-      servoWrite(SERVO_PIN, angle);
       
       vTaskDelay(pdMS_TO_TICKS(50)); // Delay para evitar lecturas excesivas
    }

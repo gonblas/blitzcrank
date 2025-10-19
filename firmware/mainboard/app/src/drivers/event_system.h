@@ -19,7 +19,7 @@ typedef struct {
     union {
         struct { bool_t up, down, switchState, ledState; } button;
         struct { uint16_t x, y; bool_t btn; } joystick;
-        struct { uint8_t value; int angle; } potentiometer;
+        struct { uint8_t angle; } potentiometer;
     } data;
 } Event_t;
 

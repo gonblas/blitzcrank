@@ -3,6 +3,7 @@
 #include "task.h"
 #include "queue.h"
 #include "event_system.h"
+#include "handlers.h"
 
 #define EVENT_QUEUE_LENGTH 10
 
@@ -39,7 +40,8 @@ void EventDispatcherTask(void *pvParameters) {
                     break;
 
                 case EV_POTENTIOMETER:
-                        printf("[Pote] Valor: %u / 100\r\n", ev.data.potentiometer.value);
+                        xTaskNotify(xServoTaskHandle, ev.data.potentiometer.angle, eSetValueWithOverwrite);
+                        printf("[Pote] Angulo: %u / 180\r\n", ev.data.potentiometer.angle);
                     break;
 
                 default:
