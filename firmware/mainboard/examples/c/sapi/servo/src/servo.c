@@ -40,7 +40,7 @@
 
 /*==================[macros and definitions]=================================*/
 
-#define SERVO_N   SERVO0
+#define SERVO_PIN   SERVO0
 /*
    SERVO0 <---> T_FIL1 de EDU-CIAA-NXP
    SERVO1 <---> T_COL0 de EDU-CIAA-NXP
@@ -98,23 +98,23 @@ int main(void)
    // Configurar Servo
    valor = servoConfig( 0, SERVO_ENABLE );
 
-   valor = servoConfig( SERVO_N, SERVO_ENABLE_OUTPUT );
+   valor = servoConfig( SERVO_PIN, SERVO_ENABLE_OUTPUT );
 
    // Usar Servo
-   valor = servoWrite( SERVO_N, servoAngle );
-   servoAngle = servoRead( SERVO_N );
+   valor = servoWrite( SERVO_PIN, servoAngle );
+   servoAngle = servoRead( SERVO_PIN );
 
    gpioWrite( LEDB, 1 );
 
    // ------------- REPETIR POR SIEMPRE -------------
    while(1) {
-      servoWrite( SERVO_N, 0 );
+      servoWrite( SERVO_PIN, 0 );
       delay(500);
 
-      servoWrite( SERVO_N, 90 );
+      servoWrite( SERVO_PIN, 90 );
       delay(500);
 
-      servoWrite( SERVO_N, 180 );
+      servoWrite( SERVO_PIN, 180 );
       delay(500);
    }
 

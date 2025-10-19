@@ -8,10 +8,10 @@ USE_FPU=y
 # Libraries
 USE_LPCOPEN=y
 USE_SAPI=y
-USE_FREERTOS=n
+USE_FREERTOS=y
 
 # FreeRTOS configuration
-FREERTOS_HEAP_TYPE=5
+FREERTOS_HEAP_TYPE=4
 
 # Load configuration
 LOAD_INRAM=n

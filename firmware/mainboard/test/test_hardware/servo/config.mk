@@ -12,3 +12,6 @@ USE_SAPI=y
 # Need for generate servo interrupts
 DEFINES+=SAPI_USE_INTERRUPTS
 
+# Additional includes
+INCLUDES = ../../../app/inc ../../../app/src/drivers
+

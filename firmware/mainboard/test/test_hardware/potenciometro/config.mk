@@ -11,3 +11,6 @@ USE_SAPI=y
 USE_FREERTOS=n
 FREERTOS_HEAP_TYPE=5
 LOAD_INRAM=n
+
+# Additional includes
+INCLUDES = ../../../app/inc ../../../app/src/drivers
