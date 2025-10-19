@@ -22,5 +22,5 @@ void setup() {
 
 void loop() {
   server.handleClient();
-  uartManager.handleIncomingData(); // si querés procesar respuestas
+  // uartManager.handleIncomingData(); // si querés procesar respuestas
 }

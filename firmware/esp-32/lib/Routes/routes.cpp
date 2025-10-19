@@ -11,13 +11,13 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
   // -------------------- Control routes --------------------
   server.on("/up", [&]() {
     Serial.println("Gripper Up");
-    uartManager.sendButtonState("UP", true);
+    uartManager.sendButton(true, false);
     server.send(200, "text/plain", "OK");
   });
 
   server.on("/down", [&]() {
     Serial.println("Gripper Down");
-    uartManager.sendButtonState("DOWN", true);
+    uartManager.sendButton(false, true);
     server.send(200, "text/plain", "OK");
   });
 
@@ -25,7 +25,7 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
     if (server.hasArg("value")) {
       int val = server.arg("value").toInt();
       Serial.println("Gripper slider: " + String(val));
-      uartManager.sendGripper(val);
+      uartManager.sendPotentiometer((uint8_t)val);
     }
     server.send(200, "text/plain", "OK");
   });
@@ -34,14 +34,15 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
     int x = server.hasArg("x") ? server.arg("x").toInt() : 0;
     int y = server.hasArg("y") ? server.arg("y").toInt() : 0;
     Serial.printf("Joystick X: %d Y: %d\n", x, y);
-    uartManager.sendJoystick(x, y);
+    uartManager.sendJoystick((uint16_t)x, (uint16_t)y);
     server.send(200, "text/plain", "OK");
   });
 
   server.on("/mode", [&]() {
     bool physical = server.hasArg("state") && server.arg("state") == "PHYSICAL";
     Serial.println(String("Mode switched to: ") + (physical ? "PHYSICAL" : "WEB"));
-    uartManager.sendMode(physical);
+    // Modo puede enviarse como evento de potenciómetro o botón si querés, acá no hay un frame propio.
+    // Si querés enviar modo explícito, podrías usar un campo reservado o evento especial.
     server.send(200, "text/plain", "OK");
   });
 }
