@@ -33,7 +33,7 @@ void switchModeTask(void *pvParameters) {
                 vTaskResume(xControlXYAxisTaskHandle);
                 vTaskResume(xControlGripperTaskHandle);
                 vTaskResume(xControlZAxisTaskHandle);
-                        } else {
+            } else {
                 UART_sendFrame(UART_USED, EV_INPUT_SOURCE, &state, 1);
                 vTaskSuspend(xControlXYAxisTaskHandle);
                 vTaskSuspend(xControlGripperTaskHandle);

@@ -2,7 +2,10 @@
 #define UART_MANAGER_H
 
 #include <Arduino.h>
+#include <functional>
 #include "remote_protocol.h"
+
+typedef std::function<void(const char*)> InputSourceCallback;
 
 class UARTManager {
 public:
@@ -21,9 +24,13 @@ public:
     bool receiveFrame(Frame_t& frame);
     void handleIncomingData();
 
+    // ==== Callbacks ====
+    void setOnInputSourceChange(InputSourceCallback callback);
+
 private:
     HardwareSerial& _serial;
     uint32_t _baudRate;
+    InputSourceCallback _onInputSourceChange;
 
     enum ParseState {
         WAIT_STX,

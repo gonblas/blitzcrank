@@ -48,6 +48,10 @@ void UARTManager::sendInputSourceMode(bool physical) {
     sendFrame(EV_INPUT_SOURCE, payload, 1);
 }
 
+void UARTManager::setOnInputSourceChange(InputSourceCallback callback) {
+    _onInputSourceChange = callback;
+}
+
 // ==== Recepción y parsing ====
 
 bool UARTManager::receiveFrame(Frame_t& frame) {
@@ -131,12 +135,17 @@ void UARTManager::handleIncomingData() {
             case EV_INPUT_SOURCE: {
                 InputSourcePayload_t m;
                 proto_unpackInputSourceMode(rxFrame.payload, &m);
-                Serial.println("Received Input Source Mode: " + String(m.mode));
-                // Procesar evento de fuente de entrada
+                Serial.println("Received Input Source Mode: " + String(m.mode ? "PHYSICAL" : "WEB"));
+                
+                // Llamar callback si está definido
+                if (_onInputSourceChange) {
+                    const char* mode = m.mode ? "PHYSICAL" : "WEB";
+                    _onInputSourceChange(mode);
+                }
                 break;
             }
             default:
-                // Evento desconocido
+                Serial.println("Unknown frame type received");
                 break;
         }
     }
