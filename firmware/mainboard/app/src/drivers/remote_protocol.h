@@ -2,20 +2,13 @@
 #define REMOTE_PROTOCOL_H
 
 #include <stdint.h>
+#include "event_system.h"
 
 // ==== Configuración general ====
 
 #define PROTO_STX            0xAA    /* Inicio de trama */
 #define PROTO_ETX            0x55    /* Fin de trama */
 #define PROTO_MAX_PAYLOAD    8       /* Tamaño máximo de datos */
-
-// ==== Tipos de evento ====
-
-typedef enum {
-    EV_BUTTON        = 0x00,
-    EV_JOYSTICK      = 0x01,
-    EV_POTENTIOMETER = 0x02
-} EventType_t;
 
 // ==== Payloads ====
 

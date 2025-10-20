@@ -5,6 +5,7 @@
 #include "remote_protocol.h"
 #include "sapi.h"
 #include "debug.h"
+#include "event_system.h"
 
 #define UART_USED UART_232
 #define UART_BAUD 115200
@@ -37,7 +38,6 @@ static void UART_Task(void *pvParameters) {
 
     while (1) {
         if (uartReadByte(UART_USED, &byte)) {
-            LOG_PRINTLN("Received byte: %02X", byte);
 
             switch (state) {
 
@@ -80,23 +80,33 @@ static void UART_Task(void *pvParameters) {
                 state = STATE_WAIT_STX;
 
                 if (proto_validateFrame(&rxFrame)) {
+                    Event_t ev;
                     // ==== Frame válido ====
                     switch (rxFrame.type) {
                     case EV_BUTTON: {
                         ButtonPayload_t b;
                         proto_unpackButton(rxFrame.payload, &b);
+                        ev.type = EV_BUTTON;
+                        ev.data.button = *(ButtonEvent_t *)&b;
+                        xQueueSend(eventQueue, &ev, 0);
                         printf("EV_BUTTON: up=%d down=%d\r\n", b.up, b.down);
                         break;
                     }
                     case EV_JOYSTICK: {
                         JoystickPayload_t j;
                         proto_unpackJoystick(rxFrame.payload, &j);
+                        ev.type = EV_JOYSTICK;
+                        ev.data.joystick = *(JoystickEvent_t *)&j;
+                        xQueueSend(eventQueue, &ev, 0);
                         printf("EV_JOYSTICK: x=%u y=%u\r\n", j.x, j.y);
                         break;
                     }
                     case EV_POTENTIOMETER: {
                         PotentiometerPayload_t p;
                         proto_unpackPotentiometer(rxFrame.payload, &p);
+                        ev.type = EV_POTENTIOMETER;
+                        ev.data.potentiometer = *(PotentiometerEvent_t *)&p;
+                        xQueueSend(eventQueue, &ev, 0);
                         printf("EV_POTENTIOMETER: angle=%u\r\n", p.angle);
                         break;
                     }

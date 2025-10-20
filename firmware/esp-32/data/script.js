@@ -54,45 +54,40 @@ modeSwitch.addEventListener("change", (e) => {
 const btnUp = document.getElementById("btnUp")
 const btnDown = document.getElementById("btnDown")
 
-let holdInterval = null
-
 function sendAction(url) {
   if (!webControlEnabled) return
   fetch(url).catch((err) => console.log("Error:", err))
 }
 
-function startHold(url) {
+function startButtonPress(action) {
   if (!webControlEnabled) return
-  // Enviar inmediatamente al presionar
-  sendAction(url)
-  // Y repetir cada 100ms mientras esté presionado
-  holdInterval = setInterval(() => sendAction(url), 100)
+  sendAction(`/${action}?action=pressed`) // Send pressed state
 }
 
-function stopHold() {
-  clearInterval(holdInterval)
-  holdInterval = null
+function stopButtonPress(action) {
+  if (!webControlEnabled) return
+  sendAction(`/${action}?action=released`) // Send released state
 }
 
 // UP
-btnUp.addEventListener("mousedown", () => startHold("/up"))
-btnUp.addEventListener("mouseup", stopHold)
-btnUp.addEventListener("mouseleave", stopHold)
+btnUp.addEventListener("mousedown", () => startButtonPress("up"))
+btnUp.addEventListener("mouseup", () => stopButtonPress("up"))
+btnUp.addEventListener("mouseleave", () => stopButtonPress("up"))
 btnUp.addEventListener("touchstart", (e) => {
   e.preventDefault()
-  startHold("/up")
+  startButtonPress("up")
 })
-btnUp.addEventListener("touchend", stopHold)
+btnUp.addEventListener("touchend", () => stopButtonPress("up"))
 
 // DOWN
-btnDown.addEventListener("mousedown", () => startHold("/down"))
-btnDown.addEventListener("mouseup", stopHold)
-btnDown.addEventListener("mouseleave", stopHold)
+btnDown.addEventListener("mousedown", () => startButtonPress("down"))
+btnDown.addEventListener("mouseup", () => stopButtonPress("down"))
+btnDown.addEventListener("mouseleave", () => stopButtonPress("down"))
 btnDown.addEventListener("touchstart", (e) => {
   e.preventDefault()
-  startHold("/down")
+  startButtonPress("down")
 })
-btnDown.addEventListener("touchend", stopHold)
+btnDown.addEventListener("touchend", () => stopButtonPress("down"))
 
 // ---------------- SLIDER ----------------
 const gripperSlider = document.getElementById("gripperSlider")

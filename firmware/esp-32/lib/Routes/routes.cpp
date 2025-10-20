@@ -10,15 +10,25 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
 
   // -------------------- Control routes --------------------
   server.on("/up", [&]() {
-    Serial.println("Gripper Up");
-    uartManager.sendButton(true, false);
-    server.send(200, "text/plain", "OK");
+    if (server.hasArg("action")) {
+      bool pressed = server.arg("action") == "pressed";
+      Serial.println(String("Gripper Up ") + (pressed ? "pressed" : "released"));
+      uartManager.sendButton(pressed, false);
+      server.send(200, "text/plain", "OK");
+    } else {
+      server.send(400, "text/plain", "Missing action parameter");
+    }
   });
 
   server.on("/down", [&]() {
-    Serial.println("Gripper Down");
-    uartManager.sendButton(false, true);
-    server.send(200, "text/plain", "OK");
+    if (server.hasArg("action")) {
+      bool pressed = server.arg("action") == "pressed";
+      Serial.println(String("Gripper Down ") + (pressed ? "pressed" : "released"));
+      uartManager.sendButton(false, pressed);
+      server.send(200, "text/plain", "OK");
+    } else {
+      server.send(400, "text/plain", "Missing action parameter");
+    }
   });
 
   server.on("/slider", [&]() {

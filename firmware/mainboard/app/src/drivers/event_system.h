@@ -9,9 +9,9 @@
 // ==== Event definitions ====
 
 typedef enum {
-    EV_BUTTON,
-    EV_JOYSTICK,
-    EV_POTENTIOMETER
+    EV_BUTTON = 0x00,
+    EV_JOYSTICK = 0x01,
+    EV_POTENTIOMETER = 0x02
 } EventType_t;
 
 typedef struct {
