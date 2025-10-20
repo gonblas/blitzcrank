@@ -9,12 +9,19 @@
 #define PROTO_ETX            0x55    /* Fin de trama */
 #define PROTO_MAX_PAYLOAD    8       /* Tamaño máximo de datos */
 
+// ==== Valores auxiliares ====
+#define BUTTON_PRESSED 1
+#define BUTTON_RELEASED 0
+#define PHYSICAL_MODE_ON 0xFF
+#define REMOTE_MODE_ON 0x00
+
 // ==== Tipos de evento ====
 
 typedef enum {
     EV_BUTTON        = 0x00,
     EV_JOYSTICK      = 0x01,
-    EV_POTENTIOMETER = 0x02
+    EV_POTENTIOMETER = 0x02,
+    EV_INPUT_SOURCE   = 0x03
 } EventType_t;
 
 // ==== Payloads ====
@@ -70,8 +77,8 @@ static uint8_t proto_validateFrame(const Frame_t *frame)
 
 static void proto_packButton(uint8_t *out, uint8_t up, uint8_t down)
 {
-    out[0] = up ? 1 : 0;
-    out[1] = down ? 1 : 0;
+    out[0] = up ? BUTTON_PRESSED : BUTTON_RELEASED;
+    out[1] = down ? BUTTON_PRESSED : BUTTON_RELEASED;
 }
 
 static void proto_packJoystick(uint8_t *out, uint16_t x, uint16_t y)
@@ -104,6 +111,11 @@ static void proto_unpackJoystick(const uint8_t *in, JoystickPayload_t *out)
 static void proto_unpackPotentiometer(const uint8_t *in, PotentiometerPayload_t *out)
 {
     out->angle = in[0];
+}
+
+static void proto_packInputSourceMode(uint8_t *out, uint8_t physical)
+{
+    out[0] = physical ? PHYSICAL_MODE_ON : REMOTE_MODE_ON;
 }
 
 #endif /* REMOTE_PROTOCOL_H */

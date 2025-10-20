@@ -110,6 +110,12 @@ static void UART_Task(void *pvParameters) {
                         printf("EV_POTENTIOMETER: angle=%u\r\n", p.angle);
                         break;
                     }
+                    case EV_INPUT_SOURCE: {
+                        InputModePayload_t m;
+                        proto_unpackInputMode(rxFrame.payload, &m);
+                        printf("EV_INPUT_SOURCE: mode=%u\r\n", m.mode);
+                        break;
+                    }
                     default:
                         printf("EV_UNKNOWN: type=%u\r\n", rxFrame.type);
                         break;

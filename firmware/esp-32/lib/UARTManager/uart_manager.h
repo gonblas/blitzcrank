@@ -14,6 +14,7 @@ public:
     void sendButton(bool up, bool down);
     void sendJoystick(uint16_t x, uint16_t y);
     void sendPotentiometer(uint8_t angle);
+    void sendInputSourceMode(bool physical);
 
     // ==== Recepción y parsing ====
     // Devuelve true si se recibió un frame completo y válido

@@ -37,6 +37,7 @@ modeSwitch.addEventListener("change", (e) => {
     btnUp.disabled = false
     btnDown.disabled = false
     gripperSlider.disabled = false
+    fetch("/mode?state=WEB").catch((err) => console.log("Error:", err))
   } else {
     statusText.textContent = "WEB CONTROL DISABLED"
     statusText.classList.add("disabled")
@@ -47,6 +48,7 @@ modeSwitch.addEventListener("change", (e) => {
     btnUp.disabled = true
     btnDown.disabled = true
     gripperSlider.disabled = true
+    fetch("/mode?state=PHYSICAL").catch((err) => console.log("Error:", err))
   }
 })
 

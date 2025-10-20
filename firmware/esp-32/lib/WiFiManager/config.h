@@ -3,10 +3,10 @@
 
 // -------------------- Wi-Fi configuration --------------------
 // Mode: 0 = Access Point, 1 = Station
-#define WIFI_MODE_STA 0
+#define WIFI_MODE_STA 1
 
-#define WIFI_SSID "Blitzcrank"
-#define WIFI_PASSWORD "garra1234"
+#define WIFI_SSID "g-wifi"
+#define WIFI_PASSWORD "lionelmessi10"
 
 
 #endif

@@ -51,8 +51,7 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
   server.on("/mode", [&]() {
     bool physical = server.hasArg("state") && server.arg("state") == "PHYSICAL";
     Serial.println(String("Mode switched to: ") + (physical ? "PHYSICAL" : "WEB"));
-    // Modo puede enviarse como evento de potenciómetro o botón si querés, acá no hay un frame propio.
-    // Si querés enviar modo explícito, podrías usar un campo reservado o evento especial.
+    uartManager.sendInputSourceMode(physical);
     server.send(200, "text/plain", "OK");
   });
 }

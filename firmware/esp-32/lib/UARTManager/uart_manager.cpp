@@ -41,6 +41,13 @@ void UARTManager::sendFrame(uint8_t type, const uint8_t* payload, uint8_t len) {
     _serial.write(PROTO_ETX);
 }
 
+
+void UARTManager::sendInputSourceMode(bool physical) {
+    uint8_t payload[1];
+    proto_packInputSourceMode(payload, physical);
+    sendFrame(EV_INPUT_SOURCE, payload, 1);
+}
+
 // ==== Recepción y parsing ====
 
 bool UARTManager::receiveFrame(Frame_t& frame) {

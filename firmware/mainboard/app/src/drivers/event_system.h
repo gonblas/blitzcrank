@@ -11,7 +11,8 @@
 typedef enum {
     EV_BUTTON = 0x00,
     EV_JOYSTICK = 0x01,
-    EV_POTENTIOMETER = 0x02
+    EV_POTENTIOMETER = 0x02,
+    EV_INPUT_SOURCE = 0x03
 } EventType_t;
 
 typedef struct {
@@ -29,11 +30,16 @@ typedef struct {
 } PotentiometerEvent_t;
 
 typedef struct {
+    uint8_t source; // 0 = physic , 0xFF = remote 
+} InputSourceEvent_t;
+
+typedef struct {
     EventType_t type;
     union {
         ButtonEvent_t button;
         JoystickEvent_t joystick;
         PotentiometerEvent_t potentiometer;
+        InputSourceEvent_t inputSource;
     } data;
 } Event_t;
 

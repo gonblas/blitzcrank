@@ -26,6 +26,10 @@ typedef struct {
     uint8_t angle;   /* 0–180 */
 } PotentiometerPayload_t;
 
+typedef struct {
+    uint8_t mode; /* 0 = fisico, 0xFF = remoto*/
+} InputModePayload_t;
+
 // ==== Frame general ====
 
 typedef struct {
@@ -80,6 +84,11 @@ static void proto_packPotentiometer(uint8_t *out, uint8_t angle)
     out[0] = angle;
 }
 
+static void proto_packInputMode(uint8_t *out, uint8_t mode)
+{
+    out[0] = mode;
+}
+
 // ==== Desempaquetado de payloads ====
 
 static void proto_unpackButton(const uint8_t *in, ButtonPayload_t *out)
@@ -97,6 +106,11 @@ static void proto_unpackJoystick(const uint8_t *in, JoystickPayload_t *out)
 static void proto_unpackPotentiometer(const uint8_t *in, PotentiometerPayload_t *out)
 {
     out->angle = in[0];
+}
+
+static void proto_unpackInputMode(const uint8_t *in, InputModePayload_t *out)
+{
+    out->mode = in[0];
 }
 
 #endif /* REMOTE_PROTOCOL_H */

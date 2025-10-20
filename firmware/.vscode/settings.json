@@ -1,5 +1,6 @@
 {
   "files.associations": {
-    "remote_protocol.h": "c"
+    "remote_protocol.h": "c",
+    "event_system.h": "c"
   }
 }
