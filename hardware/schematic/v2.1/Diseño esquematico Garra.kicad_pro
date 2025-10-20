@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.7,
-          "height": 2.0,
-          "width": 1.524
+          "drill": 0.8,
+          "height": 1.35,
+          "width": 1.35
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -614,7 +614,7 @@
     },
     "net_format_name": "",
     "page_layout_descr_file": "",
-    "plot_directory": "/home/manuel/Documents/Facultad/blitzcrank/resources/schematics/v2/",
+    "plot_directory": "/home/manuel/Documents/Facultad/blitzcrank/resources/schematics/v2.1/",
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
