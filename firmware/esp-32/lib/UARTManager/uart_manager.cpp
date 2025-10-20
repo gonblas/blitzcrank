@@ -104,3 +104,40 @@ bool UARTManager::receiveFrame(Frame_t& frame) {
     }
     return false;
 }
+
+void UARTManager::handleIncomingData() {
+    Frame_t rxFrame;
+    if (receiveFrame(rxFrame)) {
+
+        switch (rxFrame.type) {
+            case EV_BUTTON: {
+                ButtonPayload_t p;
+                proto_unpackButton(rxFrame.payload, &p);
+                // Procesar evento de botón
+                break;
+            }
+            case EV_JOYSTICK: {
+                JoystickPayload_t j;
+                proto_unpackJoystick(rxFrame.payload, &j);
+                // Procesar evento de joystick
+                break;
+            }
+            case EV_POTENTIOMETER: {
+                PotentiometerPayload_t p;
+                proto_unpackPotentiometer(rxFrame.payload, &p);
+                // Procesar evento de potenciómetro
+                break;
+            }
+            case EV_INPUT_SOURCE: {
+                InputSourcePayload_t m;
+                proto_unpackInputSourceMode(rxFrame.payload, &m);
+                Serial.println("Received Input Source Mode: " + String(m.mode));
+                // Procesar evento de fuente de entrada
+                break;
+            }
+            default:
+                // Evento desconocido
+                break;
+        }
+    }
+}

@@ -7,6 +7,7 @@
 
 WebServer server(80);
 UARTManager uartManager; // UART2 por defecto
+Frame_t frame;
 
 void setup() {
   Serial.begin(115200);
@@ -22,5 +23,5 @@ void setup() {
 
 void loop() {
   server.handleClient();
-  // uartManager.handleIncomingData(); // si querés procesar respuestas
+  uartManager.handleIncomingData();
 }

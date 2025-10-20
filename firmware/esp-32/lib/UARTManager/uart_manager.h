@@ -19,6 +19,7 @@ public:
     // ==== Recepción y parsing ====
     // Devuelve true si se recibió un frame completo y válido
     bool receiveFrame(Frame_t& frame);
+    void handleIncomingData();
 
 private:
     HardwareSerial& _serial;
