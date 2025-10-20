@@ -10,6 +10,12 @@
 #define PROTO_ETX            0x55    /* Fin de trama */
 #define PROTO_MAX_PAYLOAD    8       /* Tamaño máximo de datos */
 
+// ==== Valores auxiliares ====
+#define BUTTON_PRESSED 1
+#define BUTTON_RELEASED 0
+#define PHYSICAL_MODE_ON 0xFF
+#define REMOTE_MODE_ON 0x00
+
 // ==== Payloads ====
 
 typedef struct {

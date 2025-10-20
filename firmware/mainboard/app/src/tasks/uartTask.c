@@ -6,9 +6,8 @@
 #include "sapi.h"
 #include "debug.h"
 #include "event_system.h"
+#include "uart.h"
 
-#define UART_USED UART_232
-#define UART_BAUD 115200
 
 typedef enum {
     STATE_WAIT_STX,
@@ -26,17 +25,6 @@ static uint8_t indexPayload;
 static void UART_Task(void *pvParameters);
 
 
-void proto_sendInputMode(uartMap_t uart, uint8_t mode) {
-    Frame_t frame;
-    frame.stx = PROTO_STX;
-    frame.type = EV_INPUT_SOURCE;
-    frame.length = 1;
-    proto_packInputMode(frame.payload, mode);
-    frame.checksum = proto_computeChecksum(frame.type, frame.length, frame.payload);
-    frame.etx = PROTO_ETX;
-    uartWriteByteArray(uart, (uint8_t*)&frame, sizeof(Frame_t));
-}
-
 // ==== Inicialización de la tarea ====
 void UART_TaskCreate(void) {
     uartConfig(UART_USED, UART_BAUD);
@@ -50,6 +38,7 @@ static void UART_Task(void *pvParameters) {
 
     while (1) {
         if (uartReadByte(UART_USED, &byte)) {
+            // uartWriteByte(UART_USED, byte); // Eco del byte recibido
 
             switch (state) {
 
@@ -125,7 +114,7 @@ static void UART_Task(void *pvParameters) {
                     case EV_INPUT_SOURCE: {
                         InputModePayload_t m;
                         proto_unpackInputMode(rxFrame.payload, &m);
-                        proto_sendInputMode(UART_USED, m.mode); 
+                        UART_sendFrame(UART_USED, EV_INPUT_SOURCE, rxFrame.payload, rxFrame.length);
                         printf("EV_INPUT_SOURCE: mode=%u\r\n", m.mode);
                         break;
                     }
