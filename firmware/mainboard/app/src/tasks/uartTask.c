@@ -7,6 +7,7 @@
 #include "debug.h"
 #include "event_system.h"
 #include "uart.h"
+#include "board_pins.h"
 
 
 typedef enum {
@@ -114,7 +115,7 @@ static void UART_Task(void *pvParameters) {
                     case EV_INPUT_SOURCE: {
                         InputModePayload_t m;
                         proto_unpackInputMode(rxFrame.payload, &m);
-                        UART_sendFrame(UART_USED, EV_INPUT_SOURCE, rxFrame.payload, rxFrame.length);
+                        gpioWrite(LED_SWITCH_PIN, m.mode);
                         printf("EV_INPUT_SOURCE: mode=%u\r\n", m.mode);
                         break;
                     }
