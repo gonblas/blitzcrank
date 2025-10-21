@@ -8,6 +8,7 @@
 #include "priority.h"
 #include "heap.h"
 #include "debug.h"
+#include "controls_state.h"
 
 
 TaskHandle_t xControlXYAxisTaskHandle = NULL;
@@ -18,6 +19,9 @@ TaskHandle_t xServoTaskHandle = NULL;
 TaskHandle_t xXYStepperTaskHandle = NULL;
 TaskHandle_t xZMotorTaskHandle = NULL;
 
+ControlsState_t globalState; 
+
+
 
 //============================================================================
 // FUNCION PRINCIPAL
@@ -26,6 +30,8 @@ int main(void) {
     boardConfig();
     uartConfig(UART_USB, 115200);
     adcConfig(ADC_ENABLE);
+
+    ControlsState_Init();
 
     LOG_PRINTLN("=== System Starting ===");
 
@@ -45,7 +51,7 @@ int main(void) {
     initEventSystem();
 
     LOG_PRINTLN("Starting scheduler...");
-    // Start the FreeRTOS scheduler
+
     vTaskStartScheduler();
     while (TRUE) {
         LOG_PRINTLN("Error: there is not enough memory to start the scheduler.");

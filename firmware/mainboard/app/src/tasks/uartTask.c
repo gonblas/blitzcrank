@@ -113,8 +113,7 @@ static void UART_Task(void *pvParameters) {
             case EV_INPUT_SOURCE: {
                 InputModePayload_t m;
                 proto_unpackInputMode(rxFrame.payload, &m);
-                gpioWrite(LED_SWITCH_PIN, m.mode);
-
+                queueInputSourceEvent(m.mode);
                 printf("EV_INPUT_SOURCE: mode=%u\r\n", m.mode);
                 break;
             }

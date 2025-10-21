@@ -5,21 +5,29 @@
 // #include "stdbool.h"
 // #include "FreeRTOS.h"
 // #include "semphr.h"
-// #include "event_system.h"
+#include "event_system.h"
+#include "remote_protocol.h"
+
+#define TOGGLE(state) state = (state == PHYSICAL_MODE_ON) ? REMOTE_MODE_ON : PHYSICAL_MODE_ON
+
+#define POTENTIOMETER_INITIAL_VALUE 0
+#define OPERATION_MODE_INITIAL_VALUE PHYSICAL_MODE_ON
 
 // /**
 //  * @brief Estructura que representa el estado de los controles del sistema
 //  */
-// typedef struct {
-//     PotentiometerEvent_t potentiometerState;
+typedef struct {
+    PotentiometerEvent_t potentiometerState;
+    InputSourceEvent_t operationMode;
 } ControlsState_t;
-// 
-/**
-//  * @brief Inicializa el sistema de gestión de estado de controles
-//  */
-// void ControlsState_Init(void);
-// 
-/**
+
+extern ControlsState_t globalState;
+
+void ControlsState_Init(void);
+
+void toggleOperationMode(void);
+void setOperationMode(uint8_t mode);
+
 //  * @brief Actualiza el estado de un botón
 //  */
 // void ControlsState_SetButtonUp(bool state);
