@@ -35,6 +35,7 @@ int main(void) {
 
     LOG_PRINTLN("=== System Starting ===");
 
+
     // Create tasks -----------------------------------------------------------
     LOG_PRINTLN("Generating tasks...");
     xTaskCreate(controlGripperTask, "GRIPPER", HEAP_GRIPPER_SIZE, NULL, PRIORITY_CONTROL_GRIPPER, &xControlGripperTaskHandle);
