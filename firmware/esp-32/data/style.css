@@ -180,10 +180,10 @@ body {
 .main-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 48px;
+  gap: 16px;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 32px;
+  margin-top: 48px;
 }
 
 /* Controls */
@@ -196,6 +196,46 @@ body {
   flex: auto;
 }
 
+@media (min-width: 768px) {
+  .controls {
+    margin-right: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .controls {
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .slider-container {
+    margin-right: 0!important;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .vertical-control {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mode-switch-container {
+    position: static;
+    margin: 0 auto 16px auto;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+  }
+
+  .header h1 {
+    margin-top: 24px;
+  }
+}
+
 /* Vertical control */
 .vertical-control h2 {
   color: white;
@@ -205,7 +245,7 @@ body {
 }
 
 .vertical-control {
-  margin-bottom: 16px;
+  margin-top: 48px; /* Aumentado de 16px a 48px */
 }
 
 .buttons {
@@ -368,21 +408,35 @@ body {
   cursor: not-allowed;
 }
 
+
+
 .slider-labels {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 4px;
   font-weight: bold;
   color: white;
+  width: 100%;
   user-select: none; /* Evita selección de texto */
   -webkit-user-select: none; /* Para Safari/Chrome */
   -moz-user-select: none; /* Para Firefox */
   -ms-user-select: none; /* Para IE/Edge */
 }
 
+
+#gripperValue {
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  flex: 1;
+  margin-left: 20px;
+}
+
 .slider-labels .closed {
   color: #ef4444;
 }
+
 .slider-labels .open {
   color: #22c55e;
 }
@@ -441,4 +495,17 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+}
+
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  body {
+    transform: rotate(90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
 }

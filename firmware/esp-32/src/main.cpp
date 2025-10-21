@@ -4,9 +4,12 @@
 #include "spiffs_manager.h"
 #include "routes.h"
 #include "uart_manager.h"
+#include "websocket_manager.h"
 
 WebServer server(80);
+WebSocketManager wsManager(81);
 UARTManager uartManager; // UART2 por defecto
+Frame_t frame;
 
 void setup() {
   Serial.begin(115200);
@@ -17,10 +20,15 @@ void setup() {
   setupRoutes(server, uartManager);
   server.begin();
 
+  // Inicializar WebSocket
+  wsManager.setUARTManager(&uartManager);
+  wsManager.begin();
+
   Serial.println("Web server started");
 }
 
 void loop() {
   server.handleClient();
-  uartManager.handleIncomingData(); // si querés procesar respuestas
+  wsManager.handle();
+  uartManager.handleIncomingData();
 }
