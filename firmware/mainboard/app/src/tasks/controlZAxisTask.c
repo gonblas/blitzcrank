@@ -33,11 +33,7 @@ void controlZAxisTask(void* pvParameters) {
         is_button_down_released ? LOG_PRINTLN("Boton DOWN: released") : 0;
 
         if(is_button_up_pressed || is_button_down_pressed || is_button_up_released || is_button_down_released) {
-            ev.type = EV_BUTTON;
-            ev.data.button.up   = !upState; 
-            ev.data.button.down = !downState;
-            xQueueSend(eventQueue, &ev, 0);
-            
+            queueButtonEvent(!upState, !downState);
         }
 
         upPrevState     = upState;

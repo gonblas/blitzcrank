@@ -33,14 +33,16 @@ typedef struct {
     uint8_t source; // 0 = physic , 0xFF = remote 
 } InputSourceEvent_t;
 
+typedef union {
+    ButtonEvent_t button;
+    JoystickEvent_t joystick;
+    PotentiometerEvent_t potentiometer;
+    InputSourceEvent_t inputSource;
+} EventData_t;
+
 typedef struct {
     EventType_t type;
-    union {
-        ButtonEvent_t button;
-        JoystickEvent_t joystick;
-        PotentiometerEvent_t potentiometer;
-        InputSourceEvent_t inputSource;
-    } data;
+    EventData_t data;
 } Event_t;
 
 
@@ -57,6 +59,13 @@ extern TaskHandle_t gripperTaskHandle;
 
 void initEventSystem(void);
 void EventDispatcherTask(void *pvParameters);
+
+void queueJoystickEvent(uint16_t x, uint16_t y);
+void queueButtonEvent(bool_t up, bool_t down);
+void queuePotentiometerEvent(uint8_t angle);
+void queueInputSourceEvent(uint8_t source);
+
+
 
 #endif // EVENT_SYSTEM_H
 
