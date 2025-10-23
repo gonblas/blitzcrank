@@ -7235,7 +7235,7 @@
 			)
 		)
 	)
-	(global_label "SW"
+	(global_label "Stick_ON"
 		(shape input)
 		(at 182.88 133.35 180)
 		(effects
@@ -7878,7 +7878,7 @@
 			)
 		)
 	)
-	(global_label "SW"
+	(global_label "Stick_ON"
 		(shape input)
 		(at 269.24 143.51 0)
 		(effects
