@@ -12,5 +12,6 @@ extern TaskHandle_t xSwitchModeTaskHandle;
 extern TaskHandle_t xServoTaskHandle;
 extern TaskHandle_t xXYStepperTaskHandle;
 extern TaskHandle_t xZMotorTaskHandle;
+extern TaskHandle_t xConnectionTaskHandle;
 
 #endif /* HANDLERS_H_ */

@@ -39,7 +39,7 @@
 //---------------------------------------------------------
 // JOYSTICK
 //---------------------------------------------------------
-#define JOYSTICK_BUTTON_PIN   GPIO8
+#define CONTROLLER_CONNECTION_PIN   GPIO8
 #define JOYSTICK_X_PIN        CH3
 #define JOYSTICK_Y_PIN        CH2
 

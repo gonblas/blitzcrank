@@ -17,7 +17,7 @@ TaskHandle_t xSwitchModeTaskHandle = NULL;
 TaskHandle_t xServoTaskHandle = NULL;
 TaskHandle_t xXYStepperTaskHandle = NULL;
 TaskHandle_t xZMotorTaskHandle = NULL;
-
+TaskHandle_t xConnectionTaskHandle = NULL;
 
 //============================================================================
 // FUNCION PRINCIPAL
@@ -38,6 +38,7 @@ int main(void) {
     xTaskCreate(switchModeTask, "SWITCH", HEAP_SWITCH_MODE_SIZE, NULL, PRIORITY_SWITCH_MODE, &xSwitchModeTaskHandle);
     xTaskCreate(XYStepperTask, "STEPPER", HEAP_XYSTEPPER_SIZE, NULL, PRIORITY_XY_STEPPER, &xXYStepperTaskHandle);
     xTaskCreate(ZMotorTask, "Z_MOTOR", HEAP_Z_MOTOR_SIZE, NULL, PRIORITY_Z_MOTOR, &xZMotorTaskHandle);
+    xTaskCreate(controlConnectionTask, "CONNECTION", HEAP_CONNECTION_SIZE, NULL, PRIORITY_CONNECTION_TASK, NULL);
 
     LOG_PRINTLN("Initializing event system...");
     initEventSystem();
