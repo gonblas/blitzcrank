@@ -10,6 +10,3 @@ USE_FPU=y
 
 USE_LPCOPEN=y
 USE_SAPI=y
-
-# Additional includes
-INCLUDES = ../../../app/inc ../../../app/src/drivers
