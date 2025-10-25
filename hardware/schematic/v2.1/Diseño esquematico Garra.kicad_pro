@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.016,
-          "height": 2.0,
-          "width": 1.524
+          "drill": 0.7,
+          "height": 1.6,
+          "width": 1.6
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -503,7 +503,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "/home/manuel/Documents/Facultad/blitzcrank/resources/PCB/v2.1/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
@@ -614,7 +614,7 @@
     },
     "net_format_name": "",
     "page_layout_descr_file": "",
-    "plot_directory": "/home/manuel/Documents/Facultad/blitzcrank/resources/schematics/v2/",
+    "plot_directory": "/home/manuel/Documents/Facultad/blitzcrank/resources/schematics/v2.1/",
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
