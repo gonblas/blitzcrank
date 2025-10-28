@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "remote_protocol.h": "c",
+    "event_system.h": "c",
+    "uart.h": "c",
+    "bitset": "c",
+    "string_view": "c",
+    "controls_state.h": "c"
+  }
+}

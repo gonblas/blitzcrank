@@ -20,7 +20,7 @@ void connectToWiFi() {
 
   Serial.println("\nConnected to Wi-Fi");
   Serial.print("Local IP address: ");
-  Serial.println(WiFi.localIP());
+  Serial.println("http://" + WiFi.localIP().toString());
 }
 
 void setupWiFi() {

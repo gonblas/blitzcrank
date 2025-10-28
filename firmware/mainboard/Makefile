@@ -52,6 +52,9 @@ USE_SAPI=y
 
 MODULES=$(sort $(dir $(wildcard libs/*/)))
 SRC+=$(wildcard $(PROGRAM_PATH_AND_NAME)/src/*.c)
+SRC+=$(wildcard $(PROGRAM_PATH_AND_NAME)/src/tasks/*.c)
+SRC+=$(wildcard $(PROGRAM_PATH_AND_NAME)/src/drivers/*.c)
+SRC+=$(wildcard $(PROGRAM_PATH_AND_NAME)/src/drivers/*/*.c)
 SRC+=$(foreach m, $(MODULES), $(wildcard $(m)/src/*.c))
 
 CXXSRC+=$(wildcard $(PROGRAM_PATH_AND_NAME)/src/*.cpp)
@@ -79,12 +82,16 @@ TARGET_NM=$(basename $(TARGET)).names.csv
 TARGET_ELF=$(basename $(TARGET)).elf
 TARGET_AXF=$(basename $(TARGET)).axf
 
-INCLUDE_FLAGS=$(foreach m, $(MODULES), -I$(m)/inc) -I$(PROGRAM_PATH_AND_NAME)/inc $(INCLUDES)
+INCLUDE_FLAGS=$(foreach m, $(MODULES), -I$(m)/inc) -I$(PROGRAM_PATH_AND_NAME)/inc -Iapp/src/drivers -Iapp/src/tasks $(addprefix -I, $(wildcard app/src/drivers/*/)) $(addprefix -I, $(wildcard app/src/tasks/*/)) $(INCLUDES)
 DEFINES_FLAGS=$(foreach m, $(DEFINES), -D$(m))
 OPT_FLAGS=-ggdb3 -O$(OPT) -ffunction-sections -fdata-sections
 LIBSDEPS=$(addprefix $(OUT)/, $(addsuffix .a, $(basename $(foreach l, $(LIBS), $(foreach m, $(MODULES), $(wildcard $(m)/lib/lib$(l).hexlib) ) ))))
 
+# Base common flags without debug setting
 COMMON_FLAGS=$(ARCH_FLAGS) $(DEFINES_FLAGS) $(INCLUDE_FLAGS) $(OPT_FLAGS) -DBOARD=$(BOARD)
+# Debug flags variants
+COMMON_FLAGS_DEBUG=$(COMMON_FLAGS) -DENABLE_DEBUG_MESSAGES=TRUE
+COMMON_FLAGS_RELEASE=$(COMMON_FLAGS) -DENABLE_DEBUG_MESSAGES=FALSE
 
 CFLAGS=$(COMMON_FLAGS) -std=c99
 CXXFLAGS=$(COMMON_FLAGS) -fno-rtti -fno-exceptions -std=c++11
@@ -246,25 +253,77 @@ OOCD=openocd
 # OpenOCD configuration script for board
 OOCD_SCRIPT=scripts/openocd/lpc4337.cfg
 
-# Download program into flash memory of board
-.download_flash: $(TARGET_BIN)
+# Download program into flash memory of board (release mode - debug disabled)
+.download_flash: .check_release_mode
+	@echo "COMPILING IN RELEASE MODE (DEBUG=FALSE)"
+	$(Q)$(MAKE) CFLAGS="$(COMMON_FLAGS_RELEASE) -std=c99" CXXFLAGS="$(COMMON_FLAGS_RELEASE) -fno-rtti -fno-exceptions -std=c++11" $(TARGET_BIN)
 	@echo DOWNLOAD to FLASH
+	$(Q)pkill openocd || true
 	$(Q)$(OOCD) -f $(OOCD_SCRIPT) \
 		-c "init" \
 		-c "halt 0" \
-		-c "flash write_image erase $< 0x1A000000 bin" \
+		-c "flash write_image erase $(TARGET_BIN) 0x1A000000 bin" \
 		-c "reset run" \
 		-c "shutdown" 2>&1
 
-# Download program into ram memory of board
-.download_ram: $(TARGET_BIN)
+# Download program into ram memory of board (release mode - debug disabled)
+.download_ram: .check_release_mode
+	@echo "COMPILING IN RELEASE MODE (DEBUG=FALSE)"
+	$(Q)$(MAKE) CFLAGS="$(COMMON_FLAGS_RELEASE) -std=c99" CXXFLAGS="$(COMMON_FLAGS_RELEASE) -fno-rtti -fno-exceptions -std=c++11" $(TARGET_BIN)
 	@echo DOWNLOAD to RAM
+	$(Q)pkill openocd || true
 	$(Q)$(OOCD) -f $(OOCD_SCRIPT) \
 			 -c "init" \
 			 -c "halt 0" \
-			 -c "load_image $< 0x20000000 bin" \
+			 -c "load_image $(TARGET_BIN) 0x20000000 bin" \
 			 -c "reset run" \
 			 -c "shutdown" 2>&1
+
+# Debug mode: compile with debug enabled and download to flash (COMMENTED OUT - OLD VERSION)
+# debug: clean
+#	@echo "COMPILING IN DEBUG MODE (DEBUG=TRUE)"
+#	$(Q)$(MAKE) CFLAGS="$(COMMON_FLAGS_DEBUG) -std=c99" CXXFLAGS="$(COMMON_FLAGS_DEBUG) -fno-rtti -fno-exceptions -std=c++11" $(TARGET_BIN)
+#	@echo DOWNLOAD DEBUG VERSION to FLASH
+#	$(Q)pkill openocd || true
+#	$(Q)$(OOCD) -f $(OOCD_SCRIPT) \
+#		-c "init" \
+#		-c "halt 0" \
+#		-c "flash write_image erase $(TARGET_BIN) 0x1A000000 bin" \
+#		-c "reset run" \
+#		-c "shutdown" 2>&1
+
+# Debug mode: same as download but with debug flag enabled
+.debug_flash: .check_debug_mode
+	@echo "COMPILING IN DEBUG MODE (DEBUG=TRUE)"
+	$(Q)$(MAKE) CFLAGS="$(COMMON_FLAGS_DEBUG) -std=c99" CXXFLAGS="$(COMMON_FLAGS_DEBUG) -fno-rtti -fno-exceptions -std=c++11" $(TARGET_BIN)
+	@echo DOWNLOAD to FLASH
+	$(Q)pkill openocd || true
+	$(Q)$(OOCD) -f $(OOCD_SCRIPT) \
+		-c "init" \
+		-c "halt 0" \
+		-c "flash write_image erase $(TARGET_BIN) 0x1A000000 bin" \
+		-c "reset run" \
+		-c "shutdown" 2>&1
+
+# Debug program into ram memory of board (debug mode - debug enabled)
+.debug_ram: .check_debug_mode
+	@echo "COMPILING IN DEBUG MODE (DEBUG=TRUE)"
+	$(Q)$(MAKE) CFLAGS="$(COMMON_FLAGS_DEBUG) -std=c99" CXXFLAGS="$(COMMON_FLAGS_DEBUG) -fno-rtti -fno-exceptions -std=c++11" $(TARGET_BIN)
+	@echo DOWNLOAD to RAM
+	$(Q)pkill openocd || true
+	$(Q)$(OOCD) -f $(OOCD_SCRIPT) \
+			 -c "init" \
+			 -c "halt 0" \
+			 -c "load_image $(TARGET_BIN) 0x20000000 bin" \
+			 -c "reset run" \
+			 -c "shutdown" 2>&1
+
+# Debug program into board (same logic as download)
+ifeq ($(LOAD_INRAM),y)
+debug: .debug_ram
+else
+debug: .debug_flash
+endif
 
 # Download program into board (depends of config.mk file of program)
 ifeq ($(LOAD_INRAM),y)
@@ -286,22 +345,22 @@ erase:
 	@echo Please reset your Board.
 
 # DEBUG with Embedded IDE (debug)
-.debug:
-	@echo DEBUG
-	$(Q)$(OOCD) -f $(OOCD_SCRIPT) 2>&1
+# .debug:
+# 	@echo DEBUG
+# 	$(Q)$(OOCD) -f $(OOCD_SCRIPT) 2>&1
 
-# DEBUG with Embedded IDE (run)
-.run_gdb: $(TARGET)
-	$(Q)socketwaiter :3333 && gdbfront $(TARGET) --start \
-	--gdb arm-none-eabi-gdb \
-	--gdbcmd="target remote :3333" \
-	--gdbcmd="monitor reset halt" \
-	--gdbcmd="load" \
-	--gdbcmd="break main" \
-	--gdbcmd="continue"
+# # DEBUG with Embedded IDE (run)
+# .run_gdb: $(TARGET)
+# 	$(Q)socketwaiter :3333 && gdbfront $(TARGET) --start \
+# 	--gdb arm-none-eabi-gdb \
+# 	--gdbcmd="target remote :3333" \
+# 	--gdbcmd="monitor reset halt" \
+# 	--gdbcmd="load" \
+# 	--gdbcmd="break main" \
+# 	--gdbcmd="continue"
 
-debug:
-	@$(MAKE) -j 2 .debug .run_gdb
+# debug:
+# 	@$(MAKE) -j 2 .debug .run_gdb
 
 # TEST: Run hardware tests
 .hardware_test: $(TARGET)
@@ -357,6 +416,26 @@ ifeq ($(ENFORCE_NOGPL),y)
 else
 .try_enforce_no_gpl:
 endif
+
+# Smart mode checking - only clean when switching between debug/release
+.check_release_mode:
+	@if [ -f $(OUT)/.debug_mode ]; then \
+		echo "Switching from DEBUG to RELEASE mode - cleaning..."; \
+		$(MAKE) clean; \
+		rm -f $(OUT)/.debug_mode; \
+	fi
+	@mkdir -p $(OUT)
+	@touch $(OUT)/.release_mode
+
+.check_debug_mode:
+	@if [ -f $(OUT)/.release_mode ]; then \
+		echo "Switching from RELEASE to DEBUG mode - cleaning..."; \
+		$(MAKE) clean; \
+		rm -f $(OUT)/.release_mode; \
+	fi
+	@mkdir -p $(OUT)
+	@touch $(OUT)/.debug_mode
+
 # ----------------------------------------------------------------------
 
 .PHONY: all size download erase clean new_program select_program select_board

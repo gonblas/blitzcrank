@@ -1,33 +1,57 @@
 #include "routes.h"
 #include "spiffs_manager.h"
 
-void setupRoutes(WebServer& server) {
+void setupRoutes(WebServer& server, UARTManager& uartManager) {
   // -------------------- Static files --------------------
   server.on("/", [&]() { serveFile(server, "/index.html", "text/html"); });
   server.on("/style.css", [&]() { serveFile(server, "/style.css", "text/css"); });
   server.on("/script.js", [&]() { serveFile(server, "/script.js", "application/javascript"); });
+  server.on("/blitzcrank.ico", [&]() { serveFile(server, "/blitzcrank.ico", "image/x-icon"); });
 
   // -------------------- Control routes --------------------
   server.on("/up", [&]() {
-    Serial.println("Gripper Up");
-    server.send(200, "text/plain", "OK");
+    if (server.hasArg("action")) {
+      bool pressed = server.arg("action") == "pressed";
+      Serial.println(String("Gripper Up ") + (pressed ? "pressed" : "released"));
+      uartManager.sendButton(pressed, false);
+      server.send(200, "text/plain", "OK");
+    } else {
+      server.send(400, "text/plain", "Missing action parameter");
+    }
   });
 
   server.on("/down", [&]() {
-    Serial.println("Gripper Down");
-    server.send(200, "text/plain", "OK");
+    if (server.hasArg("action")) {
+      bool pressed = server.arg("action") == "pressed";
+      Serial.println(String("Gripper Down ") + (pressed ? "pressed" : "released"));
+      uartManager.sendButton(false, pressed);
+      server.send(200, "text/plain", "OK");
+    } else {
+      server.send(400, "text/plain", "Missing action parameter");
+    }
   });
 
   server.on("/slider", [&]() {
-    if (server.hasArg("value"))
-      Serial.println("Gripper slider: " + server.arg("value"));
+    if (server.hasArg("value")) {
+      int val = server.arg("value").toInt();
+      Serial.println("Gripper slider: " + String(val));
+      uartManager.sendPotentiometer((uint8_t)val);
+    }
     server.send(200, "text/plain", "OK");
   });
 
   server.on("/joystick", [&]() {
-    String x = server.hasArg("x") ? server.arg("x") : "50";
-    String y = server.hasArg("y") ? server.arg("y") : "50";
-    Serial.println("Joystick X: " + x + " Y: " + y);
+    int x = server.hasArg("x") ? server.arg("x").toInt() : 0;
+    int y = server.hasArg("y") ? server.arg("y").toInt() : 0;
+    Serial.printf("Joystick X: %d Y: %d\n", x, y);
+    uartManager.sendJoystick((uint16_t)x, (uint16_t)y);
+    server.send(200, "text/plain", "OK");
+  });
+
+  server.on("/mode", [&]() {
+    bool physical = server.hasArg("state") && server.arg("state") == "PHYSICAL";
+    Serial.println(String("Mode switched to: ") + (physical ? "PHYSICAL" : "WEB"));
+    uartManager.sendInputSourceMode(physical);
     server.send(200, "text/plain", "OK");
   });
 }

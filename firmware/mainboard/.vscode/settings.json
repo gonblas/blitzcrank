@@ -1,0 +1,12 @@
+{
+  "files.associations": {
+    "sapi.h": "c",
+    "board_pins.h": "c",
+    "math.h": "c",
+    "button.h": "c",
+    "freertos.h": "c",
+    "event_system.h": "c",
+    "tasks.h": "c",
+    "stdint.h": "c"
+  }
+}
