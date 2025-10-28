@@ -44,6 +44,16 @@
 #define JOYSTICK_Y_PIN        CH2
 
 
+//---------------------------------------------------------
+// STEPPER MOTOR 
+//---------------------------------------------------------
+#define STEPPER_MOTOR_STEP1_PIN   LCD3
+#define STEPPER_MOTOR_DIR1_PIN    LCD2
+#define STEPPER_MOTOR_ENABLE1_PIN  LCD4
+#define STEPPER_MOTOR_STEP2_PIN   GPIO1
+#define STEPPER_MOTOR_DIR2_PIN    GPIO3
+#define STEPPER_MOTOR_ENABLE2_PIN  LCD1
+
 
 
 #endif /* _BOARD_PINS_H_ */

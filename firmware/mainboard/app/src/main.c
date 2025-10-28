@@ -1,4 +1,4 @@
-// Inclusiones
+//Inclusiones
 #include "FreeRTOS.h"
 #include "task.h"
 #include "sapi.h"
@@ -8,9 +8,7 @@
 #include "priority.h"
 #include "heap.h"
 #include "debug.h"
-#include "controls_state.h"
-
-
+#include "controls_state.h"//
 TaskHandle_t xControlXYAxisTaskHandle = NULL;
 TaskHandle_t xControlGripperTaskHandle = NULL;
 TaskHandle_t xControlZAxisTaskHandle = NULL;
@@ -18,11 +16,7 @@ TaskHandle_t xSwitchModeTaskHandle = NULL;
 TaskHandle_t xServoTaskHandle = NULL;
 TaskHandle_t xXYStepperTaskHandle = NULL;
 TaskHandle_t xZMotorTaskHandle = NULL;
-
-ControlsState_t globalState; 
-
-
-
+ControlsState_t globalState; ///
 //============================================================================
 // FUNCION PRINCIPAL
 //============================================================================
@@ -30,12 +24,8 @@ int main(void) {
     boardConfig();
     uartConfig(UART_USB, 115200);
     adcConfig(ADC_ENABLE);
-
     ControlsState_Init();
-
-    LOG_PRINTLN("=== System Starting ===");
-
-
+    LOG_PRINTLN("=== System Starting ===");//
     // Create tasks -----------------------------------------------------------
     LOG_PRINTLN("Generating tasks...");
     xTaskCreate(controlGripperTask, "GRIPPER", HEAP_GRIPPER_SIZE, NULL, PRIORITY_CONTROL_GRIPPER, &xControlGripperTaskHandle);
@@ -45,17 +35,14 @@ int main(void) {
     xTaskCreate(switchModeTask, "SWITCH", HEAP_SWITCH_MODE_SIZE, NULL, PRIORITY_SWITCH_MODE, &xSwitchModeTaskHandle);
     xTaskCreate(XYStepperTask, "STEPPER", HEAP_XYSTEPPER_SIZE, NULL, PRIORITY_XY_STEPPER, &xXYStepperTaskHandle);
     xTaskCreate(ZMotorTask, "Z_MOTOR", HEAP_Z_MOTOR_SIZE, NULL, PRIORITY_Z_MOTOR, &xZMotorTaskHandle);
-
     UART_TaskCreate();
-
     LOG_PRINTLN("Initializing event system...");
     initEventSystem();
-
     LOG_PRINTLN("Starting scheduler...");
-
     vTaskStartScheduler();
     while (TRUE) {
         LOG_PRINTLN("Error: there is not enough memory to start the scheduler.");
     }
     return 0;
 }
+
