@@ -78,7 +78,7 @@ function updateModeUI(enableWebControl) {
     btnDown.disabled = false
     gripperSlider.disabled = false
   } else {
-    statusText.textContent = "PHYSICAL CONTROL"
+    statusText.textContent = "WEB CONTROL DISABLED"
     statusText.classList.add("disabled")
     statusIndicator.classList.add("disabled")
     joystickContainer.classList.add("disabled")

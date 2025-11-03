@@ -408,6 +408,31 @@ body {
   cursor: not-allowed;
 }
 
+/* When the gripper slider is disabled, make the title, labels and
+   percentage look visually disabled (more grey) without changing
+   functionality. Uses :has for the container (already used in this file).
+*/
+.slider-container:has(input:disabled) .control-title {
+  color: #9ca3af; /* cool gray */
+  opacity: 0.9;
+  filter: grayscale(1);
+}
+
+.slider-container:has(input:disabled) .slider-labels .open,
+.slider-container:has(input:disabled) .slider-labels .closed {
+  color: #9ca3af;
+  opacity: 0.85;
+  filter: grayscale(1);
+}
+
+/* Make the numeric percentage more muted when slider is disabled */
+#gripperSlider:disabled + .slider-labels #gripperValue,
+.slider-container:has(input:disabled) #gripperValue {
+  color: #9ca3af;
+  opacity: 0.85;
+  font-weight: 600;
+}
+
 
 
 .slider-labels {

@@ -11,6 +11,8 @@
 #include "sapi_cyclesCounter.h"
 
 #define DEAD_ZONE 30
+#define JOYSTICK_INITIAL_POSITION 512
+#define MAX_SPEED_DELAY_US 2000   // velocidad constante máxima (ajustable)
 
 static void enableDWT(void) {
     CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
@@ -18,81 +20,77 @@ static void enableDWT(void) {
     DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 }
 
-static uint32_t getDelayFromAxis(int16_t joyValue) {
-    int16_t delta = abs(joyValue - 511);
-    if (delta < DEAD_ZONE) return 0;
-    if (delta < 250) return 50000;
-    else if (delta < 450) return 20000;
-    else return 1000;
-}
-
 void XYStepperTask(void *pvParameters) {
-    JoystickEvent_t command = { .x = 511, .y = 511 };
+    JoystickEvent_t command = { .x = JOYSTICK_INITIAL_POSITION, .y = JOYSTICK_INITIAL_POSITION };
     boardConfig();
     enableDWT();
     cyclesCounterInit(SystemCoreClock);
 
-    // Configuración motores
     gpioConfig(STEPPER_MOTOR_STEP1_PIN, GPIO_OUTPUT);
     gpioConfig(STEPPER_MOTOR_DIR1_PIN, GPIO_OUTPUT);
     gpioConfig(STEPPER_MOTOR_ENABLE1_PIN, GPIO_OUTPUT);
-    gpioWrite(STEPPER_MOTOR_ENABLE1_PIN, OFF);
+    gpioWrite(STEPPER_MOTOR_ENABLE1_PIN, ON);
 
     gpioConfig(STEPPER_MOTOR_STEP2_PIN, GPIO_OUTPUT);
     gpioConfig(STEPPER_MOTOR_DIR2_PIN, GPIO_OUTPUT);
     gpioConfig(STEPPER_MOTOR_ENABLE2_PIN, GPIO_OUTPUT);
-    gpioWrite(STEPPER_MOTOR_ENABLE2_PIN, OFF);
+    gpioWrite(STEPPER_MOTOR_ENABLE2_PIN, ON);
 
     LOG_PRINTLN("[Stepper Task] Iniciada correctamente (XY gantry)");
 
     uint32_t lastStepA = 0, lastStepB = 0;
+    bool enabled = false;
+
+    const uint32_t delayCycles = MAX_SPEED_DELAY_US * (SystemCoreClock / 1000000U);
 
     for (;;) {
         JoystickEvent_t newCommand;
         if (xTaskNotifyWait(0, 0, (uint32_t *)&newCommand, pdMS_TO_TICKS(1)) == pdTRUE)
             command = newCommand;
 
-        int16_t joyX = command.x - 511;
-        int16_t joyY = command.y - 511;
+        int16_t joyX = command.x - JOYSTICK_INITIAL_POSITION; // -512 .. +512
+        int16_t joyY = command.y - JOYSTICK_INITIAL_POSITION;
 
-        // Ignora zona muerta
+        // Si ambos en zona muerta -> deshabilitar drivers
         if (abs(joyX) < DEAD_ZONE && abs(joyY) < DEAD_ZONE) {
+            if (enabled) {
+                gpioWrite(STEPPER_MOTOR_ENABLE1_PIN, ON);
+                gpioWrite(STEPPER_MOTOR_ENABLE2_PIN, ON);
+                enabled = false;
+            }
             vTaskDelay(pdMS_TO_TICKS(5));
             continue;
+        } else if (!enabled) {
+            gpioWrite(STEPPER_MOTOR_ENABLE1_PIN, OFF);
+            gpioWrite(STEPPER_MOTOR_ENABLE2_PIN, OFF);
+            enabled = true;
         }
 
-        // Direcciones independientes
-        int dirX = (joyX > 0) ? 1 : -1;
-        int dirY = (joyY > 0) ? 1 : -1;
-
-        // Mapeo gantry:
-        // Motor A = X + Y
-        // Motor B = X - Y
+        /* ===== CORRECCIÓN CLAVE: mapeo que hace X en sentidos contrarios =====
+           Motor A =  X + Y
+           Motor B = -X + Y
+        */
         int16_t speedA = joyX + joyY;
-        int16_t speedB = joyX - joyY;
+        int16_t speedB = -joyX + joyY;
 
-        // Normaliza magnitudes
-        if (speedA > 511) speedA = 511;
-        if (speedA < -511) speedA = -511;
-        if (speedB > 511) speedB = 511;
-        if (speedB < -511) speedB = -511;
+        // Decide si cada motor debe moverse (evitar arrastres pequeños)
+        bool moveA = (abs(speedA) >= DEAD_ZONE);
+        bool moveB = (abs(speedB) >= DEAD_ZONE);
 
-        // Calcula delays individuales
-        uint32_t delayA = getDelayFromAxis(511 + abs(speedA));
-        uint32_t delayB = getDelayFromAxis(511 + abs(speedB));
+        // Dirección: signo de speed
+        gpioWrite(STEPPER_MOTOR_DIR1_PIN, (speedA > 0) ? ON : OFF);
+        gpioWrite(STEPPER_MOTOR_DIR2_PIN, (speedB > 0) ? ON : OFF);
 
         uint32_t now = DWT->CYCCNT;
 
-        // Motor A
-        gpioWrite(STEPPER_MOTOR_DIR1_PIN, (speedA > 0) ? ON : OFF);
-        if (delayA > 0 && (now - lastStepA) >= (delayA * (SystemCoreClock / 1000000U))) {
+        // Motor A: step sólo si supera DEAD_ZONE
+        if (moveA && (now - lastStepA) >= delayCycles) {
             gpioWrite(STEPPER_MOTOR_STEP1_PIN, !gpioRead(STEPPER_MOTOR_STEP1_PIN));
             lastStepA = now;
         }
 
-        // Motor B
-        gpioWrite(STEPPER_MOTOR_DIR2_PIN, (speedB > 0) ? ON : OFF);
-        if (delayB > 0 && (now - lastStepB) >= (delayB * (SystemCoreClock / 1000000U))) {
+        // Motor B: step sólo si supera DEAD_ZONE
+        if (moveB && (now - lastStepB) >= delayCycles) {
             gpioWrite(STEPPER_MOTOR_STEP2_PIN, !gpioRead(STEPPER_MOTOR_STEP2_PIN));
             lastStepB = now;
         }
