@@ -31,7 +31,7 @@
 //---------------------------------------------------------
 // BUTTONS
 //---------------------------------------------------------
-#define BUTTON_UP_PIN    GPIO5
+#define BUTTON_UP_PIN    GPIO8
 #define BUTTON_DOWN_PIN  GPIO7
 #define BUTTON_SWITCH_PIN GPIO6
 
@@ -44,7 +44,7 @@
 //---------------------------------------------------------
 // JOYSTICK
 //---------------------------------------------------------
-#define JOYSTICK_BUTTON_PIN   GPIO8
+#define JOYSTICK_BUTTON_PIN   GPIO5
 #define JOYSTICK_X_PIN        CH3
 #define JOYSTICK_Y_PIN        CH2
 
