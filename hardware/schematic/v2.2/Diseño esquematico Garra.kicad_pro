@@ -39,7 +39,7 @@
         "pads": {
           "drill": 0.7,
           "height": 3.0,
-          "width": 3.0
+          "width": 1.524
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -504,7 +504,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "/home/manuel/Documents/Facultad/blitzcrank/resources/PCB/v2.1/",
+      "plot": "/home/manuel/Documents/Facultad/blitzcrank/resources/PCB/v2.2/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
