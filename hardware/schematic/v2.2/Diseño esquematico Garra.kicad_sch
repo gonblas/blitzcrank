@@ -7675,7 +7675,7 @@
 			)
 		)
 	)
-	(global_label "SERVO_PWM"
+	(global_label "5V"
 		(shape input)
 		(at 184.15 63.5 180)
 		(effects
@@ -7855,7 +7855,7 @@
 			)
 		)
 	)
-	(global_label "5V"
+	(global_label "SERVO_PWM"
 		(shape input)
 		(at 184.15 66.04 180)
 		(effects
