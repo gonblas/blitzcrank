@@ -7,6 +7,7 @@
 #include "priority.h"
 #include "heap.h"
 #include "debug.h"
+#include "board_pins.h"
 
 void controlConnectionTask(void *pvParameters) {
     bool estadoAnterior = true; // Asumimos joystick no presionado al inicio
@@ -23,12 +24,12 @@ void controlConnectionTask(void *pvParameters) {
                 vTaskSuspend(xControlXYAxisTaskHandle);
                 vTaskSuspend(xControlZAxisTaskHandle);
                 vTaskSuspend(xControlGripperTaskHandle);
-                LOG_PRINTLN("Tareas suspendidas por condición detectada");
+                LOG_PRINTLN("===================================Tareas suspendidas por condición detectada");
             } else { // Botón liberado → reconectado
                 vTaskResume(xControlXYAxisTaskHandle);
                 vTaskResume(xControlZAxisTaskHandle);
                 vTaskResume(xControlGripperTaskHandle);
-                LOG_PRINTLN("Tareas reanudadas por condición detectada");
+                LOG_PRINTLN("===================================Tareas reanudadas por condición detectada");
             }
             estadoAnterior = estadoActual; // Actualiza el estado
         }

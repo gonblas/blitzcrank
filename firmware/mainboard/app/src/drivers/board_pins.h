@@ -28,7 +28,7 @@
 //---------------------------------------------------------
 #define BUTTON_UP_PIN    GPIO5
 #define BUTTON_DOWN_PIN  GPIO7
-#define BUTTON_SWITCH_PIN GPIO6
+#define BUTTON_SWITCH_PIN GPIO8
 
 //---------------------------------------------------------
 // LED
@@ -39,10 +39,13 @@
 //---------------------------------------------------------
 // JOYSTICK
 //---------------------------------------------------------
-#define CONTROLLER_CONNECTION_PIN   GPIO8
 #define JOYSTICK_X_PIN        CH3
 #define JOYSTICK_Y_PIN        CH2
 
+//---------------------------------------------------------
+// STATE
+//---------------------------------------------------------
+#define CONTROLLER_CONNECTION_PIN   CAN_RD
 
 
 
