@@ -18,6 +18,8 @@ TaskHandle_t xXYStepperTaskHandle = NULL;
 TaskHandle_t xZMotorTaskHandle = NULL;
 TaskHandle_t xConnectionTaskHandle = NULL;
 
+ControlsState_t globalState;
+
 //============================================================================
 // FUNCION PRINCIPAL
 //============================================================================
