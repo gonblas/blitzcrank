@@ -21,10 +21,7 @@ void controlGripperTask(void* pvParameters) {
       uint16_t potRaw = adcRead(POTENCIOMETER_PIN);
       uint8_t angle = scaleValue(potRaw, (Range_t){0, 1023}, (Range_t){0, 180});
       if (abs(angle - prevAngle) >= 5) {
-         Event_t ev;
-         ev.type = EV_POTENTIOMETER;
-         ev.data.potentiometer.angle = angle;
-         xQueueSend(eventQueue, &ev, 0);
+         queuePotentiometerEvent(angle);
          prevAngle = angle;
       }
       

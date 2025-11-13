@@ -30,7 +30,25 @@
     </div>
 
     <div class="main-grid">
+      <div class="joystick-area">
+        <div class="joystick-container" id="joystickContainer">
+          <div class="joystick-stick" id="joystickStick"></div>
+        </div>
+        <div class="joystick-values">
+          X: <span id="joystickX">512</span> | Y: <span id="joystickY">512</span>
+        </div>
+      </div>
       <div class="controls">
+        <div class="slider-container">
+          <h2 class="control-title">GRIPPER CONTROL</h2>
+          <input type="range" min="0" max="100" value="0" class="slider" id="gripperSlider" disabled>
+          <div class="slider-labels">
+            <span class="open">OPEN</span>
+            <span id="gripperValue">0%</span>
+            <span class="closed">CLOSED</span>
+          </div>
+        </div>
+
         <div class="vertical-control">
           <div class="buttons">
             <div class="button-wrapper">
@@ -43,26 +61,8 @@
             </div>
           </div>
         </div>
-
-        <div class="slider-container">
-          <h2 class="control-title">GRIPPER CONTROL</h2>
-          <input type="range" min="0" max="100" value="50" class="slider" id="gripperSlider" disabled>
-          <div class="slider-labels">
-            <span class="closed">CLOSED</span>
-            <span id="gripperValue">50%</span>
-            <span class="open">OPEN</span>
-          </div>
-        </div>
       </div>
 
-      <div class="joystick-area">
-        <div class="joystick-container" id="joystickContainer">
-          <div class="joystick-stick" id="joystickStick"></div>
-        </div>
-        <div class="joystick-values">
-          X: <span id="joystickX">512</span> | Y: <span id="joystickY">512</span>
-        </div>
-      </div>
     </div>
   </div>
 

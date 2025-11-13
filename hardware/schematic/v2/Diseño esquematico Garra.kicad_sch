@@ -4741,7 +4741,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "PinOut_Stick"
+			(property "Reference" "PinOut_Stick1"
 				(at 2.54 -2.5399 0)
 				(effects
 					(font
@@ -4807,7 +4807,7 @@
 			(symbol "Screw_Terminal_01x02_2_1_1"
 				(rectangle
 					(start -1.27 1.27)
-					(end 1.27 -8.89)
+					(end 1.27 -11.43)
 					(stroke
 						(width 0.254)
 						(type default)
@@ -4852,6 +4852,17 @@
 				(rectangle
 					(start -0.635 -6.985)
 					(end 0.635 -8.255)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -0.635 -9.525)
+					(end 0.635 -10.795)
 					(stroke
 						(width 0.254)
 						(type default)
@@ -4925,6 +4936,24 @@
 						)
 					)
 					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -10.16 0)
+					(length 3.81)
+					(name "Pin_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5750,6 +5779,16 @@
 	)
 	(wire
 		(pts
+			(xy 182.88 152.4) (xy 187.96 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "243de404-56bd-41b5-b6ac-8f1986e2a48a")
+	)
+	(wire
+		(pts
 			(xy 71.12 86.36) (xy 80.01 86.36)
 		)
 		(stroke
@@ -5787,6 +5826,16 @@
 			(type default)
 		)
 		(uuid "34331870-8b18-45a9-934f-7706b733c056")
+	)
+	(wire
+		(pts
+			(xy 182.88 144.78) (xy 187.96 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34ef850f-8a7d-4696-96e9-f51e2ca76dab")
 	)
 	(wire
 		(pts
@@ -5990,6 +6039,26 @@
 	)
 	(wire
 		(pts
+			(xy 264.16 146.05) (xy 269.24 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7b9a1129-ccd5-4cf7-be8f-77deecaf35f7")
+	)
+	(wire
+		(pts
+			(xy 182.88 149.86) (xy 187.96 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7de66dfc-fcc3-4d5b-88b5-ad47468effc2")
+	)
+	(wire
+		(pts
 			(xy 182.88 127) (xy 187.96 127)
 		)
 		(stroke
@@ -6007,16 +6076,6 @@
 			(type default)
 		)
 		(uuid "82810875-8a2a-4f27-8359-96d069ae95d7")
-	)
-	(wire
-		(pts
-			(xy 264.16 146.05) (xy 269.24 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "84009f98-ed20-4e5d-a324-114b8062eeb4")
 	)
 	(wire
 		(pts
@@ -6047,16 +6106,6 @@
 			(type default)
 		)
 		(uuid "87079d2c-7968-4e5d-9047-927466b89218")
-	)
-	(wire
-		(pts
-			(xy 182.88 138.43) (xy 187.96 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "87b0934d-d268-4c4a-a65c-16c31dc52267")
 	)
 	(wire
 		(pts
@@ -6250,17 +6299,7 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 135.89) (xy 187.96 135.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b284c501-0f7a-4f6f-a2df-c3263afcaa29")
-	)
-	(wire
-		(pts
-			(xy 152.4 60.96) (xy 157.48 60.96)
+			(xy 149.86 60.96) (xy 154.94 60.96)
 		)
 		(stroke
 			(width 0)
@@ -6287,6 +6326,16 @@
 			(type default)
 		)
 		(uuid "b73f81ee-6a47-4bcf-ba90-382875a29c4c")
+	)
+	(wire
+		(pts
+			(xy 264.16 143.51) (xy 269.24 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bb54137b-0b0e-451f-9317-0a69c87e0122")
 	)
 	(wire
 		(pts
@@ -6340,16 +6389,6 @@
 	)
 	(wire
 		(pts
-			(xy 264.16 148.59) (xy 269.24 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c62551db-98fa-4251-bd3c-b04fe2ce37af")
-	)
-	(wire
-		(pts
 			(xy 269.24 57.15) (xy 264.16 57.15)
 		)
 		(stroke
@@ -6400,16 +6439,6 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 133.35) (xy 187.96 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d1dd6f35-8dae-4c13-8131-98f107448a75")
-	)
-	(wire
-		(pts
 			(xy 71.12 93.98) (xy 80.01 93.98)
 		)
 		(stroke
@@ -6420,7 +6449,7 @@
 	)
 	(wire
 		(pts
-			(xy 152.4 63.5) (xy 157.48 63.5)
+			(xy 149.86 63.5) (xy 154.94 63.5)
 		)
 		(stroke
 			(width 0)
@@ -6470,13 +6499,23 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 140.97) (xy 187.96 140.97)
+			(xy 182.88 142.24) (xy 187.96 142.24)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e1cab7ad-62f0-4777-8523-7443acf0d5e1")
+		(uuid "de8a477b-6336-45d5-80df-3a3a0e43997c")
+	)
+	(wire
+		(pts
+			(xy 182.88 147.32) (xy 187.96 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "deab8944-7130-4cb1-9c54-237e2a00aedf")
 	)
 	(wire
 		(pts
@@ -6517,6 +6556,16 @@
 			(type default)
 		)
 		(uuid "e9e519ea-4169-4207-bd8e-1fceb1c5cc37")
+	)
+	(wire
+		(pts
+			(xy 264.16 148.59) (xy 269.24 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed6b5c1b-eb6b-4074-bbbb-0434fc31caa5")
 	)
 	(wire
 		(pts
@@ -6590,16 +6639,6 @@
 	)
 	(wire
 		(pts
-			(xy 264.16 143.51) (xy 269.24 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f8cb19f9-9b12-4f63-b18e-aaa73e07e328")
-	)
-	(wire
-		(pts
 			(xy 80.01 93.98) (xy 93.98 93.98)
 		)
 		(stroke
@@ -6627,26 +6666,6 @@
 			(type default)
 		)
 		(uuid "fef2c032-b5e8-4d40-952b-f07ead8aeb03")
-	)
-	(global_label "B_UP"
-		(shape output)
-		(at 276.86 146.05 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "01ac7480-f7e7-4ead-8a3d-602afdd93333")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 276.86 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 	)
 	(global_label "MOTOR_VCC"
 		(shape output)
@@ -6704,6 +6723,27 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SW"
+		(shape input)
+		(at 269.24 148.59 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0794bf95-f047-4eb6-96f5-e7ffdf7d74c7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 269.24 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -6873,26 +6913,6 @@
 			)
 		)
 	)
-	(global_label "B_DWN"
-		(shape output)
-		(at 278.13 143.51 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "119563cf-43f1-4df6-a9ce-c19c16bdc02f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 278.13 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "GND"
 		(shape input)
 		(at 233.68 105.41 180)
@@ -6915,7 +6935,7 @@
 	)
 	(global_label "MOTOR_GND"
 		(shape input)
-		(at 157.48 63.5 0)
+		(at 154.94 63.5 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6924,7 +6944,7 @@
 		)
 		(uuid "18d78eb9-0b7a-421c-9ed7-326f27175687")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.48 63.5 0)
+			(at 154.94 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6975,7 +6995,7 @@
 	)
 	(global_label "SW"
 		(shape input)
-		(at 182.88 140.97 180)
+		(at 182.88 152.4 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6984,7 +7004,7 @@
 		)
 		(uuid "1aafa76d-9dbd-46d9-8159-7ebfbb34ff9d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 182.88 140.97 0)
+			(at 182.88 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7157,7 +7177,7 @@
 	)
 	(global_label "GND_Stick"
 		(shape input)
-		(at 182.88 138.43 180)
+		(at 182.88 142.24 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7166,7 +7186,7 @@
 		)
 		(uuid "3526dd71-c054-4f31-9c5c-8fade72034af")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 182.88 138.43 0)
+			(at 182.88 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7336,7 +7356,7 @@
 			)
 		)
 	)
-	(global_label "TFIL2"
+	(global_label "SERVO_PWM"
 		(shape output)
 		(at 233.68 67.31 180)
 		(effects
@@ -7448,6 +7468,26 @@
 		(uuid "4b67257f-28ef-470b-b210-0af3d9aa6a22")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 182.88 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "5V"
+		(shape input)
+		(at 182.88 144.78 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4d575799-f10d-4fb3-84c9-5e34328d8ddf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 182.88 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7570,26 +7610,6 @@
 		(uuid "607fb048-cc94-45a9-8813-6be350466555")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 45.72 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "SW"
-		(shape output)
-		(at 274.32 148.59 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "62903c6e-f0eb-402a-8514-f7aafd5e7fae")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 274.32 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7758,7 +7778,28 @@
 			)
 		)
 	)
-	(global_label "TFIL2"
+	(global_label "B_DWN"
+		(shape input)
+		(at 269.24 143.51 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "76799edc-5902-4466-99e4-2ce0071427b9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 269.24 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SERVO_PWM"
 		(shape input)
 		(at 184.15 63.5 180)
 		(effects
@@ -7818,7 +7859,7 @@
 			)
 		)
 	)
-	(global_label "IN2"
+	(global_label "IN1"
 		(shape output)
 		(at 233.68 64.77 180)
 		(effects
@@ -7982,7 +8023,7 @@
 	)
 	(global_label "MOTOR_VCC"
 		(shape input)
-		(at 157.48 60.96 0)
+		(at 154.94 60.96 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7991,7 +8032,7 @@
 		)
 		(uuid "85a9ccf5-f2bd-4d11-bd4d-43b29ca0835f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.48 60.96 0)
+			(at 154.94 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8202,6 +8243,27 @@
 			)
 		)
 	)
+	(global_label "B_UP"
+		(shape input)
+		(at 269.24 146.05 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9f97c8c8-acf0-4539-9c91-d3e1b8f022ec")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 269.24 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "A2_2"
 		(shape input)
 		(at 55.88 115.57 0)
@@ -8284,7 +8346,7 @@
 			)
 		)
 	)
-	(global_label "IN1"
+	(global_label "IN2"
 		(shape output)
 		(at 233.68 62.23 180)
 		(effects
@@ -8899,7 +8961,7 @@
 	)
 	(global_label "VRY"
 		(shape input)
-		(at 182.88 135.89 180)
+		(at 182.88 149.86 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8908,7 +8970,7 @@
 		)
 		(uuid "eb38f75d-b91b-42c9-babe-5c1f6182c242")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 182.88 135.89 0)
+			(at 182.88 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9060,7 +9122,7 @@
 	)
 	(global_label "VRX"
 		(shape input)
-		(at 182.88 133.35 180)
+		(at 182.88 147.32 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9069,7 +9131,7 @@
 		)
 		(uuid "ffd4224e-378a-46ab-929f-97c68dab906a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 182.88 133.35 0)
+			(at 182.88 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9909,7 +9971,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 147.32 60.96 0)
+		(at 144.78 60.96 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9917,8 +9979,8 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "692d74f9-447a-4d1f-a85d-d47cdf8f366c")
-		(property "Reference" "Bornier_N20_DC"
-			(at 144.78 61.468 0)
+		(property "Reference" "Bornier_N20_DC1"
+			(at 142.24 61.468 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9927,7 +9989,7 @@
 			)
 		)
 		(property "Value" "Screw_Terminal_01x05"
-			(at 144.78 64.008 0)
+			(at 142.24 64.008 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9936,7 +9998,7 @@
 			)
 		)
 		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
-			(at 147.32 60.96 0)
+			(at 144.78 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9945,7 +10007,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 147.32 60.96 0)
+			(at 144.78 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9954,7 +10016,7 @@
 			)
 		)
 		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 147.32 60.96 0)
+			(at 144.78 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9971,7 +10033,7 @@
 		(instances
 			(project "Diseño esquematico Garra"
 				(path "/a88248f6-7b70-4a9d-b538-4e8e42a3a066"
-					(reference "Bornier_N20_DC")
+					(reference "Bornier_N20_DC1")
 					(unit 1)
 				)
 			)
@@ -9980,7 +10042,7 @@
 	(symbol
 		(lib_name "Screw_Terminal_01x02_2")
 		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 193.04 133.35 0)
+		(at 193.04 142.24 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9989,7 +10051,7 @@
 		(fields_autoplaced yes)
 		(uuid "7295a0f4-f5fe-4e80-b065-a5b81e48cd11")
 		(property "Reference" "PinOut_Stick1"
-			(at 195.58 135.8899 0)
+			(at 195.58 144.7799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9998,7 +10060,7 @@
 			)
 		)
 		(property "Value" "Pin_Terminal_01x05"
-			(at 195.58 138.4299 0)
+			(at 195.58 147.3199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10006,8 +10068,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_2.00mm:PinSocket_1x04_P2.00mm_Vertical"
-			(at 193.294 128.016 0)
+		(property "Footprint" "Connector_PinSocket_2.00mm:PinSocket_1x05_P2.00mm_Vertical"
+			(at 193.294 136.906 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10016,7 +10078,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 193.04 144.272 0)
+			(at 193.04 153.162 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10025,7 +10087,7 @@
 			)
 		)
 		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 193.802 145.288 0)
+			(at 193.802 154.178 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10044,6 +10106,9 @@
 		)
 		(pin "4"
 			(uuid "cd102f3a-6b5d-4b19-98ed-53212fa4fb62")
+		)
+		(pin "5"
+			(uuid "9b232165-e72a-412b-b986-57a193f93e13")
 		)
 		(instances
 			(project "Diseño esquematico Garra"

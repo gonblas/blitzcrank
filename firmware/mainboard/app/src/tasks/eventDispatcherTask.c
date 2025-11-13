@@ -5,6 +5,7 @@
 #include "event_system.h"
 #include "debug.h"
 #include "handlers.h"
+#include "task_control.h"
 
 #define EVENT_QUEUE_LENGTH 10
 
@@ -48,6 +49,10 @@ void EventDispatcherTask(void *pvParameters) {
                         LOG_PRINTLN("[Pote] Angulo: %u / 180", ev.data.potentiometer.angle);
                     break;
 
+                case EV_INPUT_SOURCE:
+                        controlPhysicalTasks(ev.data.inputSource.source);
+                        LOG_PRINTLN("[Input Source] Modo: %u", ev.data.inputSource.source);
+                    break;
                 default:
                     break;
             }
