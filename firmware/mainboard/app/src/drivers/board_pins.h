@@ -31,7 +31,7 @@
 //---------------------------------------------------------
 // BUTTONS
 //---------------------------------------------------------
-#define BUTTON_UP_PIN    GPIO8
+#define BUTTON_UP_PIN    GPIO5
 #define BUTTON_DOWN_PIN  GPIO7
 #define BUTTON_SWITCH_PIN GPIO8
 
