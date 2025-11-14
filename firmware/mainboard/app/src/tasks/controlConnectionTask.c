@@ -10,30 +10,34 @@
 #include "board_pins.h"
 
 void controlConnectionTask(void *pvParameters) {
-    bool estadoAnterior = true; // Asumimos joystick no presionado al inicio
-
     // Configurar el pin del joystick como entrada
-    gpioConfig(CONTROLLER_CONNECTION_PIN, GPIO_INPUT);
+    gpioConfig(CONTROLLER_CONNECTION_PIN, GPIO_INPUT_PULLDOWN);
+
+    // Estado anterior SUPONIENDO que el pin estaba ACTIVADO (ALTO)
+    bool estadoAnterior = true;
 
     for (;;) {
         bool estadoActual = gpioRead(CONTROLLER_CONNECTION_PIN);
 
-        // Detectar cambio de estado
-        if (estadoActual != estadoAnterior) {
-            if (estadoActual == 0) { // Botón presionado → desconectado
-                vTaskSuspend(xControlXYAxisTaskHandle);
-                vTaskSuspend(xControlZAxisTaskHandle);
-                vTaskSuspend(xControlGripperTaskHandle);
-                LOG_PRINTLN("===================================Tareas suspendidas por condición detectada");
-            } else { // Botón liberado → reconectado
-                vTaskResume(xControlXYAxisTaskHandle);
-                vTaskResume(xControlZAxisTaskHandle);
-                vTaskResume(xControlGripperTaskHandle);
-                LOG_PRINTLN("===================================Tareas reanudadas por condición detectada");
-            }
-            estadoAnterior = estadoActual; // Actualiza el estado
+        // Transición de ALTO → BAJO (incluye primera ejecución si ya está en BAJO)
+        if (!estadoActual && estadoAnterior) {
+            vTaskSuspend(xControlXYAxisTaskHandle);
+            vTaskSuspend(xControlZAxisTaskHandle);
+            vTaskSuspend(xControlGripperTaskHandle);
+            LOG_PRINTLN("===================================Tareas suspendidas (pin en BAJO)");
         }
 
-        vTaskDelay(pdMS_TO_TICKS(50)); // Antirrebote y ahorro de CPU
+        // Transición de BAJO → ALTO → reanudar tareas
+        else if (estadoActual && !estadoAnterior) {
+            vTaskResume(xControlXYAxisTaskHandle);
+            vTaskResume(xControlZAxisTaskHandle);
+            vTaskResume(xControlGripperTaskHandle);
+            LOG_PRINTLN("===================================Tareas reanudadas (pin en ALTO)");
+        }
+
+        estadoAnterior = estadoActual;
+
+        vTaskDelay(pdMS_TO_TICKS(50));
     }
+
 }
