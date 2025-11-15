@@ -10,9 +10,6 @@ int main(void) {
    adcConfig(ADC_ENABLE);
    uartConfig(UART_USB, 115200);
 
-   // Botón del joystick
-   gpioConfig(JOYSTICK_BUTTON_PIN, GPIO_INPUT);
-
    uint16_t xValue, yValue;
    bool_t btn;
    static char debugBuff[64];
@@ -20,7 +17,6 @@ int main(void) {
    while(TRUE) {
       xValue = adcRead(JOYSTICK_X_PIN); // Eje X
       yValue = adcRead(JOYSTICK_Y_PIN); // Eje Y
-      btn = !gpioRead(JOYSTICK_BUTTON_PIN); // Activo en bajo
 
       // Zona neutra para los LEDs
       uint16_t centro = 512;

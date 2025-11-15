@@ -11,8 +11,6 @@ void controlXYAxisTask(void *pvParameters) {
     uint16_t xPrev = 512;
     uint16_t yPrev = 512;
 
-    gpioConfig(JOYSTICK_BUTTON_PIN, GPIO_INPUT);
-
     for (;;) {
         uint16_t xValue = adcRead(JOYSTICK_X_PIN);
         uint16_t yValue = adcRead(JOYSTICK_Y_PIN);
