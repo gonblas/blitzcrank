@@ -12,5 +12,6 @@
 #define PRIORITY_CONTROL_GRIPPER    ( tskIDLE_PRIORITY + 5 )
 #define PRIORITY_SWITCH_MODE        ( tskIDLE_PRIORITY + 6 )
 #define PRIORITY_Z_MOTOR            ( tskIDLE_PRIORITY + 7 )
+#define PRIORITY_CONNECTION_TASK    ( tskIDLE_PRIORITY + 8 )
 
 #endif // PRIORITY_H

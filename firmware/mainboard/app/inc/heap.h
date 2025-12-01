@@ -8,5 +8,6 @@
 #define HEAP_SWITCH_MODE_SIZE 128
 #define HEAP_XYSTEPPER_SIZE    128
 #define HEAP_Z_MOTOR_SIZE     128
+#define HEAP_CONNECTION_SIZE 128
 
 #endif // HEAP_H

@@ -22,13 +22,18 @@
 //---------------------------------------------------------
 #define SERVO_PIN      SERVO2   // T_FIL2 de la EDU-CIAA
 
+//---------------------------------------------------------
+// DC Motor
+//---------------------------------------------------------
+#define DC_MOTOR_GND_PIN T_FIL0
+#define DC_MOTOR_VCC_PIN T_FIL3
 
 //---------------------------------------------------------
 // BUTTONS
 //---------------------------------------------------------
 #define BUTTON_UP_PIN    GPIO5
 #define BUTTON_DOWN_PIN  GPIO7
-#define BUTTON_SWITCH_PIN GPIO6
+#define BUTTON_SWITCH_PIN GPIO8
 
 //---------------------------------------------------------
 // LED
@@ -39,10 +44,23 @@
 //---------------------------------------------------------
 // JOYSTICK
 //---------------------------------------------------------
-#define JOYSTICK_BUTTON_PIN   GPIO8
 #define JOYSTICK_X_PIN        CH3
 #define JOYSTICK_Y_PIN        CH2
 
+//---------------------------------------------------------
+// STATE
+//---------------------------------------------------------
+#define CONTROLLER_CONNECTION_PIN   CAN_RD
+
+//---------------------------------------------------------
+// STEPPER MOTOR 
+//---------------------------------------------------------
+#define STEPPER_MOTOR_STEP1_PIN   LCD3
+#define STEPPER_MOTOR_DIR1_PIN    LCD2
+#define STEPPER_MOTOR_ENABLE1_PIN  LCD4
+#define STEPPER_MOTOR_STEP2_PIN   GPIO1
+#define STEPPER_MOTOR_DIR2_PIN    GPIO3
+#define STEPPER_MOTOR_ENABLE2_PIN  LCD1
 
 
 
