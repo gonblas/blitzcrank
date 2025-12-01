@@ -5635,16 +5635,6 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 26.67) (xy 238.76 26.67)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "26737b4c-95ce-4bb5-8ec4-17a921032ef3")
-	)
-	(wire
-		(pts
 			(xy 71.12 86.36) (xy 80.01 86.36)
 		)
 		(stroke
@@ -5662,6 +5652,16 @@
 			(type default)
 		)
 		(uuid "302a886e-4de4-437b-b343-a0be80b4eb0a")
+	)
+	(wire
+		(pts
+			(xy 233.68 54.61) (xy 238.76 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "30c8eaaf-9593-4352-82d8-e944ab3e4619")
 	)
 	(wire
 		(pts
@@ -6869,7 +6869,7 @@
 			)
 		)
 	)
-	(global_label "5V"
+	(global_label "Stick_ON"
 		(shape input)
 		(at 182.88 143.51 180)
 		(effects
@@ -7031,7 +7031,7 @@
 			)
 		)
 	)
-	(global_label "Stick_ON"
+	(global_label "5V"
 		(shape input)
 		(at 182.88 133.35 180)
 		(effects
@@ -8590,7 +8590,7 @@
 	)
 	(global_label "Stick_ON"
 		(shape input)
-		(at 233.68 26.67 180)
+		(at 233.68 54.61 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8599,7 +8599,7 @@
 		)
 		(uuid "bcc1ef46-791e-42dc-afa6-afafb195f7cb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 233.68 26.67 0)
+			(at 233.68 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
