@@ -8,7 +8,9 @@
 #include "priority.h"
 #include "heap.h"
 #include "debug.h"
-#include "controls_state.h"//
+#include "controls_state.h"
+
+
 TaskHandle_t xControlXYAxisTaskHandle = NULL;
 TaskHandle_t xControlGripperTaskHandle = NULL;
 TaskHandle_t xControlZAxisTaskHandle = NULL;
@@ -18,7 +20,9 @@ TaskHandle_t xXYStepperTaskHandle = NULL;
 TaskHandle_t xZMotorTaskHandle = NULL;
 TaskHandle_t xConnectionTaskHandle = NULL;
 
-ControlsState_t globalState;
+ControlsState_t globalState; 
+
+
 
 //============================================================================
 // FUNCION PRINCIPAL
@@ -27,8 +31,12 @@ int main(void) {
     boardConfig();
     uartConfig(UART_USB, 115200);
     adcConfig(ADC_ENABLE);
+
     ControlsState_Init();
+
     LOG_PRINTLN("=== System Starting ===");
+
+
     // Create tasks -----------------------------------------------------------
     LOG_PRINTLN("Generating tasks...");
     xTaskCreate(controlGripperTask, "GRIPPER", HEAP_GRIPPER_SIZE, NULL, PRIORITY_CONTROL_GRIPPER, &xControlGripperTaskHandle);
@@ -39,6 +47,8 @@ int main(void) {
     xTaskCreate(XYStepperTask, "STEPPER", HEAP_XYSTEPPER_SIZE, NULL, PRIORITY_XY_STEPPER, &xXYStepperTaskHandle);
     xTaskCreate(ZMotorTask, "Z_MOTOR", HEAP_Z_MOTOR_SIZE, NULL, PRIORITY_Z_MOTOR, &xZMotorTaskHandle);
     xTaskCreate(controlConnectionTask, "CONNECTION", HEAP_CONNECTION_SIZE, NULL, PRIORITY_CONNECTION_TASK, NULL);
+
+    UART_TaskCreate();
 
     LOG_PRINTLN("Initializing event system...");
     initEventSystem();

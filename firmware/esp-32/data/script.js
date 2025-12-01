@@ -68,26 +68,123 @@ class WebSocketClient {
 
 function updateModeUI(enableWebControl) {
   if (enableWebControl) {
+// ========== WebSocket Setup ==========
+class WebSocketClient {
+  constructor() {
+    this.ws = null
+    this.connect()
+  }
+
+  connect() {
+    const protocol = window.location.protocol === "https:" ? "wss:" : "ws:"
+    const wsUrl = `${protocol}//${window.location.hostname}:81`
+    
+    this.ws = new WebSocket(wsUrl)
+    
+    this.ws.onopen = () => {
+      console.log("WebSocket connected")
+    }
+    
+    this.ws.onmessage = (event) => {
+      console.log("WebSocket message received:", event.data)
+      try {
+        // Intentar parsear como JSON primero
+        let data = event.data
+        try {
+          data = JSON.parse(event.data)
+        } catch (e) {
+          // Si no es JSON, asumir que es el string directo del modo
+          data = { mode: event.data }
+        }
+        
+        // El ESP32 envía "WEB" o "PHYSICAL" directamente
+        if (data.mode || data.event === "inputSourceChange") {
+          this.handleInputSourceChange(data.mode || event.data)
+        }
+      } catch (err) {
+        console.error("Error processing WebSocket message:", err)
+      }
+    }
+    
+    this.ws.onerror = (error) => {
+      console.error("WebSocket error:", error)
+    }
+    
+    this.ws.onclose = () => {
+      console.log("WebSocket disconnected, reconnecting in 3s...")
+      setTimeout(() => this.connect(), 3000)
+    }
+  }
+
+  handleInputSourceChange(mode) {
+    console.log(`Input source changed to: ${mode}`)
+    const isPhysical = mode === "PHYSICAL"
+    
+    // Actualizar variable global
+    webControlEnabled = !isPhysical
+    
+    // Actualizar switch sin disparar evento change
+    modeSwitch.checked = !isPhysical
+    updateModeUI(!isPhysical)
+  }
+}
+
+function updateModeUI(enableWebControl) {
+  if (enableWebControl) {
     statusText.textContent = "WEB CONTROL ENABLED"
     statusText.classList.remove("disabled")
     statusIndicator.classList.remove("disabled")
     joystickContainer.classList.remove("disabled")
+    
     
     // Enable all controls
     btnUp.disabled = false
     btnDown.disabled = false
     gripperSlider.disabled = false
   } else {
-    statusText.textContent = "WEB CONTROL DISABLED"
+    statusText.textContent = "PHYSICAL CONTROL"
     statusText.classList.add("disabled")
     statusIndicator.classList.add("disabled")
     joystickContainer.classList.add("disabled")
+    
     
     // Disable all controls
     btnUp.disabled = true
     btnDown.disabled = true
     gripperSlider.disabled = true
   }
+}
+
+let wsClient = null
+
+window.addEventListener("DOMContentLoaded", () => {
+  webControlEnabled = false
+  modeSwitch.checked = false
+  
+  statusText.textContent = "WEB CONTROL DISABLED"
+  statusText.classList.add("disabled")
+  statusIndicator.classList.add("disabled")
+  joystickContainer.classList.add("disabled")
+
+  // Deshabilitar controles al inicio
+  btnUp.disabled = true
+  btnDown.disabled = true
+  gripperSlider.disabled = true
+
+  gripperSlider.value = 0
+  gripperValue.textContent = "0%"
+  
+  // Inicializar WebSocket
+  wsClient = new WebSocketClient()
+})
+
+modeSwitch.addEventListener("change", (e) => {
+  webControlEnabled = e.target.checked
+  updateModeUI(webControlEnabled)
+  
+  // Enviar cambio de modo al servidor
+  const mode = webControlEnabled ? "WEB" : "PHYSICAL"
+  fetch(`/mode?state=${mode}`).catch((err) => console.log("Error:", err))
 }
 
 let wsClient = null
@@ -132,10 +229,15 @@ function sendAction(url) {
 }
 
 function startButtonPress(action) {
+function startButtonPress(action) {
   if (!webControlEnabled) return
+  sendAction(`/${action}?action=pressed`) // Send pressed state
   sendAction(`/${action}?action=pressed`) // Send pressed state
 }
 
+function stopButtonPress(action) {
+  if (!webControlEnabled) return
+  sendAction(`/${action}?action=released`) // Send released state
 function stopButtonPress(action) {
   if (!webControlEnabled) return
   sendAction(`/${action}?action=released`) // Send released state
@@ -145,20 +247,30 @@ function stopButtonPress(action) {
 btnUp.addEventListener("mousedown", () => startButtonPress("up"))
 btnUp.addEventListener("mouseup", () => stopButtonPress("up"))
 btnUp.addEventListener("mouseleave", () => stopButtonPress("up"))
+btnUp.addEventListener("mousedown", () => startButtonPress("up"))
+btnUp.addEventListener("mouseup", () => stopButtonPress("up"))
+btnUp.addEventListener("mouseleave", () => stopButtonPress("up"))
 btnUp.addEventListener("touchstart", (e) => {
   e.preventDefault()
   startButtonPress("up")
+  startButtonPress("up")
 })
+btnUp.addEventListener("touchend", () => stopButtonPress("up"))
 btnUp.addEventListener("touchend", () => stopButtonPress("up"))
 
 // DOWN
 btnDown.addEventListener("mousedown", () => startButtonPress("down"))
 btnDown.addEventListener("mouseup", () => stopButtonPress("down"))
 btnDown.addEventListener("mouseleave", () => stopButtonPress("down"))
+btnDown.addEventListener("mousedown", () => startButtonPress("down"))
+btnDown.addEventListener("mouseup", () => stopButtonPress("down"))
+btnDown.addEventListener("mouseleave", () => stopButtonPress("down"))
 btnDown.addEventListener("touchstart", (e) => {
   e.preventDefault()
   startButtonPress("down")
+  startButtonPress("down")
 })
+btnDown.addEventListener("touchend", () => stopButtonPress("down"))
 btnDown.addEventListener("touchend", () => stopButtonPress("down"))
 
 // ---------------- SLIDER ----------------
