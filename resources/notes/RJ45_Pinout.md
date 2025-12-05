@@ -8,7 +8,7 @@
 | 🟢 Verde    | LED               | Alimentación / señal para LED indicador           |
 | 🟣 Violeta  | Potenciómetro     | Entrada analógica de potenciómetro                |
 | ⚫ Negro    | Botón Down        | Pulsador para acción "bajar"                      |
-| ⚪ Blanco   | Botón Switch Mode | Pulsador para cambiar modo (nota: fondo blanco)   |
+| ⚪ Blanco   | Botón Switch Mode | Pulsador para cambiar modo                        |
 | ◻️ Gris     | Botón Up          | Pulsador para acción "subir"                      |
 
 Notas:
