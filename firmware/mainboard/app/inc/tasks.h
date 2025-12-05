@@ -8,6 +8,6 @@ void switchModeTask(void *pvParameters);
 void servoTask(void *pvParameters);
 void XYStepperTask(void *pvParameters);
 void ZMotorTask(void *pvParameters);
-void UART_TaskCreate(void);
+void controlConnectionTask(void *pvParameters);
 
 #endif /* TASKS_H_ */
