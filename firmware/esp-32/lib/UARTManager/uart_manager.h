@@ -2,32 +2,50 @@
 #define UART_MANAGER_H
 
 #include <Arduino.h>
+#include <functional>
+#include "remote_protocol.h"
 
-// Estructura para los datos del control
-struct ControlState {
-  bool btnUpPressed;
-  bool btnDownPressed;
-  int gripperValue;   // 0 to 100
-  int joystickX;      // 0 to 1023
-  int joystickY;      // 0 to 1023
-  bool physicalMode;  // true = físico, false = web
-};
+typedef std::function<void(const char*)> InputSourceCallback;
 
 class UARTManager {
 public:
-  UARTManager(HardwareSerial &serialPort = Serial2, uint32_t baudRate = 115200);
+    UARTManager(HardwareSerial& serialPort = Serial2, uint32_t baudRate = 115200);
 
-  void begin();
-  void sendControlState(const ControlState &state);
-  void sendJoystick(int x, int y);
-  void sendGripper(int value);
-  void sendButtonState(const String &button, bool pressed);
-  void sendMode(bool physicalMode);
-  void handleIncomingData(); // Por si querés leer desde la EDU-CIAA
+    void begin();
+
+    // ==== Envío de eventos ====
+    void sendButton(bool up, bool down);
+    void sendJoystick(uint16_t x, uint16_t y);
+    void sendPotentiometer(uint8_t angle);
+    void sendInputSourceMode(bool physical);
+
+    // ==== Recepción y parsing ====
+    // Devuelve true si se recibió un frame completo y válido
+    bool receiveFrame(Frame_t& frame);
+    void handleIncomingData();
+
+    // ==== Callbacks ====
+    void setOnInputSourceChange(InputSourceCallback callback);
 
 private:
-  HardwareSerial &_serial;
-  uint32_t _baudRate;
+    HardwareSerial& _serial;
+    uint32_t _baudRate;
+    InputSourceCallback _onInputSourceChange;
+
+    enum ParseState {
+        WAIT_STX,
+        READ_TYPE,
+        READ_LEN,
+        READ_PAYLOAD,
+        READ_CHK,
+        READ_ETX
+    };
+
+    ParseState _state;
+    Frame_t _rxFrame;
+    uint8_t _rxIndex;
+
+    void sendFrame(uint8_t type, const uint8_t* payload, uint8_t len);
 };
 
-#endif
+#endif // UART_MANAGER_H

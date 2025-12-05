@@ -10,22 +10,32 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
 
   // -------------------- Control routes --------------------
   server.on("/up", [&]() {
-    Serial.println("Gripper Up");
-    uartManager.sendButtonState("UP", true);
-    server.send(200, "text/plain", "OK");
+    if (server.hasArg("action")) {
+      bool pressed = server.arg("action") == "pressed";
+      Serial.println(String("Gripper Up ") + (pressed ? "pressed" : "released"));
+      uartManager.sendButton(pressed, false);
+      server.send(200, "text/plain", "OK");
+    } else {
+      server.send(400, "text/plain", "Missing action parameter");
+    }
   });
 
   server.on("/down", [&]() {
-    Serial.println("Gripper Down");
-    uartManager.sendButtonState("DOWN", true);
-    server.send(200, "text/plain", "OK");
+    if (server.hasArg("action")) {
+      bool pressed = server.arg("action") == "pressed";
+      Serial.println(String("Gripper Down ") + (pressed ? "pressed" : "released"));
+      uartManager.sendButton(false, pressed);
+      server.send(200, "text/plain", "OK");
+    } else {
+      server.send(400, "text/plain", "Missing action parameter");
+    }
   });
 
   server.on("/slider", [&]() {
     if (server.hasArg("value")) {
       int val = server.arg("value").toInt();
       Serial.println("Gripper slider: " + String(val));
-      uartManager.sendGripper(val);
+      uartManager.sendPotentiometer((uint8_t)val);
     }
     server.send(200, "text/plain", "OK");
   });
@@ -34,14 +44,14 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
     int x = server.hasArg("x") ? server.arg("x").toInt() : 0;
     int y = server.hasArg("y") ? server.arg("y").toInt() : 0;
     Serial.printf("Joystick X: %d Y: %d\n", x, y);
-    uartManager.sendJoystick(x, y);
+    uartManager.sendJoystick((uint16_t)x, (uint16_t)y);
     server.send(200, "text/plain", "OK");
   });
 
   server.on("/mode", [&]() {
     bool physical = server.hasArg("state") && server.arg("state") == "PHYSICAL";
     Serial.println(String("Mode switched to: ") + (physical ? "PHYSICAL" : "WEB"));
-    uartManager.sendMode(physical);
+    uartManager.sendInputSourceMode(physical);
     server.send(200, "text/plain", "OK");
   });
 }
