@@ -22,7 +22,9 @@ void UARTManager::sendJoystick(uint16_t x, uint16_t y) {
     sendFrame(EV_JOYSTICK, payload, 4);
 }
 
-void UARTManager::sendPotentiometer(uint8_t angle) {
+void UARTManager::sendPotentiometer(uint8_t value) {
+    // Mapear de 0-100 (interno) a 0-180 (protocolo)
+    uint8_t angle = map(value, 0, 100, 0, 180);
     uint8_t payload[1];
     proto_packPotentiometer(payload, angle);
     sendFrame(EV_POTENTIOMETER, payload, 1);
@@ -129,7 +131,10 @@ void UARTManager::handleIncomingData() {
             case EV_POTENTIOMETER: {
                 PotentiometerPayload_t p;
                 proto_unpackPotentiometer(rxFrame.payload, &p);
-                // Procesar evento de potenciómetro
+                // Mapear de 0-180 (protocolo) a 0-100 (interno)
+                uint8_t mappedValue = map(p.angle, 0, 180, 0, 100);
+                Serial.println("Received Potentiometer: " + String(p.angle) + " -> " + String(mappedValue));
+                // Procesar evento de potenciómetro con valor mapeado
                 break;
             }
             case EV_INPUT_SOURCE: {

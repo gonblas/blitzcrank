@@ -16,7 +16,7 @@ public:
     // ==== Envío de eventos ====
     void sendButton(bool up, bool down);
     void sendJoystick(uint16_t x, uint16_t y);
-    void sendPotentiometer(uint8_t angle);
+    void sendPotentiometer(uint8_t value);  // value: 0-100 (se mapea internamente a 0-180)
     void sendInputSourceMode(bool physical);
 
     // ==== Recepción y parsing ====
