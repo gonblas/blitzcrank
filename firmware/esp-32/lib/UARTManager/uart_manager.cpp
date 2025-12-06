@@ -32,7 +32,7 @@ void UARTManager::sendPotentiometer(uint8_t angle) {
 
 void UARTManager::sendFrame(uint8_t type, const uint8_t* payload, uint8_t len) {
     uint8_t checksum = proto_computeChecksum(type, len, payload);
-
+    Serial.print("STX: 0x"); Serial.print((int)PROTO_STX, HEX); Serial.print("; TYPE: 0x"); Serial.print((int)type, HEX); Serial.print("; LEN: "); Serial.print((int)len); Serial.print("; PAYLOAD:"); for (uint8_t i = 0; i < len; ++i) { Serial.print(' '); if (payload[i] < 0x10) Serial.print('0'); Serial.print((int)payload[i], HEX); } Serial.println();
     _serial.write(PROTO_STX);
     _serial.write(type);
     _serial.write(len);

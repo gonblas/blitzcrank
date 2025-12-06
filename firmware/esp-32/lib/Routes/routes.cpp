@@ -52,6 +52,9 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
     bool physical = server.hasArg("state") && server.arg("state") == "PHYSICAL";
     Serial.println(String("Mode switched to: ") + (physical ? "PHYSICAL" : "WEB"));
     uartManager.sendInputSourceMode(physical);
-    server.send(200, "text/plain", "OK");
+    
+    // Notificar al cliente web del cambio de modo
+    String response = String("{\"mode\":\"") + (physical ? "PHYSICAL" : "WEB") + "\"}";
+    server.send(200, "application/json", response);
   });
 }

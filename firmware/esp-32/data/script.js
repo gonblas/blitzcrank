@@ -114,12 +114,24 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 modeSwitch.addEventListener("change", (e) => {
-  webControlEnabled = e.target.checked
-  updateModeUI(webControlEnabled)
-  
   // Enviar cambio de modo al servidor
-  const mode = webControlEnabled ? "WEB" : "PHYSICAL"
-  fetch(`/mode?state=${mode}`).catch((err) => console.log("Error:", err))
+  const mode = e.target.checked ? "WEB" : "PHYSICAL"
+  
+  fetch(`/mode?state=${mode}`)
+    .then(response => response.json())
+    .then(data => {
+      // Confirmar el cambio de modo basado en la respuesta del servidor
+      const isWebMode = data.mode === "WEB"
+      webControlEnabled = isWebMode
+      modeSwitch.checked = isWebMode
+      updateModeUI(isWebMode)
+      console.log(`Mode confirmed: ${data.mode}`)
+    })
+    .catch((err) => {
+      console.error("Error changing mode:", err)
+      // Revertir el switch si hay error
+      modeSwitch.checked = webControlEnabled
+    })
 })
 
 // ---------------- BUTTONS ----------------
