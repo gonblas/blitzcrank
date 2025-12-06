@@ -34,8 +34,10 @@ class WebSocketClient {
           data = { mode: event.data }
         }
         
-        // El ESP32 envía "WEB" o "PHYSICAL" directamente
-        if (data.mode || data.event === "inputSourceChange") {
+        // Manejar diferentes tipos de eventos
+        if (data.event === "potentiometerChange") {
+          this.handlePotentiometerChange(data.value)
+        } else if (data.mode || data.event === "inputSourceChange") {
           this.handleInputSourceChange(data.mode || event.data)
         }
       } catch (err) {
@@ -63,6 +65,13 @@ class WebSocketClient {
     // Actualizar switch sin disparar evento change
     modeSwitch.checked = !isPhysical
     updateModeUI(!isPhysical)
+  }
+
+  handlePotentiometerChange(value) {
+    console.log(`Potentiometer value changed to: ${value}`)
+    // Actualizar el slider con el valor recibido del modo físico
+    gripperSlider.value = value
+    gripperValue.textContent = value + "%"
   }
 }
 

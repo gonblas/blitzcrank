@@ -13,6 +13,7 @@ public:
     
     // Broadcast a todos los clientes
     void broadcastInputSourceMode(const char* mode);
+    void broadcastPotentiometerValue(uint8_t value);
     
     // Setter para UARTManager
     void setUARTManager(UARTManager* uartManager);

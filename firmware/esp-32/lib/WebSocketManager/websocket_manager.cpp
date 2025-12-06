@@ -24,11 +24,22 @@ void WebSocketManager::setUARTManager(UARTManager* uartManager) {
         _uartManager->setOnInputSourceChange([this](const char* mode) {
             this->broadcastInputSourceMode(mode);
         });
+        
+        // Configurar callback para cambios del potenciómetro
+        _uartManager->setOnPotentiometerChange([this](uint8_t value) {
+            this->broadcastPotentiometerValue(value);
+        });
     }
 }
 
 void WebSocketManager::broadcastInputSourceMode(const char* mode) {
     String message = String("{\"event\":\"inputSourceChange\",\"mode\":\"") + mode + "\"}";
+    _webSocket.broadcastTXT(message);
+    Serial.println("Broadcasted: " + message);
+}
+
+void WebSocketManager::broadcastPotentiometerValue(uint8_t value) {
+    String message = String("{\"event\":\"potentiometerChange\",\"value\":") + value + "}";
     _webSocket.broadcastTXT(message);
     Serial.println("Broadcasted: " + message);
 }

@@ -2,7 +2,7 @@
 #include "remote_protocol.h"
 
 UARTManager::UARTManager(HardwareSerial& serialPort, uint32_t baudRate)
-    : _serial(serialPort), _baudRate(baudRate) {}
+    : _serial(serialPort), _baudRate(baudRate), _isPhysicalMode(false), _currentPotValue(0) {}
 
 void UARTManager::begin() {
     _serial.begin(_baudRate);
@@ -52,6 +52,10 @@ void UARTManager::sendInputSourceMode(bool physical) {
 
 void UARTManager::setOnInputSourceChange(InputSourceCallback callback) {
     _onInputSourceChange = callback;
+}
+
+void UARTManager::setOnPotentiometerChange(PotentiometerCallback callback) {
+    _onPotentiometerChange = callback;
 }
 
 // ==== Recepción y parsing ====
@@ -131,20 +135,29 @@ void UARTManager::handleIncomingData() {
             case EV_POTENTIOMETER: {
                 PotentiometerPayload_t p;
                 proto_unpackPotentiometer(rxFrame.payload, &p);
-                // Mapear de 0-180 (protocolo) a 0-100 (interno)
                 uint8_t mappedValue = map(p.angle, 0, 180, 0, 100);
                 Serial.println("Received Potentiometer: " + String(p.angle) + " -> " + String(mappedValue));
-                // Procesar evento de potenciómetro con valor mapeado
+                
+                // Solo procesar y guardar el valor si estamos en modo físico
+                    _currentPotValue = mappedValue;
+                    Serial.println("Physical mode - Updated potentiometer value: " + String(_currentPotValue));
+                    
+                    // Notificar cambio a través del callback
+                    if (_onPotentiometerChange) {
+                        _onPotentiometerChange(_currentPotValue);
+                    }
+                
                 break;
             }
             case EV_INPUT_SOURCE: {
                 InputSourcePayload_t m;
                 proto_unpackInputSourceMode(rxFrame.payload, &m);
-                Serial.println("Received Input Source Mode: " + String(m.mode ? "PHYSICAL" : "WEB"));
+                _isPhysicalMode = m.mode;  // Actualizar estado del modo
+                Serial.println("Received Input Source Mode: " + String(_isPhysicalMode ? "PHYSICAL" : "WEB"));
                 
                 // Llamar callback si está definido
                 if (_onInputSourceChange) {
-                    const char* mode = m.mode ? "PHYSICAL" : "WEB";
+                    const char* mode = _isPhysicalMode ? "PHYSICAL" : "WEB";
                     _onInputSourceChange(mode);
                 }
                 break;
