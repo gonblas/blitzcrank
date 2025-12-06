@@ -7,6 +7,7 @@
 #include "event_system.h"   // contiene Event_t y eventQueue
 #include <stdlib.h>
 #include "utils.h"
+#include "controls_state.h"
 
 extern QueueHandle_t eventQueue;
 
@@ -23,6 +24,7 @@ void controlGripperTask(void* pvParameters) {
       if (abs(angle - prevAngle) >= 5) {
          queuePotentiometerEvent(angle);
          prevAngle = angle;
+         globalState.potentiometerState.angle = angle;
       }
       
       vTaskDelay(pdMS_TO_TICKS(50)); // Delay para evitar lecturas excesivas
