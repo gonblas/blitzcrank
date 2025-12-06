@@ -13,14 +13,23 @@ void connectToWiFi() {
   Serial.println(WIFI_SSID);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-  while (WiFi.status() != WL_CONNECTED) {
+  int attempts = 0;
+  const int MAX_ATTEMPTS = 20; // 10 segundos máximo (20 * 500ms)
+  
+  while (WiFi.status() != WL_CONNECTED && attempts < MAX_ATTEMPTS) {
     delay(500);
     Serial.print(".");
+    attempts++;
   }
 
-  Serial.println("\nConnected to Wi-Fi");
-  Serial.print("Local IP address: ");
-  Serial.println("http://" + WiFi.localIP().toString());
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.println("\nConnected to Wi-Fi");
+    Serial.print("Local IP address: ");
+    Serial.println("http://" + WiFi.localIP().toString());
+  } else {
+    Serial.println("\nFailed to connect to Wi-Fi, starting Access Point instead");
+    startAccessPoint();
+  }
 }
 
 void setupWiFi() {
