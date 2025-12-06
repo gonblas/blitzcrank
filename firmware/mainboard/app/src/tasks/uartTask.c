@@ -42,7 +42,6 @@ static void UART_Task(void *pvParameters) {
             continue;
         }
         // uartWriteByte(UART_USED, byte); // Eco del byte recibido
-
         switch (state) {
 
         case STATE_WAIT_STX:
@@ -80,10 +79,12 @@ static void UART_Task(void *pvParameters) {
             break;
 
         case STATE_READ_ETX:
+            printf("READY\n");
             rxFrame.etx = byte;
             state = STATE_WAIT_STX;
 
             if (!proto_validateFrame(&rxFrame)) {
+            printf(":(\n");
                 break;
             }
             Event_t ev;

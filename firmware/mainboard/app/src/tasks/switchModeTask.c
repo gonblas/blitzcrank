@@ -28,6 +28,7 @@ void switchModeTask(void *pvParameters) {
             uint8_t local_state = ~globalState.operationMode.source;
             
             UART_sendFrame(UART_USED, EV_INPUT_SOURCE, &local_state, 1);
+            UART_sendFrame(UART_USED, EV_POTENTIOMETER, &globalState.potentiometerState.angle, 1);
             queueInputSourceEvent(local_state);
 
             LOG_PRINTLN("Led %s", local_state ? "ON: PHYSICAL MODE" : "OFF: REMOTE MODE");

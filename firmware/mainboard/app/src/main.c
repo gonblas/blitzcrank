@@ -40,6 +40,8 @@ int main(void) {
     xTaskCreate(ZMotorTask, "Z_MOTOR", HEAP_Z_MOTOR_SIZE, NULL, PRIORITY_Z_MOTOR, &xZMotorTaskHandle);
     xTaskCreate(controlConnectionTask, "CONNECTION", HEAP_CONNECTION_SIZE, NULL, PRIORITY_CONNECTION_TASK, NULL);
 
+    UART_TaskCreate();
+
     LOG_PRINTLN("Initializing event system...");
     initEventSystem();
     LOG_PRINTLN("Starting scheduler...");
