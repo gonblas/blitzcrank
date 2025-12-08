@@ -203,7 +203,7 @@ const maxDistance = 60
 
 // Variables para throttling del envío al servidor
 let lastSendTime = 0
-const SEND_INTERVAL_MS = 50 // Enviar cada 50ms = 20 veces por segundo
+const SEND_INTERVAL_MS = 20 // Enviar cada 20ms = 50 veces por segundo
 let currentAdcX = 512
 let currentAdcY = 512
 
@@ -259,7 +259,7 @@ function updateJoystick(clientX, clientY) {
 
   // ENVÍO AL SERVIDOR CON THROTTLING
   const now = Date.now();
-  if (now - lastSendTime >= SEND_INTERVAL_MS) {
+  if (now - lastSendTime >= SEND_INTERVAL_MS || (adcX == 512 && adcY == 512)) {
     fetch(`/joystick?x=${adcX}&y=${adcY}`).catch((err) => console.log(err));
     lastSendTime = now;
   }

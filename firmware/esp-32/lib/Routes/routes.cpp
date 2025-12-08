@@ -61,11 +61,16 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
     // 2. Si cualquier eje (X o Y) tiene un cambio >= 30
     bool isCenter = (x == 512 && y == 512);
     bool hasSignificantChange = (deltaX >= JOYSTICK_THRESHOLD || deltaY >= JOYSTICK_THRESHOLD);
-    Serial.println("I'm being called");
     if (firstCall || isCenter || hasSignificantChange) {
       Serial.printf("Joystick X: %d Y: %d\n", x, y);
       uartManager.sendJoystick((uint16_t)x, (uint16_t)y);
-      
+      if(x == 512 && y == 512) {
+        for(int i = 0; i < 5; i++){
+          Serial.println("Center position detected, sending multiple frames to ensure reception.");
+          delay(5); // Pequeña pausa entre envíos
+          uartManager.sendJoystick((uint16_t)x, (uint16_t)y);
+        }
+      }
       // Actualizar últimos valores enviados
       lastX = x;
       lastY = y;
