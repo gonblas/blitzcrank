@@ -41,13 +41,15 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
   });
 
   server.on("/joystick", [&]() {
-    // Constante del umbral de cambio
+    // Constantes
     const int JOYSTICK_THRESHOLD = 100;
+    const unsigned long CENTER_SEND_INTERVAL = 500; // 500ms para envío periódico en centro
     
     // Variables estáticas para guardar el último valor enviado
     static int lastX = 512;
     static int lastY = 512;
     static bool firstCall = true;
+    static unsigned long lastCenterSendTime = 0;
     
     int x = server.hasArg("x") ? server.arg("x").toInt() : 0;
     int y = server.hasArg("y") ? server.arg("y").toInt() : 0;
@@ -56,25 +58,30 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
     int deltaX = abs(x - lastX);
     int deltaY = abs(y - lastY);
     
-    // Verificar si debe enviar:
-    // 1. Si está en posición centro (512, 512) siempre enviar
-    // 2. Si cualquier eje (X o Y) tiene un cambio >= 30
     bool isCenter = (x == 512 && y == 512);
     bool hasSignificantChange = (deltaX >= JOYSTICK_THRESHOLD || deltaY >= JOYSTICK_THRESHOLD);
-    if (firstCall || isCenter || hasSignificantChange) {
+    
+    // Verificar si debe enviar según el tiempo transcurrido para posición centro
+    unsigned long currentTime = millis();
+    bool shouldSendCenter = isCenter && (currentTime - lastCenterSendTime >= CENTER_SEND_INTERVAL);
+    
+    // Enviar si:
+    // 1. Primera llamada
+    // 2. Hay cambio significativo (>= threshold)
+    // 3. Está en centro Y han pasado 500ms desde el último envío
+    if (firstCall || hasSignificantChange || shouldSendCenter) {
       Serial.printf("Joystick X: %d Y: %d\n", x, y);
-      uartManager.sendJoystick((uint16_t)x, (uint16_t)y);
-      if(x == 512 && y == 512) {
-        for(int i = 0; i < 5; i++){
-          Serial.println("Center position detected, sending multiple frames to ensure reception.");
-          delay(5); // Pequeña pausa entre envíos
-          uartManager.sendJoystick((uint16_t)x, (uint16_t)y);
-        }
-      }
+      uartManager.sendJoystick((uint16_t)y, (uint16_t)x);
+      
       // Actualizar últimos valores enviados
       lastX = x;
       lastY = y;
       firstCall = false;
+      
+      // Actualizar timestamp solo si es centro
+      if (isCenter) {
+        lastCenterSendTime = currentTime;
+      }
     }
     
     server.send(200, "text/plain", "OK");

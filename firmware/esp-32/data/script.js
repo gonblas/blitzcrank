@@ -120,6 +120,9 @@ window.addEventListener("DOMContentLoaded", () => {
   
   // Inicializar WebSocket
   wsClient = new WebSocketClient()
+  
+  // Iniciar heartbeat del joystick en centro (aunque esté deshabilitado, se checkeará en el interval)
+  startCenterHeartbeat()
 })
 
 modeSwitch.addEventListener("change", (e) => {
@@ -204,13 +207,37 @@ const maxDistance = 60
 // Variables para throttling del envío al servidor
 let lastSendTime = 0
 const SEND_INTERVAL_MS = 20 // Enviar cada 20ms = 50 veces por segundo
+const CENTER_HEARTBEAT_MS = 40 // Enviar cada 500ms cuando está en centro
 let currentAdcX = 512
 let currentAdcY = 512
+let centerHeartbeatInterval = null
 
 function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
+// Función para iniciar el heartbeat del centro
+function startCenterHeartbeat() {
+  if (centerHeartbeatInterval) return; // Ya está corriendo
+  
+  centerHeartbeatInterval = setInterval(() => {
+    if (!dragging && currentAdcX === 512 && currentAdcY === 512 && webControlEnabled) {
+      fetch("/joystick?x=512&y=512").catch((err) => console.log(err));
+    }
+  }, CENTER_HEARTBEAT_MS);
+}
+
+// Función para detener el heartbeat del centro
+function stopCenterHeartbeat() {
+  if (centerHeartbeatInterval) {
+    clearInterval(centerHeartbeatInterval);
+    centerHeartbeatInterval = null;
+  }
+}
+
 function updateJoystick(clientX, clientY) {
   if (!webControlEnabled) return;
+
+  // Detener heartbeat cuando hay movimiento activo
+  stopCenterHeartbeat();
 
   const rect = joystickContainer.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
@@ -259,7 +286,7 @@ function updateJoystick(clientX, clientY) {
 
   // ENVÍO AL SERVIDOR CON THROTTLING
   const now = Date.now();
-  if (now - lastSendTime >= SEND_INTERVAL_MS || (adcX == 512 && adcY == 512)) {
+  if (now - lastSendTime >= SEND_INTERVAL_MS) {
     fetch(`/joystick?x=${adcX}&y=${adcY}`).catch((err) => console.log(err));
     lastSendTime = now;
   }
@@ -269,8 +296,17 @@ function resetJoystick() {
   joystickStick.style.transform = "translate(-50%, -50%)";
   joystickXDisplay.textContent = "512";
   joystickYDisplay.textContent = "512";
+  currentAdcX = 512;
+  currentAdcY = 512;
+  
   if (!webControlEnabled) return;
+  
+  // Resetear throttling para garantizar que 512,512 se envíe inmediatamente
+  lastSendTime = 0;
   fetch("/joystick?x=512&y=512").catch((err) => console.log(err));
+  
+  // Iniciar heartbeat del centro
+  startCenterHeartbeat();
 }
 
 joystickStick.addEventListener("mousedown", () => {
