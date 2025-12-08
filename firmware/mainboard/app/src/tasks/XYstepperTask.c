@@ -10,7 +10,7 @@
 #include "debug.h"
 #include "sapi_cyclesCounter.h"
 
-#define DEAD_ZONE 30
+#define DEAD_ZONE 150 
 #define JOYSTICK_INITIAL_POSITION 512
 #define MAX_SPEED_DELAY_US 2000   // velocidad constante máxima (ajustable)
 
