@@ -30,7 +30,7 @@ static void UART_Task(void *pvParameters);
 
 // ==== Inicialización de la tarea ====
 void UART_TaskCreate(void) {
-    uartConfig(UART_USED, 19200);
+    uartConfig(UART_USED, UART_BAUD);
     state = STATE_WAIT_STX;
     xTaskCreate(UART_Task, "UART_Task", 128, NULL, tskIDLE_PRIORITY + 1, NULL);
 }
