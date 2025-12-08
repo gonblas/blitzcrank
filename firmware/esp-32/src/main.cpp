@@ -5,6 +5,8 @@
 #include "routes.h"
 #include "uart_manager.h"
 #include "websocket_manager.h"
+#include "wifi_config.h"
+#include "debug_config.h"
 
 WebServer server(80);
 WebSocketManager wsManager(81);
@@ -18,11 +20,14 @@ void setup() {
   Serial.begin(115200);
   delay(500); // Dar tiempo al serial para inicializar
   
+  LOG_INFO("=== ESP32 Blitzcrank Firmware Starting ===");
+  LOG_INFO_F("Debug Level: %d", DEBUG_LEVEL);
+  
   uartManager.begin();
 
   setupWiFi();
   if (!initSPIFFS()) {
-    Serial.println("Fatal: SPIFFS init failed");
+    LOG_ERROR("Fatal: SPIFFS init failed");
     return;
   }
   
@@ -33,7 +38,7 @@ void setup() {
   wsManager.setUARTManager(&uartManager);
   wsManager.begin();
 
-  Serial.println("Web server started");
+  LOG_INFO("Web server started");
   lastWatchdogFeed = millis();
 }
 

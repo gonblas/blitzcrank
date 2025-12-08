@@ -1,5 +1,7 @@
 #include "uart_manager.h"
 #include "remote_protocol.h"
+#include "wifi_config.h"
+#include "debug_config.h"
 
 UARTManager::UARTManager(HardwareSerial& serialPort, uint32_t baudRate)
     : _serial(serialPort), _baudRate(baudRate), _isPhysicalMode(false), _currentPotValue(0) {}
@@ -34,7 +36,20 @@ void UARTManager::sendPotentiometer(uint8_t value) {
 
 void UARTManager::sendFrame(uint8_t type, const uint8_t* payload, uint8_t len) {
     uint8_t checksum = proto_computeChecksum(type, len, payload);
-    Serial.print("STX: 0x"); Serial.print((int)PROTO_STX, HEX); Serial.print("; TYPE: 0x"); Serial.print((int)type, HEX); Serial.print("; LEN: "); Serial.print((int)len); Serial.print("; PAYLOAD:"); for (uint8_t i = 0; i < len; ++i) { Serial.print(' '); if (payload[i] < 0x10) Serial.print('0'); Serial.print((int)payload[i], HEX); } Serial.println();
+    
+    #if DEBUG_LEVEL >= 4
+    Serial.print("[DEBUG] UART TX - STX: 0x"); Serial.print((int)PROTO_STX, HEX); 
+    Serial.print("; TYPE: 0x"); Serial.print((int)type, HEX); 
+    Serial.print("; LEN: "); Serial.print((int)len); 
+    Serial.print("; PAYLOAD:");
+    for (uint8_t i = 0; i < len; ++i) { 
+        Serial.print(' '); 
+        if (payload[i] < 0x10) Serial.print('0'); 
+        Serial.print((int)payload[i], HEX); 
+    }
+    Serial.println();
+    #endif
+    
     _serial.write(PROTO_STX);
     _serial.write(type);
     _serial.write(len);
@@ -136,11 +151,11 @@ void UARTManager::handleIncomingData() {
                 PotentiometerPayload_t p;
                 proto_unpackPotentiometer(rxFrame.payload, &p);
                 uint8_t mappedValue = map(p.angle, 0, 180, 0, 100);
-                Serial.println("Received Potentiometer: " + String(p.angle) + " -> " + String(mappedValue));
+                LOG_DEBUG("Received Potentiometer: " + String(p.angle) + " -> " + String(mappedValue));
                 
                 // Solo procesar y guardar el valor si estamos en modo físico
                     _currentPotValue = mappedValue;
-                    Serial.println("Physical mode - Updated potentiometer value: " + String(_currentPotValue));
+                    LOG_INFO("Physical mode - Updated potentiometer value: " + String(_currentPotValue));
                     
                     // Notificar cambio a través del callback
                     if (_onPotentiometerChange) {
@@ -153,7 +168,7 @@ void UARTManager::handleIncomingData() {
                 InputSourcePayload_t m;
                 proto_unpackInputSourceMode(rxFrame.payload, &m);
                 _isPhysicalMode = m.mode;  // Actualizar estado del modo
-                Serial.println("Received Input Source Mode: " + String(_isPhysicalMode ? "PHYSICAL" : "WEB"));
+                LOG_INFO("Received Input Source Mode: " + String(_isPhysicalMode ? "PHYSICAL" : "WEB"));
                 
                 // Llamar callback si está definido
                 if (_onInputSourceChange) {
@@ -163,7 +178,7 @@ void UARTManager::handleIncomingData() {
                 break;
             }
             default:
-                Serial.println("Unknown frame type received");
+                LOG_WARN("Unknown frame type received");
                 break;
         }
     }
