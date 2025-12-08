@@ -198,9 +198,14 @@ const joystickStick = document.getElementById("joystickStick");
 const joystickXDisplay = document.getElementById("joystickX");
 const joystickYDisplay = document.getElementById("joystickY");
 
-
 let dragging = false
 const maxDistance = 60
+
+// Variables para throttling del envío al servidor
+let lastSendTime = 0
+const SEND_INTERVAL_MS = 50 // Enviar cada 50ms = 20 veces por segundo
+let currentAdcX = 512
+let currentAdcY = 512
 
 function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
 
@@ -222,6 +227,7 @@ function updateJoystick(clientX, clientY) {
     dy = Math.sin(angle) * maxDistance;
   }
 
+  // ACTUALIZACIÓN VISUAL (sin delay, fluido)
   joystickStick.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`
 
   // normalizados en [-1..1], con Y invertida para que arriba sea positivo
@@ -243,10 +249,20 @@ function updateJoystick(clientX, clientY) {
   const adcX = clamp(Math.round(((1 - sx) / 2) * 1023), 0, 1023);
   const adcY = clamp(Math.round(((sy + 1) / 2) * 1023), 0, 1023);
 
+  // Actualizar display siempre (visual fluido)
   joystickXDisplay.textContent = adcX;
   joystickYDisplay.textContent = adcY;
 
-  fetch(`/joystick?x=${adcX}&y=${adcY}`).catch((err) => console.log(err));
+  // Guardar valores actuales
+  currentAdcX = adcX;
+  currentAdcY = adcY;
+
+  // ENVÍO AL SERVIDOR CON THROTTLING
+  const now = Date.now();
+  if (now - lastSendTime >= SEND_INTERVAL_MS) {
+    fetch(`/joystick?x=${adcX}&y=${adcY}`).catch((err) => console.log(err));
+    lastSendTime = now;
+  }
 }
 
 function resetJoystick() {

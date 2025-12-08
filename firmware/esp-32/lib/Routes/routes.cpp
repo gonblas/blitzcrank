@@ -41,10 +41,37 @@ void setupRoutes(WebServer& server, UARTManager& uartManager) {
   });
 
   server.on("/joystick", [&]() {
+    // Constante del umbral de cambio
+    const int JOYSTICK_THRESHOLD = 100;
+    
+    // Variables estáticas para guardar el último valor enviado
+    static int lastX = 512;
+    static int lastY = 512;
+    static bool firstCall = true;
+    
     int x = server.hasArg("x") ? server.arg("x").toInt() : 0;
     int y = server.hasArg("y") ? server.arg("y").toInt() : 0;
-    Serial.printf("Joystick X: %d Y: %d\n", x, y);
-    uartManager.sendJoystick((uint16_t)x, (uint16_t)y);
+    
+    // Calcular cambios absolutos
+    int deltaX = abs(x - lastX);
+    int deltaY = abs(y - lastY);
+    
+    // Verificar si debe enviar:
+    // 1. Si está en posición centro (512, 512) siempre enviar
+    // 2. Si cualquier eje (X o Y) tiene un cambio >= 30
+    bool isCenter = (x == 512 && y == 512);
+    bool hasSignificantChange = (deltaX >= JOYSTICK_THRESHOLD || deltaY >= JOYSTICK_THRESHOLD);
+    Serial.println("I'm being called");
+    if (firstCall || isCenter || hasSignificantChange) {
+      Serial.printf("Joystick X: %d Y: %d\n", x, y);
+      uartManager.sendJoystick((uint16_t)x, (uint16_t)y);
+      
+      // Actualizar últimos valores enviados
+      lastX = x;
+      lastY = y;
+      firstCall = false;
+    }
+    
     server.send(200, "text/plain", "OK");
   });
 

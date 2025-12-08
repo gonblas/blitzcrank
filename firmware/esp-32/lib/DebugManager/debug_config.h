@@ -8,7 +8,7 @@
 // 2 = Errores y warnings
 // 3 = Info importante (modo por defecto recomendado)
 // 4 = Debug completo (todos los logs)
-#define DEBUG_LEVEL 4
+#define DEBUG_LEVEL 3
 
 // Macros para logging condicional
 #define LOG_ERROR(x) if(DEBUG_LEVEL >= 1) { Serial.print("[ERROR] "); Serial.println(x); }
