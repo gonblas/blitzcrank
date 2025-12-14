@@ -26,7 +26,7 @@ void UARTManager::sendJoystick(uint16_t x, uint16_t y) {
 
 void UARTManager::sendPotentiometer(uint8_t value) {
     // Mapear de 0-100 (interno) a 0-180 (protocolo)
-    uint8_t angle = map(value, 0, 100, 0, 180);
+    uint8_t angle = map(value, 0, 100, 180, 0);
     uint8_t payload[1];
     proto_packPotentiometer(payload, angle);
     sendFrame(EV_POTENTIOMETER, payload, 1);
