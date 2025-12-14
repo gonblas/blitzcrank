@@ -12,8 +12,8 @@ void controlXYAxisTask(void *pvParameters) {
     uint16_t yPrev = 512;
 
     for (;;) {
-        uint16_t xValue = adcRead(JOYSTICK_X_PIN);
-        uint16_t yValue = adcRead(JOYSTICK_Y_PIN);
+        uint16_t xValue = 1023 - adcRead(JOYSTICK_X_PIN);
+        uint16_t yValue = adcRead(JOYSTICK_Y_PIN);  // Invertido: 0→1023, 1023→0
 
         uint16_t center = 512;
         uint16_t margin = 100;

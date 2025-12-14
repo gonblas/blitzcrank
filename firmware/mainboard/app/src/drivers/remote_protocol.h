@@ -62,6 +62,10 @@ static uint8_t proto_computeChecksum(uint8_t type, uint8_t length, const uint8_t
 
 static uint8_t proto_validateFrame(const Frame_t *frame)
 {
+    //PRINT FOR DEBUG
+    printf("STX: %02X, ETX: %02X\n", frame->stx, frame->etx);
+    printf("TYPE: %02X, LENGTH: %02X, CHECKSUM: %02X\n", frame->type, frame->length, frame->checksum);
+
     uint8_t chk;
     if (frame->stx != PROTO_STX || frame->etx != PROTO_ETX)
         return 0;

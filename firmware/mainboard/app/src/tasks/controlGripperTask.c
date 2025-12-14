@@ -7,6 +7,8 @@
 #include "event_system.h"   // contiene Event_t y eventQueue
 #include <stdlib.h>
 #include "utils.h"
+#include "debug.h"
+#include "controls_state.h"
 
 extern QueueHandle_t eventQueue;
 
@@ -16,13 +18,16 @@ extern QueueHandle_t eventQueue;
 // ================================================================
 void controlGripperTask(void* pvParameters) {
    static uint8_t prevAngle = 0;
+   const int MIN_POT_VALUE = 0;
+   const int MAX_POT_VALUE = 835; // Valor máximo leído del potenciómetro (experimentalmente)
 
    for (;;) {
       uint16_t potRaw = adcRead(POTENCIOMETER_PIN);
-      uint8_t angle = scaleValue(potRaw, (Range_t){0, 1023}, (Range_t){0, 180});
+      uint8_t angle = scaleValue(potRaw, (Range_t){MIN_POT_VALUE, MAX_POT_VALUE}, (Range_t){0, 180});
       if (abs(angle - prevAngle) >= 5) {
          queuePotentiometerEvent(angle);
          prevAngle = angle;
+         globalState.potentiometerState.angle = angle;
       }
       
       vTaskDelay(pdMS_TO_TICKS(50)); // Delay para evitar lecturas excesivas
