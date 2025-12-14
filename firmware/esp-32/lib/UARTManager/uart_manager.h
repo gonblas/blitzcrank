@@ -6,6 +6,7 @@
 #include "remote_protocol.h"
 
 typedef std::function<void(const char*)> InputSourceCallback;
+typedef std::function<void(uint8_t)> PotentiometerCallback;
 
 class UARTManager {
 public:
@@ -16,7 +17,7 @@ public:
     // ==== Envío de eventos ====
     void sendButton(bool up, bool down);
     void sendJoystick(uint16_t x, uint16_t y);
-    void sendPotentiometer(uint8_t angle);
+    void sendPotentiometer(uint8_t value);  // value: 0-100 (se mapea internamente a 0-180)
     void sendInputSourceMode(bool physical);
 
     // ==== Recepción y parsing ====
@@ -26,11 +27,20 @@ public:
 
     // ==== Callbacks ====
     void setOnInputSourceChange(InputSourceCallback callback);
+    void setOnPotentiometerChange(PotentiometerCallback callback);
+
+    // ==== Getters ====
+    uint8_t getCurrentPotentiometerValue() const { return _currentPotValue; }
+    bool isPhysicalMode() const { return _isPhysicalMode; }
 
 private:
     HardwareSerial& _serial;
     uint32_t _baudRate;
     InputSourceCallback _onInputSourceChange;
+    PotentiometerCallback _onPotentiometerChange;
+    
+    bool _isPhysicalMode;
+    uint8_t _currentPotValue;
 
     enum ParseState {
         WAIT_STX,

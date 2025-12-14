@@ -34,8 +34,10 @@ class WebSocketClient {
           data = { mode: event.data }
         }
         
-        // El ESP32 envía "WEB" o "PHYSICAL" directamente
-        if (data.mode || data.event === "inputSourceChange") {
+        // Manejar diferentes tipos de eventos
+        if (data.event === "potentiometerChange") {
+          this.handlePotentiometerChange(data.value)
+        } else if (data.mode || data.event === "inputSourceChange") {
           this.handleInputSourceChange(data.mode || event.data)
         }
       } catch (err) {
@@ -63,6 +65,13 @@ class WebSocketClient {
     // Actualizar switch sin disparar evento change
     modeSwitch.checked = !isPhysical
     updateModeUI(!isPhysical)
+  }
+
+  handlePotentiometerChange(value) {
+    console.log(`Potentiometer value changed to: ${value}`)
+    // Actualizar el slider con el valor recibido del modo físico
+    gripperSlider.value = value
+    gripperValue.textContent = value + "%"
   }
 }
 
@@ -111,15 +120,30 @@ window.addEventListener("DOMContentLoaded", () => {
   
   // Inicializar WebSocket
   wsClient = new WebSocketClient()
+  
+  // Iniciar heartbeat del joystick en centro (aunque esté deshabilitado, se checkeará en el interval)
+  startCenterHeartbeat()
 })
 
 modeSwitch.addEventListener("change", (e) => {
-  webControlEnabled = e.target.checked
-  updateModeUI(webControlEnabled)
-  
   // Enviar cambio de modo al servidor
-  const mode = webControlEnabled ? "WEB" : "PHYSICAL"
-  fetch(`/mode?state=${mode}`).catch((err) => console.log("Error:", err))
+  const mode = e.target.checked ? "WEB" : "PHYSICAL"
+  
+  fetch(`/mode?state=${mode}`)
+    .then(response => response.json())
+    .then(data => {
+      // Confirmar el cambio de modo basado en la respuesta del servidor
+      const isWebMode = data.mode === "WEB"
+      webControlEnabled = isWebMode
+      modeSwitch.checked = isWebMode
+      updateModeUI(isWebMode)
+      console.log(`Mode confirmed: ${data.mode}`)
+    })
+    .catch((err) => {
+      console.error("Error changing mode:", err)
+      // Revertir el switch si hay error
+      modeSwitch.checked = webControlEnabled
+    })
 })
 
 // ---------------- BUTTONS ----------------
@@ -177,14 +201,43 @@ const joystickStick = document.getElementById("joystickStick");
 const joystickXDisplay = document.getElementById("joystickX");
 const joystickYDisplay = document.getElementById("joystickY");
 
-
 let dragging = false
 const maxDistance = 60
 
+// Variables para throttling del envío al servidor
+let lastSendTime = 0
+const SEND_INTERVAL_MS = 20 // Enviar cada 20ms = 50 veces por segundo
+const CENTER_HEARTBEAT_MS = 40 // Enviar cada 500ms cuando está en centro
+let currentAdcX = 512
+let currentAdcY = 512
+let centerHeartbeatInterval = null
+
 function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+// Función para iniciar el heartbeat del centro
+function startCenterHeartbeat() {
+  if (centerHeartbeatInterval) return; // Ya está corriendo
+  
+  centerHeartbeatInterval = setInterval(() => {
+    if (!dragging && currentAdcX === 512 && currentAdcY === 512 && webControlEnabled) {
+      fetch("/joystick?x=512&y=512").catch((err) => console.log(err));
+    }
+  }, CENTER_HEARTBEAT_MS);
+}
+
+// Función para detener el heartbeat del centro
+function stopCenterHeartbeat() {
+  if (centerHeartbeatInterval) {
+    clearInterval(centerHeartbeatInterval);
+    centerHeartbeatInterval = null;
+  }
+}
 
 function updateJoystick(clientX, clientY) {
   if (!webControlEnabled) return;
+
+  // Detener heartbeat cuando hay movimiento activo
+  stopCenterHeartbeat();
 
   const rect = joystickContainer.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
@@ -201,6 +254,7 @@ function updateJoystick(clientX, clientY) {
     dy = Math.sin(angle) * maxDistance;
   }
 
+  // ACTUALIZACIÓN VISUAL (sin delay, fluido)
   joystickStick.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`
 
   // normalizados en [-1..1], con Y invertida para que arriba sea positivo
@@ -222,18 +276,37 @@ function updateJoystick(clientX, clientY) {
   const adcX = clamp(Math.round(((1 - sx) / 2) * 1023), 0, 1023);
   const adcY = clamp(Math.round(((sy + 1) / 2) * 1023), 0, 1023);
 
+  // Actualizar display siempre (visual fluido)
   joystickXDisplay.textContent = adcX;
   joystickYDisplay.textContent = adcY;
 
-  fetch(`/joystick?x=${adcX}&y=${adcY}`).catch((err) => console.log(err));
+  // Guardar valores actuales
+  currentAdcX = adcX;
+  currentAdcY = adcY;
+
+  // ENVÍO AL SERVIDOR CON THROTTLING
+  const now = Date.now();
+  if (now - lastSendTime >= SEND_INTERVAL_MS) {
+    fetch(`/joystick?x=${adcX}&y=${adcY}`).catch((err) => console.log(err));
+    lastSendTime = now;
+  }
 }
 
 function resetJoystick() {
   joystickStick.style.transform = "translate(-50%, -50%)";
   joystickXDisplay.textContent = "512";
   joystickYDisplay.textContent = "512";
+  currentAdcX = 512;
+  currentAdcY = 512;
+  
   if (!webControlEnabled) return;
+  
+  // Resetear throttling para garantizar que 512,512 se envíe inmediatamente
+  lastSendTime = 0;
   fetch("/joystick?x=512&y=512").catch((err) => console.log(err));
+  
+  // Iniciar heartbeat del centro
+  startCenterHeartbeat();
 }
 
 joystickStick.addEventListener("mousedown", () => {

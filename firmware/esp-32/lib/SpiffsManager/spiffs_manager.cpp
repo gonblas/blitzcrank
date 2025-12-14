@@ -1,11 +1,13 @@
 #include "spiffs_manager.h"
+#include "wifi_config.h"
+#include "debug_config.h"
 
 bool initSPIFFS() {
   if (!SPIFFS.begin(true)) {
-    Serial.println("Error mounting SPIFFS");
+    LOG_ERROR("Error mounting SPIFFS");
     return false;
   }
-  Serial.println("SPIFFS mounted successfully");
+  LOG_INFO("SPIFFS mounted successfully");
   return true;
 }
 
