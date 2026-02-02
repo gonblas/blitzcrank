@@ -20,10 +20,13 @@ void controlGripperTask(void* pvParameters) {
    static uint8_t prevAngle = 0;
    const int MIN_POT_VALUE = 0;
    const int MAX_POT_VALUE = 835; // Valor máximo leído del potenciómetro (experimentalmente)
+   const int MIN_ANGLE = 0;
+   const int MAX_ANGLE = 180;
+   const int ANGLE_PADDING = 24 ; // Margen de error para evitar lecturas inestables
 
    for (;;) {
       uint16_t potRaw = adcRead(POTENCIOMETER_PIN);
-      uint8_t angle = scaleValue(potRaw, (Range_t){MIN_POT_VALUE, MAX_POT_VALUE}, (Range_t){0, 180});
+      uint8_t angle = scaleValue(potRaw, (Range_t){MIN_POT_VALUE, MAX_POT_VALUE}, (Range_t){MIN_ANGLE + ANGLE_PADDING, MAX_ANGLE - ANGLE_PADDING});
       if (abs(angle - prevAngle) >= 5) {
          queuePotentiometerEvent(angle);
          prevAngle = angle;
