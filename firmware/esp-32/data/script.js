@@ -188,12 +188,26 @@ btnDown.addEventListener("touchend", () => stopButtonPress("down"))
 // ---------------- SLIDER ----------------
 const gripperSlider = document.getElementById("gripperSlider")
 const gripperValue = document.getElementById("gripperValue")
+const GRIPPER_MIN_ANGLE = 25
+const GRIPPER_MAX_ANGLE = 155
+const GRIPPER_ANGLE_STEP = 3
+let lastGripperSentAngle = null
 
 gripperSlider.addEventListener("input", (e) => {
-  const val = e.target.value
-  gripperValue.textContent = val + "%"
+  const rawVal = Number(e.target.value)
+  gripperValue.textContent = rawVal + "%"
   if (!webControlEnabled) return
-  fetch(`/slider?value=${val}`).catch((err) => console.log(err))
+
+  const angleFloat = GRIPPER_MIN_ANGLE + (rawVal / 100) * (GRIPPER_MAX_ANGLE - GRIPPER_MIN_ANGLE)
+  let steppedAngle = Math.round((angleFloat - GRIPPER_MIN_ANGLE) / GRIPPER_ANGLE_STEP) * GRIPPER_ANGLE_STEP + GRIPPER_MIN_ANGLE
+  if (steppedAngle < GRIPPER_MIN_ANGLE) steppedAngle = GRIPPER_MIN_ANGLE
+  if (steppedAngle > GRIPPER_MAX_ANGLE) steppedAngle = GRIPPER_MAX_ANGLE
+
+  if (lastGripperSentAngle === steppedAngle) return
+  lastGripperSentAngle = steppedAngle
+
+  const sendVal = Math.round(((steppedAngle - GRIPPER_MIN_ANGLE) * 100) / (GRIPPER_MAX_ANGLE - GRIPPER_MIN_ANGLE))
+  fetch(`/slider?value=${sendVal}`).catch((err) => console.log(err))
 })
 
 // ---------------- JOYSTICK ----------------
