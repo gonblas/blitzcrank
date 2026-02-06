@@ -4,7 +4,9 @@
 #include "debug_config.h"
 
 UARTManager::UARTManager(HardwareSerial& serialPort, uint32_t baudRate)
-    : _serial(serialPort), _baudRate(baudRate), _isPhysicalMode(false), _currentPotValue(0) {}
+        : _serial(serialPort), _baudRate(baudRate), _isPhysicalMode(false), _currentPotValue(0),
+            _lastSendTimeMs(0), _hasPendingJoystick(false), _pendingJoystickX(512), _pendingJoystickY(512),
+            _hasPendingPot(false), _pendingPotValue(0) {}
 
 void UARTManager::begin() {
     _serial.begin(_baudRate);
@@ -19,17 +21,32 @@ void UARTManager::sendButton(bool up, bool down) {
 }
 
 void UARTManager::sendJoystick(uint16_t x, uint16_t y) {
-    uint8_t payload[4];
-    proto_packJoystick(payload, x, y);
-    sendFrame(EV_JOYSTICK, payload, 4);
+    if (canSendNow()) {
+        uint8_t payload[4];
+        proto_packJoystick(payload, x, y);
+        sendFrame(EV_JOYSTICK, payload, 4);
+        markSentNow();
+        return;
+    }
+
+    _pendingJoystickX = x;
+    _pendingJoystickY = y;
+    _hasPendingJoystick = true;
 }
 
 void UARTManager::sendPotentiometer(uint8_t value) {
     // Mapear de 0-100 (interno) a 0-180 (protocolo)
     uint8_t angle = map(value, 0, 100, 155, 25);
-    uint8_t payload[1];
-    proto_packPotentiometer(payload, angle);
-    sendFrame(EV_POTENTIOMETER, payload, 1);
+    if (canSendNow()) {
+        uint8_t payload[1];
+        proto_packPotentiometer(payload, angle);
+        sendFrame(EV_POTENTIOMETER, payload, 1);
+        markSentNow();
+        return;
+    }
+
+    _pendingPotValue = value;
+    _hasPendingPot = true;
 }
 
 // ==== Envío de frame binario ====
@@ -56,6 +73,14 @@ void UARTManager::sendFrame(uint8_t type, const uint8_t* payload, uint8_t len) {
     _serial.write(payload, len);
     _serial.write(checksum);
     _serial.write(PROTO_ETX);
+}
+
+bool UARTManager::canSendNow() const {
+    return (millis() - _lastSendTimeMs) >= MIN_SEND_INTERVAL_MS;
+}
+
+void UARTManager::markSentNow() {
+    _lastSendTimeMs = millis();
 }
 
 
@@ -181,5 +206,28 @@ void UARTManager::handleIncomingData() {
                 LOG_WARN("Unknown frame type received");
                 break;
         }
+    }
+}
+
+void UARTManager::processPendingSends() {
+    if (!canSendNow()) return;
+
+    if (_hasPendingJoystick) {
+        uint8_t payload[4];
+        proto_packJoystick(payload, _pendingJoystickX, _pendingJoystickY);
+        sendFrame(EV_JOYSTICK, payload, 4);
+        markSentNow();
+        _hasPendingJoystick = false;
+        return;
+    }
+
+    if (_hasPendingPot) {
+        uint8_t angle = map(_pendingPotValue, 0, 100, 155, 25);
+        uint8_t payload[1];
+        proto_packPotentiometer(payload, angle);
+        sendFrame(EV_POTENTIOMETER, payload, 1);
+        markSentNow();
+        _hasPendingPot = false;
+        return;
     }
 }

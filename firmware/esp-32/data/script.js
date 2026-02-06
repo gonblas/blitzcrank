@@ -69,9 +69,24 @@ class WebSocketClient {
 
   handlePotentiometerChange(value) {
     console.log(`Potentiometer value changed to: ${value}`)
+    // Evitar que el slider "pelee" con el usuario o con el modo web
+    if (webControlEnabled || isUserAdjustingSlider) return
+
+    const numericValue = Number(value)
+    if (!Number.isFinite(numericValue)) return
+
+    const now = Date.now()
+    if (now - lastPotUpdateTime < POT_UPDATE_MIN_INTERVAL_MS) return
+
+    // Pequeña zona muerta para evitar jitter
+    if (Math.abs(numericValue - lastPotValue) < POT_DEADBAND) return
+
+    lastPotUpdateTime = now
+    lastPotValue = numericValue
+
     // Actualizar el slider con el valor recibido del modo físico
-    gripperSlider.value = value
-    gripperValue.textContent = value + "%"
+    gripperSlider.value = numericValue
+    gripperValue.textContent = numericValue + "%"
   }
 }
 
@@ -192,14 +207,17 @@ const GRIPPER_MIN_ANGLE = 25
 const GRIPPER_MAX_ANGLE = 155
 const GRIPPER_ANGLE_STEP = 3
 let lastGripperSentAngle = null
+let isUserAdjustingSlider = false
+let lastPotUpdateTime = 0
+let lastPotValue = 0
+const POT_UPDATE_MIN_INTERVAL_MS = 80
+const POT_DEADBAND = 1
+let lastGripperSendTime = 0
+let pendingGripperAngle = null
+let gripperSendTimeout = null
+const GRIPPER_SEND_INTERVAL_MS = 80
 
-gripperSlider.addEventListener("input", (e) => {
-  const rawVal = Number(e.target.value)
-  gripperValue.textContent = rawVal + "%"
-  if (!webControlEnabled) return
-
-  const angleFloat = GRIPPER_MIN_ANGLE + (rawVal / 100) * (GRIPPER_MAX_ANGLE - GRIPPER_MIN_ANGLE)
-  let steppedAngle = Math.round((angleFloat - GRIPPER_MIN_ANGLE) / GRIPPER_ANGLE_STEP) * GRIPPER_ANGLE_STEP + GRIPPER_MIN_ANGLE
+function sendGripperAngle(steppedAngle) {
   if (steppedAngle < GRIPPER_MIN_ANGLE) steppedAngle = GRIPPER_MIN_ANGLE
   if (steppedAngle > GRIPPER_MAX_ANGLE) steppedAngle = GRIPPER_MAX_ANGLE
 
@@ -208,6 +226,74 @@ gripperSlider.addEventListener("input", (e) => {
 
   const sendVal = Math.round(((steppedAngle - GRIPPER_MIN_ANGLE) * 100) / (GRIPPER_MAX_ANGLE - GRIPPER_MIN_ANGLE))
   fetch(`/slider?value=${sendVal}`).catch((err) => console.log(err))
+}
+
+function scheduleGripperSend(steppedAngle) {
+  pendingGripperAngle = steppedAngle
+
+  if (gripperSendTimeout) return
+
+  const now = Date.now()
+  const remaining = Math.max(0, GRIPPER_SEND_INTERVAL_MS - (now - lastGripperSendTime))
+
+  gripperSendTimeout = setTimeout(() => {
+    gripperSendTimeout = null
+    lastGripperSendTime = Date.now()
+    if (pendingGripperAngle !== null) {
+      sendGripperAngle(pendingGripperAngle)
+      pendingGripperAngle = null
+    }
+  }, remaining)
+}
+
+gripperSlider.addEventListener("input", (e) => {
+  const rawVal = Number(e.target.value)
+  gripperValue.textContent = rawVal + "%"
+  if (!webControlEnabled) return
+
+  const angleFloat = GRIPPER_MIN_ANGLE + (rawVal / 100) * (GRIPPER_MAX_ANGLE - GRIPPER_MIN_ANGLE)
+  let steppedAngle = Math.round((angleFloat - GRIPPER_MIN_ANGLE) / GRIPPER_ANGLE_STEP) * GRIPPER_ANGLE_STEP + GRIPPER_MIN_ANGLE
+  scheduleGripperSend(steppedAngle)
+})
+
+gripperSlider.addEventListener("pointerdown", () => {
+  isUserAdjustingSlider = true
+})
+
+gripperSlider.addEventListener("pointerup", () => {
+  isUserAdjustingSlider = false
+})
+
+gripperSlider.addEventListener("pointercancel", () => {
+  isUserAdjustingSlider = false
+})
+
+gripperSlider.addEventListener("touchstart", () => {
+  isUserAdjustingSlider = true
+}, { passive: true })
+
+gripperSlider.addEventListener("touchend", () => {
+  isUserAdjustingSlider = false
+}, { passive: true })
+
+gripperSlider.addEventListener("touchcancel", () => {
+  isUserAdjustingSlider = false
+}, { passive: true })
+
+gripperSlider.addEventListener("change", (e) => {
+  const rawVal = Number(e.target.value)
+  if (!webControlEnabled) return
+
+  const angleFloat = GRIPPER_MIN_ANGLE + (rawVal / 100) * (GRIPPER_MAX_ANGLE - GRIPPER_MIN_ANGLE)
+  let steppedAngle = Math.round((angleFloat - GRIPPER_MIN_ANGLE) / GRIPPER_ANGLE_STEP) * GRIPPER_ANGLE_STEP + GRIPPER_MIN_ANGLE
+
+  if (gripperSendTimeout) {
+    clearTimeout(gripperSendTimeout)
+    gripperSendTimeout = null
+  }
+  pendingGripperAngle = null
+  lastGripperSendTime = Date.now()
+  sendGripperAngle(steppedAngle)
 })
 
 // ---------------- JOYSTICK ----------------

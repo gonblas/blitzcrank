@@ -46,6 +46,7 @@ void loop() {
   server.handleClient();
   wsManager.handle();
   uartManager.handleIncomingData();
+  uartManager.processPendingSends();
   
   // Feed al watchdog cada 30 segundos para evitar resets
   if (millis() - lastWatchdogFeed > WATCHDOG_TIMEOUT) {

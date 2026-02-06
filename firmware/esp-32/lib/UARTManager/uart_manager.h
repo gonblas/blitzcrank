@@ -24,6 +24,7 @@ public:
     // Devuelve true si se recibió un frame completo y válido
     bool receiveFrame(Frame_t& frame);
     void handleIncomingData();
+    void processPendingSends();
 
     // ==== Callbacks ====
     void setOnInputSourceChange(InputSourceCallback callback);
@@ -55,7 +56,20 @@ private:
     Frame_t _rxFrame;
     uint8_t _rxIndex;
 
+    // ==== Rate limiting for outgoing frames ====
+    unsigned long _lastSendTimeMs;
+    static const unsigned long MIN_SEND_INTERVAL_MS = 80;
+
+    bool _hasPendingJoystick;
+    uint16_t _pendingJoystickX;
+    uint16_t _pendingJoystickY;
+
+    bool _hasPendingPot;
+    uint8_t _pendingPotValue;
+
     void sendFrame(uint8_t type, const uint8_t* payload, uint8_t len);
+    bool canSendNow() const;
+    void markSentNow();
 };
 
 #endif // UART_MANAGER_H
