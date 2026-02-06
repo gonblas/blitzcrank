@@ -11,6 +11,13 @@
 | ⚪ Blanco   | Botón Switch Mode | Pulsador para cambiar modo                        | MD         |
 | ◻️ Gris     | Botón Up          | Pulsador para acción "subir"                      | UP         |
 
+# USB
+
+| Color   | Pin PONCHO |
+| ------- | ---------- |
+| Naranja | 5V+        |
+| Negro   | BTN_DWN    |
+
 Notas:
 
 - Verifica con un multímetro/continuidad antes de conectar si no estás seguro del cableado.
