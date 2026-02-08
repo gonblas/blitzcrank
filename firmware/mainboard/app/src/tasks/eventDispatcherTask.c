@@ -6,6 +6,7 @@
 #include "debug.h"
 #include "handlers.h"
 #include "task_control.h"
+#include "homing_state.h"
 
 #define EVENT_QUEUE_LENGTH 10
 #define DISPATCHER_TASK_STACK_SIZE 128U
@@ -26,6 +27,13 @@ void EventDispatcherTask(void *pvParameters) {
     LOG_PRINTLN("[Dispatcher] Iniciado y esperando eventos...");
 
     for (;;) {
+        if (homingInProgress) {
+            Event_t dump;
+            while (xQueueReceive(eventQueue, &dump, 0) == pdTRUE) {
+            }
+            vTaskDelay(pdMS_TO_TICKS(10));
+            continue;
+        }
         if (xQueueReceive(eventQueue, &ev, portMAX_DELAY) == pdTRUE) {
             LOG_PRINTLN("[Dispatcher] Evento recibido tipo: %d", ev.type);
             switch (ev.type) {

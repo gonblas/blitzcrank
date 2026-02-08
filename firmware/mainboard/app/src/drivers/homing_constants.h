@@ -1,0 +1,22 @@
+#ifndef HOMING_CONSTANTS_H
+#define HOMING_CONSTANTS_H
+
+#define HOMING_JOYSTICK_OFFSET 150U // Debe ser mayor a la zona muerta del stepper
+
+#define HOMING_X_TIME_MS 7000U
+#define HOMING_Y_TIME_MS 7000U
+#define HOMING_Z_TIME_MS 7000U
+
+#define HOMING_X_BACKOFF_MS 100U
+#define HOMING_Y_BACKOFF_MS 100U
+#define HOMING_Z_BACKOFF_MS 00U
+
+#define HOMING_SETTLE_MS 100U
+#define HOMING_LED_BLINK_MS 500U
+#define HOMING_AXIS_STEP_MS 200U
+
+#define HOMING_X_DIR_SIGN (-1)
+#define HOMING_Y_DIR_SIGN (-1)
+#define HOMING_Z_DIR_UP 1U
+
+#endif

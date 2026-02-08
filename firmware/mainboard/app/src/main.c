@@ -35,6 +35,7 @@ int main(void) {
     xTaskCreate(switchModeTask, "SWITCH", HEAP_SWITCH_MODE_SIZE, NULL, PRIORITY_SWITCH_MODE, &xSwitchModeTaskHandle);
     xTaskCreate(XYStepperTask, "STEPPER", HEAP_XYSTEPPER_SIZE, NULL, PRIORITY_XY_STEPPER, &xXYStepperTaskHandle);
     xTaskCreate(ZMotorTask, "Z_MOTOR", HEAP_Z_MOTOR_SIZE, NULL, PRIORITY_Z_MOTOR, &xZMotorTaskHandle);
+    xTaskCreate(homingTask, "HOMING", HEAP_HOMING_SIZE, NULL, PRIORITY_HOMING, NULL);
     xTaskCreate(controlConnectionTask, "CONNECTION", HEAP_CONNECTION_SIZE, NULL, PRIORITY_CONNECTION_TASK, NULL);
 
     UART_TaskCreate();

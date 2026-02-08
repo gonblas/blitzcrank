@@ -9,6 +9,7 @@
 #include "debug.h"
 #include "board_pins.h"
 #include "task_constants.h"
+#include "homing_state.h"
 
 #define CONNECTION_SAMPLE_COUNT 10U
 #define CONNECTION_THRESHOLD 8U // 80% de CONNECTION_SAMPLE_COUNT
@@ -26,6 +27,10 @@ void controlConnectionTask(void *pvParameters) {
     bool is_connected = true;
 
     for (;;) {
+        if (homingInProgress) {
+            vTaskDelay(pdMS_TO_TICKS(CONNECTION_TASK_DELAY_MS));
+            continue;
+        }
         bool current_reading = gpioRead(CONTROLLER_CONNECTION_PIN);
 
         if (readings[sample_index] != current_reading) {

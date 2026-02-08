@@ -13,5 +13,6 @@
 #define PRIORITY_SWITCH_MODE        ( tskIDLE_PRIORITY + 6 )
 #define PRIORITY_Z_MOTOR            ( tskIDLE_PRIORITY + 7 )
 #define PRIORITY_CONNECTION_TASK    ( tskIDLE_PRIORITY + 8 )
+#define PRIORITY_HOMING             ( tskIDLE_PRIORITY + 9 )
 
 #endif // PRIORITY_H
