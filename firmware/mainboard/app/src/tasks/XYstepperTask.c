@@ -11,9 +11,44 @@
 #include "sapi_cyclesCounter.h"
 #include "joystick_constants.h"
 #include "task_constants.h"
+#include "axis_limits.h"
+#include "axis_state.h"
+#include "homing_state.h"
 
 #define STEPPER_DEAD_ZONE 150U
 #define STEPPER_MAX_SPEED_DELAY_US 2000U
+
+static bool applyStepA(int8_t dirA) {
+    int32_t nextX2 = axisXUnits2 + dirA;
+    int32_t nextY2 = axisYUnits2 + dirA;
+    if (!homingInProgress) {
+        if (nextX2 < X_AXIS_MIN_UNITS2 || nextX2 > X_AXIS_MAX_UNITS2) {
+            return FALSE;
+        }
+        if (nextY2 < Y_AXIS_MIN_UNITS2 || nextY2 > Y_AXIS_MAX_UNITS2) {
+            return FALSE;
+        }
+    }
+    axisXUnits2 = nextX2;
+    axisYUnits2 = nextY2;
+    return TRUE;
+}
+
+static bool applyStepB(int8_t dirB) {
+    int32_t nextX2 = axisXUnits2 - dirB;
+    int32_t nextY2 = axisYUnits2 + dirB;
+    if (!homingInProgress) {
+        if (nextX2 < X_AXIS_MIN_UNITS2 || nextX2 > X_AXIS_MAX_UNITS2) {
+            return FALSE;
+        }
+        if (nextY2 < Y_AXIS_MIN_UNITS2 || nextY2 > Y_AXIS_MAX_UNITS2) {
+            return FALSE;
+        }
+    }
+    axisXUnits2 = nextX2;
+    axisYUnits2 = nextY2;
+    return TRUE;
+}
 
 static void enableDWT(void) {
     CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
@@ -78,13 +113,19 @@ void XYStepperTask(void *pvParameters) {
         uint32_t now = DWT->CYCCNT;
 
         if (moveA && (now - lastStepA) >= delayCycles) {
-            gpioWrite(STEPPER_MOTOR_STEP1_PIN, !gpioRead(STEPPER_MOTOR_STEP1_PIN));
-            lastStepA = now;
+            int8_t dirA = (speedA > 0) ? 1 : -1;
+            if (applyStepA(dirA)) {
+                gpioWrite(STEPPER_MOTOR_STEP1_PIN, !gpioRead(STEPPER_MOTOR_STEP1_PIN));
+                lastStepA = now;
+            }
         }
 
         if (moveB && (now - lastStepB) >= delayCycles) {
-            gpioWrite(STEPPER_MOTOR_STEP2_PIN, !gpioRead(STEPPER_MOTOR_STEP2_PIN));
-            lastStepB = now;
+            int8_t dirB = (speedB > 0) ? 1 : -1;
+            if (applyStepB(dirB)) {
+                gpioWrite(STEPPER_MOTOR_STEP2_PIN, !gpioRead(STEPPER_MOTOR_STEP2_PIN));
+                lastStepB = now;
+            }
         }
 
         vTaskDelay(pdMS_TO_TICKS(STEPPER_LOOP_DELAY_MS));

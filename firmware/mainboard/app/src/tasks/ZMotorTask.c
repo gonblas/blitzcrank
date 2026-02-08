@@ -8,6 +8,10 @@
 #include <stdlib.h>
 #include "utils.h"
 #include "debug.h"
+#include "axis_limits.h"
+#include "axis_state.h"
+#include "homing_state.h"
+#include "task_constants.h"
 
 #define ZMOTOR_RUN_MS 1500U // Tiempo de giro en una dirección
 #define ZMOTOR_STOP_MS 300U // Tiempo de parada entre cambios
@@ -21,27 +25,57 @@ void ZMotorTask (void* taskParmPtr) {
 
     ButtonEvent_t buttonEvent;
     uint32_t notifValue = 0;
+    int8_t zDir = 0; // 0=parado, 1=bajando(Z++), -1=subiendo(Z--)
 
     for(;;) {
-        if (xTaskNotifyWait(0, 0, &notifValue, portMAX_DELAY) == pdTRUE) {
+        if (xTaskNotifyWait(0, 0, &notifValue, pdMS_TO_TICKS(ZMOTOR_UPDATE_MS)) == pdTRUE) {
             buttonEvent = *(ButtonEvent_t *)&notifValue;
-            LOG_PRINTLN("[ZMotorTask] Evento botones: up=%u down=%u", buttonEvent.up, buttonEvent.down);
 
             if (buttonEvent.up && !buttonEvent.down) {
-                LOG_PRINTLN("[ZMotorTask] Giro adelante (evento)");
+                // Subir: decrementa Z, sin límite superior
                 gpioWrite(DC_MOTOR_VCC_PIN, ON);
                 gpioWrite(DC_MOTOR_GND_PIN, OFF);
+                zDir = -1;
             } else if (buttonEvent.down && !buttonEvent.up) {
-                LOG_PRINTLN("[ZMotorTask] Giro atrás (evento)");
-                gpioWrite(DC_MOTOR_VCC_PIN, OFF);
-                gpioWrite(DC_MOTOR_GND_PIN, ON);
-            } else if (!buttonEvent.up && !buttonEvent.down) {
-                LOG_PRINTLN("[ZMotorTask] Parada (evento)");
+                // Bajar: incrementa Z. Bloquear si ya está en Z=MAX
+                if (!homingInProgress && axisZUnits >= Z_AXIS_MAX_UNITS) {
+                    gpioWrite(DC_MOTOR_VCC_PIN, OFF);
+                    gpioWrite(DC_MOTOR_GND_PIN, OFF);
+                    zDir = 0;
+                } else {
+                    gpioWrite(DC_MOTOR_VCC_PIN, OFF);
+                    gpioWrite(DC_MOTOR_GND_PIN, ON);
+                    zDir = 1;
+                }
+            } else {
                 gpioWrite(DC_MOTOR_VCC_PIN, OFF);
                 gpioWrite(DC_MOTOR_GND_PIN, OFF);
-            } else {
-                LOG_PRINTLN("[ZMotorTask] Ambos botones presionados: no cambiar estado");
+                zDir = 0;
             }
         }
+
+        // Incrementar/decrementar por tick con velocidades distintas
+        // Subir (zDir=-1) es más lento que bajar (zDir=1)
+        if (zDir != 0) {
+            int32_t delta = (zDir > 0) ? Z_AXIS_DOWN_INCREMENT : -Z_AXIS_UP_INCREMENT;
+            int32_t nextZ = axisZUnits + delta;
+
+            if (!homingInProgress) {
+                if (nextZ >= Z_AXIS_MAX_UNITS) {
+                    axisZUnits = Z_AXIS_MAX_UNITS;
+                    gpioWrite(DC_MOTOR_VCC_PIN, OFF);
+                    gpioWrite(DC_MOTOR_GND_PIN, OFF);
+                    zDir = 0;
+                } else if (nextZ <= Z_AXIS_MIN_UNITS) {
+                    axisZUnits = Z_AXIS_MIN_UNITS;
+                } else {
+                    axisZUnits = nextZ;
+                }
+            } else {
+                axisZUnits = nextZ;
+            }
+            LOG_PRINTLN("[ZMotorTask] Z=%ld", axisZUnits);
+        }
+
     }
 }

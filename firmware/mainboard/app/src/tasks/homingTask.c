@@ -7,6 +7,7 @@
 #include "homing_state.h"
 #include "board_pins.h"
 #include "controls_state.h"
+#include "axis_state.h"
 
 volatile bool_t homingInProgress = FALSE;
 
@@ -34,11 +35,22 @@ static void sendZMotorCommand(bool_t up, bool_t down) {
 
 static void homingDelayWithBlink(uint32_t delayMs);
 
-static void interleavedXYMove(int16_t dirX, uint32_t timeX, int16_t dirY, uint32_t timeY) {
+static void interleavedXYZMove(int16_t dirX, uint32_t timeX, int16_t dirY, uint32_t timeY, int8_t zDir, uint32_t timeZ) {
     uint32_t remainingX = timeX;
     uint32_t remainingY = timeY;
+    uint32_t remainingZ = timeZ;
+    bool_t zRunning = FALSE;
 
-    while (remainingX > 0U || remainingY > 0U) {
+    while (remainingX > 0U || remainingY > 0U || remainingZ > 0U) {
+        if (remainingZ > 0U && !zRunning) {
+            if (zDir > 0) {
+                sendZMotorCommand(0, 1);
+            } else if (zDir < 0) {
+                sendZMotorCommand(1, 0);
+            }
+            zRunning = TRUE;
+        }
+
         if (remainingY > 0U) {
             uint32_t stepY = (remainingY > HOMING_AXIS_STEP_MS) ? HOMING_AXIS_STEP_MS : remainingY;
             sendJoystickCommand(0, dirY * (int16_t)HOMING_JOYSTICK_OFFSET);
@@ -53,6 +65,16 @@ static void interleavedXYMove(int16_t dirX, uint32_t timeX, int16_t dirY, uint32
             homingDelayWithBlink(stepX);
             sendJoystickCommand(0, 0);
             remainingX -= stepX;
+        }
+
+        if (remainingZ > 0U) {
+            uint32_t stepZ = (remainingZ > HOMING_AXIS_STEP_MS) ? HOMING_AXIS_STEP_MS : remainingZ;
+            homingDelayWithBlink(stepZ);
+            remainingZ -= stepZ;
+            if (remainingZ == 0U && zRunning) {
+                sendZMotorCommand(0, 0);
+                zRunning = FALSE;
+            }
         }
     }
 }
@@ -81,39 +103,22 @@ void homingTask(void *pvParameters) {
     vTaskSuspend(xControlXYAxisTaskHandle);
     vTaskSuspend(xControlZAxisTaskHandle);
     vTaskSuspend(xControlGripperTaskHandle);
+    vTaskSuspend(xServoTaskHandle);
 
-    interleavedXYMove(HOMING_X_DIR_SIGN, HOMING_X_TIME_MS, HOMING_Y_DIR_SIGN, HOMING_Y_TIME_MS);
+    interleavedXYZMove(HOMING_X_DIR_SIGN, HOMING_X_TIME_MS, HOMING_Y_DIR_SIGN, HOMING_Y_TIME_MS, -1, HOMING_Z_TIME_MS);
     homingDelayWithBlink(HOMING_SETTLE_MS);
 
     if (HOMING_X_BACKOFF_MS > 0U || HOMING_Y_BACKOFF_MS > 0U) {
-        interleavedXYMove(-HOMING_X_DIR_SIGN, HOMING_X_BACKOFF_MS, -HOMING_Y_DIR_SIGN, HOMING_Y_BACKOFF_MS);
+        interleavedXYZMove(-HOMING_X_DIR_SIGN, HOMING_X_BACKOFF_MS, -HOMING_Y_DIR_SIGN, HOMING_Y_BACKOFF_MS, 0, 0U);
         homingDelayWithBlink(HOMING_SETTLE_MS);
     }
-
-    if (HOMING_Z_DIR_UP) {
-        sendZMotorCommand(1, 0);
-    } else {
-        sendZMotorCommand(0, 1);
-    }
-    homingDelayWithBlink(HOMING_Z_TIME_MS);
-    sendZMotorCommand(0, 0);
-
-    if (HOMING_Z_BACKOFF_MS > 0U) {
-        if (HOMING_Z_DIR_UP) {
-            sendZMotorCommand(0, 1);
-        } else {
-            sendZMotorCommand(1, 0);
-        }
-        homingDelayWithBlink(HOMING_Z_BACKOFF_MS);
-        sendZMotorCommand(0, 0);
-    }
-
-    homingDelayWithBlink(HOMING_SETTLE_MS);
 
     vTaskResume(xControlXYAxisTaskHandle);
     vTaskResume(xControlZAxisTaskHandle);
     vTaskResume(xControlGripperTaskHandle);
+    vTaskResume(xServoTaskHandle);
 
+    axisResetPositions();
     gpioWrite(LED_SWITCH_PIN, globalState.operationMode.source);
     homingInProgress = FALSE;
 

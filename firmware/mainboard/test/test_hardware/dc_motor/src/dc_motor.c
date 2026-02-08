@@ -40,7 +40,7 @@ void ZMotorTask (void* taskParmPtr) {
         vTaskDelay(pdMS_TO_TICKS(ZMOTOR_STOP_MS));
 
         // Giro hacia el otro lado: VCC=0, GND=1
-        LOG_PRINTLN("[ZMotorTask] Giro atrás");
+        LOG_PRINTLN("[ZMotorTask] Giro atras");
         gpioWrite(DC_MOTOR_VCC_PIN, OFF);
         gpioWrite(DC_MOTOR_GND_PIN, ON);
         vTaskDelay(pdMS_TO_TICKS(ZMOTOR_RUN_MS));
