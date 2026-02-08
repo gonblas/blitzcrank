@@ -1,4 +1,3 @@
-//Inclusiones
 #include "FreeRTOS.h"
 #include "task.h"
 #include "sapi.h"
@@ -8,7 +7,9 @@
 #include "priority.h"
 #include "heap.h"
 #include "debug.h"
-#include "controls_state.h"//
+#include "controls_state.h"
+
+#define UART_USB_BAUD_RATE 115200U
 TaskHandle_t xControlXYAxisTaskHandle = NULL;
 TaskHandle_t xControlGripperTaskHandle = NULL;
 TaskHandle_t xControlZAxisTaskHandle = NULL;
@@ -20,16 +21,12 @@ TaskHandle_t xConnectionTaskHandle = NULL;
 
 ControlsState_t globalState;
 
-//============================================================================
-// FUNCION PRINCIPAL
-//============================================================================
 int main(void) {
     boardConfig();
-    uartConfig(UART_USB, 115200);
+    uartConfig(UART_USB, UART_USB_BAUD_RATE);
     adcConfig(ADC_ENABLE);
     ControlsState_Init();
     LOG_PRINTLN("=== System Starting ===");
-    // Create tasks -----------------------------------------------------------
     LOG_PRINTLN("Generating tasks...");
     xTaskCreate(controlGripperTask, "GRIPPER", HEAP_GRIPPER_SIZE, NULL, PRIORITY_CONTROL_GRIPPER, &xControlGripperTaskHandle);
     xTaskCreate(controlXYAxisTask, "XY_AXIS", HEAP_XY_AXIS_SIZE, NULL, PRIORITY_CONTROL_XY_AXIS, &xControlXYAxisTaskHandle);

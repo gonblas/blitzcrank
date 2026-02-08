@@ -8,7 +8,11 @@
 #include "event_system.h"
 #include "uart.h"
 #include "board_pins.h"
+#include "task_constants.h"
 
+
+#define UART_TASK_STACK_SIZE 128U
+#define UART_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
 
 typedef enum {
     STATE_WAIT_STX,
@@ -27,15 +31,12 @@ static uint32_t validCount = 0;    // Contador de paquetes válidos
 
 static void UART_Task(void *pvParameters);
 
-
-// ==== Inicialización de la tarea ====
 void UART_TaskCreate(void) {
     uartConfig(UART_USED, UART_BAUD);
     state = STATE_WAIT_STX;
-    xTaskCreate(UART_Task, "UART_Task", 128, NULL, tskIDLE_PRIORITY + 1, NULL);
+    xTaskCreate(UART_Task, "UART_Task", UART_TASK_STACK_SIZE, NULL, UART_TASK_PRIORITY, NULL);
 }
 
-// ==== Bucle principal de la tarea ====
 static void UART_Task(void *pvParameters) {
     uint8_t byte;
 
@@ -43,15 +44,12 @@ static void UART_Task(void *pvParameters) {
         if (!uartReadByte(UART_USED, &byte)) {
             continue;
         }
-        // uartWriteByte(UART_USED, byte); // Eco del byte recibido
         switch (state) {
 
         case STATE_WAIT_STX:
             if (byte == PROTO_STX) {
                 rxFrame.stx = byte;
                 state = STATE_READ_TYPE;
-            } else {
-                // Descarta bytes basura hasta encontrar STX
             }
             break;
 
@@ -64,7 +62,6 @@ static void UART_Task(void *pvParameters) {
             rxFrame.length = byte;
             if (rxFrame.length > PROTO_MAX_PAYLOAD) {
                 state = STATE_WAIT_STX;
-                break;
             }
             indexPayload = 0;
             state = STATE_READ_PAYLOAD;
@@ -96,20 +93,18 @@ static void UART_Task(void *pvParameters) {
             }
             printf("\n");
 
-            // VALIDACIÓN: Solo procesar si el checksum es correcto
             if (!proto_validateFrame(&rxFrame)) {
                 corruptCount++;
                 printf("PAQUETE CORRUPTO - Checksum inválido - DESCARTADO\n");
                 printf("Estadísticas: Válidos=%lu | Corruptos=%lu | Tasa error=%.2f%%\n", 
                        validCount, corruptCount, (corruptCount * 100.0) / (validCount + corruptCount));
                 printf("======================================\n\n");
-                break;  // NO procesar paquete corrupto
+                break;
             }
             validCount++;
             printf("PAQUETE VÁLIDO\n");
             
             Event_t ev;
-            // ==== Frame válido ====
             switch (rxFrame.type) {
             case EV_BUTTON: {
                 ButtonPayload_t b;
@@ -152,7 +147,7 @@ static void UART_Task(void *pvParameters) {
         }
         
 
-        vTaskDelay(pdMS_TO_TICKS(10)); // Evita bloqueo de CPU
+        vTaskDelay(pdMS_TO_TICKS(UART_TASK_DELAY_MS));
     }
 }
 
