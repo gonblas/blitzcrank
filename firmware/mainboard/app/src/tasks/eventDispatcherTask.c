@@ -8,26 +8,24 @@
 #include "task_control.h"
 
 #define EVENT_QUEUE_LENGTH 10
+#define DISPATCHER_TASK_STACK_SIZE 128U
+#define DISPATCHER_TASK_PRIORITY (tskIDLE_PRIORITY + 2)
 
 QueueHandle_t eventQueue;
 
-// Task prototype
 void EventDispatcherTask(void *pvParameters);
 
-// Initialization
 void initEventSystem(void) {
     eventQueue = xQueueCreate(EVENT_QUEUE_LENGTH, sizeof(Event_t));
-    xTaskCreate(EventDispatcherTask, "Dispatcher", 128, NULL, tskIDLE_PRIORITY + 2, NULL);
+    xTaskCreate(EventDispatcherTask, "Dispatcher", DISPATCHER_TASK_STACK_SIZE, NULL, DISPATCHER_TASK_PRIORITY, NULL);
 }
 
-// Dispatcher task
 void EventDispatcherTask(void *pvParameters) {
     Event_t ev;
 
     LOG_PRINTLN("[Dispatcher] Iniciado y esperando eventos...");
 
     for (;;) {
-      // Si hace falta se podria implementar una maquina de estado
         if (xQueueReceive(eventQueue, &ev, portMAX_DELAY) == pdTRUE) {
             LOG_PRINTLN("[Dispatcher] Evento recibido tipo: %d", ev.type);
             switch (ev.type) {

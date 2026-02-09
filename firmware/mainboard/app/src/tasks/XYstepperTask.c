@@ -9,10 +9,11 @@
 #include "utils.h"
 #include "debug.h"
 #include "sapi_cyclesCounter.h"
+#include "joystick_constants.h"
+#include "task_constants.h"
 
-#define DEAD_ZONE 30
-#define JOYSTICK_INITIAL_POSITION 512
-#define MAX_SPEED_DELAY_US 2000   // velocidad constante máxima (ajustable)
+#define STEPPER_DEAD_ZONE 150U
+#define STEPPER_MAX_SPEED_DELAY_US 2000U
 
 static void enableDWT(void) {
     CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
@@ -21,7 +22,7 @@ static void enableDWT(void) {
 }
 
 void XYStepperTask(void *pvParameters) {
-    JoystickEvent_t command = { .x = JOYSTICK_INITIAL_POSITION, .y = JOYSTICK_INITIAL_POSITION };
+    JoystickEvent_t command = { .x = JOYSTICK_CENTER_VALUE, .y = JOYSTICK_CENTER_VALUE };
     boardConfig();
     enableDWT();
     cyclesCounterInit(SystemCoreClock);
@@ -41,24 +42,23 @@ void XYStepperTask(void *pvParameters) {
     uint32_t lastStepA = 0, lastStepB = 0;
     bool enabled = false;
 
-    const uint32_t delayCycles = MAX_SPEED_DELAY_US * (SystemCoreClock / 1000000U);
+    const uint32_t delayCycles = STEPPER_MAX_SPEED_DELAY_US * (SystemCoreClock / 1000000U);
 
     for (;;) {
         JoystickEvent_t newCommand;
-        if (xTaskNotifyWait(0, 0, (uint32_t *)&newCommand, pdMS_TO_TICKS(1)) == pdTRUE)
+        if (xTaskNotifyWait(0, 0, (uint32_t *)&newCommand, pdMS_TO_TICKS(STEPPER_NOTIFY_WAIT_MS)) == pdTRUE)
             command = newCommand;
 
-        int16_t joyX = command.x - JOYSTICK_INITIAL_POSITION; // -512 .. +512
-        int16_t joyY = command.y - JOYSTICK_INITIAL_POSITION;
+        int16_t joyX = command.x - JOYSTICK_CENTER_VALUE;
+        int16_t joyY = command.y - JOYSTICK_CENTER_VALUE;
 
-        // Si ambos en zona muerta -> deshabilitar drivers
-        if (abs(joyX) < DEAD_ZONE && abs(joyY) < DEAD_ZONE) {
+        if (abs(joyX) < STEPPER_DEAD_ZONE && abs(joyY) < STEPPER_DEAD_ZONE) {
             if (enabled) {
                 gpioWrite(STEPPER_MOTOR_ENABLE1_PIN, ON);
                 gpioWrite(STEPPER_MOTOR_ENABLE2_PIN, ON);
                 enabled = false;
             }
-            vTaskDelay(pdMS_TO_TICKS(5));
+            vTaskDelay(pdMS_TO_TICKS(STEPPER_IDLE_DELAY_MS));
             continue;
         } else if (!enabled) {
             gpioWrite(STEPPER_MOTOR_ENABLE1_PIN, OFF);
@@ -66,35 +66,27 @@ void XYStepperTask(void *pvParameters) {
             enabled = true;
         }
 
-        /* ===== CORRECCIÓN CLAVE: mapeo que hace X en sentidos contrarios =====
-           Motor A =  X + Y
-           Motor B = -X + Y
-        */
         int16_t speedA = joyX + joyY;
         int16_t speedB = -joyX + joyY;
 
-        // Decide si cada motor debe moverse (evitar arrastres pequeños)
-        bool moveA = (abs(speedA) >= DEAD_ZONE);
-        bool moveB = (abs(speedB) >= DEAD_ZONE);
+        bool moveA = (abs(speedA) >= STEPPER_DEAD_ZONE);
+        bool moveB = (abs(speedB) >= STEPPER_DEAD_ZONE);
 
-        // Dirección: signo de speed
         gpioWrite(STEPPER_MOTOR_DIR1_PIN, (speedA > 0) ? ON : OFF);
         gpioWrite(STEPPER_MOTOR_DIR2_PIN, (speedB > 0) ? ON : OFF);
 
         uint32_t now = DWT->CYCCNT;
 
-        // Motor A: step sólo si supera DEAD_ZONE
         if (moveA && (now - lastStepA) >= delayCycles) {
             gpioWrite(STEPPER_MOTOR_STEP1_PIN, !gpioRead(STEPPER_MOTOR_STEP1_PIN));
             lastStepA = now;
         }
 
-        // Motor B: step sólo si supera DEAD_ZONE
         if (moveB && (now - lastStepB) >= delayCycles) {
             gpioWrite(STEPPER_MOTOR_STEP2_PIN, !gpioRead(STEPPER_MOTOR_STEP2_PIN));
             lastStepB = now;
         }
 
-        vTaskDelay(pdMS_TO_TICKS(1));
+        vTaskDelay(pdMS_TO_TICKS(STEPPER_LOOP_DELAY_MS));
     }
 }

@@ -6,11 +6,8 @@
 #include "button.h"
 #include "debug.h"
 #include "event_system.h"
+#include "task_constants.h"
 
-
-// ================================================================
-//                    TASK: CONTROL Z AXIS
-// ================================================================
 void controlZAxisTask(void* pvParameters) {
     bool_t upPrevState = ON, downPrevState = ON;
 
@@ -39,6 +36,6 @@ void controlZAxisTask(void* pvParameters) {
         upPrevState     = upState;
         downPrevState   = downState;
 
-        vTaskDelay(pdMS_TO_TICKS(10)); // Delay para el debounce
+        vTaskDelay(pdMS_TO_TICKS(ZAXIS_DEBOUNCE_DELAY_MS));
     }
 }

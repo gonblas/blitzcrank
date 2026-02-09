@@ -2,7 +2,8 @@
 #define WIFI_CONNECTIVITY_H
 
 #include <WiFi.h>
-#include "config.h"
+#include "wifi_config.h"
+#include "debug_config.h"
 
 void startAccessPoint();
 

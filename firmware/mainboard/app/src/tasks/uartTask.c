@@ -8,7 +8,11 @@
 #include "event_system.h"
 #include "uart.h"
 #include "board_pins.h"
+#include "task_constants.h"
 
+
+#define UART_TASK_STACK_SIZE 128U
+#define UART_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
 
 typedef enum {
     STATE_WAIT_STX,
@@ -22,18 +26,17 @@ typedef enum {
 static Frame_t rxFrame;
 static ParseState_t state;
 static uint8_t indexPayload;
+static uint32_t corruptCount = 0;  // Contador de paquetes corruptos
+static uint32_t validCount = 0;    // Contador de paquetes válidos
 
 static void UART_Task(void *pvParameters);
 
-
-// ==== Inicialización de la tarea ====
 void UART_TaskCreate(void) {
     uartConfig(UART_USED, UART_BAUD);
     state = STATE_WAIT_STX;
-    xTaskCreate(UART_Task, "UART_Task", 128, NULL, tskIDLE_PRIORITY + 1, NULL);
+    xTaskCreate(UART_Task, "UART_Task", UART_TASK_STACK_SIZE, NULL, UART_TASK_PRIORITY, NULL);
 }
 
-// ==== Bucle principal de la tarea ====
 static void UART_Task(void *pvParameters) {
     uint8_t byte;
 
@@ -41,8 +44,6 @@ static void UART_Task(void *pvParameters) {
         if (!uartReadByte(UART_USED, &byte)) {
             continue;
         }
-        // uartWriteByte(UART_USED, byte); // Eco del byte recibido
-
         switch (state) {
 
         case STATE_WAIT_STX:
@@ -61,7 +62,6 @@ static void UART_Task(void *pvParameters) {
             rxFrame.length = byte;
             if (rxFrame.length > PROTO_MAX_PAYLOAD) {
                 state = STATE_WAIT_STX;
-                break;
             }
             indexPayload = 0;
             state = STATE_READ_PAYLOAD;
@@ -83,44 +83,62 @@ static void UART_Task(void *pvParameters) {
             rxFrame.etx = byte;
             state = STATE_WAIT_STX;
 
+            // Imprimir SIEMPRE el paquete recibido (válido o corrupto)
+            printf("\n========== PAQUETE RECIBIDO ==========\n");
+            printf("STX: 0x%02X | Type: 0x%02X | Len: %u | ETX: 0x%02X | CHK: 0x%02X\n",
+                   rxFrame.stx, rxFrame.type, rxFrame.length, rxFrame.etx, rxFrame.checksum);
+            printf("Payload: ");
+            for (uint8_t i = 0; i < rxFrame.length && i < PROTO_MAX_PAYLOAD; i++) {
+                printf("%02X ", rxFrame.payload[i]);
+            }
+            printf("\n");
+
             if (!proto_validateFrame(&rxFrame)) {
+                corruptCount++;
+                printf("PAQUETE CORRUPTO - Checksum inválido - DESCARTADO\n");
+                printf("Estadísticas: Válidos=%lu | Corruptos=%lu | Tasa error=%.2f%%\n", 
+                       validCount, corruptCount, (corruptCount * 100.0) / (validCount + corruptCount));
+                printf("======================================\n\n");
                 break;
             }
+            validCount++;
+            printf("PAQUETE VÁLIDO\n");
+            
             Event_t ev;
-            // ==== Frame válido ====
             switch (rxFrame.type) {
             case EV_BUTTON: {
                 ButtonPayload_t b;
                 proto_unpackButton(rxFrame.payload, &b);
                 queueButtonEvent(b.up, b.down);
-                printf("EV_BUTTON: up=%d down=%d\r\n", b.up, b.down);
+                printf("→ EV_BUTTON: up=%d down=%d\n", b.up, b.down);
                 break;
             }
             case EV_JOYSTICK: {
                 JoystickPayload_t j;
                 proto_unpackJoystick(rxFrame.payload, &j);
                 queueJoystickEvent(j.x, j.y);
-                printf("EV_JOYSTICK: x=%u y=%u\r\n", j.x, j.y);
+                printf("→ EV_JOYSTICK: x=%u y=%u\n", j.x, j.y);
                 break;
             }
             case EV_POTENTIOMETER: {
                 PotentiometerPayload_t p;
                 proto_unpackPotentiometer(rxFrame.payload, &p);
                 queuePotentiometerEvent(p.angle);
-                printf("EV_POTENTIOMETER: angle=%u\r\n", p.angle);
+                printf("→ EV_POTENTIOMETER: angle=%u\n", p.angle);
                 break;
             }
             case EV_INPUT_SOURCE: {
                 InputModePayload_t m;
                 proto_unpackInputMode(rxFrame.payload, &m);
                 queueInputSourceEvent(m.mode);
-                printf("EV_INPUT_SOURCE: mode=%u\r\n", m.mode);
+                printf("→ EV_INPUT_SOURCE: mode=%u\n", m.mode);
                 break;
             }
             default:
-                printf("EV_UNKNOWN: type=%u\r\n", rxFrame.type);
+                printf("→ EV_UNKNOWN: type=%u\n", rxFrame.type);
                 break;
             }
+            printf("======================================\n\n");
             break;
 
         default:
@@ -129,7 +147,7 @@ static void UART_Task(void *pvParameters) {
         }
         
 
-        vTaskDelay(pdMS_TO_TICKS(10)); // Evita bloqueo de CPU
+        vTaskDelay(pdMS_TO_TICKS(UART_TASK_DELAY_MS));
     }
 }
 
