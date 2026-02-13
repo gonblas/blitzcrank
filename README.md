@@ -1,9 +1,13 @@
+<img width="1584" height="396" alt="Banner para Blitzcrank" src="https://github.com/user-attachments/assets/6bb9b7e4-85fb-4a26-a175-dbdcc57bd683" />
+
 # Blitzcrank
+
 
 <p align="center">
   <a href="README.md"><img src="https://img.shields.io/badge/lang-es-yellow.svg" alt="es"></a>
   <a href="README.en.md"><img src="https://img.shields.io/badge/lang-en-red.svg" alt="en"></a>
 </p>
+
 
 ## Descripción del proyecto
 
@@ -76,6 +80,14 @@ Más allá de su valor como ejercicio técnico, el prototipo puede servir como b
     - Documentar el desarrollo del firmware, incluyendo rutinas de control e inicialización.
     - Documentar el diseño del esquemático y PCB, incluyendo conexiones, componentes y disposición de pines.
   - Garantizar la seguridad del usuario durante la operación del sistema, incluyendo protecciones físicas.
+
+</details>
+
+<details>
+  <summary><i>Diagrama en bloques del sistema</i></summary>
+  
+  <img width="5434" height="2638" alt="Diagrama en bloques inicial" src="https://github.com/user-attachments/assets/0fadb233-63ef-492a-ba73-c7783e0d6ea5" />
+
 
 </details>
 
@@ -173,6 +185,10 @@ Más allá de su valor como ejercicio técnico, el prototipo puede servir como b
 <details>
   <summary>Controlador</summary>
   <p align="center">
+    <img src="resources/3d-design/v2/Controller_v4.png" width="58%">
+    <img src="https://github.com/user-attachments/assets/f869cf15-3d40-46a3-8530-43cc8f1d5f2e" width="38%">
+  </p>
+  <p align="center">
     <img src="resources/3d-design/v2/Controller_v4.png" width="80%">
   </p>
 </details>
@@ -192,14 +208,22 @@ Más allá de su valor como ejercicio técnico, el prototipo puede servir como b
 <details>
   <summary>Diseño del PCB</summary>
   <p align="center">
-    <img src="resources/PCB/v2.2/PCB_design.png" width="80%">
+    <img src="resources/PCB/v2.2/PCB_design.png" width="50%">
   </p>
 </details>
 
 <details>
   <summary>PCB 3D</summary>
   <p align="center">
-    <img src="resources/PCB/v2.2/PCB_3D.png" width="80%">
+    <img src="https://github.com/user-attachments/assets/a5e9cec9-07e7-4585-9868-7d5e82cc5a07" width="50%">
+  </p>
+</details>
+
+<details>
+  <summary>PCB Construído</summary>
+  <p align="center">
+    <img src="https://github.com/user-attachments/assets/010e7ee9-1035-447a-acd2-546891964b56" width="45%">
+    <img src="https://github.com/user-attachments/assets/a49ca689-5b2d-4979-9b7c-3eda41eeb21c" width="45%">
   </p>
 </details>
 
