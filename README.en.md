@@ -1,4 +1,4 @@
-<img width="1584" height="396" alt="Blitzcrank Banner" src="https://github.com/user-attachments/assets/6bb9b7e4-85fb-4a26-a175-dbdcc57bd683" />
+<img width="1584" height="396" alt="Blitzcrank Banner" src="https://github.com/user-attachments/assets/d9a6a141-5120-47ca-beb7-151f4a62ab8c" />
 
 # Blitzcrank
 
