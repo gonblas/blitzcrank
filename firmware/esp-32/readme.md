@@ -60,6 +60,26 @@ Para configurar el modo de funcionamiento, edita el archivo `lib/WiFiManager/con
 
 > **Nota**: El **Full Clean** solo es necesario la primera vez para evitar errores de compilación.
 
+
+## Acceso a la web
+
+Para utilizar el control remoto, se deben seguir los siguientes pasos:
+
+1. **Conectarse a la red Wi-Fi del sistema:**
+
+   Desde una computadora o dispositivo móvil, conectarse a la red Wi-Fi generada por el ESP32 con los siguientes datos:
+
+   - **Nombre de red (SSID):** `blitzcrank`
+   - **Contraseña:** `garra12345`
+
+2. **Acceder a la interfaz web:**
+
+   Una vez establecida la conexión Wi-Fi, abrir un navegador web y acceder a la siguiente dirección: [http://192.168.4.1](http://192.168.4.1)
+
+   Al ingresar esta dirección, se cargará la página web correspondiente al control remoto del sistema.
+
+
+
 ## Flujo de Trabajo para Modificaciones
 
 ### Solo cambios en archivos web (data/)
